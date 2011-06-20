@@ -1,0 +1,8 @@
+Suprcore 
+
+Changelog
+
+2011.04.25	v1.0 Initial build
+2011.05.22	Added include and separate folder for custom functions
+2011.05.27	Updated core assets and boilerplate v1.0rc build
+		Added minified css for production

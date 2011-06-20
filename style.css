@@ -1,0 +1,272 @@
+/*
+Theme Name: Suprcore
+Theme URI: http://suprmrkt.net
+Description: Baseline development
+Author: 8/7 Central
+Author URI: http://eightsevencentral.com
+Tags: HTML5 boilerplate, 960 grid system
+Version: 1.0
+
+  eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee 
+  8   " 8   8 8   8 8   8  8  8 8  88 8   8  8    
+  8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee 
+     88 88  8 88    88   8 88   8   8 88   8 88   
+  8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee           
+
+  Project: 
+  Date: 
+*/
+
+@import 'assets/css/html5.css';
+@import 'assets/css/960.css';
+@import 'assets/css/formalize.css';
+
+/* @typography */
+
+body, select, input, textarea {
+	color: #111;
+	font: normal 12px/1.5 "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	word-spacing: -1px;
+}
+
+a, a:active, a:visited { color: #999; outline: none; text-decoration: none; }
+a:hover { color: #111; border-bottom: 1px solid #111; }
+a img { border: none; display: block; }
+
+nav a, nav a:hover { border-bottom: none; text-decoration: none; }
+
+blockquote { color: #999; padding-left: 20px; }
+blockquote cite:before { content: "\2015"; }
+
+p { margin-bottom: 1em; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+
+h1 a, h1 a:visited, 
+h2 a, h2 a:visited { color: #111; }
+h1 a:hover, 
+h2 a:hover { border-bottom: none; }
+
+h1 { font-size: 2em; letter-spacing: -1px }
+h2 { font-size: 2.5em; letter-spacing: -1px; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1em; }
+h6 { font-size: 1em; text-transform: uppercase; }
+
+/* 
+  @header
+  -------
+*/
+
+header[role="banner"] {
+	border-bottom: 8px solid #111;
+	padding: 50px 0;
+	position: relative;
+}
+	header #logo {
+		background: transparent;
+		color: #111;
+		display: block;
+		float: left;
+		font-size: 26px;
+		font-weight: 500;
+		letter-spacing: -1px;
+	}
+	header #logo:hover { 
+		border-bottom: none; 
+	}
+
+	/* @site nav */
+
+	header nav[role="navigation"] {
+		float: right;
+		padding: 15px 0 0;
+		position: relative;
+	}
+	header nav ul li { 
+		float: left;
+		margin-left: 10px;
+	}
+		header nav ul li:hover a { 
+			color: #111; 
+		}
+			header nav ul li ul {
+				display: none; 
+				float: left;
+				padding: 0;
+				position: absolute;
+				top: 35px; left: 0; 
+				width: 100%;
+			}
+			header nav ul li:hover ul { display: block; } 
+				header nav ul li:hover ul a { color: #999; }
+				header nav ul li ul a:hover { color: #111; }
+
+			header nav ul li.current_page_item > a,
+			header nav ul li.current-menu-ancestor > a,
+			header nav ul li.current-menu-item > a,
+			header nav ul li.current-menu-parent > a {
+				color: #111;
+			}
+			* html header nav ul li.current_page_item a,
+			* html header nav ul li.current-menu-ancestor a,
+			* html header nav ul li.current-menu-item a,
+			* html header nav ul li.current-menu-parent a,
+			* html header nav ul li a:hover {
+				color: #111;
+			}
+
+/* @end header */
+
+/* @feature */
+
+#feature { padding: 45px 0 90px; height: 320px; }
+
+/* @breadcrumbs */
+
+#bcn { background: #999; font-size: 11px; line-height: 40px; height: 40px; }
+	#bcn a { border-bottom: none; color: #111; margin-left: 10px; }
+	#bcn a:hover { border-bottom: 1px solid #111; }
+	#bcn img { margin-left: 10px; }
+		#bcn .current_item { font-weight: 500; margin-left: 10px; }
+
+/* @content */
+
+#content { }
+
+/* 
+  @main 
+  -----
+*/
+
+#main { }
+
+	article { border-top: 1px solid #111; padding-top: 16px; }
+	article .post_title { font-weight: 500; padding-bottom: 1em; padding-top: .5em; }
+	article .post_category { font-weight: bold; display: block; }
+	article .post_category a { color: #111; }
+	article .post_comment { display: block; }
+
+	article .entry { }
+	article .entry p { margin-right: 40px; }
+	article img { max-width: 620px; }
+
+	article footer { border-top: 1px solid #ccc; margin-top: 2em; padding: 16px 0 0; }
+
+	article .twitter-share-button { display: inline; float: left; margin-right: 10px; }
+
+/* @comments */
+
+#main .comment-container { font-size: 12px; line-height: 16px; margin-bottom: 30px; margin-top: 30px; }
+	#main .comment-container img.avatar { display: inline; margin: 0;float: right }
+	#main .comment-container #comment { max-width: 340px;}
+
+	.push { padding-bottom: 10px; }
+
+/* @custom content */
+
+
+
+
+
+
+
+
+/* @page navigation */
+
+.pagination { padding-bottom: 16px; }
+
+/* @end main */
+
+/* 
+  @sidebar 
+  --------
+*/
+
+.sidebar { border-top: 1px solid #111; }
+	.sidebar ul { border-bottom: 1px solid #111; list-style:none; margin: 0; padding-bottom: 15px; }
+		.sidebar ul li { list-style: none; margin: 0; padding: 0; }
+		.sidebar li ul { list-style: none; border-bottom: none; margin: 0; padding: 0; }
+			.sidebar li ul li:before { content: "\2015"; color: #999; }
+			.sidebar li ul li { list-style: none; padding-left: 10px; margin: 0; }
+			.sidebar .widget_title { font-weight: bold; display: block; margin: 0; padding-top: 15px; }
+	
+	.searchform { border-bottom: 1px solid #111; display: block; margin: 0; padding: 15px 0; }
+	
+	.textwidget { border-bottom: 1px solid #111; margin: 0; padding-bottom: 15px; }
+
+	.twitter_link { background: url(assets/img/arrow_sbr.gif) center left no-repeat; padding-left: 15px; display: block; margin-top: 8px; }
+	.twitter_icon { text-align: right; max-width: 60px; overflow: hidden; }
+
+/* @end sidebar */
+
+/* 
+  @footer 
+  -------
+*/
+
+footer[role="contentinfo"] { color: #999; padding: 100px 0 40px; }
+
+	footer nav ul { float: left; }
+		footer nav ul li {float: left; margin-right: 10px; }
+	
+	.copy { text-align: right; }
+
+
+/* @wordpress classes */
+
+.aligncenter, div.aligncenter { clear: both; display: block; margin: 0 auto 16px; }
+img.alignleft { display: inline; float: left; margin-right: 12px;  }
+img.alignright { display: inline; float: right; margin-left: 12px; }
+
+.alignleft { text-align: left; }
+.alignright { text-align: right; }
+
+img.size-auto, img.size-full,
+img.size-large, img.size-medium, .attachment img,
+.widget-area img { max-width: 100%; height: auto; margin-bottom: 1em; }
+
+.wp-caption { text-align: left; }
+.wp-caption img { border: 0 none; }
+.wp-caption .wp-caption-text { color: #999; margin-top: 0; }
+
+.gallery { margin: 16px auto; }
+.gallery .gallery-item { float: left; padding-bottom: 16px; width: 33%; }
+.gallery .gallery-item img { margin: 0 auto 1em; position: relative; }
+.gallery .gallery-caption { color: #999; margin-top: 0; text-align: center; }
+
+/* @formalize overrides */
+
+input[type="search"] {
+  -webkit-appearance: none;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+  background-color: #111;
+  border: 1px solid;
+  border-color: none;
+  color: #fff;
+  outline: 0;
+  padding: 2px 3px;
+  font-size: 13px;
+  /*
+    Leaving out Helvetica Neue, to not throw off size="..."
+    on inputs. Arial is more reliable, on Windows and OS X.
+  */
+  font-family: Arial, 'Liberation Sans', FreeSans, sans-serif;
+  height: 1.8em;
+  width: 90%;
+  margin-right: 10px;
+
+  /* IE7 */
+  *padding-top: 2px;
+  *padding-bottom: 1px;
+  *height: auto;
+}
