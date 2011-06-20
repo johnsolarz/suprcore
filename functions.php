@@ -450,4 +450,4 @@ function your_twitter_icon() {
  * Include primary project functions in separate folder.  
  */
 
-//include('functions/custom-content.php');
+//include('functions/custom-posts.php');
