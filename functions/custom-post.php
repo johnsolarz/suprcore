@@ -171,7 +171,7 @@ if( !function_exists( 'suprcore_post_class' ) ) {
      * Append taxonomy terms to post class.
      * @since 2011-02-01
      */
-    function qa5_post_class( $classes, $class, $ID ) {
+    function suprcore_post_class( $classes, $class, $ID ) {
         $taxonomy = array('genre', 'writer');
         $terms = get_the_terms( (int) $ID, $taxonomy );
         if( !empty( $terms ) ) {
