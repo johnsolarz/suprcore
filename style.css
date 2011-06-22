@@ -140,9 +140,9 @@ header[role="banner"] {
   -----
 */
 
-#main { }
+#main { border-top: 1px solid #111; }
 
-	article { border-top: 1px solid #111; padding-top: 16px; }
+	article { padding-top: 16px; }
 	article .post_title { font-weight: 500; padding-bottom: 1em; padding-top: .5em; }
 	article .post_category { font-weight: bold; display: block; }
 	article .post_category a { color: #111; }
@@ -152,7 +152,7 @@ header[role="banner"] {
 	article .entry p { margin-right: 40px; }
 	article img { max-width: 620px; }
 
-	article footer { border-top: 1px solid #ccc; margin-top: 2em; padding: 16px 0 0; }
+	article footer { border-bottom: 1px solid #111; border-top: 1px solid #ccc; margin-top: 2em; padding: 16px 0 0; }
 
 	article .twitter-share-button { display: inline; float: left; margin-right: 10px; }
 
