@@ -19,8 +19,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/assets/img/favicon.ico">
-	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/assets/img/apple-touch-icon.png">
+	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/root/favicon.ico">
+	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/root/apple-touch-icon.png">
 
 	<!-- CSS: implied media="all" -->
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
