@@ -42,7 +42,7 @@ else
     echo "Created Directory: $dst"
 
     cd -- "$src"
-    cp -vr -- assets build functions rootfiles *.css *.php *.png "$dst"
+    cp -vr -- assets build functions root *.css *.php *.png "$dst"
 
     #sucess message
     echo "Created Project: $dst"
