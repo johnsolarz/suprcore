@@ -5,14 +5,14 @@
 <!--[if IE 9 ]><html class="no-js ie ie9 lte9" <?php language_attributes(); ?>><![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
-	<meta charset="<?php bloginfo('charset'); ?>">
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
 
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
        Remove this if you use the .htaccess -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title><?php wp_title( '&mdash;', true, 'right' ); ?><?php bloginfo('name'); ?></title>
-	<meta name="description" content="<?php bloginfo('description'); ?>">
+	<title><?php wp_title( '&mdash;', true, 'right' ); ?><?php bloginfo( 'name' ); ?></title>
+	<meta name="description" content="<?php bloginfo( 'description' ); ?>">
 	<meta name="author" content="">
 
 	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -23,7 +23,7 @@
 	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/root/apple-touch-icon.png">
 
 	<!-- CSS: implied media="all" -->
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
+	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>">
 
 	<!-- All JavaScript at the bottom, except for Modernizr and Respond.
        Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries -->
@@ -31,7 +31,7 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/libs/respond.min.js"></script>
 
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 	<?php wp_head(); ?>
 </head>
@@ -75,9 +75,9 @@
 
 		</div>
 
-		<?php if(function_exists('bcn_display')) { ?>
+		<?php if(function_exists( 'bcn_display' )) { ?>
 
-			<nav id="bcn" class="grid_12">
+			<nav id="breadcrumbs" class="grid_12">
 				<?php bcn_display(); ?>
 			</nav>
 		

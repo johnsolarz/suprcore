@@ -125,11 +125,11 @@ header[role="banner"] {
 
 /* @breadcrumbs */
 
-#bcn { background: #999; font-size: 11px; line-height: 40px; height: 40px; }
-	#bcn a { border-bottom: none; color: #111; margin-left: 10px; }
-	#bcn a:hover { border-bottom: 1px solid #111; }
-	#bcn img { margin-left: 10px; }
-		#bcn .current_item { font-weight: 500; margin-left: 10px; }
+#breadcrumbs { background: #999; font-size: 11px; line-height: 40px; height: 40px; }
+	#breadcrumbs a { border-bottom: none; color: #111; margin-left: 10px; }
+	#breadcrumbs a:hover { border-bottom: 1px solid #111; }
+	#breadcrumbs img { margin-left: 10px; }
+		#breadcrumbs .current_item { font-weight: 500; margin-left: 10px; }
 
 /* @content */
 
