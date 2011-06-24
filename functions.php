@@ -38,7 +38,7 @@ function suprcore_setup() {
 
 	// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
 	if ( ! defined( 'HEADER_IMAGE' ) )
-		define( 'HEADER_IMAGE', '%s/assets/img/headers/default.jpg' );
+		define( 'HEADER_IMAGE', '%s/assets/img/x.jpg' );
 
 	// The height and width of your custom header. You can hook into the theme's own filters to change these values.
 	// Add a filter to suprcore_header_image_width and suprcore_header_image_height to change these values.
@@ -61,8 +61,8 @@ function suprcore_setup() {
 	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( array(
 		'suprcore' => array(
-			'url' => '%s/assets/img/headers/default.jpg',
-			'thumbnail_url' => '%s/assets/img/headers/default-thumbnail.jpg',
+			'url' => '%s/assets/img/headers/x.jpg',
+			'thumbnail_url' => '%s/assets/img/x-thumbnail.jpg',
 			'description' => __( 'default', 'suprcore' )
 		),
 	) );
@@ -183,12 +183,11 @@ function suprcore_widgets_init() {
 add_action( 'widgets_init', 'suprcore_widgets_init' );
 
 /**
- * Remove actions from wp_head()
- * Remove empty <span>
- * Display images in the excerpt
+ * A clean theme
  * http://nicolasgallagher.com/anatomy-of-an-html5-wordpress-theme/
  */
 
+// Remove actions from wp_head()
 remove_action( 'wp_head', 'feed_links_extra', 3 );
 remove_action( 'wp_head', 'feed_links', 2 );
 remove_action( 'wp_head', 'rsd_link' );
@@ -218,6 +217,7 @@ function remove_more_jump_link($link) {
 	return '<a href="'.get_permalink($post->ID).'" class="read_more_link">'.'Continue Reading'.'</a>';
 }
 
+// Display images in the excerpt
 function improved_trim_excerpt($text) {
 	if ( '' == $text ) {
 		$text = get_the_content('');
@@ -262,17 +262,18 @@ function remove_default_widgets() {
 }
 
 /**
- * Remove admin menu items
- * Add 8/7 dashboard news feeds
- * Add 8/7 footer credits to footer
+ * Customize admin login and dashboard
+ * http://digwp.com/2010/03/wordpress-functions-php-template-custom-functions/
  * http://www.smashingmagazine.com/2011/05/10/new-wordpress-power-tips-for-template-developers-and-consultants/
  */
 
+// Remove admin menu items
 add_action( 'admin_menu', 'suprcore_admin_menu' );
 function suprcore_admin_menu() {
 	remove_menu_page('link-manager.php');
 }
 
+// Add 8/7 dashboard news feeds
 add_action('wp_dashboard_setup', 'suprcore_dashboard_widgets');
 function suprcore_dashboard_widgets() {
 	global $wp_meta_boxes;
@@ -299,10 +300,25 @@ function dashboard_custom_feed_output() {
 	echo "</div>";
 }
 
+// Add 8/7 footer credits
 add_filter( 'admin_footer_text', 'suprcore_admin_footer_text' );
 function suprcore_admin_footer_text( $default_text ) {
 	return '<span id="footer-thankyou">Design + Development by <a href="http://eightsevencentral.com">8/7 Central</a><span> | Powered by <a href="http://www.wordpress.org">WordPress</a>';
 }
+
+// Add favicon to admin
+function admin_favicon() {
+	echo '<link rel="Shortcut Icon" type="image/x-icon" href="'.get_bloginfo('stylesheet_directory').'/root/favicon.ico" />';
+}
+add_action('admin_head', 'admin_favicon');
+
+// Site admin login logo
+function custom_login_logo() {
+	echo '<style type="text/css">
+	h1 a { background-image: url('.get_bloginfo('template_directory').'/assets/img/login.png) !important; height: 213px; }
+	</style>';
+}
+add_action('login_head', 'custom_login_logo');
 
 /** 
  * Disable 3.1 admin bar for all users
@@ -318,6 +334,7 @@ function suprcore_admin_bar(){
  * Remove l10n.js from <head>
  * http://wordpress.stackexchange.com/questions/5451/what-does-l10n-js-do-in-wordpress-3-1-and-how-do-i-remove-it
  */
+ 
 if ( !is_admin() ) {
 	function remove_l10n() {
 		wp_deregister_script( 'l10n' );
@@ -325,7 +342,21 @@ if ( !is_admin() ) {
 add_action('init', 'remove_l10n'); 
 }
 
-// Remove the dashboard update link
+/**
+ * Remove recent comments style from <head>
+ * http://beerpla.net/2010/01/31/how-to-remove-inline-hardcoded-recent-comments-sidebar-widget-style-from-your-wordpress-theme/
+ */
+     
+function my_remove_recent_comments_style() {
+	add_filter( 'show_recent_comments_widget_style', '__return_false' );
+}
+add_action( 'widgets_init', 'my_remove_recent_comments_style' );
+
+/**
+ * Remove the dashboard update link
+ * http://www.vooshthemes.com/blog/wordpress-tip/wordpress-quick-tip-remove-the-dashboard-update-message/
+ */
+ 
 add_action( 'admin_init', create_function('', 'remove_action( \'admin_notices\', \'update_nag\', 3 );') );
 
 /**
@@ -339,7 +370,7 @@ if( !is_admin()){
 	wp_enqueue_script('jquery');
 } 
 
-/** 
+/**
  * Use Facebook "Like" button under each post?
  * 1 = true (default)
  * 0 = false
