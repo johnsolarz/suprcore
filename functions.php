@@ -217,7 +217,7 @@ function remove_more_jump_link($link) {
 	if ($end) {
 		$link = substr_replace($link, '', $offset, $end-$offset);
 	}
-	return '<a href="'.get_permalink($post->ID).'" class="read_more_link">'.'Continue Reading'.'</a>';
+	return '<a href="'.get_permalink($post->ID).'" class="read_more_link">'.'Read more'.'</a>';
 }
 
 // Display images in the excerpt

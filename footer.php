@@ -1,24 +1,20 @@
 		</div> <!-- #content -->
 		
-	</div> <!-- #wrapper -->
-		
-	<footer role="contentinfo">
-
-		<div class="container_12 clearfix">
+		<footer class="grid_12 clearfix" role="contentinfo">
 		
 			<?php get_sidebar( 'footer' ); ?>
 
-			<nav class="grid_8">
+			<nav class="grid_8 alpha">
 				<?php wp_nav_menu( array( 'container' => 'false', 'fallback_cb' => 'suprcore_menu', 'theme_location' => 'footer' ) ); ?>
 			</nav>
 			
-			<p class="grid_4 copy">
+			<p class="grid_4 omega copy">
 				&copy; <strong><?php bloginfo( 'name' ); ?></strong> <?php echo date('Y');?> &mdash; Site by <a href="http://eightsevencentral.com" target="_blank" title="Eight Seven Central">8/7central</a>
 			</p>
-			
-		</div>
 
-	</footer> <!-- #footer -->
+		</footer> <!-- #footer -->
+
+	</div> <!-- #wrapper -->
 	
 <?php wp_footer(); ?>
 

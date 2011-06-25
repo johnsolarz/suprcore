@@ -4,7 +4,7 @@ Theme URI: http://suprmrkt.net/suprcore
 Description: Baseline development
 Author: 8/7 Central
 Author URI: http://eightsevencentral.com
-Tags: HTML5 boilerplate, 960 grid system
+Tags: white, custom-background, custom-header, custom-menu
 Version: 1.0
 
   eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee 
@@ -23,9 +23,7 @@ Version: 1.0
 @import 'assets/css/960.css';
 @import 'assets/css/formalize.css';
 
-html { }
-	body { }
-		#wrapper { background: #fff; }
+#wrapper { background: #fff; }
 
 /* @typography */
 
@@ -35,78 +33,97 @@ body, select, input, textarea {
 	word-spacing: -1px;
 }
 
-a, a:active, a:visited { color: #999; outline: none; text-decoration: none; }
-a:hover { background: #ff0; color: #111; }
+a, a:active, a:visited { color: #aaa; outline: none; text-decoration: none; }
+a:hover { color: #111; }
 a img { border: none; display: block; }
+
+a.read_more_link, a.read_more_link:visited { color: #e90000; }
+a.read_more_link:hover { color: #111; }
 
 nav a, nav a:hover { border-bottom: none; text-decoration: none; }
 
-blockquote { color: #999; padding-left: 20px; }
+blockquote { color: #aaa; padding-left: 20px; }
 blockquote cite:before { content: "\2015"; }
 
-p { margin-bottom: 1em; }
+p { margin-bottom: 1.5em; }
 
-h1 { font-size: 2em; letter-spacing: -1px }
-h2 { font-size: 2.5em; letter-spacing: -1px; }
+h1 { font-size: 2.1em; }
+h2 { font-size: 1.8em; }
 h3 { font-size: 1.5em; }
-h4 { font-size: 1.25em; }
+h4 { font-size: 1.2em; }
 h5 { font-size: 1em; }
 h6 { font-size: 1em; text-transform: uppercase; }
 
-h2 a, h2 a:visited { color: #111; }
+h1 a, h1 a:visited { color: #111; }
 
 /* @header */
 
 header[role="banner"] { padding: 50px 0; position: relative; }
-	header #logo { color: #111; display: block; float: left; font-size: 2em; font-weight: 500; letter-spacing: -1px; }
+	header #logo { color: #111; display: block; float: left; font-size: 2em; font-weight: 400; }
 	header #logo:hover { border-bottom: none; }
 
 	/* @site nav */
 
 	header nav[role="navigation"] { float: right; padding: 12px 0 0; position: relative; }
 	header nav ul li {  float: left; margin-left: 10px; }
-		header nav ul li:hover a { background: #ff0; color: #111; }
+		header nav ul li:hover a { color: #111; }
 			header nav ul li ul { display: none; float: left; padding: 0; position: absolute; top: 30px; left: 0; width: 100%; }
-			header nav ul li:hover ul { background: #ff0; display: block; } 
-				header nav ul li:hover ul a { color: #999; }
+			header nav ul li:hover ul { display: block; } 
+				header nav ul li:hover ul a { color: #aaa; }
 				header nav ul li ul a:hover { color: #111; }
 
 			header nav ul li.current_page_item > a,
 			header nav ul li.current-menu-ancestor > a,
 			header nav ul li.current-menu-item > a,
-			header nav ul li.current-menu-parent > a { background: #ff0; color: #111; }
+			header nav ul li.current-menu-parent > a { color: #111; }
 			
 			* html header nav ul li.current_page_item a,
 			* html header nav ul li.current-menu-ancestor a,
 			* html header nav ul li.current-menu-item a,
 			* html header nav ul li.current-menu-parent a,
-			* html header nav ul li a:hover { background: #ff0; color: #111; }
+			* html header nav ul li a:hover { color: #111; }
 
 /* @feature */
 
-#feature { padding: 0 0 45px; height: 320px; }
+#feature { padding: 0; height: 320px; }
 
-/* @breadcrumbs */
+/* @toolbar */
 
-#breadcrumbs { background: #999; font-size: 11px; line-height: 40px; height: 40px; }
-	#breadcrumbs a { border-bottom: none; color: #111; margin-left: 10px; }
-	#breadcrumbs a:hover { border-bottom: 1px solid #111; }
-	#breadcrumbs img { margin-left: 10px; }
-		#breadcrumbs .current_item { font-weight: 500; margin-left: 10px; }
+.toolbar { border-bottom: 1px solid #f1f1f1; border-top: 1px solid #f1f1f1; font-size: 11px; height: 36px; }
+
+	/* @pagination */
+	.page-numbers { display: block; float: left; list-style: none; margin: 0; }
+		.page-numbers li { display: block; float: left; }
+			.page-numbers li a { padding: 10px; }
+			.page-numbers li span.current { border-left: 1px solid #f1f1f1; border-right: 1px solid #f1f1f1; padding: 10px 9px; }
+
+			.page-numbers li a.prev, .page-numbers li a.next { background: transparent url(assets/img/angles.png) no-repeat scroll 0 0; display: block; text-indent: -9999em; }
+				.page-numbers li a.prev { background-position: 0 -575px; }
+						.page-numbers li a.prev:hover { background-position: 0 -441px; }		
+				.page-numbers li a.next { background-position: 10px -642px; }
+						.page-numbers li a.next:hover { background-position: 10px -508px; }	
+	
+	/* @breadcrumbs */
+	#breadcrumbs { background: #aaa; font-size: 11px; line-height: 40px; height: 40px; }
+		#breadcrumbs a { border-bottom: none; color: #111; margin-left: 10px; }
+		#breadcrumbs a:hover { border-bottom: 1px solid #111; }
+		#breadcrumbs img { margin-left: 10px; }
+			#breadcrumbs .current_item { font-weight: 500; margin-left: 10px; }
 
 /* @content */
 
-#content { }
+#content { padding-top: 45px; }
 
 /* @main */
 
 #main { }
 
-	article { border-top: 1px solid #111;  padding-top: 16px; }
-	article .post_title { font-weight: 500; padding-bottom: 1em; padding-top: .5em; }
-	article .post_category { font-weight: bold; display: block; }
+	article { border-top: 1px solid #f1f1f1;  padding-top: 16px; }
+	article .post_title { font-weight: 400; margin: 36px 0 30px; }
+	article .post_category { font-weight: 500; display: block; }
 	article .post_category a { color: #111; }
-	article .post_comment { display: block; }
+	article .comments { color: #aaa; }
+		article .post_comment { display: block; }
 
 	article .entry { }
 	article .entry p { margin-right: 40px; }
@@ -124,9 +141,8 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 
 	.push { padding-bottom: 10px; }
 
-/* @page navigation */
+/* @custom styles */
 
-.pagination { padding-bottom: 16px; }
 
 
 
@@ -171,47 +187,50 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 	.sidebar ul { list-style:none; margin: 0; padding-bottom: 15px; }
 		.sidebar ul li { list-style: none; margin: 0; padding: 0; }
 		.sidebar li ul { list-style: none; border-bottom: none; margin: 0; padding: 0; }
-			.sidebar li ul li:before { content: "\2015"; color: #999; }
+			.sidebar li ul li:before { content: "\2015"; color: #aaa; }
 			.sidebar li ul li { list-style: none; padding-left: 10px; margin: 0; }
-			.sidebar .widget_title { border-top: 1px solid #111; font-weight: bold; display: block; margin: 0; padding-top: 15px; }
+			.sidebar .widget_title { border-top: 1px solid #f1f1f1; font-weight: 500; display: block; margin: 0; padding-top: 15px; }
 	
-	.searchform { display: block; margin: 0; padding: 15px 0; }
+	.searchform { border-top: 1px solid #f1f1f1; display: block; margin: 0; padding: 15px 0; }
+		#search_submit { background: transparent url(assets/img/arrows.png) no-repeat scroll 0 -357px; border-style: none; height: 15px; text-indent: -9999em;}
+				#search_submit:hover { background-position: 0 -117px; }
 	
 	.textwidget { margin: 0; padding-bottom: 15px; }
 
-	.twitter_link { background: url(assets/img/arrow_sbr.gif) center left no-repeat; padding-left: 15px; display: block; margin-top: 8px; }
+	.twitter_link { background: url(assets/img/socials.png) no-repeat scroll 0 -725px; padding-left: 20px; display: block; margin-top: 1.5em; }
+		.twitter_link:hover { background-position: 0 -791px; }
 	.twitter_icon { text-align: right; max-width: 60px; overflow: hidden; }
 
 /* @footer */
 
-footer[role="contentinfo"] { color: #999; padding: 100px 0 40px; }
-
-	footer nav ul { float: left; }
-		footer nav ul li {float: left; margin-right: 10px; }
+footer[role="contentinfo"] { color: #aaa; padding: 60px 0 0; }
 	
-	.copy { text-align: right; }
+	footer nav { border-top: 1px solid #f1f1f1; padding-top: 15px; }
+		footer nav ul { float: left; }
+			footer nav ul li {float: left; margin-right: 10px; }
+	
+	.copy { border-top: 1px solid #f1f1f1; padding-top: 15px; text-align: right; }
 
 /* @wordpress classes */
 
-.aligncenter, div.aligncenter { clear: both; display: block; margin: 0 auto 16px; }
-img.alignleft { display: inline; float: left; margin-right: 12px;  }
-img.alignright { display: inline; float: right; margin-left: 12px; }
-
+.aligncenter { clear: both; display: block; margin: 0 auto; }
 .alignleft { text-align: left; }
 .alignright { text-align: right; }
 
+img.alignleft { display: inline; float: left; margin-right: 1em; }
+img.alignright { display: inline; float: right; margin-left: 1em; }
 img.size-auto, img.size-full,
 img.size-large, img.size-medium, .attachment img,
-.widget-area img { max-width: 100%; height: auto; margin-bottom: 1em; }
+.widget-area img { max-width: 100%; height: auto; margin-bottom: 1em; margin-top: .5em; }
 
 .wp-caption { text-align: left; }
 .wp-caption img { border: 0 none; }
-.wp-caption .wp-caption-text { color: #999; margin-top: 0; }
+.wp-caption-text { color: #aaa; margin-top: 0; }
 
 .gallery { margin: 16px auto; }
 .gallery .gallery-item { float: left; padding-bottom: 16px; width: 33%; }
-.gallery .gallery-item img { margin: 0 auto 1em; position: relative; }
-.gallery .gallery-caption { color: #999; margin-top: 0; text-align: center; }
+.gallery .gallery-item img { margin: 0 auto 10px; position: relative; }
+.gallery .gallery-caption { color: #aaa; margin-top: 0; text-align: center; }
 
 /* @formalize overrides */
 
@@ -226,24 +245,40 @@ input[type="search"] {
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
   background-clip: padding-box;
-  background-color: #111;
-  border: 0;
-  border-color: none;
-  color: #fff;
+  background-color: #fff;
+  border: none;
+  border-color: #f1f1f1;
+  color: #aaa;
   outline: 0;
-  padding: 2px 5px;
+  padding: 5px 0;
   font-size: 12px;
   /*
     Leaving out Helvetica Neue, to not throw off size="..."
     on inputs. Arial is more reliable, on Windows and OS X.
   */
   font-family: Arial, 'Liberation Sans', FreeSans, sans-serif;
-  height: 1.8em;
-  width: 90%;
+  height: 2em;
+  width:88%;
   margin-right: 10px;
 
   /* IE7 */
   *padding-top: 2px;
   *padding-bottom: 1px;
   *height: auto;
+}
+
+button:focus,
+button:active,
+input:focus,
+input:active,
+select:focus,
+select:active,
+textarea:focus,
+textarea:active {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  /* for Opera */
+  z-index: 1;
 }

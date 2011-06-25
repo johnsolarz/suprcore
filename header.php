@@ -77,7 +77,7 @@
 
 		<?php if(function_exists( 'bcn_display' )) { ?>
 
-			<nav id="breadcrumbs" class="grid_12">
+			<nav id="breadcrumbs">
 				<?php bcn_display(); ?>
 			</nav>
 		

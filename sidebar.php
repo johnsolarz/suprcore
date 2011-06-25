@@ -28,7 +28,7 @@
 		<div>
 			<label class="visuallyhidden" for="s">Search for:</label>
 			<input type="search" class="search" value="Search + Enter" name="s" id="s" />
-			<input type="image" src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/arrow_sbr.gif" id="searchsubmit" alt="" />
+			<input type="submit" value="Search" id="search_submit" alt="" />
 		</div>
 	</form>
 
