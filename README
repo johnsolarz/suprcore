@@ -4,6 +4,6 @@ Changelog:
 2011.05.22	Added include and separate folder for custom functions
 2011.05.27	Updated core assets and boilerplate to v1.0rc
 2011.06.25	Suprcore build script for real
-	Updated img and boilerplate js assets, streamlined style.css
-	Added temporary root directory for root files
-	New favicons and screenshot
+		Updated img and boilerplate js assets, streamlined style.css
+		Added temporary root directory for root files
+		New favicons and screenshot
