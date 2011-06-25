@@ -41,39 +41,39 @@
 
 	<?php endwhile; ?>
 
-<?php
-// get total number of pages
-global $wp_query;
-$total = $wp_query->max_num_pages;
-// only bother with the rest if we have more than 1 page!
-if ( $total > 1 ) { ?>
+	<?php
+	// get total number of pages
+	global $wp_query;
+	$total = $wp_query->max_num_pages;
+	// only bother with the rest if we have more than 1 page!
+	if ( $total > 1 ) { 
+	?>
 
-<div class="toolbar grid_8 alpha">
+	<div class="toolbar grid_8 alpha">
 
-<?
-	// get the current page
-	if ( !$current_page = get_query_var('paged') )
-		$current_page = 1;
-	// structure of ÒformatÓ depends on whether weÕre using pretty permalinks
-	$permalink_structure = get_option('permalink_structure');
-	$format = empty( $permalink_structure ) ? '&page=%#%' : 'page/%#%/';
-	echo paginate_links(array(
-		'base' => get_pagenum_link(1) . '%_%',
-		'format' => $format,
-		'current' => $current_page,
-		'total' => $total,
-		'mid_size' => 4,
-		'type' => 'list',
-		'prev_text' => 'previous page',
-		'next_text' => 'next page',
-	));
+	<?
+		// get the current page
+		if ( !$current_page = get_query_var('paged') )
+			$current_page = 1;
+		// structure of ÒformatÓ depends on whether weÕre using pretty permalinks
+		$permalink_structure = get_option('permalink_structure');
+		$format = empty( $permalink_structure ) ? '&page=%#%' : 'page/%#%/';
+		echo paginate_links(array(
+			'base' => get_pagenum_link(1) . '%_%',
+			'format' => $format,
+			'current' => $current_page,
+			'total' => $total,
+			'mid_size' => 4,
+			'type' => 'list',
+			'prev_text' => 'previous page',
+			'next_text' => 'next page',
+		));
 
-?> 
+	?> 
 
-</div>
+	</div>
 
-<?php } ?>
-
+	<?php } ?>
 
 <?php else : ?>
 
