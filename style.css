@@ -1,6 +1,6 @@
 /*
 Theme Name: Suprcore
-Theme URI: http://suprmrkt.net
+Theme URI: http://suprmrkt.net/suprcore
 Description: Baseline development
 Author: 8/7 Central
 Author URI: http://eightsevencentral.com
@@ -11,13 +11,21 @@ Version: 1.0
   8   " 8   8 8   8 8   8  8  8 8  88 8   8  8    
   8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee 
      88 88  8 88    88   8 88   8   8 88   8 88   
-  8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee           
+  8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
+  
+  Build:
+  Date:
 
 */
+/* @structure */
 
 @import 'assets/css/html5.css';
 @import 'assets/css/960.css';
 @import 'assets/css/formalize.css';
+
+html { }
+	body { }
+		#wrapper { background: #fff; }
 
 /* @typography */
 
@@ -28,7 +36,7 @@ body, select, input, textarea {
 }
 
 a, a:active, a:visited { color: #999; outline: none; text-decoration: none; }
-a:hover { color: #111; border-bottom: 1px solid #111; }
+a:hover { background: #ff0; color: #111; }
 a img { border: none; display: block; }
 
 nav a, nav a:hover { border-bottom: none; text-decoration: none; }
@@ -38,13 +46,6 @@ blockquote cite:before { content: "\2015"; }
 
 p { margin-bottom: 1em; }
 
-h1, h2, h3, h4, h5, h6 { font-weight: normal; }
-
-h1 a, h1 a:visited, 
-h2 a, h2 a:visited { color: #111; }
-h1 a:hover, 
-h2 a:hover { border-bottom: none; }
-
 h1 { font-size: 2em; letter-spacing: -1px }
 h2 { font-size: 2.5em; letter-spacing: -1px; }
 h3 { font-size: 1.5em; }
@@ -52,74 +53,38 @@ h4 { font-size: 1.25em; }
 h5 { font-size: 1em; }
 h6 { font-size: 1em; text-transform: uppercase; }
 
-/* 
-  @header
-  -------
-*/
+h2 a, h2 a:visited { color: #111; }
 
-header[role="banner"] {
-	border-bottom: 8px solid #111;
-	padding: 50px 0;
-	position: relative;
-}
-	header #logo {
-		background: transparent;
-		color: #111;
-		display: block;
-		float: left;
-		font-size: 26px;
-		font-weight: 500;
-		letter-spacing: -1px;
-	}
-	header #logo:hover { 
-		border-bottom: none; 
-	}
+/* @header */
+
+header[role="banner"] { padding: 50px 0; position: relative; }
+	header #logo { color: #111; display: block; float: left; font-size: 2em; font-weight: 500; letter-spacing: -1px; }
+	header #logo:hover { border-bottom: none; }
 
 	/* @site nav */
 
-	header nav[role="navigation"] {
-		float: right;
-		padding: 15px 0 0;
-		position: relative;
-	}
-	header nav ul li { 
-		float: left;
-		margin-left: 10px;
-	}
-		header nav ul li:hover a { 
-			color: #111; 
-		}
-			header nav ul li ul {
-				display: none; 
-				float: left;
-				padding: 0;
-				position: absolute;
-				top: 35px; left: 0; 
-				width: 100%;
-			}
-			header nav ul li:hover ul { display: block; } 
+	header nav[role="navigation"] { float: right; padding: 12px 0 0; position: relative; }
+	header nav ul li {  float: left; margin-left: 10px; }
+		header nav ul li:hover a { background: #ff0; color: #111; }
+			header nav ul li ul { display: none; float: left; padding: 0; position: absolute; top: 30px; left: 0; width: 100%; }
+			header nav ul li:hover ul { background: #ff0; display: block; } 
 				header nav ul li:hover ul a { color: #999; }
 				header nav ul li ul a:hover { color: #111; }
 
 			header nav ul li.current_page_item > a,
 			header nav ul li.current-menu-ancestor > a,
 			header nav ul li.current-menu-item > a,
-			header nav ul li.current-menu-parent > a {
-				color: #111;
-			}
+			header nav ul li.current-menu-parent > a { background: #ff0; color: #111; }
+			
 			* html header nav ul li.current_page_item a,
 			* html header nav ul li.current-menu-ancestor a,
 			* html header nav ul li.current-menu-item a,
 			* html header nav ul li.current-menu-parent a,
-			* html header nav ul li a:hover {
-				color: #111;
-			}
-
-/* @end header */
+			* html header nav ul li a:hover { background: #ff0; color: #111; }
 
 /* @feature */
 
-#feature { padding: 45px 0 90px; height: 320px; }
+#feature { padding: 0 0 45px; height: 320px; }
 
 /* @breadcrumbs */
 
@@ -133,14 +98,11 @@ header[role="banner"] {
 
 #content { }
 
-/* 
-  @main 
-  -----
-*/
+/* @main */
 
-#main { border-top: 1px solid #111; }
+#main { }
 
-	article { padding-top: 16px; }
+	article { border-top: 1px solid #111;  padding-top: 16px; }
 	article .post_title { font-weight: 500; padding-bottom: 1em; padding-top: .5em; }
 	article .post_category { font-weight: bold; display: block; }
 	article .post_category a { color: #111; }
@@ -150,7 +112,7 @@ header[role="banner"] {
 	article .entry p { margin-right: 40px; }
 	article img { max-width: 620px; }
 
-	article footer { border-bottom: 1px solid #111; border-top: 1px solid #ccc; margin-top: 2em; padding: 16px 0 0; }
+	article footer { margin-top: 2em; }
 
 	article .twitter-share-button { display: inline; float: left; margin-right: 10px; }
 
@@ -162,47 +124,65 @@ header[role="banner"] {
 
 	.push { padding-bottom: 10px; }
 
-/* @custom content */
-
-
-
-
-
-
-
-
 /* @page navigation */
 
 .pagination { padding-bottom: 16px; }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* @end main */
 
-/* 
-  @sidebar 
-  --------
-*/
+/* @sidebar */
 
-.sidebar { border-top: 1px solid #111; }
-	.sidebar ul { border-bottom: 1px solid #111; list-style:none; margin: 0; padding-bottom: 15px; }
+.sidebar { }
+	.sidebar ul { list-style:none; margin: 0; padding-bottom: 15px; }
 		.sidebar ul li { list-style: none; margin: 0; padding: 0; }
 		.sidebar li ul { list-style: none; border-bottom: none; margin: 0; padding: 0; }
 			.sidebar li ul li:before { content: "\2015"; color: #999; }
 			.sidebar li ul li { list-style: none; padding-left: 10px; margin: 0; }
-			.sidebar .widget_title { font-weight: bold; display: block; margin: 0; padding-top: 15px; }
+			.sidebar .widget_title { border-top: 1px solid #111; font-weight: bold; display: block; margin: 0; padding-top: 15px; }
 	
-	.searchform { border-bottom: 1px solid #111; display: block; margin: 0; padding: 15px 0; }
+	.searchform { display: block; margin: 0; padding: 15px 0; }
 	
-	.textwidget { border-bottom: 1px solid #111; margin: 0; padding-bottom: 15px; }
+	.textwidget { margin: 0; padding-bottom: 15px; }
 
 	.twitter_link { background: url(assets/img/arrow_sbr.gif) center left no-repeat; padding-left: 15px; display: block; margin-top: 8px; }
 	.twitter_icon { text-align: right; max-width: 60px; overflow: hidden; }
 
-/* @end sidebar */
-
-/* 
-  @footer 
-  -------
-*/
+/* @footer */
 
 footer[role="contentinfo"] { color: #999; padding: 100px 0 40px; }
 
@@ -210,7 +190,6 @@ footer[role="contentinfo"] { color: #999; padding: 100px 0 40px; }
 		footer nav ul li {float: left; margin-right: 10px; }
 	
 	.copy { text-align: right; }
-
 
 /* @wordpress classes */
 
@@ -248,12 +227,12 @@ input[type="search"] {
   -webkit-background-clip: padding;
   background-clip: padding-box;
   background-color: #111;
-  border: 1px solid;
+  border: 0;
   border-color: none;
   color: #fff;
   outline: 0;
-  padding: 2px 3px;
-  font-size: 13px;
+  padding: 2px 5px;
+  font-size: 12px;
   /*
     Leaving out Helvetica Neue, to not throw off size="..."
     on inputs. Arial is more reliable, on Windows and OS X.

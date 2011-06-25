@@ -31,6 +31,9 @@ function suprcore_setup() {
 		'primary' => __( 'Primary Navigation', 'suprcore' ),
 		'footer' => __( 'Footer Navigation', 'suprcore' ),
 	) );
+
+	// This theme allows users to set a custom background
+	add_custom_background();
 	
 	// Your changeable header business starts here.
 	if ( ! defined( 'HEADER_TEXTCOLOR' ) )
@@ -38,7 +41,7 @@ function suprcore_setup() {
 
 	// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
 	if ( ! defined( 'HEADER_IMAGE' ) )
-		define( 'HEADER_IMAGE', '%s/assets/img/x.jpg' );
+		define( 'HEADER_IMAGE', '%s/assets/img/default.jpg' );
 
 	// The height and width of your custom header. You can hook into the theme's own filters to change these values.
 	// Add a filter to suprcore_header_image_width and suprcore_header_image_height to change these values.
@@ -60,10 +63,10 @@ function suprcore_setup() {
 
 	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( array(
-		'suprcore' => array(
-			'url' => '%s/assets/img/headers/x.jpg',
-			'thumbnail_url' => '%s/assets/img/x-thumbnail.jpg',
-			'description' => __( 'default', 'suprcore' )
+		'default' => array(
+			'url' => '%s/assets/img/headers/default.jpg',
+			'thumbnail_url' => '%s/assets/img/default-thumbnail.jpg',
+			'description' => __( 'Default', 'suprcore' )
 		),
 	) );
 }
@@ -262,8 +265,7 @@ function remove_default_widgets() {
 }
 
 /**
- * Customize admin login and dashboard
- * http://digwp.com/2010/03/wordpress-functions-php-template-custom-functions/
+ * Customize admin dashboard
  * http://www.smashingmagazine.com/2011/05/10/new-wordpress-power-tips-for-template-developers-and-consultants/
  */
 
@@ -273,7 +275,7 @@ function suprcore_admin_menu() {
 	remove_menu_page('link-manager.php');
 }
 
-// Add 8/7 dashboard news feeds
+// Dashboard news feeds
 add_action('wp_dashboard_setup', 'suprcore_dashboard_widgets');
 function suprcore_dashboard_widgets() {
 	global $wp_meta_boxes;
@@ -300,22 +302,23 @@ function dashboard_custom_feed_output() {
 	echo "</div>";
 }
 
-// Add 8/7 footer credits
+// Add footer credits
 add_filter( 'admin_footer_text', 'suprcore_admin_footer_text' );
 function suprcore_admin_footer_text( $default_text ) {
 	return '<span id="footer-thankyou">Design + Development by <a href="http://eightsevencentral.com">8/7 Central</a><span> | Powered by <a href="http://www.wordpress.org">WordPress</a>';
 }
 
-// Add favicon to admin
-function admin_favicon() {
-	echo '<link rel="Shortcut Icon" type="image/x-icon" href="'.get_bloginfo('stylesheet_directory').'/root/favicon.ico" />';
-}
-add_action('admin_head', 'admin_favicon');
-
-// Site admin login logo
+/**
+ * Admin login
+ * http://digwp.com/2010/03/wordpress-functions-php-template-custom-functions/
+ */
+  
 function custom_login_logo() {
 	echo '<style type="text/css">
-	h1 a { background-image: url('.get_bloginfo('template_directory').'/assets/img/login.png) !important; height: 213px; }
+	h1 a { background-image: url('.get_bloginfo('template_directory').'/assets/img/login.png) !important; height: 220px; }
+	input.button-primary { background: #99CF52 !important; border-color: #99CF52; }
+	input.button-primary:hover { color: #F9F9F9; border-color: #669900; }
+	.login #nav a { color: #ccc !important; }
 	</style>';
 }
 add_action('login_head', 'custom_login_logo');
