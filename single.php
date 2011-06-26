@@ -8,7 +8,7 @@
 
 	<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
-		<header>
+		<header class="grid_8 alpha omega">
 
 			<div class="grid_2 alpha">
 				<span class="post_category"><?php the_category(', ') ?></span>
@@ -21,7 +21,7 @@
 
 			<div class="clear"></div>	
 
-			<h1 class="post_title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_permalink() ?>"><?php the_title(); ?></a></h1>
+			<h1 class="post_title"><?php the_title(); ?></h1>
 
 		</header>
 				
