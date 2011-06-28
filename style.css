@@ -89,13 +89,13 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 
 /* @toolbar */
 
-.toolbar { border-bottom: 1px solid #f1f1f1; border-top: 1px solid #f1f1f1; font-size: 11px; height: 36px; }
+.toolbar { border-bottom: 1px solid #eee; border-top: 1px solid #eee; font-size: 11px; height: 36px; }
 
 	/* @pagination */
 	.page-numbers { display: block; float: left; list-style: none; margin: 0; }
 		.page-numbers li { display: block; float: left; }
 			.page-numbers li a { padding: 10px; }
-			.page-numbers li span.current { border-left: 1px solid #f1f1f1; border-right: 1px solid #f1f1f1; padding: 10px 9px; }
+			.page-numbers li span.current { border-left: 1px solid #eee; border-right: 1px solid #eee; padding: 10px 9px; }
 
 			.page-numbers li a.prev, .page-numbers li a.next { background: transparent url(assets/img/angles.png) no-repeat scroll 0 0; display: block; text-indent: -9999em; }
 				.page-numbers li a.prev { background-position: 0 -575px; }
@@ -118,7 +118,7 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 
 #main { }
 
-	article { border-top: 1px solid #f1f1f1;  padding-top: 16px; }
+	article { border-top: 1px solid #eee;  padding-top: 16px; }
 	article .post_title { font-weight: 400; margin: 36px 0 30px; }
 	article .post_category { font-weight: 500; display: block; }
 	article .post_category a { color: #111; }
@@ -135,14 +135,14 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 
 /* @comments */
 
-#comments { border-top: 1px solid #f4f4f4; margin-bottom: 30px; padding-top:15px; }
+#comments { border-top: 1px solid #eee; margin-bottom: 30px; padding-top:15px; }
 
-	#comments .navigation { border-top: 1px solid #f4f4f4; padding-bottom: 10px; padding-top: 10px; }
+	#comments .navigation { border-top: 1px solid #eee; padding-bottom: 10px; padding-top: 10px; }
 		#comments .navigation .nav-previous { text-align: left; }
 		#comments .navigation .nav-next { text-align: right; }
 
 	#comments ul { list-style: none; margin: 0; }
-		.comment_list li { border-top: 1px solid #f4f4f4; padding-top: 15px; }
+		.comment_list li { border-top: 1px solid #eee; padding-top: 15px; }
 		.comment_list li.odd { background: #f4f4f4; }
 			.comment_list li .children { }
 			.comment_list img.avatar { display: inline; margin: 5px 0 0; float: right; }
@@ -150,7 +150,7 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 			.comment_date { color: #aaa; }
 			.comment-reply-link { }
 
-		#comment_form { border-top: 1px solid #f4f4f4; padding-top: 15px; }
+		#comment_form { border-top: 1px solid #eee; padding-top: 15px; }
 			#logged_in { color: #aaa; }
 
 	.pad { padding-top: 10px; }
@@ -204,9 +204,9 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 		.sidebar li ul { list-style: none; border-bottom: none; margin: 0; padding: 0; }
 			.sidebar li ul li:before { content: "\2015"; color: #aaa; }
 			.sidebar li ul li { list-style: none; padding-left: 10px; margin: 0; }
-			.sidebar .widget_title { border-top: 1px solid #f1f1f1; font-weight: 500; display: block; margin: 0; padding-top: 15px; }
+			.sidebar .widget_title { border-top: 1px solid #eee; font-weight: 500; display: block; margin: 0; padding-top: 15px; }
 	
-	.searchform { border-top: 1px solid #f1f1f1; display: block; margin: 0; padding: 15px 0; }
+	.searchform { border-top: 1px solid #eee; display: block; margin: 0; padding: 15px 0; }
 		#search_submit { background: transparent url(assets/img/arrows.png) no-repeat scroll 0 -357px; border-style: none; height: 15px; text-indent: -9999em;}
 				#search_submit:hover { background-position: 0 -117px; }
 	
@@ -220,11 +220,11 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 
 footer[role="contentinfo"] { color: #aaa; padding: 60px 0 0; }
 	
-	footer nav { border-top: 1px solid #f1f1f1; padding-top: 15px; }
+	footer nav { border-top: 1px solid #eee; padding-top: 15px; }
 		footer nav ul { float: left; }
 			footer nav ul li {float: left; margin-right: 10px; }
 	
-	.copy { border-top: 1px solid #f1f1f1; padding-top: 15px; text-align: right; }
+	.copy { border-top: 1px solid #eee; padding-top: 15px; text-align: right; }
 
 /* @wordpress classes */
 
