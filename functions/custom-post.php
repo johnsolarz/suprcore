@@ -251,29 +251,24 @@ function suprcore_show_box() {
 				'<td>';
 		switch ($field['type']) {
  
- 
- 
- 
-//If Text		
+			//If Text		
 			case 'text':
 				echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />',
 					'<br />', $field['desc'];
 				break;
- 
- 
-//If Text Area			
+
+			//If Text Area			
 			case 'textarea':
 				echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>',
 					'<br />', $field['desc'];
 				break;
- 
- 
-//If Button	
- 
-				case 'button':
+
+			//If Button	
+			case 'button':
 				echo '<input type="button" name="', $field['id'], '" id="', $field['id'], '"value="', $meta ? $meta : $field['std'], '" />';
 				break;
 		}
+		
 		echo 	'<td>',
 			'</tr>';
 	}
@@ -318,16 +313,22 @@ function suprcore_save_data($post_id) {
 	}
 }
 
-// Get the WordPress media upload working
+/**
+ * Get the WordPress media upload working
+ * http://www.webmaster-source.com/2010/01/08/using-the-wordpress-uploader-in-your-plugin-or-theme/
+ */
+
 function my_admin_scripts() {
 	wp_enqueue_script('media-upload');
 	wp_enqueue_script('thickbox');
 	wp_register_script('my-upload', get_bloginfo('template_url') . '/functions/custom-upload.js', array('jquery','media-upload','thickbox'));
 	wp_enqueue_script('my-upload');
 }
+
 function my_admin_styles() {
 	wp_enqueue_style('thickbox');
 }
+
 add_action('admin_print_scripts', 'my_admin_scripts');
 add_action('admin_print_styles', 'my_admin_styles');
 
