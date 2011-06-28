@@ -12,13 +12,6 @@
 	<p><strong><?php printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'suprcore' ),
 	number_format_i18n( get_comments_number() ), '' . get_the_title() . '' ); ?></strong></p>
 
-	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-	<div class="navigation">
-		<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'suprcore' ) ); ?></div>
-		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'suprcore' ) ); ?></div>
-	</div> <!-- .navigation -->
-	<?php endif; // check for comment navigation ?>
-
 	<ul class="comment_list">
 		<?php
 			/* Loop through and list the comments. Tell wp_list_comments()
@@ -32,10 +25,10 @@
 	</ul>
 
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-	<div class="navigation">
-		<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'suprcore' ) ); ?></div>
-		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'suprcore' ) ); ?></div>
-	</div><!-- .navigation -->
+	<div class="navigation grid_8 alpha omega">
+		<div class="nav-previous grid_4 alpha"><?php previous_comments_link( __( '&larr; Older Comments', 'suprcore' ) ); ?>&nbsp;</div>
+		<div class="nav-next grid_4 omega">&nbsp;<?php next_comments_link( __( 'Newer Comments &rarr;', 'suprcore' ) ); ?></div>
+	</div> <!-- .navigation -->
 	<?php endif; // check for comment navigation ?>
 
 	<?php else : // or, if we don't have comments:

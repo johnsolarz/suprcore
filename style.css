@@ -59,12 +59,12 @@ h1 a, h1 a:visited { color: #111; }
 /* @header */
 
 header[role="banner"] { padding: 50px 0; position: relative; }
-	header #logo { color: #111; display: block; float: left; font-size: 2em; font-weight: 400; }
+	header #logo { color: #111; display: block; float: left; font-size: 1.8em; font-weight: 400; }
 	header #logo:hover { border-bottom: none; }
 
 	/* @site nav */
 
-	header nav[role="navigation"] { float: right; padding: 12px 0 0; position: relative; }
+	header nav[role="navigation"] { float: right; padding: 10px 0 0; position: relative; }
 	header nav ul li {  float: left; margin-left: 10px; }
 		header nav ul li:hover a { color: #111; }
 			header nav ul li ul { display: none; float: left; padding: 0; position: absolute; top: 30px; left: 0; width: 100%; }
@@ -136,6 +136,11 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 /* @comments */
 
 #comments { border-top: 1px solid #f4f4f4; margin-bottom: 30px; padding-top:15px; }
+
+	#comments .navigation { border-top: 1px solid #f4f4f4; padding-bottom: 10px; padding-top: 10px; }
+		#comments .navigation .nav-previous { text-align: left; }
+		#comments .navigation .nav-next { text-align: right; }
+
 	#comments ul { list-style: none; margin: 0; }
 		.comment_list li { border-top: 1px solid #f4f4f4; padding-top: 15px; }
 		.comment_list li.odd { background: #f4f4f4; }
