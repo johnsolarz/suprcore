@@ -135,10 +135,20 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 
 /* @comments */
 
-#main .comment-container { font-size: 12px; line-height: 16px; margin-bottom: 30px; margin-top: 30px; }
-	#main .comment-container img.avatar { display: inline; margin: 0;float: right }
-	#main .comment-container #comment { max-width: 340px;}
+#comments { border-top: 1px solid #f4f4f4; margin-bottom: 30px; padding-top:15px; }
+	#comments ul { list-style: none; margin: 0; }
+		.comment_list li { border-top: 1px solid #f4f4f4; padding-top: 15px; }
+		.comment_list li.odd { background: #f4f4f4; }
+			.comment_list li .children { }
+			.comment_list img.avatar { display: inline; margin: 5px 0 0; float: right; }
+			.comment_list li p { margin-right: 40px; }
+			.comment_date { color: #aaa; }
+			.comment-reply-link { }
 
+		#comment_form { border-top: 1px solid #f4f4f4; padding-top: 15px; }
+			#logged_in { color: #aaa; }
+
+	.pad { padding-top: 10px; }
 	.push { padding-bottom: 10px; }
 
 /* @custom styles */

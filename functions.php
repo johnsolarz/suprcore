@@ -107,22 +107,58 @@ add_filter( 'excerpt_more', 'suprcore_auto_excerpt_more' );
 // Remove inline styles printed when the gallery shortcode is used, use style.css
 add_filter( 'use_default_gallery_style', '__return_false' );
 
-// Adjusts the comment_form() input types for HTML5.
-function suprcore_fields($fields) {
-$commenter = wp_get_current_commenter();
-$req = get_option( 'require_name_email' );
-$aria_req = ( $req ? " aria-required='true'" : '' );
-$fields =  array(
-	'author' => '<p><label for="author">' . __( 'Name' ) . '</label> ' . ( $req ? '*' : '' ) .
-	'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>',
-	'email'  => '<p><label for="email">' . __( 'Email' ) . '</label> ' . ( $req ? '*' : '' ) .
-	'<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>',
-	'url'    => '<p><label for="url">' . __( 'Website' ) . '</label>' .
-	'<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>',
-);
-return $fields;
+
+if ( ! function_exists( 'suprcore_comment' ) ) :
+/**
+ * Template for comments and pingbacks.
+ * Used as a callback by wp_list_comments() for displaying the comments.
+ */
+function suprcore_comment( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment;
+	switch ( $comment->comment_type ) :
+		case '' :
+	?>
+	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+			
+			<div class="grid_2 alpha avatar">
+				<?php echo get_avatar( $comment, 40 ); ?>
+			</div><!-- .comment-author .vcard -->
+			
+		<?php if ( $comment->comment_approved == '0' ) : ?>
+			<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'suprcore' ); ?></em>
+			<br />
+		<?php endif; ?>
+
+		<div class="grid_6 omega">
+			<?php printf( __( '%s', 'suprcore' ), sprintf( '<span class="comment_author">%s</span>', get_comment_author_link() ) ); ?>
+			<span class="comment_date">
+				<?php
+				/* translators: 1: date, 2: time */
+				printf( __( '%1$s at %2$s', 'suprcore' ), get_comment_date(),  get_comment_time() ); ?>
+			</span>
+				
+				<?php edit_comment_link( __( '(Edit)', 'suprcore' ), ' ' ); ?>
+	
+			<?php comment_text(); ?>
+
+			<p><?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?></p>
+
+		</div>
+		
+		<div class="clear"></div>
+
+	<?php
+			break;
+		case 'pingback'  :
+		case 'trackback' :
+	?>
+	<li class="post pingback pad">
+		<p><?php _e( 'Pingback:', 'suprcore' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( '(Edit)', 'suprcore' ), ' ' ); ?></p>
+	<?php
+			break;
+	endswitch;
 }
-add_filter('comment_form_default_fields','suprcore_fields');
+endif;
 
 
 // Register widgetized areas.

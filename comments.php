@@ -1,82 +1,56 @@
-<?php // Do not delete these lines
-	if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
-		die ('Please do not load this page directly. Thanks!');
+<div id="comments">
 
-	if (!empty($post->post_password)) { // if there's a password
-		if ($_COOKIE['wp-postpass_' . COOKIEHASH] != $post->post_password) {  // and it doesn't match the cookie
-			?>
+	<?php if ( post_password_required() ) : ?>
+	<p class="no_password"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'suprcore' ); ?></p>
+</div><!-- #comments -->
 
-			<p class="nocomments">This post is password protected. Enter the password to view comments.</p>
+	<?php return; endif; ?>
 
-			<?php
-			return;
-		}
-	}
+<?php // You can start editing here ?>
 
-	$oddcomment = 'class="alt" ';
-?>
+<?php if ( have_comments() ) : ?>
+	<p><strong><?php printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'suprcore' ),
+	number_format_i18n( get_comments_number() ), '' . get_the_title() . '' ); ?></strong></p>
 
+	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
+	<div class="navigation">
+		<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'suprcore' ) ); ?></div>
+		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'suprcore' ) ); ?></div>
+	</div> <!-- .navigation -->
+	<?php endif; // check for comment navigation ?>
 
-<?php if ($comments) : ?>
-
-<div id="comments" class="grid_8 alpha comment-container">
-	
-	<?php foreach ($comments as $comment) : ?>
-	<?php $comment_type = get_comment_type(); ?>
-	<?php if($comment_type == 'comment') { ?>
-    
-    <div id="comment-<?php comment_ID(); ?>">
-		<div class="grid_2 alpha avatar push"><?php echo get_avatar($comment, 30); ?></div>
-		<div class="grid_6 omega push"><div class="comment_meta"><?php comment_author_link() ?> on <?php comment_date('m/d/y') ?></div>
-		<?php if ($comment->comment_approved == '0') : ?>
-			<em>Your comment is awaiting moderation.</em>
-		<?php endif; ?>
-		<?php comment_text() ?>
-	</div>
-		<div class="clear"></div>
-	</div>
-	
-	<?php
-		/* Changes every other comment to a different class */
-		$oddcomment = ( empty( $oddcomment ) ) ? 'class="alt" ' : '';
-	?>
-	
-	<?php } else { $trackback = true; } /* End of is_comment statement */ ?>
-	
-	<?php endforeach; /* end for each comment */ ?>
-
- 	<?php else : // this is displayed if there are no comments so far ?>
-
-	<?php if ('open' == $post->comment_status) : ?>
-		<!-- If comments are open, but there are no comments. -->
-	<div class="grid_8 alpha comment-container">
-		<div class="no_comment"><p>No comments yet, be the first!</p>
-	</div>
-		
-
-	 <?php else : // comments are closed ?>
-		<!-- If comments are closed. -->
-	<div class="grid_8 alpha comment-container">
-		<p class="nocomments">Comments are closed.</p>
-	</div>
-
-	<?php endif; ?>
-<?php endif; ?>
-
-
-	<?php if ($trackback == true) { ?>
-	<div class="">
-	<h6>Trackbacks</h6>
-	<ul>
-		<?php foreach ($comments as $comment) : ?>
-		<?php $comment_type = get_comment_type(); ?>
-		<?php if($comment_type != 'comment') { ?>
-		<li><?php comment_author_link() ?></li>
-		<?php } ?>
-		<?php endforeach; ?>
+	<ul class="comment_list">
+		<?php
+			/* Loop through and list the comments. Tell wp_list_comments()
+			 * to use suprcore_comment() to format the comments.
+			 * If you want to overload this in a child theme then you can
+			 * define suprcore_comment() and that will be used instead.
+			 * See suprcore_comment() in suprcore/functions.php for more.
+			 */
+			wp_list_comments( array( 'callback' => 'suprcore_comment' ) );
+		?>
 	</ul>
-	</div>
-	<?php } ?>
+
+	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
+	<div class="navigation">
+		<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'suprcore' ) ); ?></div>
+		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'suprcore' ) ); ?></div>
+	</div><!-- .navigation -->
+	<?php endif; // check for comment navigation ?>
+
+	<?php else : // or, if we don't have comments:
+		/* If there are no comments and comments are closed,
+		 * let's leave a little note, shall we?
+		 */
+		if ( ! comments_open() ) :
+	?>
+
+	<p class="no_comments"><?php _e( 'Comments are closed.', 'suprcore' ); ?></p>
+
+	<?php endif; // end ! comments_open() ?>
+
+<?php endif; // end have_comments() ?>
+
 
 
 <?php if ('open' == $post->comment_status) : ?>
@@ -87,85 +61,75 @@
 <p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>">logged in</a> to post a comment.</p>
 <?php else : ?>
 
-<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="comment_form">
 
-<?php if ( $user_ID ) : ?>
-<strong>Leave a comment</strong>
-
-<div id="logged_in">
-	<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Log out &raquo;</a></p>
-</div>
-
-<div class="grid_2 alpha">	
-	Comment
-</div>
-
-
-<div class="grid_6 omega push">
-
-	<textarea name="comment" id="comment" rows="5" tabindex="4"></textarea>
-
-</div>
-
-<p class="submit_admin"><input name="submit" type="submit" id="submit" value="Submit comment" tabindex="5" />
-
-<?php else : ?>
-
-<div class="grid_8 alpha push comment-container">
+	<?php if ( $user_ID ) : ?>
 	<strong>Leave a comment</strong>
-</div>
 
-<div class="grid_2 alpha">
-	Name <?php if ($req) echo "(required)"; ?>
-</div>
+	<div id="logged_in">
+		<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a> / <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Log out</a></p>
+	</div>
 
-<div class="grid_6 omega push">	
-	<input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="22" tabindex="1" />
-</div>
+	<div class="grid_2 alpha">	
+		Comment
+	</div>
 
+	<div class="grid_6 omega push">
+		<textarea name="comment" id="comment" rows="5" tabindex="4"></textarea>
+	</div>
 
-<div class="grid_2 alpha">
-	Mail <?php if ($req) echo "(required)"; ?>
-</div>
+	<p class="submit_admin"><input name="submit" type="submit" id="submit" value="Submit comment" tabindex="5" />
 
-<div class="grid_6 omega push">	
-	<input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" />
-</div>
+	<?php else : ?>
 
+	<div class="grid_8 alpha push">
+		<strong>Leave a comment</strong>
+	</div>
 
+	<div class="grid_2 alpha">
+		Name <?php if ($req) echo "(required)"; ?>
+	</div>
 
-<div class="grid_2 alpha">	
-	Website
-</div>
+	<div class="grid_6 omega push">	
+		<input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="22" tabindex="1" />
+	</div>
 
-<div class="grid_6 omega push">	
-	<input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
-</div>
+	<div class="grid_2 alpha">
+		Email <?php if ($req) echo "(required)"; ?>
+	</div>
 
+	<div class="grid_6 omega push">	
+		<input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" />
+	</div>
 
-<div class="grid_2 alpha">	
-	Comment
-</div>
+	<div class="grid_2 alpha">	
+		Website
+	</div>
 
+	<div class="grid_6 omega push">	
+		<input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
+	</div>
+	
+	<div class="grid_2 alpha">	
+		Comment
+	</div>
 
-<div class="grid_6 omega push">
+	<div class="grid_6 omega push">
+		<textarea name="comment" id="comment" style="width:440px;" cols="28" rows="5" tabindex="4"></textarea></p>
+	</div>
 
-	<textarea name="comment" id="comment" style="width:440px;" cols="28" rows="5" tabindex="4"></textarea>
+	<p class="submit"><input name="submit" type="submit" id="submit" value="Submit Comment" tabindex="5" />
 
-</div>
+	<?php endif; ?>
 
-<p class="submit"><input name="submit" type="submit" id="submit" value="Submit Comment" tabindex="5" />
+	<input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" /></p>
 
-<?php endif; ?>
-
-<input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
-</p>
 <?php do_action('comment_form', $post->ID); ?>
 
 </form>
 
-</div>
-
 <?php endif; ?>
 
 <?php endif; ?>
+
+</div><!-- #comments -->
