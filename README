@@ -6,4 +6,5 @@ Changelog:
 2011.06.25	Suprcore build script for real
 		Updated img and boilerplate js assets, streamlined style.css
 		Added temporary root directory for root files
-		New favicons and screenshot
+		New default favicons and screenshot
+2011.06.27	Improved comments template and default style
