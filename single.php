@@ -1,4 +1,8 @@
-<?php get_header(); ?> 
+<?php 
+/**
+ * Single post template
+ */
+ get_header(); ?> 
  
 <div id="main" class="grid_8 alpha">
     

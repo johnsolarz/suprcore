@@ -152,7 +152,7 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 			.comment_date { color: #aaa; }
 			.comment-reply-link { }
 
-		#comment_form { border-top: 1px solid #eee; padding-top: 15px; }
+		#comment_form { padding-top: 15px; }
 			#logged_in { color: #aaa; }
 
 	.pad { padding-top: 10px; }
