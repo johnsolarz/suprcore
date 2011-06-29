@@ -92,18 +92,20 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 .toolbar { border-bottom: 1px solid #eee; border-top: 1px solid #eee; font-size: 11px; height: 36px; }
 
 	/* @pagination */
+	
 	.page-numbers { display: block; float: left; list-style: none; margin: 0; }
 		.page-numbers li { display: block; float: left; }
 			.page-numbers li a { padding: 10px; }
 			.page-numbers li span.current { border-left: 1px solid #eee; border-right: 1px solid #eee; padding: 10px 9px; }
 
 			.page-numbers li a.prev, .page-numbers li a.next { background: transparent url(assets/img/angles.png) no-repeat scroll 0 0; display: block; text-indent: -9999em; }
-				.page-numbers li a.prev { background-position: 0 -575px; }
-						.page-numbers li a.prev:hover { background-position: 0 -441px; }		
-				.page-numbers li a.next { background-position: 10px -642px; }
-						.page-numbers li a.next:hover { background-position: 10px -508px; }	
+			.page-numbers li a.prev { background-position: 0 -575px; }
+				.page-numbers li a.prev:hover { background-position: 0 -441px; }		
+			.page-numbers li a.next { background-position: 10px -642px; }
+				.page-numbers li a.next:hover { background-position: 10px -508px; }	
 	
 	/* @breadcrumbs */
+	
 	#breadcrumbs { background: #aaa; font-size: 11px; line-height: 40px; height: 40px; }
 		#breadcrumbs a { border-bottom: none; color: #111; margin-left: 10px; }
 		#breadcrumbs a:hover { border-bottom: 1px solid #111; }
