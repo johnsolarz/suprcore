@@ -2,7 +2,8 @@
 /**
  * Index template
  */
- get_header(); ?> 
+
+get_header(); ?> 
  
 <div id="main" class="grid_8 alpha">
     
@@ -59,7 +60,7 @@
 		// get the current page
 		if ( !$current_page = get_query_var('paged') )
 			$current_page = 1;
-		// structure of ÒformatÓ depends on whether weÕre using pretty permalinks
+		// structure of format depends on whether we're using pretty permalinks
 		$permalink_structure = get_option('permalink_structure');
 		$format = empty( $permalink_structure ) ? '&page=%#%' : 'page/%#%/';
 		echo paginate_links(array(
@@ -78,12 +79,6 @@
 	</div>
 
 	<?php } ?>
-
-<?php else : ?>
-
-	<h2><?php _e('Just when it was going so well &hellip;', 'suprcore'); ?></h2>
-	<p><?php _e('Sorry, but the page you requested could not be found.', 'suprcore'); ?></p>
-	<?php get_search_form(); ?>
 
 <?php endif; ?>
   

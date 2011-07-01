@@ -2,7 +2,8 @@
 /**
  * Single post template
  */
- get_header(); ?> 
+ 
+get_header(); ?> 
  
 <div id="main" class="grid_8 alpha">
     
@@ -53,12 +54,6 @@
 	<?php endwhile; ?>
 
 	<?php comments_template(); ?>
-
-<?php else : ?>
-
-	<h2><?php _e('Just when it was going so well &hellip;', 'suprcore'); ?></h2>
-	<p><?php _e('Sorry, but the page you requested could not be found.', 'suprcore'); ?></p>
-	<?php get_search_form(); ?>
 
 <?php endif; ?>
   
