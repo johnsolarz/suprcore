@@ -129,7 +129,7 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 
 	article .entry { }
 	article .entry p { margin-right: 40px; }
-	article img { max-width: 620px; }
+	article img { }
 
 	article footer { margin-top: 2em; }
 
