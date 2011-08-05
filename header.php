@@ -48,8 +48,8 @@
 			<nav class="visuallyhidden">
 				<ul>
 					<li><a href="#content">Skip to content</a></li>
-					<li><a href="<?php echo home_url( '/' ); ?>">Go to home page</a></li>
 					<li><a href="<?php echo bloginfo( 'url' ); ?>/contact">Contact us</a></li>
+					<li><a href="<?php echo home_url( '/' ); ?>">Go to home page</a></li>
 				</ul>
 			</nav>
 
