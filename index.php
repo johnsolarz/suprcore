@@ -17,7 +17,7 @@ get_header(); ?>
 
 			<div class="grid_2 alpha">
 				<span class="post_category"><?php the_category(', ') ?></span>
-					<?php the_date(); ?>
+					<?php echo get_the_date(); ?>
 			</div>
 			<div class="grid_6 omega comments">
 				<span class="post_comment"><a href="<?php the_permalink(); ?>#comments" title="<?php the_permalink(); ?>">Comments (<?php comments_number('0', '1', '%'); ?>)</a></span>

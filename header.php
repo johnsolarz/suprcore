@@ -11,7 +11,15 @@
        Remove this if you use the .htaccess -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title><?php wp_title( '&mdash;', true, 'right' ); ?><?php bloginfo( 'name' ); ?></title>
+	<title><?php 
+		wp_title( '|', true, 'right' ); bloginfo( 'name' );
+		
+		$site_description = get_bloginfo( 'description', 'display' );
+		if ( $site_description && ( is_home() || is_front_page() ) )
+			echo " | $site_description";
+		
+		?></title>
+
 	<meta name="description" content="<?php bloginfo( 'description' ); ?>">
 	<meta name="author" content="">
 
@@ -60,18 +68,15 @@
 		</header>
 
 		<div id="feature" class="grid_12">
-
-		<?php
-		// Check if this is a post or page, if it has a thumbnail, and if it's a big one
-		if ( is_singular() && current_theme_supports( 'post-thumbnails' ) &&
-				has_post_thumbnail( $post->ID ) &&
-				( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' ) ) &&
-				$image[1] >= HEADER_IMAGE_WIDTH ) :
-			// Houston, we have a new header image!
-			echo get_the_post_thumbnail( $post->ID );
-		elseif ( get_header_image() ) : ?>
-			<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" />
-		<?php endif; ?>
+		
+			<?php if ( is_singular() && has_post_thumbnail( $post->ID ) &&
+				( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' ) ) && $image[1] >= HEADER_IMAGE_WIDTH ) :
+					echo get_the_post_thumbnail( $post->ID );
+				elseif ( get_header_image() ) : ?>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" />
+				</a>
+			<?php endif; ?>
 
 		</div>
 
