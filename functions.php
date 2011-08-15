@@ -165,52 +165,8 @@ endif;
 function suprcore_widgets_init() {
 	// Sidebar widget.
 	register_sidebar( array(
-		'name' => __( 'Sidebar Widget', 'suprcore' ),
+		'name' => __( 'Primary Widget', 'suprcore' ),
 		'id' => 'primary-widget',
-		'description' => __( '', 'suprcore' ),
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '<p class="widget_title">',
-		'after_title' => '</p>',
-	) );
-
-	// Footer widget 1.
-	register_sidebar( array(
-		'name' => __( 'Footer Widget 1', 'suprcore' ),
-		'id' => 'footer-widget-1',
-		'description' => __( '', 'suprcore' ),
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '<p class="widget_title">',
-		'after_title' => '</p>',
-	) );
-
-	// Footer widget 2.
-	register_sidebar( array(
-		'name' => __( 'Footer Widget 2', 'suprcore' ),
-		'id' => 'footer-widget-2',
-		'description' => __( '', 'suprcore' ),
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '<p class="widget_title">',
-		'after_title' => '</p>',
-	) );
-
-	// Footer widget 3.
-	register_sidebar( array(
-		'name' => __( 'Footer Widget 3', 'suprcore' ),
-		'id' => 'footer-widget-3',
-		'description' => __( '', 'suprcore' ),
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '<p class="widget_title">',
-		'after_title' => '</p>',
-	) );
-
-	// Footer widget 4.
-	register_sidebar( array(
-		'name' => __( 'Footer Widget 4', 'suprcore' ),
-		'id' => 'footer-widget-4',
 		'description' => __( '', 'suprcore' ),
 		'before_widget' => '',
 		'after_widget' => '',

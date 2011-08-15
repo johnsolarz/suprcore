@@ -1,25 +1,22 @@
 /*
 Theme Name: Suprcore
 Theme URI: http://suprmrkt.net/suprcore
-Description: Baseline development
+Description: HTML5 baseline development
 Author: 8/7 Central
 Author URI: http://eightsevencentral.com
 Tags: white, custom-background, custom-header, custom-menu
-Version: 1.0
+Version: 2.0
 
   eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee 
   8   " 8   8 8   8 8   8  8  8 8  88 8   8  8    
   8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee 
      88 88  8 88    88   8 88   8   8 88   8 88   
   8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
-  
-  Build:
-  Date:
 
 */
 /* @structure */
 
-@import 'assets/css/html5.css';
+@import 'assets/css/h5bp.css';
 @import 'assets/css/960.css';
 @import 'assets/css/formalize.css';
 
@@ -58,30 +55,34 @@ h1 a, h1 a:visited { color: #111; }
 
 /* @header */
 
-header[role="banner"] { padding: 50px 0; position: relative; }
-	header #logo { color: #111; display: block; float: left; font-size: 1.8em; font-weight: 400; }
-	header #logo:hover { border-bottom: none; }
+#masthead { padding: 50px 0; position: relative; }
+	#masthead #logo { color: #111; display: block; float: left; font-size: 1.8em; font-weight: 400; }
+	#masthead #logo:hover { border-bottom: none; }
+	
+	/* @logo as image
+	#masthead #logo { background: url() no-repeat scroll 0 0 transparent; color: #111; display: block; height: 100px; left: 0; position: absolute;
+	text-indent: -9999px; top: 0; width: 100px; z-index: 100; } */
 
 	/* @site nav */
 
-	header nav[role="navigation"] { float: right; padding: 10px 0 0; position: relative; }
-	header nav ul li {  float: left; margin-left: 10px; }
-		header nav ul li:hover a { color: #111; }
-			header nav ul li ul { display: none; float: left; padding: 0; position: absolute; top: 30px; left: 0; width: 100%; }
-			header nav ul li:hover ul { display: block; } 
-				header nav ul li:hover ul a { color: #aaa; }
-				header nav ul li ul a:hover { color: #111; }
+	#masthead nav { float: right; padding: 10px 0 0; position: relative; }
+	#masthead nav ul li {  float: left; margin-left: 10px; }
+		#masthead nav ul li:hover a { color: #111; }
+			#masthead nav ul li ul { display: none; float: left; padding: 0; position: absolute; top: 30px; left: 0; width: 100%; }
+			#masthead nav ul li:hover ul { display: block; } 
+				#masthead nav ul li:hover ul a { color: #aaa; }
+				#masthead nav ul li ul a:hover { color: #111; }
 
-			header nav ul li.current_page_item > a,
-			header nav ul li.current-menu-ancestor > a,
-			header nav ul li.current-menu-item > a,
-			header nav ul li.current-menu-parent > a { color: #111; }
+			#masthead nav ul li.current_page_item > a,
+			#masthead nav ul li.current-menu-ancestor > a,
+			#masthead nav ul li.current-menu-item > a,
+			#masthead nav ul li.current-menu-parent > a { color: #111; }
 			
-			* html header nav ul li.current_page_item a,
-			* html header nav ul li.current-menu-ancestor a,
-			* html header nav ul li.current-menu-item a,
-			* html header nav ul li.current-menu-parent a,
-			* html header nav ul li a:hover { color: #111; }
+			* html #masthead nav ul li.current_page_item a,
+			* html #masthead nav ul li.current-menu-ancestor a,
+			* html #masthead nav ul li.current-menu-item a,
+			* html #masthead nav ul li.current-menu-parent a,
+			* html #masthead nav ul li a:hover { color: #111; }
 
 /* @feature */
 
@@ -89,7 +90,7 @@ header[role="banner"] { padding: 50px 0; position: relative; }
 
 /* @toolbar */
 
-.toolbar { border-bottom: 1px solid #eee; border-top: 1px solid #eee; font-size: 11px; height: 36px; }
+#toolbar { border-bottom: 1px solid #eee; border-top: 1px solid #eee; font-size: 11px; height: 36px; }
 
 	/* @pagination */
 	

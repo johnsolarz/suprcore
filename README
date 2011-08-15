@@ -1,12 +1,13 @@
 Changelog:
 
-2011.04.25	Initial build
+2011.04.25	Suprcore 1.0 - Initial build 
 2011.05.22	Added default functions directory for custom scripts
 2011.05.27	Updated core assets and boilerplate to v1.0rc
 2011.06.25	Suprcore build script for real
 		Updated img and boilerplate js assets, streamlined style.css
 		Added default root directory for root files (move to root for production)
 		New default favicons and screenshot
-2011.06.27	Added suprcore comments template
+2011.06.27	Added comments template
 2011.07.01	Added default 404.php template
 2011.07.13	Added timthumb support in functions
+2011.08.14	Suprcore version 2.0 - H5BP update
