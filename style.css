@@ -42,7 +42,7 @@ nav a, nav a:hover { border-bottom: none; text-decoration: none; }
 blockquote { color: #aaa; padding-left: 20px; }
 blockquote cite:before { content: "\2015"; }
 
-p { margin-bottom: 1.5em; }
+p { margin: 0 0 1.5em; }
 
 h1 { font-size: 2.1em; }
 h2 { font-size: 1.8em; }
@@ -202,7 +202,7 @@ h1 a, h1 a:visited { color: #111; }
 /* @sidebar */
 
 .sidebar { }
-	.sidebar ul { list-style:none; margin: 0; padding-bottom: 15px; }
+	.sidebar ul { list-style:none; margin: 0; padding: 0 0 15px; }
 		.sidebar ul li { list-style: none; margin: 0; padding: 0; }
 		.sidebar li ul { list-style: none; border-bottom: none; margin: 0; padding: 0; }
 			.sidebar li ul li:before { content: "\2015"; color: #aaa; }
