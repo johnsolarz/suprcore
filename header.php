@@ -32,7 +32,7 @@
 
   <!-- CSS: implied media=all -->
   <!-- CSS concatenated and minified via ant build script-->
-  <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>">
+  <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/css/style.css">
   <!-- end CSS-->
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
@@ -40,7 +40,7 @@
   <!-- All JavaScript at the bottom, except for this custom Modernizr build containing Respond.
        Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
        For optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
-  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/libs/modernizr-2.0.6.min.js"></script>
+  <script src="<?php echo bloginfo('template_url'); ?>/assets/js/libs/modernizr-2.0.6.min.js"></script>
 
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
