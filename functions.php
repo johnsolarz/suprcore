@@ -88,7 +88,7 @@ endif;
 
 // Set our wp_nav_menu() fallback, suprcore_menu()
 function suprcore_menu() {
-	echo '<ul><li><a href="'.get_bloginfo('url').'">Home</a></li>';
+	echo '<ul>';
 	wp_list_pages('title_li=');
 	echo '</ul>';
 }
