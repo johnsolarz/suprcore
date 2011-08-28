@@ -1,10 +1,27 @@
-@import 'h5bp.css';
-@import '960.css';
-@import 'formalize.css';
+/*
+ * HTML5 baseline development
+ * https://github.com/johnsolarz/suprcore
+ *
+ * eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee 
+ * 8   " 8   8 8   8 8   8  8  8 8  88 8   8  8    
+ * 8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee 
+ *    88 88  8 88    88   8 88   8   8 88   8 88   
+ * 8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
+ *
+ * ==|== @suprcore =============================================================
+ */
 
-#wrapper { background: #fff; }
 
-/* @typography */
+/* =============================================================================
+   @imports
+   ========================================================================== */
+
+@import 'boilerplate.css';
+@import 'structure.css';
+
+/* =============================================================================
+   @typography
+   ========================================================================== */
 
 body, select, input, textarea {
 	color: #111;
@@ -35,7 +52,9 @@ h6 { font-size: 1em; text-transform: uppercase; }
 
 h1 a, h1 a:visited { color: #111; }
 
-/* @header */
+/* =============================================================================
+   @header
+   ========================================================================== */
 
 #masthead { padding: 50px 0; position: relative; }
 	#masthead #logo { color: #111; display: block; float: left; font-size: 1.8em; font-weight: 400; }
@@ -46,7 +65,6 @@ h1 a, h1 a:visited { color: #111; }
 	text-indent: -9999px; top: 0; width: 100px; z-index: 100; } */
 
 	/* @site nav */
-
 	#masthead nav { float: right; padding: 10px 0 0; position: relative; }
 	#masthead nav ul li {  float: left; margin-left: 10px; }
 		#masthead nav ul li:hover a { color: #111; }
@@ -66,16 +84,16 @@ h1 a, h1 a:visited { color: #111; }
 			* html #masthead nav ul li.current-menu-parent a,
 			* html #masthead nav ul li a:hover { color: #111; }
 
-/* @feature */
+/* =============================================================================
+   @feature area
+   ========================================================================== */
 
 #feature { padding: 0; height: 320px; }
 
 /* @toolbar */
-
 #toolbar { border-bottom: 1px solid #eee; border-top: 1px solid #eee; font-size: 11px; height: 36px; }
 
 	/* @pagination */
-	
 	.toolbar { border-bottom: 1px solid #eee; border-top: 1px solid #eee; font-size: 11px; height: 36px; }
 	
 	.page-numbers { display: block; float: left; list-style: none; margin: 0; }
@@ -90,18 +108,21 @@ h1 a, h1 a:visited { color: #111; }
 				.page-numbers li a.next:hover { background-position: 10px -508px; }	
 	
 	/* @breadcrumbs */
-	
 	#breadcrumbs { background: #aaa; font-size: 11px; line-height: 40px; height: 40px; }
 		#breadcrumbs a { border-bottom: none; color: #111; margin-left: 10px; }
 		#breadcrumbs a:hover { border-bottom: 1px solid #111; }
 		#breadcrumbs img { margin-left: 10px; }
 			#breadcrumbs .current_item { font-weight: 500; margin-left: 10px; }
 
-/* @content */
+/* =============================================================================
+   @content
+   ========================================================================== */
 
 #content { padding-top: 45px; }
 
-/* @main */
+/* =============================================================================
+   @main
+   ========================================================================== */
 
 #main { }
 
@@ -120,7 +141,9 @@ h1 a, h1 a:visited { color: #111; }
 
 	article .twitter-share-button { display: inline; float: left; margin-right: 10px; }
 
-/* @comments */
+/* =============================================================================
+   @comments
+   ========================================================================== */
 
 #comments { border-top: 1px solid #eee; margin-bottom: 30px; padding-top:15px; }
 
@@ -143,7 +166,9 @@ h1 a, h1 a:visited { color: #111; }
 	.pad { padding-top: 10px; }
 	.push { padding-bottom: 10px; }
 
-/* @custom styles */
+/* =============================================================================
+   @primary styles
+   ========================================================================== */
 
 
 
@@ -183,7 +208,9 @@ h1 a, h1 a:visited { color: #111; }
 
 /* @end main */
 
-/* @sidebar */
+/* =============================================================================
+   @sidebar
+   ========================================================================== */
 
 .sidebar { }
 	.sidebar ul { list-style:none; margin: 0; padding: 0 0 15px; }
@@ -203,7 +230,9 @@ h1 a, h1 a:visited { color: #111; }
 		.twitter_link:hover { background-position: 0 -791px; }
 	.twitter_icon { text-align: right; max-width: 60px; overflow: hidden; }
 
-/* @footer */
+/* =============================================================================
+   @footer
+   ========================================================================== */
 
 footer[role="contentinfo"] { color: #aaa; padding: 60px 0 0; }
 	
@@ -213,7 +242,9 @@ footer[role="contentinfo"] { color: #aaa; padding: 60px 0 0; }
 	
 	.copy { border-top: 1px solid #eee; padding-top: 15px; text-align: right; }
 
-/* @wordpress classes */
+/* =============================================================================
+   @wordpress classes
+   ========================================================================== */
 
 .aligncenter { clear: both; display: block; margin: 0 auto; }
 .alignleft { text-align: left; }
@@ -234,7 +265,9 @@ img.size-large, img.size-medium, .attachment img,
 .gallery .gallery-item img { margin: 0 auto 10px; position: relative; }
 .gallery .gallery-caption { color: #aaa; margin-top: 0; text-align: center; }
 
-/* @formalize overrides */
+/* =============================================================================
+   @search
+   ========================================================================== */
 
 input[type="search"] {
   -webkit-appearance: none;
