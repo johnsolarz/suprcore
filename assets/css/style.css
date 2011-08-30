@@ -1,14 +1,14 @@
 /*
- * HTML5 baseline development
- * https://github.com/johnsolarz/suprcore
- *
- * eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee 
- * 8   " 8   8 8   8 8   8  8  8 8  88 8   8  8    
- * 8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee 
- *    88 88  8 88    88   8 88   8   8 88   8 88   
- * 8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
- *
- * ==|== @suprcore =============================================================
+
+ eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee 
+ 8   " 8   8 8   8 8   8  8  8 8  88 8   8  8    
+ 8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee 
+    88 88  8 88    88   8 88   8   8 88   8 88   
+ 8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
+ 
+ Build:
+ Author:
+
  */
 
 
@@ -17,6 +17,7 @@
    ========================================================================== */
 
 @import 'boilerplate.css';
+@import 'formalize.css';
 @import 'structure.css';
 
 /* =============================================================================
@@ -151,9 +152,9 @@ h1 a, h1 a:visited { color: #111; }
 		#comments .navigation .nav-previous { text-align: left; }
 		#comments .navigation .nav-next { text-align: right; }
 
-	#comments ul { list-style: none; margin: 0; }
+	#comments ul { list-style: none; margin: 0; padding: 0; }
 		.comment_list li { border-top: 1px solid #eee; padding-top: 15px; }
-		.comment_list li.odd { background: #f4f4f4; }
+		.comment_list li.odd { background: #f5f5f5; }
 			.comment_list li .children { }
 			.comment_list img.avatar { display: inline; margin: 5px 0 0; float: right; }
 			.comment_list li p { margin-right: 40px; }

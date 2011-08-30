@@ -323,17 +323,4 @@ body { min-width: 960px; }
 
 /* http://sonspring.com/journal/clearing-floats */
 
-.clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
-
-/* Micro clearfix: http://nicolasgallagher.com/micro-clearfix-hack/ */
-
-.clearfix:before, .clearfix:after { content: ""; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { zoom: 1; }
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
