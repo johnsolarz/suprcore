@@ -38,12 +38,40 @@ get_header(); ?>
 		
 		<footer class="grid_8 alpha omega">
 
-			<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-text="<?php the_title();?>" data-count="none" <?php if (your_twitter_username()) { ?>data-via="<?php echo your_twitter_username();?>"<?php } ?>>Tweet</a>
-			<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+			<ul class="social_links">
+			
+				<li>
+				<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+				<a href="http://twitter.com/share?url=<?php the_permalink(); ?><?php if (your_twitter_username()) { ?>&amp;via=<?php echo your_twitter_username();?><?php } ?>&amp;text=<?php the_title();?>" class="twitter-share-button">Tweet</a>
+				</li>
 				
-			<?php if (use_facebook_like()) { ?>
-				<iframe allowTransparency="true" frameborder="0" src="http://www.facebook.com/plugins/like.php?href=<?php the_permalink() ?>&amp;layout=button_count&amp;show_faces=false&amp;width=375&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=36" style="border:none; overflow:hidden; width:375px; height:36px;"></iframe>
-			<?php } ?>
+				<li>
+					<div class="g-plusone"></div>
+					<script type="text/javascript">
+					  (function() {
+					    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+					    po.src = 'https://apis.google.com/js/plusone.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+					  })();
+					</script>
+				</li>		
+				
+				<?php if (use_facebook_like()) { ?>
+					<li>
+						<div id="fb-root"></div>
+						<script>(function(d, s, id) {
+						  var js, fjs = d.getElementsByTagName(s)[0];
+						  if (d.getElementById(id)) {return;}
+						  js = d.createElement(s); js.id = id;
+					  	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+						  fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));</script>
+
+						<div class="fb-like" data-href="?php the_permalink(); ?>" data-send="false" data-layout="standard" data-width="400" data-show-faces="false" data-font="arial"></div>
+					</li>
+				<?php } ?>
+	
+			</ul>
 			
 		</footer>
 

@@ -38,6 +38,41 @@ get_header(); ?>
 		
 		<footer class="grid_8 alpha omega">
 
+			<ul class="social_links">
+			
+				<li>
+				<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+				<a href="http://twitter.com/share?url=<?php the_permalink(); ?><?php if (your_twitter_username()) { ?>&amp;via=<?php echo your_twitter_username();?><?php } ?>&amp;text=<?php the_title();?>" class="twitter-share-button">Tweet</a>
+				</li>
+				
+				<li>
+					<div class="g-plusone"></div>
+					<script type="text/javascript">
+					  (function() {
+					    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+					    po.src = 'https://apis.google.com/js/plusone.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+					  })();
+					</script>
+				</li>		
+				
+				<?php if (use_facebook_like()) { ?>
+					<li>
+						<div id="fb-root"></div>
+						<script>(function(d, s, id) {
+						  var js, fjs = d.getElementsByTagName(s)[0];
+						  if (d.getElementById(id)) {return;}
+						  js = d.createElement(s); js.id = id;
+					  	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+						  fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));</script>
+
+						<div class="fb-like" data-href="?php the_permalink(); ?>" data-send="false" data-layout="standard" data-width="400" data-show-faces="false" data-font="arial"></div>
+					</li>
+				<?php } ?>
+	
+			</ul>
+
 		</footer>
 
 		<div class="clear"></div>

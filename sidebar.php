@@ -28,7 +28,7 @@
 		<div>
 			<label class="visuallyhidden" for="s">Search for:</label>
 			<input type="search" class="search" value="Search + Enter" name="s" id="s" />
-			<input type="submit" value="Search" id="search_submit" alt="" />
+			<input type="submit" value="Search" id="search_submit" />
 		</div>
 	</form>
 

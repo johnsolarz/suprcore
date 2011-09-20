@@ -173,6 +173,51 @@ function suprcore_widgets_init() {
 		'before_title' => '<p class="widget_title">',
 		'after_title' => '</p>',
 	) );
+
+	// Footer widget 1.
+	register_sidebar( array(
+		'name' => __( 'Footer widget 1', 'suprcore' ),
+		'id' => 'footer-widget-1',
+		'description' => __( '', 'suprcore' ),
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<p class="widget_title">',
+		'after_title' => '</p>',
+	) );
+
+	// Footer widget 2.
+	register_sidebar( array(
+		'name' => __( 'Footer widget 2', 'suprcore' ),
+		'id' => 'footer-widget-2',
+		'description' => __( '', 'suprcore' ),
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<p class="widget_title">',
+		'after_title' => '</p>',
+	) );
+
+	// Footer widget 3.
+	register_sidebar( array(
+		'name' => __( 'Footer widget 3', 'suprcore' ),
+		'id' => 'footer-widget-3',
+		'description' => __( '', 'suprcore' ),
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<p class="widget_title">',
+		'after_title' => '</p>',
+	) );
+
+	// Footer widget 3.
+	register_sidebar( array(
+		'name' => __( 'Footer widget 3', 'suprcore' ),
+		'id' => 'footer-widget-4',
+		'description' => __( '', 'suprcore' ),
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<p class="widget_title">',
+		'after_title' => '</p>',
+	) );
+	
 }
 /** Register sidebars by running suprcore_widgets_init() on the widgets_init hook. */
 add_action( 'widgets_init', 'suprcore_widgets_init' );

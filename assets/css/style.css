@@ -128,19 +128,39 @@ h1 a, h1 a:visited { color: #111; }
 #main { }
 
 	article { border-top: 1px solid #eee;  padding-top: 15px; }
-	article .post_title { font-weight: 400; margin: 36px 0 30px; }
-	article .post_category { font-weight: 500; display: block; }
-	article .post_category a { color: #111; }
-	article .comments { color: #aaa; }
-		article .post_comment { display: block; }
+		article header {}
+			article .post_category { font-weight: 500; display: block; }
+				article .post_category a { color: #111; }
+			article .comments { color: #aaa; }
+				article .post_comment { display: block; }
+			
+			article .post_title { font-weight: 400; margin: 36px 0 30px; }
 
-	article .entry { }
-	article .entry p { margin-right: 40px; }
-	article img { }
+		article .entry { }
+			article .entry p { margin-right: 40px; }
+			article img { }
 
-	article footer { margin-top: 2em; }
-
-	article .twitter-share-button { display: inline; float: left; margin-right: 10px; }
+		article footer { padding-top: 2em; }
+			article footer ul.social_links { list-style: none; float: left; height: 30px; padding-left: 0; }
+				article footer ul.social_links li { float: left; }
+				article footer ul.social_links li .tweet { 
+						 -moz-border-radius: 3px;
+					-webkit-border-radius: 3px;
+									border-radius: 3px;
+					background: #222;
+					border: 1px solid #222;
+					color: #fff;
+					display: inline;
+					font-family: Arial, sans-serif;
+					margin-right: 15px;
+					line-height: 25px;
+					padding: 5px 7px 4px;
+					height: 20px;
+					font-size: 11px;			
+				}
+				article footer ul.social_links li .tweet:hover { border-color: #000; }
+				article footer ul.social_links li .fb-like { margin-left: -25px; }
+				article footer ul.social_links li .___plusone_0 { }
 
 /* =============================================================================
    @comments
@@ -227,7 +247,7 @@ h1 a, h1 a:visited { color: #111; }
 	
 	.textwidget { margin: 0; padding-bottom: 15px; }
 
-	.twitter_link { background: url(assets/img/socials.png) no-repeat scroll 0 -725px; padding-left: 20px; display: block; margin-top: 1.5em; }
+	.twitter_link { background: url(../img/socials.png) no-repeat scroll 0 -725px; padding-left: 20px; display: block; margin-top: 1.5em; }
 		.twitter_link:hover { background-position: 0 -791px; }
 	.twitter_icon { text-align: right; max-width: 60px; overflow: hidden; }
 

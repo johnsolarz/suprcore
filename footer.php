@@ -9,6 +9,8 @@
 			<p class="grid_4 omega copy">
 				&copy; <strong><?php bloginfo( 'name' ); ?></strong> <?php echo date('Y');?> &mdash; Site by <a href="http://eightsevencentral.com" target="_blank" title="Eight Seven Central">8/7central</a>
 			</p>
+			
+			<?php get_sidebar( 'footer' ); ?>
 
 		</footer> <!-- #footer -->
 

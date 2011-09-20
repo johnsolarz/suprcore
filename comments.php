@@ -108,7 +108,7 @@
 	</div>
 
 	<div class="grid_6 omega push">
-		<textarea name="comment" id="comment" style="width:440px;" cols="28" rows="5" tabindex="4"></textarea></p>
+		<textarea name="comment" id="comment" style="width:440px;" cols="28" rows="5" tabindex="4"></textarea>
 	</div>
 
 	<p class="submit"><input name="submit" type="submit" id="submit" value="Submit Comment" tabindex="5" />
