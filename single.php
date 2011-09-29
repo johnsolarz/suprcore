@@ -16,7 +16,7 @@ get_header(); ?>
 		<header class="grid_8 alpha omega">
 
 			<div class="grid_2 alpha">
-				<span class="post_category"><?php the_category(', ') ?></span>
+				<span class="post_category"><?php the_category(', '); ?></span>
 					<?php echo get_the_date(); ?>
 			</div>
 			<div class="grid_6 omega comments">

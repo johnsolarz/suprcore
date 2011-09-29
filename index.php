@@ -16,7 +16,7 @@ get_header(); ?>
 		<header class="grid_8 alpha omega">
 
 			<div class="grid_2 alpha">
-				<span class="post_category"><?php the_category(', ') ?></span>
+				<span class="post_category"><?php the_category(', '); ?></span>
 					<?php echo get_the_date(); ?>
 			</div>
 			<div class="grid_6 omega comments">
@@ -26,7 +26,7 @@ get_header(); ?>
 
 			<div class="clear"></div>	
 
-			<h1 class="post_title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_permalink() ?>"><?php the_title(); ?></a></h1>
+			<h1 class="post_title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
 		</header>
 				
