@@ -1,6 +1,6 @@
 Changelog:
 
-2011.04.25	Suprcore 1.0 - Initial build 
+2011.04.25	Suprcore v1.0 - Initial build 
 2011.05.22	Added default functions directory for custom scripts
 2011.05.27	Updated core assets and boilerplate to v1.0rc
 2011.06.25	Suprcore build script for real
@@ -10,9 +10,11 @@ Changelog:
 2011.06.27	Added comments template
 2011.07.01	Added default 404.php template
 2011.07.13	Added timthumb support in functions
-2011.08.14	Suprcore version 2.0 - major h5bp update
 
-2011.09.29	Moved assets to top level
+2011.08.14	Suprcore v2.0 - h5bp 2.0 update
+
+2011.09.29	Suprcore v2.1 - 
+		Moved assets to top level
 		New includes directory for custom wp functions and scripts
 		Custom .htaccess rewrites adapted from roots
 		Conditional Google+ and Facebook integration
