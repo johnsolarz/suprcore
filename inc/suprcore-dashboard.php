@@ -78,7 +78,7 @@ function suprcore_admin_footer_text( $default_text ) {
  */
 function custom_login_logo() {
 	echo '<style type="text/css">
-	h1 a { background-image: url('.get_bloginfo('template_directory').'/img/login.png) !important; height: 220px; }
+	h1 a { background-image: url('.get_bloginfo('template_directory').'/inc/img/login.png) !important; height: 220px; }
 	input.button-primary { background: #99CF52 !important; border-color: #99CF52; }
 	input.button-primary:hover { color: #F9F9F9; border-color: #669900; }
 	.login #nav a { color: #ccc !important; }

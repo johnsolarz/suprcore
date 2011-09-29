@@ -20,8 +20,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
  
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
-	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/root/favicon.ico">
-	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/root/apple-touch-icon.png">
+	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/inc/root/favicon.ico">
+	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/inc/root/apple-touch-icon.png">
 
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
 
