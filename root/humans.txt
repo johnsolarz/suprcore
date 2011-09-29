@@ -1,39 +1,17 @@
-e/* the humans responsible & colophon */
+/* the humans responsible & colophon */
 /* humanstxt.org */
 
 /* TEAM */
-  Design: Eight Seven Central
+  Design: 8/7 Central
   Site: http://eightsevencentral.com
   Twitter: @87central 
   Location: Des Moines, Iowa, USA
-
-  The Architect: John Solarz
-  Twitter: @flatform
-
-  The Techie: Justin Meyer
-  Twitter: @justinsalemmeye
-
-  Special Ops: Adam Ferry
-  Twitter: @ff_admn
 
 /* THANKS */
   Names (& URL): 
 
 /* SITE */
   Standards: HTML5, CSS3
-  Components: h5bp, Modernizr, jQuery, 960.gs
-  Software: Coda
+  Components: Modernizr, jQuery
+  Software: 
   
-
-                                    
-     __
-    /\ \
-    \ \ \
-     \ \ \
-   __ \ \ \     ________                    __                 ___      
- /'_ `\\ \ \   /\_____  \                  /\ \__             /\_ \     
-/\ \L\ \\ \ \  \/___//'/ '___     __    ___\ \ ,_\  _ __   __ \//\ \    
-\/_> _ <_\ \ \     /' /' /'___\ /'__`\/' _ `\ \ \/ /\`'__\'__`\ \ \ \   
-  /\ \L\ \\ \ \   /' /' /\ \__//\  __//\ \/\ \ \ \_\ \ \/\ \L\.\_\_\ \_ 
-  \ \____/ \ \_\ /\_/   \ \____\ \____\ \_\ \_\ \__\\ \_\ \__/.\_\\____\
-   \/___/   \/_/ \//     \/____/\/____/\/_/\/_/\/__/ \/_/\/__/\/_//____/ 

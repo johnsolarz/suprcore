@@ -1,34 +1,65 @@
 		</div> <!-- #content -->
 		
 		<footer class="grid_12 clearfix" role="contentinfo">
-		
+
+			<?php get_sidebar('footer'); ?>
+					
 			<nav class="grid_8 alpha">
-				<?php wp_nav_menu( array( 'container' => 'false', 'fallback_cb' => 'suprcore_menu', 'theme_location' => 'footer' ) ); ?>
+				<?php wp_nav_menu( array( 
+					'container' => 'false', 
+					'fallback_cb' => 'suprcore_menu', 
+					'theme_location' => 'footer_navigation')); 
+				?>
 			</nav>
 			
 			<p class="grid_4 omega copy">
-				&copy; <strong><?php bloginfo( 'name' ); ?></strong> <?php echo date('Y');?> &mdash; Site by <a href="http://eightsevencentral.com" target="_blank" title="Eight Seven Central">8/7central</a>
+				&copy; <strong><?php bloginfo('name'); ?></strong> <?php echo date('Y');?> &mdash; Site by <a href="http://eightsevencentral.com" target="_blank" title="Eight Seven Central">8/7 Central</a>
 			</p>
-			
-			<?php get_sidebar( 'footer' ); ?>
 
 		</footer> <!-- #footer -->
 
 	</div> <!-- #wrapper -->
-	
+
+<?php if (use_facebook_like()) { ?>
+	<!-- Facebook like button -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+<?php } ?>
+
+
+<?php if (use_google_plus()) { ?>
+	<!-- Asynchronus Google +1 buttton  -->
+	<script>
+		(function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		})();
+	</script>
+<?php } ?>
+
+	<!-- Twitter tweet button -->
+	<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>					
+
 <?php wp_footer(); ?>
 
 
   <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <!-- jQuery enqueued in footer via functions.php -->
-  <script>window.jQuery || document.write('<script src="<?php echo bloginfo('template_url'); ?>/assets/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.6.4.min.js"><\/script>')</script>
 
-
+	
   <!-- scripts concatenated and minified via ant build script-->
-  <script defer src="<?php echo bloginfo('template_url'); ?>/assets/js/plugins.js"></script>
-  <script defer src="<?php echo bloginfo('template_url'); ?>/assets/js/script.js"></script>
+  <script defer src="<?php echo bloginfo('template_url'); ?>/js/plugins.js"></script>
+  <script defer src="<?php echo bloginfo('template_url'); ?>/js/script.js"></script>
   <!-- end scripts-->
 
 
@@ -40,7 +71,6 @@
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
-
 
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
