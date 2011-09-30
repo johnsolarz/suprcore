@@ -57,9 +57,10 @@ h6 { font-size: 1em; text-transform: uppercase; }
 
 /* @global nav */
 #masthead nav { float: right; padding: 10px 0 0; position: relative; }
-#masthead nav ul li {  float: left; margin-left: 10px; }
+#masthead nav ul li { float: left; margin-left: 10px; }
+#masthead nav ul li a { padding: 5px 0; }
 #masthead nav ul li:hover a { color: #111; }
-#masthead nav ul li ul { display: none; float: left; padding: 0; position: absolute; top: 30px; left: 0; width: 100%; }
+#masthead nav ul li ul { border-top: 1px solid #eee; display: none; float: left; padding: 5px 0; position: absolute; top: 32px; left: 0; width: 100%; }
 #masthead nav ul li:hover ul { display: block; } 
 #masthead nav ul li:hover ul a { color: #aaa; }
 #masthead nav ul li ul a:hover { color: #111; }

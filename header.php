@@ -12,7 +12,14 @@
        More info: h5bp.com/b/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
+	<title><?php 
+		wp_title( '|', true, 'right' ); bloginfo( 'name' );
+		
+		$site_description = get_bloginfo( 'description', 'display' );
+		if ( $site_description && ( is_home() || is_front_page() ) )
+			echo " | $site_description";
+		
+		?></title>
   <meta name="description" content="<?php bloginfo('description'); ?>">
   <meta name="author" content="<?php bloginfo('name'); ?>">
 

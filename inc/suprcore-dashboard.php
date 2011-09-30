@@ -43,9 +43,10 @@ function suprcore_admin_menu() {
 add_action('wp_dashboard_setup', 'suprcore_dashboard_widgets');
 function suprcore_dashboard_widgets() {
 	global $wp_meta_boxes;
-	// remove unnecessary widgets
+	// remove unnecessary widgets: http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
 	// var_dump( $wp_meta_boxes['dashboard'] ); // use to get all the widget IDs
 	unset(
+		$wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links'],
 		$wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins'],
 		$wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'],
 		$wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']
@@ -58,7 +59,7 @@ function dashboard_custom_feed_output() {
 	wp_widget_rss_output(array(
 		'url' => 'http://www.eightsevencentral.com/feed',
 		'title' => 'What\'s up at 8/7',
-		'items' => 2,
+		'items' => 3,
 		'show_summary' => 1,
 		'show_author' => 0,
 		'show_date' => 1,

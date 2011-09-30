@@ -154,12 +154,10 @@ function suprcore_rel_canonical() {
 
 /**
  * Remove CSS from recent comment widget
- */
+ * http://beerpla.net/2010/01/31/how-to-remove-inline-hardcoded-recent-comments-sidebar-widget-style-from-your-wordpress-theme/
+ */     
 function suprcore_remove_recent_comments_style() {
-  global $wp_widget_factory;
-  if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
-    remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
-  }
+	add_filter( 'show_recent_comments_widget_style', '__return_false' );
 }
 
 /**
@@ -349,18 +347,6 @@ function suprcore_gallery_shortcode($attr) {
 }
 remove_shortcode('gallery');
 add_shortcode('gallery', 'suprcore_gallery_shortcode');
-
-/**
- * Remove dashboard widgets
- * http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
- */
-function suprcore_remove_dashboard_widgets() {
-  remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');
-  remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
-  remove_meta_box('dashboard_primary', 'dashboard', 'normal');
-  remove_meta_box('dashboard_secondary', 'dashboard', 'normal');
-}
-add_action('admin_init', 'suprcore_remove_dashboard_widgets');
 
 /**
  * Sets the post excerpt length to 40.
