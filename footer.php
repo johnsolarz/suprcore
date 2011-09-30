@@ -13,13 +13,12 @@
 			</nav>
 			
 			<p class="grid_4 omega copy">
-				&copy; <strong><?php bloginfo('name'); ?></strong> <?php echo date('Y');?> &mdash; Site by <a href="http://eightsevencentral.com" target="_blank" title="Eight Seven Central">8/7 Central</a>
+				&copy; <strong><?php bloginfo('name'); ?></strong> <?php echo date('Y');?> &mdash; Site by <a href="http://eightsevencentral.com" target="_blank" title="8/7 Central">8/7 Central</a>
 			</p>
 
 		</footer> <!-- #footer -->
 
 	</div> <!-- #wrapper -->
-
 
 <?php wp_footer(); ?>
 
