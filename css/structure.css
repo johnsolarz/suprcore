@@ -2,7 +2,7 @@
  * Grid-based layout with 12, 15, and 16 unit presets. Adapted from 960.gs.
  * https://github.com/johnsolarz/structure
  *
- * ==|== @structure ============================================================
+ * ==|== structure ==========================================================
  */
 
 /* =============================================================================
@@ -23,7 +23,9 @@ body { min-width: 960px; }
    Containers
    ========================================================================== */
 
-.container_12, .container_15, .container_16 { margin-left: auto; margin-right: auto; width: 960px; }
+.container_12,
+.container_15, 
+.container_16 { margin-left: auto; margin-right: auto; width: 960px; }
 
 /* =============================================================================
    Grid >> Global
@@ -38,12 +40,19 @@ body { min-width: 960px; }
 .push_9, .pull_9, .push_10, .pull_10, .push_11, .pull_11, .push_12, .pull_12, 
 .push_13, .pull_13, .push_14, .pull_14, .push_15, .pull_15 { position: relative; }
 
-.container_12 .grid_3, .container_16 .grid_4 { width: 220px; }
-.container_12 .grid_4, .container_15 .grid_5 { width: 300px; }
-.container_12 .grid_6, .container_16 .grid_8 { width: 460px; }
-.container_12 .grid_8, .container_15 .grid_10 { width: 620px; }
-.container_12 .grid_9, .container_16 .grid_12 { width: 700px; }
-.container_12 .grid_12, .container_15 .grid_15, .container_16 .grid_16 { width: 940px; }
+.container_12 .grid_3, 
+.container_16 .grid_4 { width: 220px; }
+.container_12 .grid_4, 
+.container_15 .grid_5 { width: 300px; }
+.container_12 .grid_6, 
+.container_16 .grid_8 { width: 460px; }
+.container_12 .grid_8, 
+.container_15 .grid_10 { width: 620px; }
+.container_12 .grid_9, 
+.container_16 .grid_12 { width: 700px; }
+.container_12 .grid_12, 
+.container_15 .grid_15, 
+.container_16 .grid_16 { width: 940px; }
 
 /* =============================================================================
    Grid >> Children (Alpha ~ First, Omega ~ Last)
@@ -323,4 +332,17 @@ body { min-width: 960px; }
 
 /* http://sonspring.com/journal/clearing-floats */
 
-.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* Micro clearfix: http://nicolasgallagher.com/micro-clearfix-hack/ */
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
