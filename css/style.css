@@ -53,7 +53,7 @@ h6 { font-size: 1em; text-transform: uppercase; }
 #masthead #logo:hover { border-bottom: none; }
 	
 /* @logo img
-#masthead #logo { background: url() no-repeat scroll 0 0 transparent; color: #111; display: block; height: 100px; left: 0; position: absolute; text-indent: -9999px; top: 0; width: 100px; z-index: 100; } */
+#masthead #logo { background: url(../img/logo.png) no-repeat scroll 0 0 transparent; color: #111; display: block; height: 100px; left: 0; position: absolute; text-indent: -9999px; top: 0; width: 100px; z-index: 100; } */
 
 /* @global nav */
 #masthead nav { float: right; padding: 10px 0 0; position: relative; }
@@ -117,7 +117,7 @@ article footer ul.social-links { list-style: none; float: left; height: 30px; pa
 article footer ul.social-links li { float: left; }
 article footer ul.social-links li .twitter-share-button { }
 article footer ul.social-links li .fb-like { }
-article footer ul.social-links li #___plusone_0 { margin-right: -15px !important; }
+article footer ul.social-links li.g-plusone { margin-right: -15px !important; }
 
 /* @pagination */
 .pagination { border-bottom: 1px solid #eee; border-top: 1px solid #eee; font-size: 11px; height: 36px; }	

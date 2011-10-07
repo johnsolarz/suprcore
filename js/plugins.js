@@ -30,8 +30,8 @@ window.log = function(){
  *
  */
 
-/*
-  1.) Formalize - version 1.1
+/* 1.) 
+  Formalize - version 1.1
 
   Note: This file depends on the jQuery library.
 */

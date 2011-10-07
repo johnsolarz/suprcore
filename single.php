@@ -15,7 +15,7 @@ get_header(); ?>
 
 			<div class="grid_2 alpha">
 				<span class="post-category"><?php the_category(', '); ?></span>
-					<?php echo get_the_date(); ?>
+				<?php echo get_the_date(); ?>
 			</div>
 			<div class="grid_6 omega comments">
 				<span class="post-comment"><a href="<?php the_permalink(); ?>#comments" title="<?php the_permalink(); ?>">Comments (<?php comments_number('0', '1', '%'); ?>)</a></span>
@@ -35,19 +35,18 @@ get_header(); ?>
 			<ul class="social-links">
 			
 				<li>
-					<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" <?php if (your_twitter_username()) { ?>data-via="<?php echo your_twitter_username(); ?>"<?php } ?> data-text="<?php the_title();?>">Tweet</a>
-					<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>			
+					<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" <?php if (your_twitter_username()) { ?>data-via="<?php echo your_twitter_username(); ?>"<?php } ?> data-text="<?php the_title();?>">Tweet</a>		
 				</li>
 				
 				<?php if (use_google_plus()) { ?>				
-				<li>
+				<li class="g-plusone">
 					<div class="g-plusone" data-size="medium" data-href="<?php the_permalink(); ?>"></div>
 				</li>		
 				<?php } ?>	
 				
 				<?php if (use_facebook_like()) { ?>
 					<li>
-						<div class="fb-like" data-href="<?php the_permalink(); ?>" data-send="false" data-layout="button_count" data-width="400" data-show-faces="false" data-font="arial"></div>
+						<div class="fb-like" data-href="<?php the_permalink(); ?>" data-send="false" data-layout="button_count" data-width="400" data-show-faces="false" data-colorscheme="light" data-font="arial"></div>
 					</li>
 				<?php } ?>
 

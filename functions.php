@@ -82,7 +82,7 @@ add_action('after_setup_theme', 'suprcore_setup');
 /**
  * Register our sidebars and widgetized areas.
  */
-$sidebars = array('Sidebar', 'Footer 1', 'Footer 2', 'Footer 3', 'Footer 4');
+$sidebars = array('Primary Sidebar', 'Footer 1', 'Footer 2', 'Footer 3', 'Footer 4');
 foreach ($sidebars as $sidebar) {
   register_sidebar(array('name'=> $sidebar,
     'before_widget' => '<section id="%1$s" class="widget %2$s">',

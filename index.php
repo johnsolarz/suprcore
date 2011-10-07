@@ -39,14 +39,14 @@ get_header(); ?>
 				</li>
 				
 				<?php if (use_google_plus()) { ?>				
-				<li>
-					<div class="g-plusone" data-size="medium" data-href="<?php the_permalink(); ?>"></div>
+				<li class="g-plusone">
+					<div class="g-plusone" data-size="medium" annotation="bubble" data-href="<?php the_permalink(); ?>"></div>
 				</li>		
 				<?php } ?>	
 				
 				<?php if (use_facebook_like()) { ?>
 					<li>
-						<div class="fb-like" data-href="<?php the_permalink(); ?>" data-send="false" data-layout="button_count" data-width="400" data-show-faces="false" data-font="arial"></div>
+						<div class="fb-like" data-href="<?php the_permalink(); ?>" data-send="false" data-layout="button_count" data-width="400" data-show-faces="false" data-colorscheme="light" data-font="arial"></div>
 					</li>
 				<?php } ?>
 
