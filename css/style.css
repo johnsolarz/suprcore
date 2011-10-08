@@ -245,14 +245,14 @@ footer nav ul li {float: left; margin-right: 10px; }
 
 img.size-auto, img.size-full,
 img.size-large, img.size-medium, .attachment img,
-.widget-area img { max-width: 100%; height: auto; margin-bottom: 1em; margin-top: .5em; }
+.widget-area img { max-width: 100%; height: auto; margin-bottom: 2em; }
 
 .wp-caption { text-align: left; }
 .wp-caption img { border: 0 none; }
 .wp-caption-text { color: #aaa; margin: 0; }
 
 .gallery { margin: 16px auto; }
-.gallery .gallery-item { float: left; padding-bottom: 16px; width: 33%; }
+.gallery .gallery-item { float: left; padding-bottom: 2em; margin-right: 2em; }
 .gallery .gallery-item img { margin: 0 auto 10px; position: relative; }
 .gallery .gallery-caption { color: #aaa; margin-top: 0; text-align: center; }
 
