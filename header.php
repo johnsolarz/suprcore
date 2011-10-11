@@ -54,8 +54,8 @@
 			<nav class="visuallyhidden">
 				<ul>
 					<li><a href="#content">Skip to content</a></li>
-					<li><a href="<?php echo site_url('/contact');?>">Contact us</a></li>
-					<li><a href="<?php echo site_url(); ?>">Go to home page</a></li>
+					<li><a href="<?php echo home_url('/contact');?>">Contact us</a></li>
+					<li><a href="<?php echo home_url('/'); ?>">Go to home page</a></li>
 				</ul>
 			</nav>
 			<nav role="navigation">
@@ -75,7 +75,7 @@
 			</div>
 		<?php elseif ( get_header_image() ) : ?>
 			<div id="feature" class="grid_12">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<a href="<?php echo esc_url( home_url('/') ); ?>">
 					<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" />
 				</a>
 			</div>
