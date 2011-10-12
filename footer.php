@@ -20,11 +20,33 @@
 
 	</div> <!-- #wrapper -->
 
-<?php wp_footer(); ?>
-
 
   <!-- JavaScript at the bottom for fast page loading -->
+  
+	<?php if (use_facebook_like()) { ?>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+	<?php } ?>
 
+	<?php if (use_google_plus()) { ?>
+		<script>
+			(function() {
+				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				po.src = 'https://apis.google.com/js/plusone.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			})();
+		</script>
+	<?php } ?>
+
+	<!-- Twitter tweet button -->
+	<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+	
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.6.4.min.js"><\/script>')</script>
@@ -34,34 +56,6 @@
   <script defer src="<?php echo bloginfo('template_url'); ?>/js/plugins.js"></script>
   <script defer src="<?php echo bloginfo('template_url'); ?>/js/script.js"></script>
   <!-- end scripts-->
-
-
-<?php if (use_facebook_like()) { ?>
-	<!-- Facebook like button -->
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) {return;}
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-<?php } ?>
-
-
-<?php if (use_google_plus()) { ?>
-	<!-- Asynchronus Google +1 buttton  -->
-	<script>
-		(function() {
-			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-			po.src = 'https://apis.google.com/js/plusone.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-		})();
-	</script>
-<?php } ?>
-
-	<!-- Twitter tweet button -->
-	<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 
 
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
@@ -79,6 +73,8 @@
     <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
     <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
   <![endif]-->
+
+<?php wp_footer(); ?>
 
 </body>
 </html>
