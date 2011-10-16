@@ -87,6 +87,20 @@ function custom_login_logo() {
 }
 add_action('login_head', 'custom_login_logo');
 
+/**
+ * Custom Login URL and title
+ * http://primegap.net/2011/01/26/wordpress-quick-tip-custom-wp-login-php-logo-url-without-hacks/
+ */
+function custom_login_url() {
+  return ('http://eightsevencentral.com');
+}
+add_filter( 'login_headerurl', 'custom_login_url', 10, 4 );
+
+function custom_login_title() {
+  return ('Eight Seven Central');
+}
+add_filter( 'login_headertitle', 'custom_login_title', 10, 4 );
+
 /** 
  * Disable 3.1 admin bar for all users
  * http://www.snilesh.com/resources/wordpress/wordpress-3-1-enable-disable-remove-admin-bar/

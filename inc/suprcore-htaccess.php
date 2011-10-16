@@ -49,9 +49,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
     $theme_name = next(explode('/themes/', get_stylesheet_directory()));
     global $wp_rewrite;
     $suprcore_new_non_wp_rules = array(
-      'css/(.*)'      => 'wp-content/themes/'. $theme_name . '/css/$1',
-      'js/(.*)'       => 'wp-content/themes/'. $theme_name . '/js/$1',
-      'img/(.*)'      => 'wp-content/themes/'. $theme_name . '/img/$1',
+      'assets/(.*)'      => 'wp-content/themes/'. $theme_name . '/assets/$1',
       'inc/(.*)'      => 'wp-content/themes/'. $theme_name . '/inc/$1',
       'plugins/(.*)'  => 'wp-content/plugins/$1'
     );

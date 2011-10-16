@@ -49,12 +49,12 @@
 	
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.6.4.min.js"><\/script>')</script>
+  <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/assets/js/libs/jquery-1.6.4.min.js"><\/script>')</script>
 
 	
   <!-- scripts concatenated and minified via ant build script-->
-  <script defer src="<?php echo bloginfo('template_url'); ?>/js/plugins.js"></script>
-  <script defer src="<?php echo bloginfo('template_url'); ?>/js/script.js"></script>
+  <script defer src="<?php echo bloginfo('template_url'); ?>/assets/js/plugins.js"></script>
+  <script defer src="<?php echo bloginfo('template_url'); ?>/assets/js/script.js"></script>
   <!-- end scripts-->
 
 

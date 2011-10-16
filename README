@@ -18,3 +18,6 @@ Changelog:
 		New includes directory for custom wp functions and scripts
 		Custom .htaccess rewrites adapted from roots
 		Conditional Google+ and Facebook integration
+2011.10.15	Restored assets directory and build structure
+		Revised css directory structure for improved @import performance
+		Ant build kit works out of the box, use publish folder for production

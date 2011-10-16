@@ -1,31 +1,26 @@
-/*
+/* ==|== suprcore styles =====================================================
 
- eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee 
- 8   " 8   8 8   8 8   8  8  8 8  88 8   8  8    
- 8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee 
-    88 88  8 88    88   8 88   8   8 88   8 88   
- 8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
- 
- Build:
+   eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee 
+   8   " 8   8 8   8 8   8  8  8 8  88 8   8  8    
+   8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee 
+      88 88  8 88    88   8 88   8   8 88   8 88   
+   8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
 
- */
-
-@import 'boilerplate.css';
-@import 'formalize.css';
-@import 'structure.css';
-
-/* =============================================================================
-   @typography
+   Build:
+   Author:
    ========================================================================== */
 
-body, select, input, textarea {
+body, button, input, select, textarea {
 	color: #111;
 	font: normal 12px/1.5 "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	word-spacing: -1px;
 }
 
-a, a:active, a:visited { color: #aaa; outline: none; text-decoration: none; }
+a { color: #aaa; text-decoration: none; }
+a:visited { color: #aaa; }
 a:hover { color: #111; }
+a:focus { outline: none; }
+
 a img { border: none; display: block; }
 
 nav a, nav a:hover { border-bottom: none; text-decoration: none; }
@@ -35,27 +30,27 @@ blockquote cite:before { content: "\2015"; }
 
 p { margin: 0 0 1.5em; }
 
-h1 { font-size: 2.1em; }
-h2 { font-size: 1.8em; }
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
 h3 { font-size: 1.5em; }
-h4 { font-size: 1.2em; }
+h4 { font-size: 1.25em; }
 h5 { font-size: 1em; }
 h6 { font-size: 1em; text-transform: uppercase; }
 
 
 
 /* =============================================================================
-   @header
+   Header
    ========================================================================== */
 
 #masthead { padding: 50px 0; position: relative; }
-#masthead #logo { color: #111; display: block; float: left; font-size: 1.8em; font-weight: 400; }
+#masthead #logo { color: #111; display: block; float: left; font-size: 21px; font-weight: 400; }
 #masthead #logo:hover { border-bottom: none; }
 	
-/* @logo img
+/* Logo img
 #masthead #logo { background: url(../img/logo.png) no-repeat scroll 0 0 transparent; color: #111; display: block; height: 100px; left: 0; position: absolute; text-indent: -9999px; top: 0; width: 100px; z-index: 100; } */
 
-/* @global nav */
+/* Global nav */
 #masthead nav { float: right; padding: 10px 0 0; position: relative; }
 #masthead nav ul li { float: left; margin-left: 10px; }
 #masthead nav ul li a { padding: 5px 0; }
@@ -77,14 +72,14 @@ h6 { font-size: 1em; text-transform: uppercase; }
 * html #masthead nav ul li a:hover { color: #111; }
 
 /* =============================================================================
-   @feature
+   Feature
    ========================================================================== */
 
 #feature { padding: 0; height: 320px; }
 
 
 /* =============================================================================
-   @breadcrumbs
+   Breadcrumbs
    ========================================================================== */
 
 #breadcrumbs { background: #f5f5f5; font-size: 11px; line-height: 40px; height: 40px; }
@@ -94,7 +89,7 @@ h6 { font-size: 1em; text-transform: uppercase; }
 #breadcrumbs .current-item { font-weight: 500; margin-left: 10px; }
 
 /* =============================================================================
-   @main content
+   Main content
    ========================================================================== */
 
 #content { padding-top: 45px; }
@@ -119,7 +114,7 @@ article footer ul.social-links li .twitter-share-button { }
 article footer ul.social-links li .fb-like { }
 article footer ul.social-links li.g-plusone { margin-right: -15px !important; }
 
-/* @pagination */
+/* Pagination */
 .pagination { border-bottom: 1px solid #eee; border-top: 1px solid #eee; font-size: 11px; height: 36px; }	
 .page-numbers { display: block; float: left; list-style: none; }
 .page-numbers li { display: block; float: left; }
@@ -133,7 +128,7 @@ article footer ul.social-links li.g-plusone { margin-right: -15px !important; }
 .page-numbers li a.next:hover { background-position: 10px -508px; }	
 
 
-/* @comments */
+/* Comments */
 #comments { border-top: 1px solid #eee; margin-bottom: 30px; padding-top:15px; }
 #comments h1, #comments h2 { color: #111; font-size: 1em; font-weight: 500; display: block; margin: 0; }
 #comments ol, #comments ul { list-style: none; margin: 0; padding: 0; }
@@ -167,7 +162,7 @@ article footer ul.social-links li.g-plusone { margin-right: -15px !important; }
 .push { padding-bottom: 10px; }
 
 /* =============================================================================
-   @custom pages
+   Custom
    ========================================================================== */
 
 
@@ -206,10 +201,10 @@ article footer ul.social-links li.g-plusone { margin-right: -15px !important; }
 
 
 
-/* @end main */
+
 
 /* =============================================================================
-   @asides
+   Asides
    ========================================================================== */
 
 aside { }
@@ -224,7 +219,7 @@ aside section h1 { color: #111; font-size: 1em; font-weight: 500; display: block
 .twitter-icon { text-align: right; max-width: 60px; overflow: hidden; }
 
 /* =============================================================================
-   @footer
+   Footer
    ========================================================================== */
 
 footer[role="contentinfo"] { color: #aaa; padding: 60px 0 0; }
@@ -236,7 +231,7 @@ footer nav ul li {float: left; margin-right: 10px; }
 .copy { border-top: 1px solid #eee; padding-top: 15px; text-align: right; }
 
 /* =============================================================================
-   @generated classes
+   Generated classes
    ========================================================================== */
 
 .aligncenter { display: block; margin: 0 auto; }
@@ -257,7 +252,7 @@ img.size-large, img.size-medium, .attachment img,
 .gallery .gallery-caption { color: #aaa; margin-top: 0; text-align: center; }
 
 /* =============================================================================
-   @search
+   Search
    ========================================================================== */
 
 form[role="search"] { border-top: 1px solid #eee; display: block; margin: 0; padding: 15px 0; }
