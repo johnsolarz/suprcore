@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" <?php language_attributes(); ?>> <![endif]-->
-<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
-<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta charset="<?php bloginfo('charset'); ?>">
 
@@ -31,6 +31,8 @@
 	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/inc/root/apple-touch-icon.png">
 
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style.css">
+	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
@@ -39,15 +41,11 @@
        for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
   <script src="<?php echo get_template_directory_uri(); ?>/assets/js/libs/modernizr-2.0.6.min.js"></script>
 
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-
 	<div id="wrapper" class="container_12 clearfix">
-
 		<header id="masthead" class="grid_12 clearfix" role="banner">		
 			<a id="logo" href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?>" rel="index"><?php bloginfo('name'); ?></a>
 			<p class="visuallyhidden"><?php bloginfo('description'); ?></p>

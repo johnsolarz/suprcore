@@ -21,7 +21,7 @@
 		<div class="clear"></div>
 	</section>
 
-	<form role="search" method="get" action="<?php echo home_url( '/' ); ?>">
+	<form role="search" method="get" action="<?php echo home_url('/'); ?>">
 		<div>
 			<label class="visuallyhidden" for="s">Search for:</label>
 			<input type="search" class="search" value="Search + Enter" name="s" id="s" />

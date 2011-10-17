@@ -30,17 +30,17 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
   }
 
   /**
-   * Set the permalink structure to /year/postname/
+   * Set the permalink structure to /category/postname/
    */
-  if (get_option('permalink_structure') != '/%year%/%postname%/') {
-    update_option('permalink_structure', '/%year%/%postname%/');
+  if (get_option('permalink_structure') != '/%category%/%postname%/') {
+    update_option('permalink_structure', '/%category%/%postname%/');
   }
 
   /**
-   * Set upload folder to /assets/.
+   * Set upload folder to /uploads/.
    */
   update_option('uploads_use_yearmonth_folders', 0);
-  update_option('upload_path', 'assets');
+  update_option('upload_path', 'uploads');
 
   /**
    * Apply rewrites
@@ -49,7 +49,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
     $theme_name = next(explode('/themes/', get_stylesheet_directory()));
     global $wp_rewrite;
     $suprcore_new_non_wp_rules = array(
-      'assets/(.*)'      => 'wp-content/themes/'. $theme_name . '/assets/$1',
+      'assets/(.*)'   => 'wp-content/themes/'. $theme_name . '/assets/$1',
       'inc/(.*)'      => 'wp-content/themes/'. $theme_name . '/inc/$1',
       'plugins/(.*)'  => 'wp-content/plugins/$1'
     );
