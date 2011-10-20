@@ -5,10 +5,10 @@
 
 get_header(); ?>
  
-<div id="main" class="grid_12 alpha omega">
+<div id="main" class="grid_12 alpha omega" role="main">
     
-	<h2><?php _e('Just when it was going so well &hellip;', 'suprcore'); ?></h2>
-	<p><?php _e('Sorry, but the page you requested could not be found.', 'suprcore'); ?></p>
+	<p><strong><?php _e('Just when it was going so well &hellip;', 'suprcore'); ?></strong><br>
+	<?php _e('Sorry, but the page you requested could not be found.', 'suprcore'); ?></p>
 	<?php get_search_form(); ?>
 
 </div> 

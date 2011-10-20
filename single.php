@@ -5,7 +5,7 @@
  
 get_header(); ?> 
  
-<div id="main" class="grid_8 alpha">
+<div id="main" class="grid_8 alpha" role="main">
     
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 

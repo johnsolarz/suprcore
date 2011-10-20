@@ -85,4 +85,4 @@
 			</nav>
 		<?php } ?>
 
-		<div id="content" class="grid_12" role="main">
+		<div id="content" class="grid_12">
