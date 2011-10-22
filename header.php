@@ -32,7 +32,6 @@
 
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style.css">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
