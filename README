@@ -19,17 +19,11 @@ Changelog:
 		Conditional Google+ and Facebook integration
 2011.10.15	Restored assets directory and build structure
 		Revised css directory structure for improved @import performance
-2011.10.2	Build Script mods
+2011.10.2	Build script works!
 
-	Replaced in build.xml at line 623 
-	<replaceregexp match="&lt;link rel=&quot;?stylesheet&quot;?\s+href=&quot;?(.*)/${file.root.stylesheet}(?:\?.*)?&quot;?\s*&gt;" 
-        	replace="&lt;link rel=&quot;stylesheet&quot; href=&quot;\1/${css.sha}.css&quot;&gt;" flags="m">
-		<fileset dir="${dir.intermediate}" includes="${page-files}"/>
-	</replaceregexp>
-
-	Removed in build.xml
-	--remove-quotes from htmlclean target at line 722
-	--remove-quotes from htmlcompress target at line 767
-
-	Replaced in createproject.sh at line 71
-	cp -vr -- assets build inc *.css *.png *.php "$dst"
+		Replaced 
+		['&quot;] with &quot; in build.xml line 615 and 623 
+	
+		Removed
+		--remove-quotes from htmlclean target in build.xml line 722
+		--remove-quotes from htmlcompress target in build.xml line 767
