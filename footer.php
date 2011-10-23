@@ -53,8 +53,8 @@
 
 	
   <!-- scripts concatenated and minified via ant build script-->
-  <script defer src="<?php echo bloginfo('template_url'); ?>/assets/js/plugins.js"></script>
-  <script defer src="<?php echo bloginfo('template_url'); ?>/assets/js/script.js"></script>
+  <script defer src="<?php echo get_template_directory_uri(); ?>/assets/js/plugins.js"></script>
+  <script defer src="<?php echo get_template_directory_uri(); ?>/assets/js/script.js"></script>
   <!-- end scripts-->
 
 
