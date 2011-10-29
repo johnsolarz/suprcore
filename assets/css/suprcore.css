@@ -1,14 +1,14 @@
-/* ==|== suprcore styles =====================================================
-
-   eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee 
-   8   " 8   8 8   8 8   8  8  8 8  88 8   8  8    
-   8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee 
-      88 88  8 88    88   8 88   8   8 88   8 88   
-   8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
-
-   Build:
-   Author:
-   ========================================================================== */
+/*
+ * eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee 
+ * 8   " 8   8 8   8 8   8  8  8 8  88 8   8  8    
+ * 8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee 
+ *    88 88  8 88    88   8 88   8   8 88   8 88   
+ * 8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
+ *
+ * Build:
+ * 
+ * ==|== suprcore ==========================================================
+ */
 
 body, button, input, select, textarea {
 	color: #111;
@@ -162,7 +162,7 @@ article footer ul.social-links li.g-plusone { margin-right: -15px !important; }
 .push { padding-bottom: 10px; }
 
 /* =============================================================================
-   Custom
+   Custom styles
    ========================================================================== */
 
 
