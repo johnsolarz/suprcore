@@ -82,7 +82,7 @@ add_action('after_setup_theme', 'suprcore_setup');
 /**
  * Register our sidebars and widgetized areas.
  */
-$sidebars = array('Primary Sidebar', 'Footer 1', 'Footer 2', 'Footer 3', 'Footer 4');
+$sidebars = array('Sidebar', 'Footer 1', 'Footer 2', 'Footer 3', 'Footer 4');
 foreach ($sidebars as $sidebar) {
   register_sidebar(array('name'=> $sidebar,
     'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -126,46 +126,93 @@ function suprcore_entry_meta() {
   echo '<p class="byline author vcard">'. __('Written by', 'suprcore') .' <a href="'. get_author_posts_url(get_the_author_meta('id')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
 }
 
+if ( ! function_exists( 'suprcore_comment' ) ) :
 /**
  * Template for comments and pingbacks.
+ *
+ * To override this walker in a child theme without modifying the comments template
+ * simply create your own suprcore_comment(), and that function will be used instead.
+ *
  * Used as a callback by wp_list_comments() for displaying the comments.
+ *
+ * @since Twenty Eleven 1.0
  */
-if ( ! function_exists( 'suprcore_comment' ) ) :
 function suprcore_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
-		case '' :
+		case 'pingback' :
+		case 'trackback' :
 	?>
-	<li>
-		<article <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-			<header class="grid_1 alpha avatar">
-					<?php echo get_avatar($comment,$size='48',$default='<path_to_url>' ); ?>
-			</header>
-			
-			<div class="grid_7 omega comment">
-				<p><?php printf(__('<cite class="username">%s</cite>'), get_comment_author_link()) ?> <?php echo get_comment_text(); ?></p>
-			
+	<li class="post pingback">
+		<p><?php _e( 'Pingback:', 'suprcore' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'suprcore' ), '<span class="edit-link">', '</span>' ); ?></p>
+	<?php
+			break;
+		default :
+	?>
+	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+		<article id="comment-<?php comment_ID(); ?>" class="comment">
+
+
+			<p><?php printf(__('<cite class="comment-author">%s</cite>'), get_comment_author_link()) ?> <?php echo get_comment_text(); ?></p>
+
+			<footer class="comment-meta">
+			<div class="vcard">
+				<?php
+					$avatar_size = 50;
+					if ( '0' != $comment->comment_parent )
+						$avatar_size = 50;
+
+					echo get_avatar( $comment, $avatar_size, $default='<path_to_url>' );
+					
+					/* translators: 1: comment author, 2: date and time */
+					printf( __( '%1$s', 'suprcore' ),
+						sprintf( '<a href="%1$s"><time pubdate datetime="%2$s">%3$s</time></a>',
+							esc_url( get_comment_link( $comment->comment_ID ) ),
+							get_comment_time( 'c' ),
+							/* translators: 1: date, 2: time */
+							sprintf( __( '%1$s at %2$s', 'suprcore' ), get_comment_date(), get_comment_time() )
+						)
+					);				
+				
+				?>
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'suprcore' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				<?php edit_comment_link( __( 'Edit', 'suprcore' ), '<span class="edit-link">', '</span>' ); ?>
 				<?php if ( $comment->comment_approved == '0' ) : ?>
-					<em><?php _e( 'Your comment is awaiting moderation.', 'suprcore' ); ?></em>
-					<br>
+					<span class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'suprcore' ); ?></span>
 				<?php endif; ?>
-			</div>
-
-			<footer class="grid_7 omega">
-				<ul class="comment-tools">
-					<li><time><?php printf(__('%1$s at %2$s'), get_comment_date(), get_comment_time()) ?></time></li>
-					<li><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">Permalink</a></li> 
-					<li><?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?></li> 
-					<li><?php edit_comment_link(__('(Edit)'),' ','') ?></li>
-				</ul>
-			</footer>
-
-		</article>
+				</div><!-- .vcard -->
+			</footer><!-- .comment-meta -->
+			
+		</article><!-- #comment-## -->
 	<!-- </li> is added by wordpress automatically -->
 	<?php
 			break;
 	endswitch;
 }
-endif;
+endif; // ends check for suprcore_comment()
 
+/**
+ * Modify default WordPress comment form
+ * http://devpress.com/blog/using-the-wordpress-comment-form/
+ */
+add_filter( 'comment_form_default_fields', 'suprcore_comment_form_default_fields' );
+
+function suprcore_comment_form_default_fields( $fields ) {
+	$commenter = wp_get_current_commenter();
+	$req = get_option( 'require_name_email' );
+	$fields['author'] = '<div class="comment-form-author label"><label for="author">' . __( 'Name' ) . '</label>' . ( $req ? '<span class="required">*</span>' : '' ) . '</div><div class="input push"><input type="text" id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"'. $aria_req . ' /></div>';
+	$fields['email'] = '<div class="comment-form-email label"><label for="email">' . __( 'Email' ) . '</label>' . ( $req ? '<span class="required">*</span>' : '' ) . '</div><div class="input push"><input type="text" id="email" name="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30"'. $aria_req . ' /></div>';
+	$fields['url'] = '<div class="comment-form-url label"><label for="url">' . __( 'Website' ) . '</label></div><div class="input push"><input type="text" id="url" name="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></div>';
+
+	return $fields;
+}
+
+add_filter( 'comment_form_field_comment', 'suprcore_comment_form_field_comment' );
+
+function suprcore_comment_form_field_comment( $comment_field ) {
+
+	$comment_field = '<div class="comment-form-comment label"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label></div><div class="input push"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></div>';
+
+	return $comment_field;
+}
 

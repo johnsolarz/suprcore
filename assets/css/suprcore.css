@@ -5,7 +5,7 @@
  *    88 88  8 88    88   8 88   8   8 88   8 88   
  * 8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
  *
- * Suprcore™ — https://github.com/johnsolarz/suprcore © 2011 
+ * Build: 
  * 
  * ==|== suprcore ==========================================================
  */
@@ -86,7 +86,7 @@ h6 { font-size: 1em; text-transform: uppercase; }
 #breadcrumbs a { border-bottom: none; color: #111; margin-left: 10px; }
 #breadcrumbs a:hover { border-bottom: 1px solid #111; }
 #breadcrumbs img { margin-left: 10px; }
-#breadcrumbs .current-item { font-weight: 500; margin-left: 10px; }
+#breadcrumbs .current-item { font-weight: bold; margin-left: 10px; }
 
 /* =============================================================================
    Main content
@@ -95,9 +95,9 @@ h6 { font-size: 1em; text-transform: uppercase; }
 #content { padding-top: 45px; }
 
 #main { }
-article { border-top: 1px solid #eee;  padding-top: 15px; }
+article { border-top: 1px solid #eee;  padding: 1.5em 0; }
 article header {}
-article .post-category { font-weight: 500; display: block; }
+article .post-category { font-weight: bold; display: block; }
 article .post-category a { color: #111; }
 article .comments { color: #aaa; }
 article .post-comment { display: block; }
@@ -107,7 +107,7 @@ article h1 a, article h1 a:visited { color: #111; }
 
 article p { margin-right: 40px; }
 
-article footer { padding-top: 2em; }
+article footer { padding-top: 1.5em; }
 article footer ul.social-links { list-style: none; float: left; height: 30px; padding-left: 0; }
 article footer ul.social-links li { float: left; }
 article footer ul.social-links li .twitter-share-button { }
@@ -129,41 +129,52 @@ article footer ul.social-links li.g-plusone { margin-right: -15px !important; }
 
 
 /* Comments */
-#comments { border-top: 1px solid #eee; margin-bottom: 30px; padding-top:15px; }
-#comments h1, #comments h2 { color: #111; font-size: 1em; font-weight: 500; display: block; margin: 0; }
-#comments ol, #comments ul { list-style: none; margin: 0; padding: 0; }
-#comments article { float: left; }
-#comments article .avatar { float: left; margin-top: 2px; }
-#comments .username { color: #EE0258; font-style: normal; margin-right: 5px; }
-#comments .username a { color: #EE0258;}
-#comments .logged-in { font-size: 11px; }
+#comments { border-top: 1px solid #eee; }
+#comments #respond { border-top: 1px solid #eee; }
+#comments #respond #reply-title, #comments #comments-title { font-size: 1em; }
+#comments #respond #commentform .label { clear: left; float: left; margin-right: 10px; text-align: right; width: 60px;}
+#comments #respond #commentform .input { float: left; margin-left: 10px; }
 
-#comments article .comment { float: right; }
-#comments article .comment p { margin-bottom: 0; }
-		
-#comments article footer { color: #aaa; float: right; font-size: 11px; }
-#comments article footer ul.comment-tools { float: left; list-style: none; height: 30px; padding-left: 0; }
-#comments article footer ul.comment-tools li { float: left; margin-right: 5px; }
-			
-#comments .submit-title { color: #aaa; text-align: right; }
-#comments .submit-button { clear: both; }
+.form-allowed-tags { clear: both; color: #aaa; font-size: 11px; padding-left: 80px; }
+.form-submit { padding-left: 80px; }
+.push { padding-bottom: 1em; }
 
-#comments .navigation { border-top: 1px solid #eee; padding-bottom: 10px; padding-top: 10px; }
-#comments .navigation .nav-previous { text-align: left; }
-#comments .navigation .nav-next { text-align: right; }
-
-#comments .comment-list { padding-top: 15px; }
-#comments .comment-list li.odd { background: #f5f5f5; }
-
-#comment-form { border-top: 1px solid #eee; padding-top: 15px; }
-#logged-in { color: #aaa; }
-
-.pad { padding-top: 10px; }
-.push { padding-bottom: 10px; }
+.commentlist { list-style: none; margin: 0; padding: 0; }
+.commentlist li { border-top: 1px solid #eee; margin: 0; padding: 0 0 0 80px; position:relative; }
+.commentlist li.pingback comment-author { }
+.commentlist li.pingback div.vcard { }
+.commentlist li article.comment { border-top: none; }
+.comment-author { font-style: normal; margin-right: 5px; }
+.comment-author, .comment-author a { color: #FF3333; }
+.commentlist li article.comment footer.comment-meta { font-size: 11px; padding-top: 0; }
+.commentlist li article.comment footer.comment-meta div.vcard { }
+.commentlist li article.comment footer.comment-meta div.vcard img.avatar { left: 10px; position: absolute; top: 18px; }
+.commentlist li article.comment footer.comment-meta .comment-reply-link { background: url(../img/icon-reply.png) no-repeat scroll 0 2px transparent; margin: 0 5px 0 2px; padding: 0 0 0 15px; }	
+.commentlist li ul { list-style: square; margin: 0 0 1em; }
+.commentlist li ul.children { list-style: none; margin: 0; padding: 0; text-indent: 0; }
+.commentlist li ul.children li.depth-2 { }
+.commentlist li ul.children li.depth-3 { }
+.commentlist li ul.children li.depth-4 { }
+.commentlist li ul.children li.depth-5 { }
+.commentlist ul.children li.odd { background: none; }
+.commentlist ul.children li.even { background: none; }		
 
 /* =============================================================================
    Custom styles
    ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -212,7 +223,7 @@ aside section { border-top: 1px solid #eee; padding: 0 0 15px; padding-top: 15px
 aside section ul, aside ul li, aside li ul { list-style:none; margin: 0; padding: 0; }
 aside section li ul li:before { content: "\2015"; color: #aaa; }
 aside section li ul li { list-style: none; padding-left: 10px; }
-aside section h1 { color: #111; font-size: 1em; font-weight: 500; display: block; margin: 0; }
+aside section h1 { color: #111; font-size: 1em; font-weight: bold; display: block; margin: 0; }
 
 .twitter-link { background: url(../img/socials.png) no-repeat scroll 0 -725px; padding-left: 20px; display: block; margin-top: 1.5em; }
 .twitter-link:hover { background-position: 0 -791px; }

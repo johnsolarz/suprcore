@@ -2,7 +2,7 @@
 
 	<?php 
 	
-	if ( ! dynamic_sidebar('Primary Sidebar') ) : ?>
+	if ( ! dynamic_sidebar('Sidebar') ) : ?>
 
 	<section> 
 		<h1>Info</h1>
