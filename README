@@ -29,4 +29,4 @@ Changelog:
 		--remove-quotes from htmlclean target in build.xml line 722
 		--remove-quotes from htmlcompress target in build.xml line 767
 2011.11.22	Added support for threaded comments
-	Improved commenting functionality and defaults
+		Improved commenting functionality and defaults
