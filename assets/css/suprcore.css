@@ -5,7 +5,7 @@
  *    88 88  8 88    88   8 88   8   8 88   8 88   
  * 8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
  *
- * Build: 
+ * Suprcore™ — https://github.com/johnsolarz/suprcore © 2011 
  * 
  * ==|== suprcore ==========================================================
  */
@@ -130,7 +130,7 @@ article footer ul.social-links li.g-plusone { margin-right: -15px !important; }
 
 /* Comments */
 #comments { border-top: 1px solid #eee; }
-#comments #respond { border-top: 1px solid #eee; }
+#comments #respond { }
 #comments #respond #reply-title, #comments #comments-title { font-size: 1em; }
 #comments #respond #commentform .label { clear: left; float: left; margin-right: 10px; text-align: right; width: 60px;}
 #comments #respond #commentform .input { float: left; margin-left: 10px; }
@@ -139,7 +139,7 @@ article footer ul.social-links li.g-plusone { margin-right: -15px !important; }
 .form-submit { padding-left: 80px; }
 .push { padding-bottom: 1em; }
 
-.commentlist { list-style: none; margin: 0; padding: 0; }
+.commentlist { border-bottom: 1px solid #eee; list-style: none; margin: 0; padding: 0; }
 .commentlist li { border-top: 1px solid #eee; margin: 0; padding: 0 0 0 80px; position:relative; }
 .commentlist li.pingback comment-author { }
 .commentlist li.pingback div.vcard { }
