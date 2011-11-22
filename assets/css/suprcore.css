@@ -135,7 +135,7 @@ article footer ul.social-links li.g-plusone { margin-right: -15px !important; }
 #comments #respond #commentform .label { clear: left; float: left; margin-right: 10px; text-align: right; width: 60px;}
 #comments #respond #commentform .input { float: left; margin-left: 10px; }
 
-.form-allowed-tags { clear: both; color: #aaa; font-size: 11px; padding-left: 80px; }
+.form-allowed-tags { clear: both; color: #aaa; font-size: 11px; margin-right: 40px; padding-left: 80px; }
 .form-submit { padding-left: 80px; }
 .push { padding-bottom: 1em; }
 
