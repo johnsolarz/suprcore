@@ -1,33 +1,21 @@
 /* the humans responsible & colophon */
 /* humanstxt.org */
 
-/* ------------------------------------
-  TEAM
-  ---------------------------------- */
+/* TEAM */
 
-  John Solarz
-  Code & Design
-  —
+  John Solarz - Code & Design
   http://johnsolarz.com
-  hi@johnsolarz.com
   @johnsolarz
-  
 
   Eight Seven Central
-  —
   http://eightsevencentral.com
-  design@eightsevencentral.com
   @87central
 
-/* ------------------------------------
-  THANKS
-  ---------------------------------- */
+/* THANKS */
 
 
 
-/* ------------------------------------
-  SITE
-  ---------------------------------- */
+/* SITE */
 
   Standards: HTML5, CSS3
   Components: Modernizr, jQuery

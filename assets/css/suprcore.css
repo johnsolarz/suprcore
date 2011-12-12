@@ -5,11 +5,20 @@
  *    88 88  8 88    88   8 88   8   8 88   8 88   
  * 8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
  *
- * Suprcore™ — https://github.com/johnsolarz/suprcore © 2011 
- * 
- * ==|== suprcore ==========================================================
+ * Suprcore™ — © 8/7 Central 2011 
  */
 
+
+/* =============================================================================
+   @imports
+   ========================================================================== */
+
+
+
+/* =============================================================================
+   Base styles
+   ========================================================================== */
+   
 body, button, input, select, textarea {
 	color: #111;
 	font: normal 12px/1.5 "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -36,7 +45,6 @@ h3 { font-size: 1.5em; }
 h4 { font-size: 1.25em; }
 h5 { font-size: 1em; }
 h6 { font-size: 1em; text-transform: uppercase; }
-
 
 
 /* =============================================================================
@@ -110,9 +118,10 @@ article p { margin-right: 40px; }
 article footer { padding-top: 1.5em; }
 article footer ul.social-links { list-style: none; float: left; height: 30px; padding-left: 0; }
 article footer ul.social-links li { float: left; }
-article footer ul.social-links li .twitter-share-button { }
+article footer ul.social-links li .twitter-share-button { margin-right: -10px !important; }
+article footer ul.social-links li.g-plusone { margin-right: -10px !important; }
 article footer ul.social-links li .fb-like { }
-article footer ul.social-links li.g-plusone { margin-right: -15px !important; }
+
 
 /* Pagination */
 .pagination { border-bottom: 1px solid #eee; border-top: 1px solid #eee; font-size: 11px; height: 36px; }	
