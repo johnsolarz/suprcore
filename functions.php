@@ -22,18 +22,15 @@ $gplus_btn = 0;
 // Your Twitter username (optional)
 $your_twitter_username = "";
 
-/**
- * Load necessary files
- */
+// Load necessary files
 require_once get_template_directory() . '/inc/suprcore-cleanup.php';	// Code cleanup/removal
 require_once get_template_directory() . '/inc/suprcore-dashboard.php';	// Admin login and dashboard
 require_once get_template_directory() . '/inc/suprcore-htaccess.php';	// Rewrites and h5bp htaccess
 require_once get_template_directory() . '/inc/suprcore-socials.php';	// Twitter and FB integration
-//require_once get_template_directory() . '/inc/suprcore-post-type.php');	// Custom content template		
+//require_once get_template_directory() . '/inc/custom-post.php';	// Custom post type template
+//require_once get_template_directory() . '/inc/custom-meta.php';	// Custom meta box template	
 	
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- */
+// Set up theme defaults and registers support for various WordPress features
 function suprcore_setup() {
   // Tell the TinyMCE editor to use editor-style.css
   add_editor_style();
@@ -79,9 +76,7 @@ function suprcore_setup() {
 }
 add_action('after_setup_theme', 'suprcore_setup');
 
-/**
- * Register our sidebars and widgetized areas.
- */
+// Register our sidebars and widgetized areas
 $sidebars = array('Sidebar', 'Footer 1', 'Footer 2', 'Footer 3', 'Footer 4');
 foreach ($sidebars as $sidebar) {
   register_sidebar(array('name'=> $sidebar,
@@ -92,18 +87,14 @@ foreach ($sidebars as $sidebar) {
   ));
 }
 
-/**
- * Set our wp_nav_menu() fallback, suprcore_menu()
- */
+// Set our wp_nav_menu() fallback, suprcore_menu()
 function suprcore_menu() {
 	echo '<ul>';
 	wp_list_pages('title_li=');
 	echo '</ul>';
 }
 
-/**
- * Display navigation to next/previous pages when applicable
- */
+// Display navigation to next/previous pages when applicable
 function suprcore_content_nav() {
   global $wp_query;
 
@@ -118,9 +109,7 @@ function suprcore_content_nav() {
   <?php endif;
 }
 
-/**
- * Return post entry meta information
- */
+// Return post entry meta information
 function suprcore_entry_meta() {
   echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'suprcore'), get_the_time('l, F jS, Y'), get_the_time()) .'</time>';
   echo '<p class="byline author vcard">'. __('Written by', 'suprcore') .' <a href="'. get_author_posts_url(get_the_author_meta('id')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
@@ -135,7 +124,7 @@ if ( ! function_exists( 'suprcore_comment' ) ) :
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  *
- * @since Twenty Eleven 1.0
+ * @since Suprcore 2.2
  */
 function suprcore_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;

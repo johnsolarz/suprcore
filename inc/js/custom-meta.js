@@ -1,9 +1,9 @@
 jQuery(document).ready(function() {
  
- jQuery('#supr_upload_photo_button').click(function() {
+ jQuery('#custom_button').click(function() {
   window.send_to_editor = function(html) {
    imgurl = jQuery('img',html).attr('src');
-   jQuery('#supr_photo').val(imgurl);
+   jQuery('#custom_text').val(imgurl);
    tb_remove();
   }
  

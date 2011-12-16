@@ -1,21 +1,12 @@
 <?php
-
-/**
- * Custom Posts template:
- * 
- *   1. Add Custom Content Types to left-nav Admin Menu and output correct update messages 
- *   2. Register taxonomies for each new Content Page and add terms to post_class()
- *   3. Add "Meta Box" options, callback, save and upload functions to Post editor 
- *   4. Manage custom content columns in admin view
- */
  
 /** 
- * Create custom post type
+ * Custom post type template: "Book"
  * http://codex.wordpress.org/Function_Reference/register_post_type
  */
  
-add_action('init', 'post_type_book');
-function post_type_book() 
+add_action('init', 'custom_post_type_book');
+function custom_post_type_book() 
 {
   $labels = array(
     'name' => _x('Books', 'post type general name'),
@@ -48,9 +39,9 @@ function post_type_book()
   register_post_type('book',$args);
 }
 
-// Add filter to ensure the text Book, or book, is displayed when user updates a book 
-add_filter('post_updated_messages', 'updated_messages_book');
-function updated_messages_book( $messages ) {
+// Add filter to ensure the proper text is displayed when user updates 
+add_filter('post_updated_messages', 'custom_updated_messages_book');
+function custom_updated_messages_book( $messages ) {
   global $post, $post_ID;
 
   $messages['book'] = array(
@@ -73,10 +64,10 @@ function updated_messages_book( $messages ) {
   return $messages;
 }
 
-//display contextual help for Books
-add_action( 'contextual_help', 'help_text_book', 10, 3 );
+//display contextual help
+add_action( 'contextual_help', 'custom_help_text_book', 10, 3 );
 
-function help_text_book($contextual_help, $screen_id, $screen) { 
+function custom_help_text_book($contextual_help, $screen_id, $screen) { 
   //$contextual_help .= var_dump($screen); // use this to help determine $screen->id
   if ('book' == $screen->id ) {
     $contextual_help =
@@ -101,15 +92,15 @@ function help_text_book($contextual_help, $screen_id, $screen) {
 }
 
 /**
- * Create custom taxonomies
+ * Custom taxonomies
  * http://codex.wordpress.org/Function_Reference/register_taxonomy
  */
  
 //hook into the init action and call create_book_taxonomies when it fires
-add_action( 'init', 'create_book_taxonomies', 0 );
+add_action( 'init', 'custom_book_taxonomies', 0 );
 
 //create two taxonomies, genres and writers for the post type "book"
-function create_book_taxonomies() 
+function custom_book_taxonomies() 
 {
   // Add new taxonomy, make it hierarchical (like categories)
   $labels = array(
@@ -162,16 +153,18 @@ function create_book_taxonomies()
   ));
 }
 
-// Add new custom taxonomies to post_class()
-// http://www.wptavern.com/forum/troubleshooting/1758-custom-taxonomy-css-class.html#post17171
+/** 
+ * Append new custom taxonomies to post_class()
+ * http://www.wptavern.com/forum/troubleshooting/1758-custom-taxonomy-css-class.html#post17171
+ */
 
-add_filter( 'post_class', 'suprcore_post_class', 10, 3 );
-if( !function_exists( 'suprcore_post_class' ) ) {
+add_filter( 'post_class', 'custom_post_class', 10, 3 );
+if( !function_exists( 'custom_post_class' ) ) {
     /**
      * Append taxonomy terms to post class.
      * @since 2011-02-01
      */
-    function suprcore_post_class( $classes, $class, $ID ) {
+    function custom_post_class( $classes, $class, $ID ) {
         $taxonomy = array('genre', 'writer');
         $terms = get_the_terms( (int) $ID, $taxonomy );
         if( !empty( $terms ) ) {
@@ -187,173 +180,27 @@ if( !function_exists( 'suprcore_post_class' ) ) {
 
 
 /**
- * Create custom meta box
- * http://sicdigital.com/2010/07/create-custom-post-type-for-image-upload-wordpress3/
- */
-
-$prefix = 'supr_';
- 
-$meta_box = array(
-	'id' => 'meta-box-book',
-	'title' => 'Book Info',
-	'page' => 'book',
-	'context' => 'normal',
-	'priority' => 'high',
-	'fields' => array(
-		array(
-			'name' => 'Title',
-			'desc' => 'The title',
-			'id' => $prefix .'title',
-			'type' => 'text',
-			'std' => ''
-		),
-		array(
-			'name' => 'Photo',
-			'desc' => 'Please select a photo',
-			'id' => $prefix .'photo',
-			'type' => 'text',
-			'std' => ''
-		),
-		array(
-			'name' => '',
-			'desc' => '',
-			'id' => $prefix .'upload_photo_button',
-			'type' => 'button',
-			'std' => 'Browse'
-		),
-	)
-);
- 
-add_action('admin_menu', 'suprcore_add_box');
- 
-// Add meta box
-function suprcore_add_box() {
-	global $meta_box;
- 
-	add_meta_box($meta_box['id'], $meta_box['title'], 'suprcore_show_box', $meta_box['page'], $meta_box['context'], $meta_box['priority']);
-}
- 
-// Callback function to show fields in meta box
-function suprcore_show_box() {
-	global $meta_box, $post;
- 
-	// Use nonce for verification
-	echo '<input type="hidden" name="suprcore_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
- 
-	echo '<table class="form-table">';
- 
-	foreach ($meta_box['fields'] as $field) {
-		// get current post meta data
-		$meta = get_post_meta($post->ID, $field['id'], true);
- 
-		echo '<tr>',
-				'<th style="width:20%"><label for="', $field['id'], '">', $field['name'], '</label></th>',
-				'<td>';
-		switch ($field['type']) {
- 
-			//If Text		
-			case 'text':
-				echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />',
-					'<br />', $field['desc'];
-				break;
-
-			//If Text Area			
-			case 'textarea':
-				echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>',
-					'<br />', $field['desc'];
-				break;
-
-			//If Button	
-			case 'button':
-				echo '<input type="button" name="', $field['id'], '" id="', $field['id'], '"value="', $meta ? $meta : $field['std'], '" />';
-				break;
-		}
-		
-		echo 	'<td>',
-			'</tr>';
-	}
- 
-	echo '</table>';
-}
- 
-add_action('save_post', 'suprcore_save_data');
- 
-// Save data from meta box
-function suprcore_save_data($post_id) {
-	global $meta_box;
- 
-	// verify nonce
-	if (!wp_verify_nonce($_POST['suprcore_meta_box_nonce'], basename(__FILE__))) {
-		return $post_id;
-	}
- 
-	// check autosave
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-		return $post_id;
-	}
- 
-	// check permissions
-	if ('page' == $_POST['post_type']) {
-		if (!current_user_can('edit_page', $post_id)) {
-			return $post_id;
-		}
-	} elseif (!current_user_can('edit_post', $post_id)) {
-		return $post_id;
-	}
- 
-	foreach ($meta_box['fields'] as $field) {
-		$old = get_post_meta($post_id, $field['id'], true);
-		$new = $_POST[$field['id']];
- 
-		if ($new && $new != $old) {
-			update_post_meta($post_id, $field['id'], $new);
-		} elseif ('' == $new && $old) {
-			delete_post_meta($post_id, $field['id'], $old);
-		}
-	}
-}
-
-/**
- * Get the WordPress media upload working
- * http://www.webmaster-source.com/2010/01/08/using-the-wordpress-uploader-in-your-plugin-or-theme/
- */
-
-function my_admin_scripts() {
-	wp_enqueue_script('media-upload');
-	wp_enqueue_script('thickbox');
-	wp_register_script('my-upload', get_bloginfo('template_url') . '/inc/js/suprcore-post-type.js', array('jquery','media-upload','thickbox'));
-	wp_enqueue_script('my-upload');
-}
-
-function my_admin_styles() {
-	wp_enqueue_style('thickbox');
-}
-
-add_action('admin_print_scripts', 'my_admin_scripts');
-add_action('admin_print_styles', 'my_admin_styles');
-
-/**
- * Manage custom columns in custom post WP admin
+ * Manage custom post admin columns
  * http://shibashake.com/wordpress-theme/add-custom-post-type-columns
  */
  
-add_filter('manage_edit-book_columns', 'supr_columns');
-function supr_columns($book_columns) {
+add_filter('manage_edit-book_columns', 'custom_post_columns');
+function custom_post_columns($book_columns) {
 	$new_columns['cb'] = '<input type="checkbox" />';
 	$new_columns['title'] = _x('Title', 'column name');
-	$new_columns['supr_title'] = _x('Book Title', 'column name');	
+	$new_columns['custom_post_title'] = _x('Book Title', 'column name');	
 	$new_columns['author'] = __('Author');
  	$new_columns['date'] = _x('Date', 'column name');
  
 	return $new_columns;
 }
 
-add_action('manage_book_posts_custom_column',  'manage_supr_columns');
-function manage_supr_columns($name) {
+add_action('manage_book_posts_custom_column',  'manage_custom_post_columns');
+function manage_custom_post_columns($name) {
     global $post;
     switch ($name) {
-        case 'supr_title':
-            echo get_post_meta($post->ID, 'supr_title', true);
+        case 'custom_post_title':
+            echo get_post_meta($post->ID, 'custom_post_title', true);
 			break;
     }
 }
