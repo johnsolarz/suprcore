@@ -26,8 +26,8 @@ $your_twitter_username = "";
 require_once get_template_directory() . '/inc/suprcore-cleanup.php';	// Code cleanup
 require_once get_template_directory() . '/inc/suprcore-htaccess.php';	// Custom rewrites and h5bp htaccess
 require_once get_template_directory() . '/inc/suprcore-socials.php';	// Twitter and FB integration
-require_once get_template_directory() . '/inc/suprcore-post.php';	// Custom post type template
-require_once get_template_directory() . '/inc/suprcore-meta.php';	// Custom meta box template	
+//require_once get_template_directory() . '/inc/suprcore-post.php';	// Custom post type template
+//require_once get_template_directory() . '/inc/suprcore-meta.php';	// Custom meta box template	
 	
 // Set up theme defaults and registers support for various WordPress features
 function suprcore_setup() {
