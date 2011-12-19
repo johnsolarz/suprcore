@@ -191,7 +191,7 @@ add_action('save_post', 'save_custom_meta');
 function my_admin_scripts() {
 	wp_enqueue_script('media-upload');
 	wp_enqueue_script('thickbox');
-	wp_register_script('my-upload', get_bloginfo('template_url') . '/inc/js/custom-meta.js', array('jquery','media-upload','thickbox'));
+	wp_register_script('my-upload', get_bloginfo('template_url') . '/inc/js/suprcore-meta.js', array('jquery','media-upload','thickbox'));
 	wp_enqueue_script('my-upload');
 }
 

@@ -5,10 +5,10 @@
 			<?php get_sidebar('footer'); ?>
 					
 			<nav class="grid_8 alpha">
-				<?php wp_nav_menu( array( 
-					'container' => 'false', 
-					'fallback_cb' => 'suprcore_menu', 
-					'theme_location' => 'footer_navigation')); 
+				<?php wp_nav_menu(array(
+					'container' => '', 
+					'theme_location' => 'utility_navigation',
+					'walker' => new suprcore_nav_walker())); 
 				?>
 			</nav>
 			

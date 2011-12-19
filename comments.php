@@ -8,8 +8,7 @@
  * located in the functions.php file.
  *
  * @package WordPress
- * @subpackage suprcore
- * @since suprcore 1.0
+ * @subpackage Suprcore
  */
 ?>
 	<section id="comments">
@@ -72,6 +71,6 @@
 		<p class="nocomments"><?php _e( 'Comments are closed.', 'suprcore' ); ?></p>
 	<?php endif; ?>
 
-	<?php comment_form(); ?>
+	<?php comment_form( array('comment_notes_after' => '' )); ?>
 
 </section><!-- #comments -->

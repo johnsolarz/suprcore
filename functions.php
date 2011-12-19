@@ -23,12 +23,11 @@ $gplus_btn = 0;
 $your_twitter_username = "";
 
 // Load necessary files
-require_once get_template_directory() . '/inc/suprcore-cleanup.php';	// Code cleanup/removal
-require_once get_template_directory() . '/inc/suprcore-dashboard.php';	// Admin login and dashboard
-require_once get_template_directory() . '/inc/suprcore-htaccess.php';	// Rewrites and h5bp htaccess
+require_once get_template_directory() . '/inc/suprcore-cleanup.php';	// Code cleanup
+require_once get_template_directory() . '/inc/suprcore-htaccess.php';	// Custom rewrites and h5bp htaccess
 require_once get_template_directory() . '/inc/suprcore-socials.php';	// Twitter and FB integration
-//require_once get_template_directory() . '/inc/custom-post.php';	// Custom post type template
-//require_once get_template_directory() . '/inc/custom-meta.php';	// Custom meta box template	
+require_once get_template_directory() . '/inc/suprcore-post.php';	// Custom post type template
+require_once get_template_directory() . '/inc/suprcore-meta.php';	// Custom meta box template	
 	
 // Set up theme defaults and registers support for various WordPress features
 function suprcore_setup() {
@@ -71,7 +70,7 @@ function suprcore_setup() {
   add_theme_support('menus');
   register_nav_menus(array(
     'primary_navigation' => __('Primary Navigation', 'suprcore'),
-    'footer_navigation' => __('Footer Navigation', 'suprcore')
+    'utility_navigation' => __('Utility Navigation', 'suprcore')
   ));
 }
 add_action('after_setup_theme', 'suprcore_setup');
@@ -85,13 +84,6 @@ foreach ($sidebars as $sidebar) {
     'before_title' => '<h1>',
     'after_title' => '</h1>'
   ));
-}
-
-// Set our wp_nav_menu() fallback, suprcore_menu()
-function suprcore_menu() {
-	echo '<ul>';
-	wp_list_pages('title_li=');
-	echo '</ul>';
 }
 
 // Display navigation to next/previous pages when applicable
@@ -147,9 +139,9 @@ function suprcore_comment( $comment, $args, $depth ) {
 			<footer class="comment-meta">
 			<div class="vcard">
 				<?php
-					$avatar_size = 50;
+					$avatar_size = 30;
 					if ( '0' != $comment->comment_parent )
-						$avatar_size = 50;
+						$avatar_size = 30;
 
 					echo get_avatar( $comment, $avatar_size, $default='<path_to_url>' );
 					
@@ -200,7 +192,7 @@ add_filter( 'comment_form_field_comment', 'suprcore_comment_form_field_comment' 
 
 function suprcore_comment_form_field_comment( $comment_field ) {
 
-	$comment_field = '<div class="comment-form-comment label"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label></div><div class="input push"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></div>';
+	$comment_field = '<div class="comment-form-comment label"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label></div><div class="input push"><textarea id="comment" name="comment" style="width:380px" rows="8" aria-required="true"></textarea></div>';
 
 	return $comment_field;
 }

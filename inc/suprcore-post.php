@@ -178,7 +178,6 @@ if( !function_exists( 'custom_post_class' ) ) {
     }
 }
 
-
 /**
  * Manage custom post admin columns
  * http://shibashake.com/wordpress-theme/add-custom-post-type-columns

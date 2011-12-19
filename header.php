@@ -58,8 +58,7 @@
 			</nav>
 			<nav role="navigation">
 				<?php wp_nav_menu(array(
-					'container' => 'false', 
-					'fallback_cb' => 'suprcore_menu', 
+					'container' => '', 
 					'theme_location' => 'primary_navigation',
 					'walker' => new suprcore_nav_walker())); 
 				?>
