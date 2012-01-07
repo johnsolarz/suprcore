@@ -6,6 +6,24 @@
 <!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
+
+	<!--
+	**********************************************************************
+
+	======================================================================
+	Build:
+	======================================================================
+	
+	* © 8/7 Central 2012
+	* www.eightsevencentral.com
+	* The design & code of this web site is not licenced for public use.
+	* View source fo` eva...
+
+	======================================================================
+
+	**********************************************************************
+	-->
+
   <meta charset="utf-8">
 
   <!-- Use the .htaccess and remove these lines to avoid edge case issues.
