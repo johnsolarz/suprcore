@@ -5,16 +5,10 @@
  *    88 88  8 88    88   8 88   8   8 88   8 88   
  * 8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
  * 
- *	Suprcore™
- *	https://github.com/johnsolarz/suprcore
- *	© 8/7 Central 2012
+ *  Suprcore™
+ *  https://github.com/johnsolarz/suprcore
+ *  © 8/7 Central 2011
  */
-
-
-/* =============================================================================
-   @imports
-   ========================================================================== */
-
 
 
 /* =============================================================================
@@ -81,6 +75,7 @@ h6 { font-size: 1em; margin: 1em 0; }
 * html #masthead nav ul li.current-menu-parent a,
 * html #masthead nav ul li a:hover { color: #111; }
 
+
 /* =============================================================================
    Feature
    ========================================================================== */
@@ -97,6 +92,7 @@ h6 { font-size: 1em; margin: 1em 0; }
 #breadcrumbs a:hover { border-bottom: 1px solid #111; }
 #breadcrumbs img { margin-left: 10px; }
 #breadcrumbs .current-item { font-weight: bold; margin-left: 10px; }
+
 
 /* =============================================================================
    Main content
@@ -117,8 +113,8 @@ article h1 a, article h1 a:visited { color: #111; }
 
 article p { margin-right: 40px; }
 
-article footer { padding-top: 1.5em; }
-article footer ul.social-links { list-style: none; float: left; height: 30px; padding-left: 0; }
+article footer { clear: both; padding-top: 1.5em; }
+article footer ul.social-links { list-style: none; float: left; padding-left: 0; }
 article footer ul.social-links li { float: left; }
 article footer ul.social-links li .twitter-share-button { margin-right: -10px !important; }
 article footer ul.social-links li.g-plusone { margin-right: -10px !important; }
@@ -142,9 +138,9 @@ article footer ul.social-links li .fb-like { }
 /* Comments */
 #comments { border-top: 1px solid #eee; }
 #comments #respond { border-top: 1px solid #eee; }
-#comments #respond #reply-title, #comments #comments-title { font-size: 1em; }
+#comments #respond #reply-title, #comments #comments-title { font-size: 1em; font-weight: normal; margin: 0; padding: 1.5em 0; }
 #comments #respond #reply-title small { font-size: 1em; margin-left: 5px; }
-#comments #respond #commentform .label { clear: left; float: left; margin-right: 10px; text-align: right; width: 60px;}
+#comments #respond #commentform .label { clear: left; float: left; margin-right: 10px; width: 60px;}
 #comments #respond #commentform .input { float: left; margin-left: 10px; }
 
 .form-allowed-tags { clear: both; color: #aaa; font-size: 11px; margin-right: 40px; padding-left: 80px; }
@@ -152,16 +148,25 @@ article footer ul.social-links li .fb-like { }
 .push { padding-bottom: 1em; }
 
 .commentlist { list-style: none; margin: 0; padding: 0; }
-.commentlist li { border-top: 1px solid #eee; margin: 0; padding: 0 0 0 40px; position:relative; }
-.commentlist li.pingback comment-author { }
-.commentlist li.pingback div.vcard { }
-.commentlist li article.comment { border-top: none; }
-.comment-author { font-style: normal; margin-right: 5px; }
-.comment-author, .comment-author a { color: #FF3333; }
-.commentlist li article.comment footer.comment-meta { font-size: 11px; padding-top: 0; }
+.commentlist li { margin: 0; padding: 0 0 0 40px; position:relative; }
+.commentlist li.pingback p { border-top: 1px solid #eee; margin-bottom: 0; padding: 1.5em 0; }
+.commentlist li.pingback .pingback-title { font-style: normal; font-weight: bold; margin-right: 5px; }
+.commentlist li.pingback:hover a { color: #666; }
+.commentlist li.pingback:hover a:hover { color: #111; }
+.commentlist li.comment article { }
+.commentlist li.comment article .comment-author { font-style: normal; font-weight: bold; margin-right: 5px; }
+.commentlist li.comment article .comment-author a { color: #111; }
+.commentlist li article.comment footer.comment-meta { font-size: 11px; margin: -1.5em 0 0; padding-top: 0; }
 .commentlist li article.comment footer.comment-meta div.vcard { }
+.commentlist li article.comment:hover footer.comment-meta div.vcard a { color: #666; }
+.commentlist li article.comment:hover footer.comment-meta div.vcard a:hover { color: #111; }
 .commentlist li article.comment footer.comment-meta div.vcard img.avatar { left: 0; position: absolute; top: 21px; }
-.commentlist li article.comment footer.comment-meta .comment-reply-link { background: url(../img/icon-reply.png) no-repeat scroll 0 2px transparent; margin: 0 5px 0 2px; padding: 0 0 0 15px; }	
+.commentlist li article.comment footer.comment-meta .comment-reply-link { background: url(../img/icon-reply.png) no-repeat scroll 0 2px transparent; margin-left: 2px; padding: 0 0 0 15px; }
+
+.no-comments { padding-top: 1.5em; }
+.no-password { padding-top: 1.5em; }
+.edit-link { margin-left: 5px; }
+
 .commentlist li ul { list-style: square; margin: 0 0 1em; }
 .commentlist li ul.children { list-style: none; margin: 0; padding: 0; text-indent: 0; }
 .commentlist li ul.children li.depth-2 { }
@@ -171,75 +176,22 @@ article footer ul.social-links li .fb-like { }
 .commentlist ul.children li.odd { background: none; }
 .commentlist ul.children li.even { background: none; }		
 
-/* =============================================================================
-   Custom styles
-   ========================================================================== */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* =============================================================================
    Asides
    ========================================================================== */
 
 aside { }
-aside section { border-top: 1px solid #eee; padding: 15px 0; }
+aside section { border-top: 1px solid #eee; padding: 0 0 15px; padding-top: 15px; }
 aside section ul, aside ul li, aside li ul { list-style:none; margin: 0; padding: 0; }
 aside section li ul li:before { content: "\2015"; color: #aaa; }
 aside section li ul li { list-style: none; padding-left: 10px; }
-aside section h1 { color: #111; font-size: 1em; font-weight: bold; display: block; margin: 0; }
+aside section h3 { color: #111; font-size: 1em; font-weight: bold; display: block; margin: 0; }
 
 .twitter-link { background: url(../img/socials.png) no-repeat scroll 0 -725px; padding-left: 20px; display: block; margin-top: 1.5em; }
 .twitter-link:hover { background-position: 0 -791px; }
 .twitter-icon { text-align: right; max-width: 60px; overflow: hidden; }
+
 
 /* =============================================================================
    Footer
@@ -252,6 +204,7 @@ footer nav ul { float: left; }
 footer nav ul li {float: left; margin-right: 10px; }
 	
 .copy { border-top: 1px solid #eee; padding-top: 15px; text-align: right; }
+
 
 /* =============================================================================
    Generated classes
@@ -269,10 +222,13 @@ img.size-large, img.size-medium, .attachment img,
 .wp-caption img { border: 0 none; }
 .wp-caption-text { color: #aaa; margin: 0; }
 
-.gallery { margin: 16px auto; }
-.gallery .gallery-item { float: left; padding-bottom: 2em; margin-right: 2em; }
+/* Cleaner Gallery plugin: http://wordpress.org/extend/plugins/cleaner-gallery/ */
+.gallery { margin: 1.5em auto; } 
+.gallery .clear { height: auto; width: auto; visibility: visible; }
+.gallery .gallery-item { float: left; padding-bottom: 2em; width: 33%; }
 .gallery .gallery-item img { margin: 0 auto 10px; position: relative; }
-.gallery .gallery-caption { color: #aaa; margin-top: 0; text-align: center; }
+.gallery .gallery-caption { color: #aaa; margin: 0; text-align: center; }
+
 
 /* =============================================================================
    Search

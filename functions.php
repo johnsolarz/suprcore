@@ -13,19 +13,10 @@
 // Set the content width based on the theme's design and stylesheet.
 if (!isset($content_width)) $content_width = 620;
 
-// Use Facebook "Like" button under each post?
-$like_btn = 0;
-
-// Use Google Plus button under each post?
-$gplus_btn = 0;
-
-// Your Twitter username (optional)
-$your_twitter_username = "";
-
 // Load necessary files
 require_once get_template_directory() . '/inc/suprcore-cleanup.php';	// Code cleanup
 require_once get_template_directory() . '/inc/suprcore-htaccess.php';	// Custom rewrites and h5bp htaccess
-require_once get_template_directory() . '/inc/suprcore-socials.php';	// Twitter and FB integration
+require_once get_template_directory() . '/inc/suprcore-sharing.php';	// fb, g+ and twitter integration
 //require_once get_template_directory() . '/inc/suprcore-post.php';	// Custom post type template
 //require_once get_template_directory() . '/inc/suprcore-meta.php';	// Custom meta box template	
 	
@@ -81,8 +72,8 @@ foreach ($sidebars as $sidebar) {
   register_sidebar(array('name'=> $sidebar,
     'before_widget' => '<section id="%1$s" class="widget %2$s">',
     'after_widget' => '</section>',
-    'before_title' => '<h1>',
-    'after_title' => '</h1>'
+    'before_title' => '<h3>',
+    'after_title' => '</h3>'
   ));
 }
 
@@ -124,8 +115,8 @@ function suprcore_comment( $comment, $args, $depth ) {
 		case 'pingback' :
 		case 'trackback' :
 	?>
-	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'suprcore' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'suprcore' ), '<span class="edit-link">', '</span>' ); ?></p>
+	<li class="pingback">
+		<p><span class="pingback-title"><?php _e( 'Pingback', 'suprcore' ); ?></span> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'suprcore' ), '<span class="edit-link">', '</span>' ); ?></p>
 	<?php
 			break;
 		default :
@@ -174,7 +165,7 @@ endif; // ends check for suprcore_comment()
 
 /**
  * Modify default WordPress comment form
- * http://devpress.com/blog/using-the-wordpress-comment-form/
+ * http://www.1stwebdesigner.com/wordpress/comment-form-customization/
  */
 add_filter( 'comment_form_default_fields', 'suprcore_comment_form_default_fields' );
 

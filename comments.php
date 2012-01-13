@@ -13,7 +13,7 @@
 ?>
 	<section id="comments">
 	<?php if ( post_password_required() ) : ?>
-		<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'suprcore' ); ?></p>
+		<p class="no-password"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'suprcore' ); ?></p>
 	</section><!-- #comments -->
 	<?php
 			/* Stop the rest of comments.php from being processed,
@@ -68,7 +68,7 @@
 		 */
 		elseif ( ! comments_open() && ! is_page() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="nocomments"><?php _e( 'Comments are closed.', 'suprcore' ); ?></p>
+		<p class="no-comments"><?php _e( 'Comments are closed.', 'suprcore' ); ?></p>
 	<?php endif; ?>
 
 	<?php comment_form( array('comment_notes_after' => '' )); ?>

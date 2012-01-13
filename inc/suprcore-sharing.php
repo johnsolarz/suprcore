@@ -1,14 +1,23 @@
 <?php
 
+// Use Facebook "Like" button under each post?
+$like_btn = 0;
+
 function use_facebook_like() {
 	global $like_btn;
 	return $like_btn;
 }
 
+// Use Google Plus button under each post?
+$gplus_btn = 0;
+
 function use_google_plus() {
 	global $gplus_btn;
 	return $gplus_btn;
 }
+
+// Your Twitter username (optional)
+$your_twitter_username = "";
 
 function your_twitter_username() {
 	global $your_twitter_username;

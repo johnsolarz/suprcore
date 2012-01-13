@@ -5,7 +5,7 @@
 	if ( ! dynamic_sidebar('Sidebar') ) : ?>
 
 	<section> 
-		<h1>Info</h1>
+		<h3>Info</h3>
 		<div class="grid_3 alpha">	     		
 			<?php bloginfo('description');?>
 			<?php if (your_twitter_username()) { ?>
@@ -30,28 +30,28 @@
 	</form>
 
 	<section> 
-		<h1>Pages</h1>
+		<h3>Pages</h3>
 		<ul>
 			<?php wp_list_pages('orderby=name&title_li='); ?> 
 		</ul>
 	</section>  	       
 
 	<section> 
-		<h1>Categories</h1>
+		<h3>Categories</h3>
 		<ul>
 			<?php wp_list_categories('orderby=name&hide_empty=0&title_li='); ?> 
 		</ul>
 	</section> 
 
 	<section> 	
-		<h1>Archives</h1>
+		<h3>Archives</h3>
 		<ul>
 			<?php wp_get_archives('type=monthly'); ?>
 		</ul>
 	</section> 
 	
 	<section> 	
-		<h1>Contact</h1>
+		<h3>Contact</h3>
 		<ul>
 			<li><a href="mailto:<?php echo get_settings('admin_email');?>">E-mail</a></li>
 		</ul>	
