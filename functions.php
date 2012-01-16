@@ -11,14 +11,14 @@
  */
  
 // Set the content width based on the theme's design and stylesheet.
-if (!isset($content_width)) $content_width = 620;
+if (!isset( $content_width )) $content_width = 620;
 
 // Load necessary files
-require_once get_template_directory() . '/inc/suprcore-cleanup.php';	// Code cleanup
-require_once get_template_directory() . '/inc/suprcore-htaccess.php';	// Custom rewrites and h5bp htaccess
-require_once get_template_directory() . '/inc/suprcore-sharing.php';	// fb, g+ and twitter integration
-//require_once get_template_directory() . '/inc/suprcore-post.php';	// Custom post type template
-//require_once get_template_directory() . '/inc/suprcore-meta.php';	// Custom meta box template	
+require_once get_template_directory() . '/inc/cleanup.php';	// Code cleanup
+require_once get_template_directory() . '/inc/htaccess.php';	// Custom rewrites and h5bp htaccess
+require_once get_template_directory() . '/inc/sharing.php';	// fb, g+ and twitter integration
+//require_once get_template_directory() . '/inc/custom-post-type.php';	// Custom post type template
+//require_once get_template_directory() . '/inc/custom-post-meta.php';	// Custom meta box template	
 	
 // Set up theme defaults and registers support for various WordPress features
 function suprcore_setup() {
@@ -45,9 +45,8 @@ function suprcore_setup() {
 	// http://codex.wordpress.org/Function_Reference/add_custom_image_header
 	if (!defined('HEADER_TEXTCOLOR')) { define('HEADER_TEXTCOLOR', '');	}
 	if (!defined('NO_HEADER_TEXT')) { define('NO_HEADER_TEXT', true); }	
-	if (!defined('HEADER_IMAGE')) { define('HEADER_IMAGE', get_template_directory_uri() . '/inc/img/default.png'); }
 	if (!defined('HEADER_IMAGE_WIDTH')) { define('HEADER_IMAGE_WIDTH', 940); }
-	if (!defined('HEADER_IMAGE_HEIGHT')) { define('HEADER_IMAGE_HEIGHT', 320); }
+	if (!defined('HEADER_IMAGE_HEIGHT')) { define('HEADER_IMAGE_HEIGHT', 324); }
 
 	function suprcore_custom_image_header_site() { }
 	function suprcore_custom_image_header_admin() { ?>
@@ -77,25 +76,36 @@ foreach ($sidebars as $sidebar) {
   ));
 }
 
-// Display navigation to next/previous pages when applicable
-function suprcore_content_nav() {
-  global $wp_query;
-
-  if ($wp_query->max_num_pages > 1) : ?>
-    <nav>
-      <h1><?php _e('Post navigation', 'suprcore'); ?></h1>
-      <ul>
-        <li><?php next_posts_link(__('&larr; Older posts', 'suprcore')); ?></li>
-        <li><?php previous_posts_link(__('Newer posts &rarr;', 'suprcore')); ?></li>
-      </ul>
-    </nav>
-  <?php endif;
+/**
+ * Display navigation to next/previous pages when applicable
+ * http://dimox.net/wordpress-pagination-without-a-plugin-wp-pagenavi-alternative/
+ */
+function suprcore_page_nav() {
+  global $wp_query, $wp_rewrite;
+  $pages = '';
+  $max = $wp_query->max_num_pages;
+  if (!$current = get_query_var('paged')) $current = 1;
+  $a['base'] = str_replace(999999999, '%#%', get_pagenum_link(999999999));
+  $a['total'] = $max;
+  $a['current'] = $current;
+ 
+  $total = 1; //1 - display the text "Page N of N", 0 - not display
+  $a['mid_size'] = 5; //how many links to show on the left and right of the current
+  $a['end_size'] = 1; //how many links to show in the beginning and end
+  $a['prev_text'] = '&laquo; Previous'; //text of the "Previous page" link
+  $a['next_text'] = 'Next &raquo;'; //text of the "Next page" link
+ 
+  if ($max > 1) echo '<nav class="navigation" role="navigation">';
+  if ($total == 1 && $max > 1) $pages = '<span class="page-current">Page ' . $current . ' of ' . $max . '</span>'."\r\n";
+  echo $pages . paginate_links($a);
+  if ($max > 1) echo '</nav>';
 }
+
 
 // Return post entry meta information
 function suprcore_entry_meta() {
-  echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'suprcore'), get_the_time('l, F jS, Y'), get_the_time()) .'</time>';
-  echo '<p class="byline author vcard">'. __('Written by', 'suprcore') .' <a href="'. get_author_posts_url(get_the_author_meta('id')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
+  echo '<span class="byline author vcard">'. __('Posted by', 'suprcore') .' <a href="'. get_author_posts_url(get_the_author_meta('id')) .'" rel="author" class="fn">'. get_the_author() .'</a>, </span>';
+  echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('%s at %s', 'suprcore'), get_the_date(), get_the_time()) .'</time>';
 }
 
 if ( ! function_exists( 'suprcore_comment' ) ) :
@@ -165,7 +175,7 @@ endif; // ends check for suprcore_comment()
 
 /**
  * Modify default WordPress comment form
- * http://www.1stwebdesigner.com/wordpress/comment-form-customization/
+ * http://devpress.com/blog/using-the-wordpress-comment-form/
  */
 add_filter( 'comment_form_default_fields', 'suprcore_comment_form_default_fields' );
 

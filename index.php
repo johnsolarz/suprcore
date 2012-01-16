@@ -5,7 +5,7 @@
 
 get_header(); ?> 
  
-<div id="main" class="grid_8 alpha" role="main">
+<div id="main" class="grid_8" role="main">
     
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -13,18 +13,13 @@ get_header(); ?>
 
 		<header class="clearfix">
 
-			<div class="grid_2 alpha">
-				<span class="post-category"><?php the_category(', '); ?></span>
-				<?php echo get_the_date(); ?>
-			</div>
-			<div class="grid_6 omega comments">
-				<span class="post-comment"><a href="<?php the_permalink(); ?>#comments" title="<?php the_permalink(); ?>">Comments (<?php comments_number('0', '1', '%'); ?>)</a></span>
-					<?php the_tags(__('', '') . ' ', ', ', '<br />'); ?>
-			</div>
+			<span class="post-category"><?php the_category(', '); ?></span>				
+			<?php if (function_exists('suprcore_entry_meta')) suprcore_entry_meta(); ?>
+			<a class="post-comment" href="<?php the_permalink(); ?>#comments" title="<?php the_permalink(); ?>">Comments (<?php comments_number('0', '1', '%'); ?>)</a>
+			<span class="post-tags"><?php the_tags(__('', '') . 'Tags: ', ', ', '<br />'); ?></span>
+			<hr>
 
-			<div class="clear"></div>	
-
-			<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+			<h1 class="post-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
 		</header>
 
@@ -32,10 +27,11 @@ get_header(); ?>
 
 		<footer class="clearfix">
 
-			<ul class="social-links">
+			<ul class="sharing">
 			
 				<li>
-					<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" <?php if (your_twitter_username()) { ?>data-via="<?php echo your_twitter_username(); ?>"<?php } ?> data-text="<?php the_title();?>">Tweet</a>			
+					<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" <?php if (your_twitter_username()) { ?>data-via="<?php echo your_twitter_username(); ?>"<?php } ?> data-text="<?php the_title();?>">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
 				</li>
 				
 				<?php if (use_google_plus()) { ?>				
@@ -58,39 +54,7 @@ get_header(); ?>
 
 	<?php endwhile; ?>
 
-	<?php
-	// get total number of pages
-	global $wp_query;
-	$total = $wp_query->max_num_pages;
-	// only bother with the rest if we have more than 1 page!
-	if ( $total > 1 ) { 
-	?>
-
-	<nav class="pagination grid_8 alpha">
-
-	<?
-		// get the current page
-		if ( !$current_page = get_query_var('paged') )
-			$current_page = 1;
-		// structure of format depends on whether we're using pretty permalinks
-		$permalink_structure = get_option('permalink_structure');
-		$format = empty( $permalink_structure ) ? '&page=%#%' : 'page/%#%/';
-		echo paginate_links(array(
-			'base' => get_pagenum_link(1) . '%_%',
-			'format' => $format,
-			'current' => $current_page,
-			'total' => $total,
-			'mid_size' => 4,
-			'type' => 'list',
-			'prev_text' => 'previous page',
-			'next_text' => 'next page',
-		));
-
-	?> 
-
-	</nav>
-
-	<?php } ?>
+	<?php if (function_exists('suprcore_page_nav')) suprcore_page_nav(); ?>
 
 <?php endif; ?>
   

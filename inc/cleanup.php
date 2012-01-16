@@ -1,6 +1,6 @@
 <?php
 /**
- * Suprcore cleanup
+ * Custom cleanup
  *
  * @package Wordpress
  * @subpackage Suprcore
@@ -10,7 +10,7 @@
  * Redirect /?s to /search/
  * http://txfx.net/wordpress-plugins/nice-search/
  */
-function suprcore_nice_search_redirect() {
+function custom_nice_search_redirect() {
   if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
     wp_redirect(home_url('/search/' . str_replace(array(
       ' ',
@@ -22,34 +22,34 @@ function suprcore_nice_search_redirect() {
     exit();
   }
 }
-add_action('template_redirect', 'suprcore_nice_search_redirect');
+add_action('template_redirect', 'custom_nice_search_redirect');
 
-function suprcore_search_query($escaped = true) {
-  $query = apply_filters('suprcore_search_query', get_query_var('s'));
+function custom_search_query($escaped = true) {
+  $query = apply_filters('custom_search_query', get_query_var('s'));
   if ($escaped) {
     $query = esc_attr($query);
   }
   return urldecode($query);
 }
-add_filter('get_search_query', 'suprcore_search_query');
+add_filter('get_search_query', 'custom_search_query');
 
 /**
  * Fix for empty search query
  * http://wordpress.org/support/topic/blank-search-sends-you-to-the-homepage#post-1772565
  */
-function suprcore_request_filter($query_vars) {
+function custom_request_filter($query_vars) {
   if (isset($_GET['s']) && empty($_GET['s'])) {
     $query_vars['s'] = " ";
   }
   return $query_vars;
 }
-add_filter('request', 'suprcore_request_filter');
+add_filter('request', 'custom_request_filter');
 
 /**
  * Root relative URLs for everything
  * http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
  */
-function suprcore_root_relative_url($input) {
+function custom_root_relative_url($input) {
   $output = preg_replace_callback('!(https?://[^/|"]+)([^"]+)?!', create_function('$matches',
   // if full URL is site_url, return a slash for relative root
     'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
@@ -64,8 +64,8 @@ function suprcore_root_relative_url($input) {
  * Terrible workaround to remove the duplicate subfolder in the src of JS/CSS tags
  * Example: /subfolder/subfolder/css/style.css
  */
-function suprcore_fix_duplicate_subfolder_urls($input) {
-  $output = suprcore_root_relative_url($input);
+function custom_fix_duplicate_subfolder_urls($input) {
+  $output = custom_root_relative_url($input);
   preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
   if (isset($matches[1]) && isset($matches[2])) {
     if ($matches[1][0] === $matches[2][0]) {
@@ -82,51 +82,51 @@ if (!is_admin() && !in_array($GLOBALS['pagenow'], array(
   'wp-login.php',
   'wp-register.php'
 ))) {
-  add_filter('bloginfo_url', 'suprcore_root_relative_url');
-  add_filter('theme_root_uri', 'suprcore_root_relative_url');
-  add_filter('stylesheet_directory_uri', 'suprcore_root_relative_url');
-  add_filter('template_directory_uri', 'suprcore_root_relative_url');
-  add_filter('script_loader_src', 'suprcore_fix_duplicate_subfolder_urls');
-  add_filter('style_loader_src', 'suprcore_fix_duplicate_subfolder_urls');
-  add_filter('plugins_url', 'suprcore_root_relative_url');
-  add_filter('the_permalink', 'suprcore_root_relative_url');
-  add_filter('wp_list_pages', 'suprcore_root_relative_url');
-  add_filter('wp_list_categories', 'suprcore_root_relative_url');
-  add_filter('wp_nav_menu', 'suprcore_root_relative_url');
-  add_filter('the_content_more_link', 'suprcore_root_relative_url');
-  add_filter('the_tags', 'suprcore_root_relative_url');
-  add_filter('get_pagenum_link', 'suprcore_root_relative_url');
-  add_filter('get_comment_link', 'suprcore_root_relative_url');
-  add_filter('month_link', 'suprcore_root_relative_url');
-  add_filter('day_link', 'suprcore_root_relative_url');
-  add_filter('year_link', 'suprcore_root_relative_url');
-  add_filter('tag_link', 'suprcore_root_relative_url');
-  add_filter('the_author_posts_link', 'suprcore_root_relative_url');
+  add_filter('bloginfo_url', 'custom_root_relative_url');
+  add_filter('theme_root_uri', 'custom_root_relative_url');
+  add_filter('stylesheet_directory_uri', 'custom_root_relative_url');
+  add_filter('template_directory_uri', 'custom_root_relative_url');
+  add_filter('script_loader_src', 'custom_fix_duplicate_subfolder_urls');
+  add_filter('style_loader_src', 'custom_fix_duplicate_subfolder_urls');
+  add_filter('plugins_url', 'custom_root_relative_url');
+  add_filter('the_permalink', 'custom_root_relative_url');
+  add_filter('wp_list_pages', 'custom_root_relative_url');
+  add_filter('wp_list_categories', 'custom_root_relative_url');
+  add_filter('wp_nav_menu', 'custom_root_relative_url');
+  add_filter('the_content_more_link', 'custom_root_relative_url');
+  add_filter('the_tags', 'custom_root_relative_url');
+  add_filter('get_pagenum_link', 'custom_root_relative_url');
+  add_filter('get_comment_link', 'custom_root_relative_url');
+  add_filter('month_link', 'custom_root_relative_url');
+  add_filter('day_link', 'custom_root_relative_url');
+  add_filter('year_link', 'custom_root_relative_url');
+  add_filter('tag_link', 'custom_root_relative_url');
+  add_filter('the_author_posts_link', 'custom_root_relative_url');
 }
 
 /**
  * Remove root relative URLs on any attachments in the feed
  */
-function suprcore_root_relative_attachment_urls() {
+function custom_root_relative_attachment_urls() {
   if (!is_feed()) {
-    add_filter('wp_get_attachment_url', 'suprcore_root_relative_url');
-    add_filter('wp_get_attachment_link', 'suprcore_root_relative_url');
+    add_filter('wp_get_attachment_url', 'custom_root_relative_url');
+    add_filter('wp_get_attachment_link', 'custom_root_relative_url');
   }
 }
-add_action('pre_get_posts', 'suprcore_root_relative_attachment_urls');
+add_action('pre_get_posts', 'custom_root_relative_attachment_urls');
 
 /**
  * Remove WordPress version from RSS feed
  */
-function suprcore_no_generator() {
+function custom_no_generator() {
   return '';
 }
-add_filter('the_generator', 'suprcore_no_generator');
+add_filter('the_generator', 'custom_no_generator');
 
 /**
  * Add meta tags if the user chooses to hide blog from search engines
  */
-function suprcore_noindex() {
+function custom_noindex() {
   if (get_option('blog_public') === '0') {
     echo '<meta name="robots" content="noindex,nofollow">', "\n";
   }
@@ -135,7 +135,7 @@ function suprcore_noindex() {
 /**
  * Add canonical links for single pages
  */
-function suprcore_rel_canonical() {
+function custom_rel_canonical() {
   if (!is_singular()) {
     return;
   }
@@ -152,7 +152,7 @@ function suprcore_rel_canonical() {
 /**
  * Remove CSS from recent comment widget
  */
-function suprcore_remove_recent_comments_style() {
+function custom_remove_recent_comments_style() {
   global $wp_widget_factory;
   if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
     remove_action('wp_head', array(
@@ -165,7 +165,7 @@ function suprcore_remove_recent_comments_style() {
 /**
  * Remove CSS from gallery
  */
-function suprcore_gallery_style($css) {
+function custom_gallery_style($css) {
   return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 }
 
@@ -173,7 +173,7 @@ function suprcore_gallery_style($css) {
  * Remove unnecessary stuff from head
  * http://wpengineer.com/1438/wordpress-header/
  */
-function suprcore_head_cleanup() {
+function custom_head_cleanup() {
   remove_action('wp_head', 'feed_links', 2);
   remove_action('wp_head', 'feed_links_extra', 3);
   remove_action('wp_head', 'rsd_link');
@@ -185,11 +185,11 @@ function suprcore_head_cleanup() {
   remove_action('wp_head', 'wp_generator');
   remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
   remove_action('wp_head', 'noindex', 1);
-  add_action('wp_head', 'suprcore_noindex');
+  add_action('wp_head', 'custom_noindex');
   remove_action('wp_head', 'rel_canonical');
-  add_action('wp_head', 'suprcore_rel_canonical');
-  add_action('wp_head', 'suprcore_remove_recent_comments_style', 1);
-  add_filter('gallery_style', 'suprcore_gallery_style');
+  add_action('wp_head', 'custom_rel_canonical');
+  add_action('wp_head', 'custom_remove_recent_comments_style', 1);
+  add_filter('gallery_style', 'custom_gallery_style');
 
   if (!is_admin()) {
     // Deregister l10n.js (new since WordPress 3.1)
@@ -201,12 +201,12 @@ function suprcore_head_cleanup() {
     wp_register_script('jquery', '', '', '', true);
   }
 }
-add_action('init', 'suprcore_head_cleanup');
+add_action('init', 'custom_head_cleanup');
 
 /**
  * Cleanup gallery_shortcode()
  */
-function suprcore_gallery_shortcode($attr) {
+function custom_gallery_shortcode($attr) {
   global $post, $wp_locale;
 
   static $instance = 0;
@@ -325,50 +325,50 @@ function suprcore_gallery_shortcode($attr) {
   return $output;
 }
 remove_shortcode('gallery');
-add_shortcode('gallery', 'suprcore_gallery_shortcode');
+add_shortcode('gallery', 'custom_gallery_shortcode');
 
 /**
  * Sets the post excerpt length to 40.
  */
-function suprcore_excerpt_length($length) {
+function custom_excerpt_length($length) {
   return 40;
 }
-add_filter('excerpt_length', 'suprcore_excerpt_length');
+add_filter('excerpt_length', 'custom_excerpt_length');
 
 /**
- * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and suprcore_continue_reading_link().
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and custom_continue_reading_link().
  *
  * To override this in a child theme, remove the filter and add your own
  * function tied to the excerpt_more filter hook.
  */
-function suprcore_excerpt_more($more) {
-  return ' &hellip;' . suprcore_continue_reading_link();
+function custom_excerpt_more($more) {
+  return ' &hellip;' . custom_continue_reading_link();
 }
-add_filter('excerpt_more', 'suprcore_excerpt_more');
+add_filter('excerpt_more', 'custom_excerpt_more');
 
 /**
  * Remove container from menus.
  */
-function suprcore_nav_menu_args($args = '') {
+function custom_nav_menu_args($args = '') {
   $args['container'] = false;
   return $args;
 }
-add_filter('wp_nav_menu_args', 'suprcore_nav_menu_args');
+add_filter('wp_nav_menu_args', 'custom_nav_menu_args');
 
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu()
  */
-function suprcore_page_menu_args() {
+function custom_page_menu_args() {
 	echo '<ul>';
 		wp_list_pages('title_li=');
 	echo '</ul>';
 }
-add_filter('wp_page_menu_args', 'suprcore_page_menu_args');
+add_filter('wp_page_menu_args', 'custom_page_menu_args');
 
 /**
  * Custom Walker for cleaner menu output
  */
-class suprcore_nav_walker extends Walker_Nav_Menu {
+class custom_nav_walker extends Walker_Nav_Menu {
   function start_el(&$output, $item, $depth, $args) {
     global $wp_query;
       $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
@@ -378,7 +378,7 @@ class suprcore_nav_walker extends Walker_Nav_Menu {
       $class_names = $value = '';
       $classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
-      $classes = array_filter($classes, 'suprcore_check_current');
+      $classes = array_filter($classes, 'custom_check_current');
 
       $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
       $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
@@ -406,7 +406,7 @@ class suprcore_nav_walker extends Walker_Nav_Menu {
 /**
  * Checks active page and adds active class to the menu item
  */
-function suprcore_check_current($val) {
+function custom_check_current($val) {
   return preg_match('/current-menu/', $val);
 }
 
@@ -414,7 +414,7 @@ function suprcore_check_current($val) {
  * Add to robots.txt
  * http://codex.wordpress.org/Search_Engine_Optimization_for_WordPress#Robots.txt_Optimization
  */
-function suprcore_robots() {
+function custom_robots() {
   echo "Disallow: /cgi-bin\n";
   echo "Disallow: /wp-admin\n";
   echo "Disallow: /wp-includes\n";
@@ -434,24 +434,24 @@ function suprcore_robots() {
   echo "Allow: /wp-content/uploads\n";
   echo "Allow: /assets";
 }
-add_action('do_robots', 'suprcore_robots');
+add_action('do_robots', 'custom_robots');
 
 /**
  * We don't need to self-close these tags in html5:
  * <img>, <input>
  */
-function suprcore_remove_self_closing_tags($input) {
+function custom_remove_self_closing_tags($input) {
   return str_replace(' />', '>', $input);
 }
-add_filter('get_avatar', 'suprcore_remove_self_closing_tags');
-add_filter('comment_id_fields', 'suprcore_remove_self_closing_tags');
+add_filter('get_avatar', 'custom_remove_self_closing_tags');
+add_filter('comment_id_fields', 'custom_remove_self_closing_tags');
 
 /**
  * Check to see if the tagline is set to default
  * Show an admin notice to update if it hasn't been changed
  * You want to change this or remove it because it's used as the description in the RSS feed
  */
-function suprcore_notice_tagline() {
+function custom_notice_tagline() {
     global $current_user;
   $user_id = $current_user->ID;
     if (!get_user_meta($user_id, 'ignore_tagline_notice')) {
@@ -461,17 +461,17 @@ function suprcore_notice_tagline() {
     }
 }
 if (get_option('blogdescription') === 'Just another WordPress site') {
-  add_action('admin_notices', 'suprcore_notice_tagline');
+  add_action('admin_notices', 'custom_notice_tagline');
 }
 
-function suprcore_notice_tagline_ignore() {
+function custom_notice_tagline_ignore() {
   global $current_user;
   $user_id = $current_user->ID;
   if (isset($_GET['tagline_notice_ignore']) && '0' == $_GET['tagline_notice_ignore']) {
     add_user_meta($user_id, 'ignore_tagline_notice', 'true', true);
     }
 }
-add_action('admin_init', 'suprcore_notice_tagline_ignore');
+add_action('admin_init', 'custom_notice_tagline_ignore');
 
 /**
  * Set the post revisions to 5 unless the constant was set in wp-config.php to avoid DB bloat
@@ -482,7 +482,7 @@ if (!defined('WP_POST_REVISIONS'))
 /**
  * Allow more tags in TinyMCE including iframes
  */
-function suprcore_change_mce_options($options) {
+function custom_change_mce_options($options) {
   $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src]';
   if (isset($initArray['extended_valid_elements'])) {
     $options['extended_valid_elements'] .= ',' . $ext;
@@ -491,23 +491,23 @@ function suprcore_change_mce_options($options) {
   }
   return $options;
 }
-add_filter('tiny_mce_before_init', 'suprcore_change_mce_options');
+add_filter('tiny_mce_before_init', 'custom_change_mce_options');
 
 /**
  * Clean up the default WordPress style tags
  */
-function suprcore_clean_style_tag($input) {
+function custom_clean_style_tag($input) {
   preg_match_all("!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches);
   //only display media if it's print
   $media = $matches[3][0] === 'print' ? ' media="print"' : '';
   return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
-add_filter('style_loader_tag', 'suprcore_clean_style_tag');
+add_filter('style_loader_tag', 'custom_clean_style_tag');
 
 /**
  * Removes URL hash to avoid the jump link
  */
-function suprcore_remove_more_jump_link($link) {
+function custom_remove_more_jump_link($link) {
    $offset = strpos($link, '#more-');
    if ($offset) {
       $end = strpos($link, '"',$offset);
@@ -517,7 +517,7 @@ function suprcore_remove_more_jump_link($link) {
    }
    return $link;
 }
-add_filter('the_content_more_link', 'suprcore_remove_more_jump_link');
+add_filter('the_content_more_link', 'custom_remove_more_jump_link');
 
 /**
  * A clean theme
@@ -565,7 +565,7 @@ add_filter('get_the_excerpt', 'improved_trim_excerpt');
 /**
  * Remove languages dir and set lang="en" as default (rather than en-US)
  */
-function suprcore_language_attributes() {
+function custom_language_attributes() {
   $attributes = array();
   $output = '';
   $lang = get_bloginfo('language');
@@ -576,7 +576,7 @@ function suprcore_language_attributes() {
   }
 
   $output = implode(' ', $attributes);
-  $output = apply_filters('suprcore_language_attributes', $output);
+  $output = apply_filters('custom_language_attributes', $output);
   return $output;
 }
 
@@ -606,14 +606,14 @@ function remove_default_widgets() {
  * http://www.smashingmagazine.com/2011/05/10/new-wordpress-power-tips-for-template-developers-and-consultants/
  */
 // Remove admin menu items
-add_action( 'admin_menu', 'suprcore_admin_menu' );
-function suprcore_admin_menu() {
+add_action( 'admin_menu', 'custom_admin_menu' );
+function custom_admin_menu() {
 	remove_menu_page('link-manager.php');
 }
 
 // Dashboard news feeds
-add_action('wp_dashboard_setup', 'suprcore_dashboard_widgets');
-function suprcore_dashboard_widgets() {
+add_action('wp_dashboard_setup', 'custom_dashboard_widgets');
+function custom_dashboard_widgets() {
 	global $wp_meta_boxes;
 	// remove unnecessary widgets: http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
 	// var_dump( $wp_meta_boxes['dashboard'] ); // use to get all the widget IDs
@@ -640,8 +640,8 @@ function dashboard_custom_feed_output() {
 }
 
 // Add footer credits
-add_filter( 'admin_footer_text', 'suprcore_admin_footer_text' );
-function suprcore_admin_footer_text( $default_text ) {
+add_filter( 'admin_footer_text', 'custom_admin_footer_text' );
+function custom_admin_footer_text( $default_text ) {
 	return '<span id="footer-thankyou">Design + Development by <a href="http://eightsevencentral.com">8/7 Central</a><span> | Powered by <a href="http://www.wordpress.org">WordPress</a>';
 }
 
@@ -677,8 +677,8 @@ add_filter( 'login_headertitle', 'custom_login_title', 10, 4 );
  * Disable 3.1 admin bar for all users
  * http://www.snilesh.com/resources/wordpress/wordpress-3-1-enable-disable-remove-admin-bar/
  */
-add_filter( 'show_admin_bar' , 'suprcore_admin_bar');
-function suprcore_admin_bar(){
+add_filter( 'show_admin_bar' , 'custom_admin_bar');
+function custom_admin_bar(){
 	return false;
 }
 

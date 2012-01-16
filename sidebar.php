@@ -1,12 +1,12 @@
-<aside class="sidebar grid_4 omega" role="complementary">
+<aside class="sidebar grid_4" role="complementary">
 
 	<?php 
 	
 	if ( ! dynamic_sidebar('Sidebar') ) : ?>
 
-	<section> 
-		<h3>Info</h3>
-		<div class="grid_3 alpha">	     		
+	<section class="clearfix"> 
+		<div class="grid_3 alpha">
+			<h3><?php bloginfo('title');?></h3>
 			<?php bloginfo('description');?>
 			<?php if (your_twitter_username()) { ?>
 				<a class="twitter-link" href="http://twitter.com/<?php echo your_twitter_username();?>">Follow <?php echo your_twitter_username();?> on Twitter (<?php echo twitter_followers_counter();?>)</a>
@@ -17,20 +17,17 @@
 				<img src="<?php echo your_twitter_icon(); ?>" alt="">
 		</div>
 		<?php } ?>
-			
-		<div class="clear"></div>
+
 	</section>
 
 	<form role="search" method="get" action="<?php echo home_url('/'); ?>">
-		<div>
-			<label class="visuallyhidden" for="s">Search for:</label>
-			<input type="search" class="search" onmouseout="if (this.value == '') {this.value = 'Search + Enter';} this.blur();" onmouseover="if (this.value == 'Search + Enter') {this.value = '';} this.focus();" value="Search + Enter" name="s" id="s" />
-			<input type="submit" value="Search" id="search-submit" />
-		</div>
+		<label class="visuallyhidden" for="s">Search for:</label>
+		<input type="search" class="search" onmouseout="if (this.value == '') {this.value = 'Search + Enter';} this.blur();" onmouseover="if (this.value == 'Search + Enter') {this.value = '';} this.focus();" value="Search + Enter" name="s" id="s" />
+		<input type="submit" value="Search" id="search-submit" />
 	</form>
 
 	<section> 
-		<h3>Pages</h3>
+		<h3>Navigation</h3>
 		<ul>
 			<?php wp_list_pages('orderby=name&title_li='); ?> 
 		</ul>

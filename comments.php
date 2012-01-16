@@ -42,7 +42,7 @@
 		</nav>
 		<?php endif; // check for comment navigation ?>
 
-		<ol class="commentlist">
+		<ol class="comment-list">
 			<?php
 				/* Loop through and list the comments. Tell wp_list_comments()
 				 * to use suprcore_comment() to format the comments.

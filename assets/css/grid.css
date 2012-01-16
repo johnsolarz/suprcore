@@ -1,58 +1,38 @@
 /*
- *		Structure™
- *		Grid-based layout with 12, 15, and 16 unit presets. Adapted from 960.gs
- *		https://github.com/johnsolarz/structure
- *		© Eight Seven Central 2011
+ * Grid Structure
+ * Grid-based layout with 12, 15, and 16 unit presets. Adapted from 960.gs
+ * https://github.com/johnsolarz/structure
+ * © Eight Seven Central 2011
  */
 
-/* =============================================================================
-   Base
-   ========================================================================== */
-
-/*
-  Forces backgrounds to span full width,
-  even if there is horizontal scrolling.
-  Increase this if your layout is wider.
-
-  Note: IE6 works fine without this fix.
-*/
-
-body { min-width: 960px; }
 
 /* =============================================================================
    Containers
    ========================================================================== */
 
-.container_12,
-.container_15, 
-.container_16 { margin-left: auto; margin-right: auto; width: 960px; }
+/*
+ * .container_12		- 12 column fixed grid, 60px columns / 10px gutters
+ * .container_15		- 15 column fixed grid, 44px columns / 10px gutters
+ * .container_16		- 16 column fixed grid, 40px columns / 10px gutters
+ * Change widths as necessary
+ */
+ 
+.container_12, .container_15, .container_16 { margin-left: auto; margin-right: auto; width: 960px; }
 
 /* =============================================================================
    Grid >> Global
    ========================================================================== */
 
-.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, 
-.grid_9, .grid_10, .grid_11, .grid_12, .grid_13, .grid_14, .grid_15, 
-.grid_16 { display: inline; float: left; margin-left: 10px; margin-right: 10px; }
+.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12, .grid_13, .grid_14, .grid_15, .grid_16 { display: inline; float: left; margin-left: 10px; margin-right: 10px; }
 
-.push_1, .pull_1, .push_2, .pull_2, .push_3, .pull_3, .push_4, .pull_4, 
-.push_5, .pull_5, .push_6, .pull_6, .push_7, .pull_7, .push_8, .pull_8, 
-.push_9, .pull_9, .push_10, .pull_10, .push_11, .pull_11, .push_12, .pull_12, 
-.push_13, .pull_13, .push_14, .pull_14, .push_15, .pull_15 { position: relative; }
+.push_1, .pull_1, .push_2, .pull_2, .push_3, .pull_3, .push_4, .pull_4, .push_5, .pull_5, .push_6, .pull_6, .push_7, .pull_7, .push_8, .pull_8, .push_9, .pull_9, .push_10, .pull_10, .push_11, .pull_11, .push_12, .pull_12, .push_13, .pull_13, .push_14, .pull_14, .push_15, .pull_15 { position: relative; }
 
-.container_12 .grid_3, 
-.container_16 .grid_4 { width: 220px; }
-.container_12 .grid_4, 
-.container_15 .grid_5 { width: 300px; }
-.container_12 .grid_6, 
-.container_16 .grid_8 { width: 460px; }
-.container_12 .grid_8, 
-.container_15 .grid_10 { width: 620px; }
-.container_12 .grid_9, 
-.container_16 .grid_12 { width: 700px; }
-.container_12 .grid_12, 
-.container_15 .grid_15, 
-.container_16 .grid_16 { width: 940px; }
+.container_12 .grid_3, .container_16 .grid_4 { width: 220px; }
+.container_12 .grid_4, .container_15 .grid_5 { width: 300px; }
+.container_12 .grid_6, .container_16 .grid_8 { width: 460px; }
+.container_12 .grid_8, .container_15 .grid_10 { width: 620px; }
+.container_12 .grid_9, .container_16 .grid_12 { width: 700px; }
+.container_12 .grid_12, .container_15 .grid_15, .container_16 .grid_16 { width: 940px; }
 
 /* =============================================================================
    Grid >> Children (Alpha ~ First, Omega ~ Last)
@@ -326,23 +306,3 @@ body { min-width: 960px; }
 .container_16 .pull_14 { left: -840px; }
 .container_16 .pull_15 { left: -900px; }
 
-/* =============================================================================
-   Clear Floated Elements
-   ========================================================================== */
-
-/* http://sonspring.com/journal/clearing-floats */
-
-.clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
-
-/* Micro clearfix: http://nicolasgallagher.com/micro-clearfix-hack/ */
-
-.clearfix:before, .clearfix:after { content: ""; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { zoom: 1; }

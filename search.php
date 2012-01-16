@@ -5,7 +5,7 @@
 
 get_header(); ?>
 
-<div id="main" class="grid_12 alpha omega" role="main">
+<div id="main" class="grid_12" role="main">
 
 	<?php if ( have_posts() ) : ?>
 		<p><strong><?php printf( __( 'Search Results for \'%s\'', 'suprcore' ), '<span>' . get_search_query() . '</span>' ); ?></strong></p>

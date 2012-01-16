@@ -5,7 +5,7 @@
 
 get_header(); ?>
  
-<div id="main" class="grid_12 alpha omega" role="main">
+<div id="main" class="grid_12" role="main">
     
 	<p><strong><?php _e('Just when it was going so well &hellip;', 'suprcore'); ?></strong><br>
 	<?php _e('Sorry, but the page you requested could not be found.', 'suprcore'); ?></p>

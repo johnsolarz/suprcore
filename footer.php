@@ -1,25 +1,24 @@
-		</div> <!-- #content -->
-		
-		<footer class="grid_12 clearfix" role="contentinfo">
+		<footer class="clearfix" role="contentinfo">
 
 			<?php get_sidebar('footer'); ?>
 					
-			<nav class="grid_8 alpha">
+			<nav class="grid_8">
 				<?php wp_nav_menu(array(
 					'container' => '', 
 					'theme_location' => 'utility_navigation',
-					'walker' => new suprcore_nav_walker())); 
+					'walker' => new custom_nav_walker())); 
 				?>
 			</nav>
 			
-			<p class="grid_4 omega copy">
+			<p class="grid_4 copy">
 				&copy; <?php bloginfo('name'); ?> <?php echo date('Y');?> &mdash; Site by <a href="http://eightsevencentral.com" target="_blank" title="8/7 Central">8/7 Central</a>
 			</p>
 
-		</footer> <!-- #footer -->
+		</footer>
 
-	</div> <!-- #wrapper -->
+	</div><!-- .container -->
 
+</div><!-- .wrapper -->
 
   <!-- JavaScript at the bottom for fast page loading -->
   
@@ -43,9 +42,6 @@
 			})();
 		</script>
 	<?php } ?>
-
-	<!-- Twitter tweet button -->
-	<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 	
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

@@ -1,7 +1,13 @@
 <?php
-
+/**
+ * Social media sharing integration
+ *
+ * @package Wordpress
+ * @subpackage Suprcore
+ */
+ 
 // Use Facebook "Like" button under each post?
-$like_btn = 0;
+$like_btn = 1;
 
 function use_facebook_like() {
 	global $like_btn;
@@ -9,7 +15,7 @@ function use_facebook_like() {
 }
 
 // Use Google Plus button under each post?
-$gplus_btn = 0;
+$gplus_btn = 1;
 
 function use_google_plus() {
 	global $gplus_btn;
@@ -17,7 +23,7 @@ function use_google_plus() {
 }
 
 // Your Twitter username (optional)
-$your_twitter_username = "";
+$your_twitter_username = "johnsolarz";
 
 function your_twitter_username() {
 	global $your_twitter_username;
