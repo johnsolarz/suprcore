@@ -3,11 +3,11 @@
 
 /* TEAM */
 
-  John Solarz - Code & Design
+  John Solarz
   http://johnsolarz.com
   @johnsolarz
 
-  Eight Seven Central
+  8/7 Central
   http://eightsevencentral.com
   @87central
 
