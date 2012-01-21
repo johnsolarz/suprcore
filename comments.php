@@ -62,6 +62,10 @@
 		</nav>
 		<?php endif; // check for comment navigation ?>
 
+	<?php elseif ( comments_open() ) : // this is displayed if there are no comments so far ?>
+		
+		<h1 id="comments-title">No one has anything to say about this.</h1>
+
 	<?php
 		/* If there are no comments and comments are closed, let's leave a little note, shall we?
 		 * But we don't want the note on pages or post types that do not support comments.

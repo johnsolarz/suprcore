@@ -9,7 +9,7 @@
  *  https://github.com/johnsolarz/suprcore
  */
 
-body { font-size:75%; background: none; /* background:url('../img/18px_grid_bg.gif') 0 1.25em; */ } /* 12px / 18px */
+body { font-size: 75%; background: none; /* background:url('../img/18px_grid_bg.gif') 0 1.25em; */ } /* 12px / 18px */
 
 
 /* =============================================================================
@@ -70,10 +70,10 @@ body { font-size:75%; background: none; /* background:url('../img/18px_grid_bg.g
 .navigation a.next:hover { background-position: 9px -508px; }	
 
 /* =============================================================================
-   Feature area
+   Feature content
    ========================================================================== */
 
-#feature {  }
+#hero {  }
 
 
 /* =============================================================================
@@ -93,7 +93,7 @@ article .post-tags { color: #aaa; margin-left: 1em; }
 
 article p { margin-right: 10%; }
 
-article footer { clear: both; padding: 1.5em 0; } /* 17px 0 18px */
+article footer { clear: both; padding: 1.5em 0; } /* 18px 0 */
 article footer ul.sharing { list-style: none; float: left; height: 2em; margin: 0 0 1em; padding-left: 0; }
 article footer ul.sharing li { float: left; }
 article footer ul.sharing li .twitter-share-button { margin-right: -10px !important; }
@@ -103,13 +103,14 @@ article footer ul.sharing li .fb-like { }
 
 /* Comments */
 #comments, #respond { border-top: 1px solid #aaa; }
-#comments #respond #reply-title, #comments #comments-title { font-size: 1em; line-height: 1.5em; margin: 0; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */
+#comments #respond #reply-title, #comments #comments-title { font-size: 1em; line-height: 1.5em; margin: 0; padding: 1.4166666666666666666666666666667em 0; } /* 17px 0 */
 #comments #respond #reply-title small { font-size: 1em; margin-left: .5em; }
 #comments #respond #commentform .label { clear: left; float: left; margin-right: 10px; width: 60px;}
 #comments #respond #commentform .input { float: left; margin-left: 10px; }
 
 .comment-list { list-style: none; margin: 0; padding: 0; }
 .comment-list li { margin: 0; padding: 0 0 0 40px; position:relative; }
+.comment-list li article li { padding: 0; }
 .comment-list li.pingback p { border-top: 1px solid #aaa; margin: 0; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */
 .comment-list li.pingback .pingback-title { font-style: normal; font-weight: bold; margin-right: 5px; }
 .comment-list li.pingback:hover a { color: #666; }
@@ -124,7 +125,7 @@ article footer ul.sharing li .fb-like { }
 .comment-list li article.comment:hover footer.comment-meta div.vcard a:hover { color: #111; }
 .comment-list li article.comment footer.comment-meta div.vcard img.avatar { left: 0; position: absolute; top: 21px; }
 .comment-list li article.comment footer.comment-meta .comment-reply-link { background: url(../img/icon-reply.png) no-repeat scroll 0 2px transparent; margin-left: 2px; padding: 0 0 0 15px; }
-.comment-list li article.comment ul.children { list-style: none; margin: 0; padding: 0; text-indent: 0; }
+.comment-list li ul.children { list-style: none; margin: 0; padding: 0; text-indent: 0; }
 
 .form-allowed-tags { clear: both; color: #aaa; font-size: 11px; margin-right: 40px; padding-left: 80px; }
 .form-submit { clear: left; padding-left: 80px; }
