@@ -195,10 +195,10 @@ img.size-large, img.size-medium, .attachment img,
    Search
    ========================================================================== */
 
-form[role="search"] { border-top: 1px solid #aaa; display: block; margin: 0; padding: 1.4166666666666666666666666666667em 0 1.4166666666666666666666666666667em; } /* 17px 0 17px */
-#search-submit { background: transparent url(../img/arrows.png) no-repeat scroll 0 -357px; border-style: none; height: 15px; text-indent: -9999em;}
+form[role="search"] { border-top: 1px solid #aaa; display: block; margin: 0; padding: 1.4166666666666666666666666666667em 0 0; } /* 17px 0 0 */
+#search-submit { background: transparent url(../img/arrows.png) no-repeat scroll 0 -357px; border-style: none; float: right; height: 1.5em; margin-bottom: 1.5em; text-indent: -9999em;}
 #search-submit:hover { background-position: 0 -117px; }
 
-input[type="search"] { background-color: transparent; border: none; color: #aaa; font-family: Arial, 'Liberation Sans', FreeSans, sans-serif; font-size: 1em; height: 1.5em; margin-right: 10px; outline: 0; padding: .25em 0; width: 88%; *padding-top: 2px; *padding-bottom: 1px; *height: auto; } /* IE7 */
+input[type="search"] { background-color: transparent; border: none; color: #aaa; float: left; font-family: Arial, 'Liberation Sans', FreeSans, sans-serif; font-size: 1em; height: 1.5em; margin-bottom: 1.5em; outline: 0; padding: 0; width: 88%; *padding-top: 3px; *padding-bottom: 1px; *height: auto; } /* IE7 */
 
 button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; z-index: 1; } /* for Opera */

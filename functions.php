@@ -182,8 +182,8 @@ add_filter( 'comment_form_default_fields', 'suprcore_comment_form_default_fields
 function suprcore_comment_form_default_fields( $fields ) {
 	$commenter = wp_get_current_commenter();
 	$req = get_option( 'require_name_email' );
-	$fields['author'] = '<div class="comment-form-author label"><label for="author">' . __( 'Name' ) . '</label>' . ( $req ? '<span class="required">*</span>' : '' ) . '</div><div class="input push"><input type="text" id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"'. $aria_req . ' /></div>';
-	$fields['email'] = '<div class="comment-form-email label"><label for="email">' . __( 'Email' ) . '</label>' . ( $req ? '<span class="required">*</span>' : '' ) . '</div><div class="input push"><input type="text" id="email" name="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30"'. $aria_req . ' /></div>';
+	$fields['author'] = '<div class="comment-form-author label"><label for="author">' . __( 'Name' ) . '</label>' . ( $req ? '<span class="required">*</span>' : '' ) . '</div><div class="input push"><input type="text" id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" /></div>';
+	$fields['email'] = '<div class="comment-form-email label"><label for="email">' . __( 'Email' ) . '</label>' . ( $req ? '<span class="required">*</span>' : '' ) . '</div><div class="input push"><input type="text" id="email" name="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" /></div>';
 	$fields['url'] = '<div class="comment-form-url label"><label for="url">' . __( 'Website' ) . '</label></div><div class="input push"><input type="text" id="url" name="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></div>';
 
 	return $fields;

@@ -20,7 +20,7 @@
 
 	</section>
 
-	<form role="search" method="get" action="<?php echo home_url('/'); ?>">
+	<form class="clearfix" role="search" method="get" action="<?php echo home_url('/'); ?>">
 		<label class="visuallyhidden" for="s">Search for:</label>
 		<input type="search" class="search" onmouseout="if (this.value == '') {this.value = 'Search + Enter';} this.blur();" onmouseover="if (this.value == 'Search + Enter') {this.value = '';} this.focus();" value="Search + Enter" name="s" id="s" />
 		<input type="submit" value="Search" id="search-submit" />
