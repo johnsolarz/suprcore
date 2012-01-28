@@ -149,7 +149,7 @@ img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
 svg:not(:root) { overflow: hidden; }
 
 /* 
- * Fluid images 
+ * Fluid media 
  */
 
 img, object, embed, video { height: auto; max-width: 100%;	_width: 100%; }
