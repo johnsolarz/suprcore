@@ -33,7 +33,7 @@ License
 
 ### Everything else:
 
-Handcrafted code from Des Moines — Copyright [8/7 Central](http://eightsevencentral.com) 2012.
+Copyright 2012 8/7 Central. All rights reserved. The design and code of this web site is not licensed for public use.
 
 
 Changelog

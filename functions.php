@@ -135,7 +135,7 @@ function suprcore_comment( $comment, $args, $depth ) {
 		<article id="comment-<?php comment_ID(); ?>" class="comment">
 
 
-			<p><?php printf(__('<cite class="comment-author">%s</cite>'), get_comment_author_link()) ?> <?php echo get_comment_text(); ?></p>
+			<?php printf(__('<cite class="comment-author">%s</cite>'), get_comment_author_link()) ?> <?php echo get_comment_text(); ?>
 
 			<footer class="comment-meta">
 			<div class="vcard">
