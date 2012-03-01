@@ -60,7 +60,7 @@ body { font-size: 75%; background: none; /*background:url('../img/18px_grid_bg.g
 
 /* Page Navigation */
 .navigation { border: 1px solid #eee; font-size: 1em; height: 36px; margin-bottom:  34px; position: relative; }
-.navigation .page-current { color: #ddd; float: left; padding: 9px 18px; }
+.navigation .page-current { float: left; padding: 9px 18px; }
 .navigation .page-numbers { display: block; float: left; padding: 9px; }
 .navigation .current { border-left: 1px solid #eee; border-right: 1px solid #eee; padding: 9px; }
 .navigation a.prev, .navigation a.next { background: transparent url(../img/angles.png) no-repeat scroll 0 0; display: block; text-indent: -9999em; }
@@ -89,7 +89,7 @@ article .post-category { display: block; font-weight: bold; }
 article .post-category a, article .author a { color: #111; }
 article .post-category a:hover, article .author a:hover { color: #ddd; }
 article .post-comment { margin-left: 1em; }
-article .post-tags { color: #ddd; margin-left: 1em; }
+article .post-tags { margin-left: 1em; }
 
 article p { margin-right: 10%; }
 
@@ -181,14 +181,14 @@ img.size-large, img.size-medium, .attachment img,
 
 .wp-caption { text-align: left; }
 .wp-caption img { border: 0 none; }
-.wp-caption-text { color: #ddd; margin: 0; }
+.wp-caption-text { color: #aaa; margin: 0; }
 
 /* Cleaner Gallery http://wordpress.org/extend/plugins/cleaner-gallery/ */
 .gallery { margin: 1.5em auto; } 
 .gallery .clear { height: auto; width: auto; visibility: visible; }
 .gallery .gallery-item { float: left; width: 33%; }
 .gallery .gallery-item img { margin-bottom: 1em; }
-.gallery .gallery-caption { color: #ddd; margin: 0 0 1.5em; }
+.gallery .gallery-caption { color: #aaa; margin: 0 0 1.5em; }
 
 
 /* =============================================================================
