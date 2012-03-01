@@ -1,20 +1,24 @@
-# Apache configuration file
-# httpd.apache.org/docs/2.2/mod/quickreference.html
-
-# Note .htaccess files are an overhead, this logic should be in your Apache config if possible
-# httpd.apache.org/docs/2.2/howto/htaccess.html
-
-# Techniques in here adapted from all over, including:
-#   Kroc Camen: camendesign.com/.htaccess
-#   perishablepress.com/press/2006/01/10/stupid-htaccess-tricks/
-#   Sample .htaccess file of CMS MODx: modxcms.com
-
+# BEGIN HTML5 Boilerplate
 
 ###
-### If you run a webserver other than Apache, consider:
-### github.com/h5bp/server-configs
+### This contains the HTML5 Boilerplate .htaccess that can be found at:
+###  github.com/h5bp/html5-boilerplate/blob/master/.htaccess
 ###
-
+### Added:
+###  Block access to access to WordPress files that reveal version information.
+###
+### Commented out by default:
+###  Expires headers:      Use WP Super Cache or W3 Total Cache (unless using the H5BP build script)
+###  ETag removal:         Use WP Super Cache or W3 Total Cache (unless using the H5BP build script)
+###  Start rewrite engine: Handled by WordPress
+###  Suppress/force www:   Handled by WordPress
+###  Options -MultiViews:  Causes a server 500 error on most shared hosts
+###  Custom 404 page:      Handled by WordPress
+###
+### Anytime you update this file the .htaccess file in the root of your
+### WordPress install is automatically updated with the changes whenever
+### the permalinks are flushed or set
+###
 
 
 # ----------------------------------------------------------------------
@@ -217,55 +221,59 @@ AddType text/x-vcard                        vcf
 # If you don't use filenames to version, lower the CSS  and JS to something like
 #   "access plus 1 week" or so.
 
-<IfModule mod_expires.c>
-  ExpiresActive on
+# <IfModule mod_expires.c>
+#   ExpiresActive on
 
 # Perhaps better to whitelist expires rules? Perhaps.
-  ExpiresDefault                          "access plus 1 month"
+#   ExpiresDefault                          "access plus 1 month"
 
 # cache.appcache needs re-requests in FF 3.6 (thanks Remy ~Introducing HTML5)
-  ExpiresByType text/cache-manifest       "access plus 0 seconds"
+#   ExpiresByType text/cache-manifest       "access plus 0 seconds"
 
 # Your document html
-  ExpiresByType text/html                 "access plus 0 seconds"
+#   ExpiresByType text/html                 "access plus 0 seconds"
 
 # Data
-  ExpiresByType text/xml                  "access plus 0 seconds"
-  ExpiresByType application/xml           "access plus 0 seconds"
-  ExpiresByType application/json          "access plus 0 seconds"
+#   ExpiresByType text/xml                  "access plus 0 seconds"
+#   ExpiresByType application/xml           "access plus 0 seconds"
+#   ExpiresByType application/json          "access plus 0 seconds"
 
 # Feed
-  ExpiresByType application/rss+xml       "access plus 1 hour"
-  ExpiresByType application/atom+xml      "access plus 1 hour"
+#   ExpiresByType application/rss+xml       "access plus 1 hour"
+#   ExpiresByType application/atom+xml      "access plus 1 hour"
 
 # Favicon (cannot be renamed)
-  ExpiresByType image/x-icon              "access plus 1 week"
+#   ExpiresByType image/x-icon              "access plus 1 week"
 
 # Media: images, video, audio
-  ExpiresByType image/gif                 "access plus 1 month"
-  ExpiresByType image/png                 "access plus 1 month"
-  ExpiresByType image/jpg                 "access plus 1 month"
-  ExpiresByType image/jpeg                "access plus 1 month"
-  ExpiresByType video/ogg                 "access plus 1 month"
-  ExpiresByType audio/ogg                 "access plus 1 month"
-  ExpiresByType video/mp4                 "access plus 1 month"
-  ExpiresByType video/webm                "access plus 1 month"
+#   ExpiresByType image/gif                 "access plus 1 month"
+#   ExpiresByType image/png                 "access plus 1 month"
+#   ExpiresByType image/jpg                 "access plus 1 month"
+#   ExpiresByType image/jpeg                "access plus 1 month"
+#   ExpiresByType video/ogg                 "access plus 1 month"
+#   ExpiresByType audio/ogg                 "access plus 1 month"
+#   ExpiresByType video/mp4                 "access plus 1 month"
+#   ExpiresByType video/webm                "access plus 1 month"
 
 # HTC files  (css3pie)
-  ExpiresByType text/x-component          "access plus 1 month"
+#   ExpiresByType text/x-component          "access plus 1 month"
 
 # Webfonts
-  ExpiresByType application/x-font-ttf    "access plus 1 month"
-  ExpiresByType font/opentype             "access plus 1 month"
-  ExpiresByType application/x-font-woff   "access plus 1 month"
-  ExpiresByType image/svg+xml             "access plus 1 month"
-  ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+#   ExpiresByType application/x-font-ttf    "access plus 1 month"
+#   ExpiresByType font/opentype             "access plus 1 month"
+#   ExpiresByType application/x-font-woff   "access plus 1 month"
+#   ExpiresByType image/svg+xml             "access plus 1 month"
+#   ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
 
 # CSS and JavaScript
-  ExpiresByType text/css                  "access plus 1 year"
-  ExpiresByType application/javascript    "access plus 1 year"
+#   ExpiresByType text/css                  "access plus 1 year"
+#   ExpiresByType application/javascript    "access plus 1 year"
 
-</IfModule>
+#   <IfModule mod_headers.c>
+#     Header append Cache-Control "public"
+#   </IfModule>
+
+# </IfModule>
 
 
 
@@ -274,14 +282,14 @@ AddType text/x-vcard                        vcf
 # ----------------------------------------------------------------------
 
 # FileETag None is not enough for every server.
-<IfModule mod_headers.c>
-  Header unset ETag
-</IfModule>
+# <IfModule mod_headers.c>
+#   Header unset ETag
+# </IfModule>
 
 # Since we're sending far-future expires, we don't need ETags for
 # static content.
 #   developer.yahoo.com/performance/rules.html#etags
-FileETag None
+# FileETag None
 
 
 
@@ -308,9 +316,7 @@ FileETag None
 # If needed, uncomment and specify a path or regex in the Location directive
 
 # <IfModule mod_headers.c>
-#   <Location />
-#     Header set P3P "policyref=\"/w3c/p3p.xml\", CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
-#   </Location>
+#   Header set P3P "policyref=\"/w3c/p3p.xml\", CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
 # </IfModule>
 
 
@@ -322,10 +328,10 @@ FileETag None
 # Turning on the rewrite engine is necessary for the following rules and features.
 # FollowSymLinks must be enabled for this to work.
 
-<IfModule mod_rewrite.c>
-  Options +FollowSymlinks
-  RewriteEngine On
-</IfModule>
+# <IfModule mod_rewrite.c>
+#   Options +FollowSymlinks
+#   RewriteEngine On
+# </IfModule>
 
 
 
@@ -349,11 +355,11 @@ FileETag None
 # Option 1:
 # Rewrite "www.example.com -> example.com"
 
-<IfModule mod_rewrite.c>
-  RewriteCond %{HTTPS} !=on
-  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
-</IfModule>
+# <IfModule mod_rewrite.c>
+#   RewriteCond %{HTTPS} !=on
+#   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+#   RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+# </IfModule>
 
 # ----------------------------------------------------------------------
 
@@ -412,7 +418,7 @@ FileETag None
 # without -MultiViews, Apache will give a 404 for a rewrite if a folder of the same name does not exist
 #   e.g. /blog/hello : webmasterworld.com/apache/3808792.htm
 
-Options -MultiViews
+# Options -MultiViews
 
 
 
@@ -421,7 +427,7 @@ Options -MultiViews
 # ----------------------------------------------------------------------
 
 # You can add custom pages to handle 500 or 403 pretty easily, if you like.
-ErrorDocument 404 /404.html
+# ErrorDocument 404 /404.html
 
 
 
@@ -468,7 +474,15 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 # Block access to backup and source files
 # This files may be left by some text/html editors and
 # pose a great security danger, when someone can access them
-<FilesMatch "\.(bak|config|sql|fla|psd|ini|log|sh|inc|~|swp|dist)$">
+<FilesMatch "(\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
+  Order allow,deny
+  Deny from all
+  Satisfy All
+</FilesMatch>
+
+
+# Block access to WordPress files that reveal version information.
+<FilesMatch "^(wp-config\.php|readme\.html|license\.txt)">
   Order allow,deny
   Deny from all
   Satisfy All
@@ -534,3 +548,5 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 <IfModule php5_module>
   php_value session.cookie_httponly true
 </IfModule>
+
+# END HTML5 Boilerplate

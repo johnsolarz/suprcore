@@ -12,22 +12,15 @@
        More info: h5bp.com/i/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title><?php 
-		wp_title( '|', true, 'right' ); bloginfo( 'name' );
-		
-		$site_description = get_bloginfo( 'description', 'display' );
-		if ( $site_description && ( is_home() || is_front_page() ) )
-			echo " | $site_description";
-		
-		?></title>
-  <meta name="description" content="">
+  <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
+  <meta name="description" content="<?php echo bloginfo('description'); ?>">
 
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
  
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
-	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/inc/img/favicon.ico">
-	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/inc/img/apple-touch-icon.png">
+	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico">
+	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/img/apple-touch-icon.png">
 
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
 
@@ -38,19 +31,18 @@
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
   <script src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.5.3.min.js"></script>
 
-	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-	<?php if (is_singular()) wp_enqueue_script('comment-reply'); ?>
-	<?php wp_head(); ?>
+  <?php if (is_singular() && comments_open() && get_option('thread_comments'))
+    wp_enqueue_script('comment-reply');
+    wp_head();
+  ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(custom_body_class()); ?>>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	<div class="wrapper">
+	<header class="grid" role="banner">
 
-	<div class="container_12 clearfix">
-
-		<header id="masthead" class="grid_12 clearfix" role="banner">		
+		<div class="twelve column">
 			<h1 id="logo"><a href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?>" rel="index"><?php bloginfo('name'); ?></a></h1>
 			<p class="visuallyhidden"><?php bloginfo('description'); ?></p>
 			<nav class="visuallyhidden">
@@ -62,22 +54,29 @@
 			</nav>
 			<nav role="navigation">
 				<?php wp_nav_menu(array(
-					'container' => '', 
 					'theme_location' => 'primary_navigation',
-					'walker' => new custom_nav_walker())); 
-				?>
+					'walker' => new Custom_Navbar_Nav_Walker() 
+      	));
+      	?>
 			</nav>
-		</header>
+		</div>
 
-		<?php if ( is_singular() && has_post_thumbnail( $post->ID ) &&
-			( $image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'post-thumbnail' ) ) && $image[1] >= HEADER_IMAGE_WIDTH ) : ?>
-			<div id="hero" class="grid_12">
+	</header>
+
+	<?php if ( is_singular() && has_post_thumbnail( $post->ID ) && ( $image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'post-thumbnail' ) ) && $image[1] >= HEADER_IMAGE_WIDTH ) : ?>
+		<div id="hero" class="grid">
+			<div class="twelve column">
 				<?php echo get_the_post_thumbnail( $post->ID ); ?>
 			</div>
-		<?php elseif ( get_header_image() ) : ?>
-			<div id="hero" class="grid_12">
+		</div>
+	<?php elseif ( get_header_image() ) : ?>
+		<div id="hero" class="grid">
+			<div class="twelve column">
 				<a href="<?php echo esc_url( home_url('/') ); ?>">
 					<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" />
 				</a>
 			</div>
-		<?php endif; ?>
+		</div>
+	<?php endif; ?>
+
+	<div id="main" class="grid" role="main">

@@ -1,11 +1,9 @@
 <?php
-/**
- * Search Results template
- */
+// Search results
 
 get_header(); ?>
 
-<div id="main" class="grid_12" role="main">
+<div class="twelve column">
 
 	<?php if ( have_posts() ) : ?>
 		<p><strong><?php printf( __( 'Search Results for \'%s\'', 'suprcore' ), '<span>' . get_search_query() . '</span>' ); ?></strong></p>

@@ -1,46 +1,27 @@
-		<footer class="clearfix" role="contentinfo">
+	</div><!-- #main -->
 
-			<?php get_sidebar('footer'); ?>
-					
-			<nav class="grid_8">
+	<footer class="grid" role="contentinfo">
+
+		<?php if (is_active_sidebar('custom-footer')) : ?>
+			<aside class="twelve column" role="complementary">
+				<?php dynamic_sidebar('custom-footer'); ?>
+			</aside>
+		<?php endif; ?>
+
+		<div class="twelve column utility">
+			<span class="copy">&copy; <?php echo date('Y');?> <?php bloginfo('name'); ?> &mdash; All rights reserved</span>
+			<nav role="navigation">
 				<?php wp_nav_menu(array(
-					'container' => '', 
 					'theme_location' => 'utility_navigation',
-					'walker' => new custom_nav_walker())); 
-				?>
+					'walker' => new Custom_Navbar_Nav_Walker() 
+      	));
+      	?>
 			</nav>
-			
-			<p class="grid_4 copy">
-				&copy; <?php bloginfo('name'); ?> <?php echo date('Y');?> &mdash; Site by <a href="http://eightsevencentral.com" target="_blank" title="8/7 Central">8/7 Central</a>
-			</p>
+			<a class="eightsevencentral" href="http://eightsevencentral.com" target="_blank" title="8/7 Central">Site by 8/7 Central</a>
+		</div>
 
-		</footer>
+	</footer>
 
-	</div><!-- .container -->
-
-	</div><!-- .wrapper -->
-
-  
-	<?php if (use_facebook_like()) { ?>
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) {return;}
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-	<?php } ?>
-
-	<?php if (use_google_plus()) { ?>
-		<script>
-			(function() {
-				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-				po.src = 'https://apis.google.com/js/plusone.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-			})();
-		</script>
-	<?php } ?>
 
   <!-- JavaScript at the bottom for fast page loading -->
 

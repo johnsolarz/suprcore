@@ -1,17 +1,7 @@
 <?php
-/**
- * Custom htaccess
- *
- * Add rewrites and our custom htaccess to Wordpress
- *
- * @package Wordpress
- * @subpackage Suprcore
- */
 
+// Apache server
 if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
-  /**
-   * Add notice in admin if htaccess isn't writable
-   */
   function custom_htaccess_writable() {
     if (!is_writable(get_home_path() . '.htaccess')) {
       if (current_user_can('administrator')) {
@@ -19,103 +9,81 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
       }
     };
   }
+
   add_action('admin_init', 'custom_htaccess_writable');
 
-  /**
-   * Flush rewrite rules
-   */
+  // Flush rewrite rules
   function custom_flush_rewrites() {
     global $wp_rewrite;
     $wp_rewrite->flush_rules();
   }
 
-  /**
-   * Set the permalink structure to /category/postname/
-   */
-  if (get_option('permalink_structure') != '/%category%/%postname%/') {
-    update_option('permalink_structure', '/%category%/%postname%/');
+  // Set the permalink structure to /postname/
+  if (get_option('permalink_structure') != '/%postname%/') {
+    update_option('permalink_structure', '/%postname%/');
   }
 
-  /**
-   * Set upload folder to /media.
-   */
-  update_option('uploads_use_yearmonth_folders', 0);
-  update_option('upload_path', 'media');
+  // Set upload folder to /assets.
+  update_option('uploads_use_yearmonth_folders', 1);
+  update_option('upload_path', 'assets');
 
-  /**
-   * Apply rewrites
-   */
+  // Rewrites DO NOT happen for child themes
   function custom_add_rewrites($content) {
-    $theme_name = next(explode('/themes/', get_stylesheet_directory()));
     global $wp_rewrite;
     $custom_new_non_wp_rules = array(
-			'css/(.*)'      => 'wp-content/themes/'. $theme_name . '/css/$1',
-			'js/(.*)'       => 'wp-content/themes/'. $theme_name . '/js/$1',
-			'img/(.*)'      => 'wp-content/themes/'. $theme_name . '/img/$1',
-      'inc/(.*)'      => 'wp-content/themes/'. $theme_name . '/inc/$1',
-      'plugins/(.*)'  => 'wp-content/plugins/$1'
+      'css/(.*)'      => THEME_PATH . '/css/$1',
+      'js/(.*)'       => THEME_PATH . '/js/$1',
+      'img/(.*)'      => THEME_PATH . '/img/$1',
+      'plugins/(.*)'  => RELATIVE_PLUGIN_PATH . '/$1'
     );
-    $wp_rewrite->non_wp_rules += $custom_new_non_wp_rules;
-  }
-  add_action('admin_init', 'custom_flush_rewrites');
-
-  /**
-   * Apply new path to assets
-   */
-  function custom_clean_assets($content) {
-      $theme_name = next(explode('/themes/', $content));
-      $current_path = '/wp-content/themes/' . $theme_name;
-      $new_path = '';
-      $content = str_replace($current_path, $new_path, $content);
-      return $content;
+    $wp_rewrite->non_wp_rules = $custom_new_non_wp_rules;
+    return $content;
   }
 
-  /**
-   * Apply new plugins
-   */
-  function custom_clean_plugins($content) {
-      $current_path = '/wp-content/plugins';
-      $new_path = '/plugins';
-      $content = str_replace($current_path, $new_path, $content);
-      return $content;
-  }
-
-  /**
-   * Only use clean URLs if the theme isn't a child or an MU (Network) install
-   */
-  if (!is_multisite() && !is_child_theme()) {
-    add_action('generate_rewrite_rules', 'custom_add_rewrites');
-    if (!is_admin()) {
-      add_filter('plugins_url', 'custom_clean_plugins');
-      add_filter('bloginfo', 'custom_clean_assets');
-      add_filter('stylesheet_directory_uri', 'custom_clean_assets');
-      add_filter('template_directory_uri', 'custom_clean_assets');
-      add_filter('script_loader_src', 'custom_clean_plugins');
-      add_filter('style_loader_src', 'custom_clean_plugins');
+  function custom_clean_urls($content) {
+    if (strpos($content, FULL_RELATIVE_PLUGIN_PATH) === 0) {
+      return str_replace(FULL_RELATIVE_PLUGIN_PATH, WP_BASE . '/plugins', $content);
+    } else {
+      return str_replace('/' . THEME_PATH, '', $content);
     }
   }
 
-  /**
-   * Write new htaccess
-   */
-  function custom_add_h5bp_htaccess($rules) {
-    global $wp_filesystem;
+  // only use clean urls if the theme isn't a child or an MU (Network) install
+  if (!is_multisite() && !is_child_theme()) {
+    add_action('generate_rewrite_rules', 'custom_add_rewrites');
+    add_action('generate_rewrite_rules', 'custom_add_h5bp_htaccess');
+    if (!is_admin()) {
+      $tags = array(
+        'plugins_url',
+        'bloginfo',
+        'stylesheet_directory_uri',
+        'template_directory_uri',
+        'script_loader_src',
+        'style_loader_src'
+      );
 
-    if (!defined('FS_METHOD')) define('FS_METHOD', 'direct');
-    if (is_null($wp_filesystem)) WP_Filesystem(array(), ABSPATH);
-
-    if (!defined('WP_CONTENT_DIR'))
-    define('WP_CONTENT_DIR', ABSPATH . 'wp-content');
-
-    $theme_name = next(explode('/themes/', get_template_directory()));
-    $filename = WP_CONTENT_DIR . '/themes/' . $theme_name . '/inc/htaccess.htaccess';
-
-    $rules .= $wp_filesystem->get_contents($filename);
-
-    return $rules;
+      add_filters($tags, 'custom_clean_urls');
+    }
   }
 
-  add_action('mod_rewrite_rules', 'custom_add_h5bp_htaccess');
-}
+  // add the contents of h5bp-htaccess into the .htaccess file
+  function custom_add_h5bp_htaccess($content) {
+    global $wp_rewrite;
+    $home_path = function_exists('get_home_path') ? get_home_path() : ABSPATH;
+    $htaccess_file = $home_path . '.htaccess';
+    $mod_rewrite_enabled = function_exists('got_mod_rewrite') ? got_mod_rewrite() : false;
 
-?>
+    if ((!file_exists($htaccess_file) && is_writable($home_path) && $wp_rewrite->using_mod_rewrite_permalinks()) || is_writable($htaccess_file)) {
+      if ($mod_rewrite_enabled) {
+        $h5bp_rules = extract_from_markers($htaccess_file, 'HTML5 Boilerplate');
+          if ($h5bp_rules === array()) {
+            $filename = __DIR__ . '/h5bp-htaccess';
+            return insert_with_markers($htaccess_file, 'HTML5 Boilerplate', extract_from_markers($filename, 'HTML5 Boilerplate'));
+          }
+      }
+    }
+
+    return $content;
+  }
+
+}

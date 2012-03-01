@@ -1,140 +1,129 @@
 <?php
-/**
- * Custom cleanup
- *
- * @package Wordpress
- * @subpackage Suprcore
- */
 
-/**
- * Redirect /?s to /search/
- * http://txfx.net/wordpress-plugins/nice-search/
- */
+// redirect /?s to /search/
+// http://txfx.net/wordpress-plugins/nice-search/
 function custom_nice_search_redirect() {
   if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
-    wp_redirect(home_url('/search/' . str_replace(array(
-      ' ',
-      '%20'
-    ), array(
-      '+',
-      '+'
-    ), urlencode(get_query_var('s')))), 301);
-    exit();
+    wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var('s')))), 301);
+      exit();
   }
 }
+
 add_action('template_redirect', 'custom_nice_search_redirect');
 
 function custom_search_query($escaped = true) {
   $query = apply_filters('custom_search_query', get_query_var('s'));
   if ($escaped) {
-    $query = esc_attr($query);
+      $query = esc_attr($query);
   }
   return urldecode($query);
 }
+
 add_filter('get_search_query', 'custom_search_query');
 
-/**
- * Fix for empty search query
- * http://wordpress.org/support/topic/blank-search-sends-you-to-the-homepage#post-1772565
- */
+// fix for empty search query
+// http://wordpress.org/support/topic/blank-search-sends-you-to-the-homepage#post-1772565
 function custom_request_filter($query_vars) {
   if (isset($_GET['s']) && empty($_GET['s'])) {
     $query_vars['s'] = " ";
   }
   return $query_vars;
 }
+
 add_filter('request', 'custom_request_filter');
 
-/**
- * Root relative URLs for everything
- * http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
- */
+// root relative URLs for everything
+// inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
+// thanks to Scott Walkinshaw (scottwalkinshaw.com)
 function custom_root_relative_url($input) {
-  $output = preg_replace_callback('!(https?://[^/|"]+)([^"]+)?!', create_function('$matches',
-  // if full URL is site_url, return a slash for relative root
-    'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
-  // if domain is equal to site_url, then make URL relative
-    '} elseif (isset($matches[0]) && strpos($matches[0], site_url()) !== false) { return $matches[2];' .
-  // if domain is not equal to site_url, do not make external link relative
-    '} else { return $matches[0]; };'), $input);
+  $output = preg_replace_callback(
+    '!(https?://[^/|"]+)([^"]+)?!',
+    create_function(
+      '$matches',
+      // if full URL is site_url, return a slash for relative root
+      'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
+      // if domain is equal to site_url, then make URL relative
+      '} elseif (isset($matches[0]) && strpos($matches[0], site_url()) !== false) { return $matches[2];' .
+      // if domain is not equal to site_url, do not make external link relative
+      '} else { return $matches[0]; };'
+    ),
+    $input
+  );
   return $output;
 }
 
-/**
- * Terrible workaround to remove the duplicate subfolder in the src of JS/CSS tags
- * Example: /subfolder/subfolder/css/style.css
- */
-function custom_fix_duplicate_subfolder_urls($input) {
-  $output = custom_root_relative_url($input);
-  preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
-  if (isset($matches[1]) && isset($matches[2])) {
-    if ($matches[1][0] === $matches[2][0]) {
-      $output = substr($output, strlen($matches[1][0]) + 1);
-    }
-  }
-  return $output;
+if (!is_admin() && !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) {
+  $tags = array(
+    'bloginfo_url',
+    'theme_root_uri',
+    'stylesheet_directory_uri',
+    'template_directory_uri',
+    'script_loader_src',
+    'style_loader_src',
+    'plugins_url',
+    'the_permalink',
+    'wp_list_pages',
+    'wp_list_categories',
+    'wp_nav_menu',
+    'the_content_more_link',
+    'the_tags',
+    'get_pagenum_link',
+    'get_comment_link',
+    'month_link',
+    'day_link',
+    'year_link',
+    'tag_link',
+    'the_author_posts_link'
+  );
+
+  add_filters($tags, 'custom_root_relative_url');
 }
 
-/**
- * Apply relative URLs
- */
-if (!is_admin() && !in_array($GLOBALS['pagenow'], array(
-  'wp-login.php',
-  'wp-register.php'
-))) {
-  add_filter('bloginfo_url', 'custom_root_relative_url');
-  add_filter('theme_root_uri', 'custom_root_relative_url');
-  add_filter('stylesheet_directory_uri', 'custom_root_relative_url');
-  add_filter('template_directory_uri', 'custom_root_relative_url');
-  add_filter('script_loader_src', 'custom_fix_duplicate_subfolder_urls');
-  add_filter('style_loader_src', 'custom_fix_duplicate_subfolder_urls');
-  add_filter('plugins_url', 'custom_root_relative_url');
-  add_filter('the_permalink', 'custom_root_relative_url');
-  add_filter('wp_list_pages', 'custom_root_relative_url');
-  add_filter('wp_list_categories', 'custom_root_relative_url');
-  add_filter('wp_nav_menu', 'custom_root_relative_url');
-  add_filter('the_content_more_link', 'custom_root_relative_url');
-  add_filter('the_tags', 'custom_root_relative_url');
-  add_filter('get_pagenum_link', 'custom_root_relative_url');
-  add_filter('get_comment_link', 'custom_root_relative_url');
-  add_filter('month_link', 'custom_root_relative_url');
-  add_filter('day_link', 'custom_root_relative_url');
-  add_filter('year_link', 'custom_root_relative_url');
-  add_filter('tag_link', 'custom_root_relative_url');
-  add_filter('the_author_posts_link', 'custom_root_relative_url');
-}
-
-/**
- * Remove root relative URLs on any attachments in the feed
- */
+// remove root relative URLs on any attachments in the feed
 function custom_root_relative_attachment_urls() {
   if (!is_feed()) {
     add_filter('wp_get_attachment_url', 'custom_root_relative_url');
     add_filter('wp_get_attachment_link', 'custom_root_relative_url');
   }
 }
+
 add_action('pre_get_posts', 'custom_root_relative_attachment_urls');
 
-/**
- * Remove WordPress version from RSS feed
- */
-function custom_no_generator() {
-  return '';
+// set lang="en" as default (rather than en-US)
+function custom_language_attributes() {
+  $attributes = array();
+  $output = '';
+  if (function_exists('is_rtl')) {
+    if (is_rtl() == 'rtl') {
+      $attributes[] = 'dir="rtl"';
+    }
+  }
+
+  $lang = get_bloginfo('language');
+  if ($lang && $lang !== 'en-US') {
+    $attributes[] = "lang=\"$lang\"";
+  } else {
+    $attributes[] = 'lang="en"';
+  }
+
+  $output = implode(' ', $attributes);
+  $output = apply_filters('custom_language_attributes', $output);
+  return $output;
 }
+
+add_filter('language_attributes', 'custom_language_attributes');
+
+// remove WordPress version from RSS feed
+function custom_no_generator() { return ''; }
 add_filter('the_generator', 'custom_no_generator');
 
-/**
- * Add meta tags if the user chooses to hide blog from search engines
- */
+// cleanup wp_head
 function custom_noindex() {
   if (get_option('blog_public') === '0') {
     echo '<meta name="robots" content="noindex,nofollow">', "\n";
   }
 }
 
-/**
- * Add canonical links for single pages
- */
 function custom_rel_canonical() {
   if (!is_singular()) {
     return;
@@ -149,31 +138,21 @@ function custom_rel_canonical() {
   echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 }
 
-/**
- * Remove CSS from recent comment widget
- */
+// remove CSS from recent comments widget
 function custom_remove_recent_comments_style() {
   global $wp_widget_factory;
   if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
-    remove_action('wp_head', array(
-      $wp_widget_factory->widgets['WP_Widget_Recent_Comments'],
-      'recent_comments_style'
-    ));
+    remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
   }
 }
 
-/**
- * Remove CSS from gallery
- */
+// remove CSS from gallery
 function custom_gallery_style($css) {
   return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 }
 
-/**
- * Remove unnecessary stuff from head
- * http://wpengineer.com/1438/wordpress-header/
- */
 function custom_head_cleanup() {
+  // http://wpengineer.com/1438/wordpress-header/
   remove_action('wp_head', 'feed_links', 2);
   remove_action('wp_head', 'feed_links_extra', 3);
   remove_action('wp_head', 'rsd_link');
@@ -186,10 +165,13 @@ function custom_head_cleanup() {
   remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
   remove_action('wp_head', 'noindex', 1);
   add_action('wp_head', 'custom_noindex');
-  remove_action('wp_head', 'rel_canonical');
-  add_action('wp_head', 'custom_rel_canonical');
   add_action('wp_head', 'custom_remove_recent_comments_style', 1);
   add_filter('gallery_style', 'custom_gallery_style');
+
+  if (!class_exists('WPSEO_Frontend')) {
+    remove_action('wp_head', 'rel_canonical');
+    add_action('wp_head', 'custom_rel_canonical');
+  }
 
   if (!is_admin()) {
     // Deregister l10n.js (new since WordPress 3.1)
@@ -201,11 +183,10 @@ function custom_head_cleanup() {
     wp_register_script('jquery', '', '', '', true);
   }
 }
+
 add_action('init', 'custom_head_cleanup');
 
-/**
- * Cleanup gallery_shortcode()
- */
+// cleanup gallery_shortcode()
 function custom_gallery_shortcode($attr) {
   global $post, $wp_locale;
 
@@ -214,71 +195,53 @@ function custom_gallery_shortcode($attr) {
 
   // Allow plugins/themes to override the default gallery template.
   $output = apply_filters('post_gallery', '', $attr);
-  if ($output != '')
+  if ($output != '') {
     return $output;
+  }
 
   // We're trusting author input, so let's at least make sure it looks like a valid orderby statement
   if (isset($attr['orderby'])) {
     $attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
-    if (!$attr['orderby'])
+    if (!$attr['orderby']) {
       unset($attr['orderby']);
+    }
   }
 
   extract(shortcode_atts(array(
-    'order' => 'ASC',
-    'orderby' => 'menu_order ID',
-    'id' => $post->ID,
-    'icontag' => 'figure',
-    'captiontag' => 'figcaption',
-    'columns' => 3,
-    'size' => 'thumbnail',
-    'include' => '',
-    'exclude' => ''
+    'order'      => 'ASC',
+    'orderby'    => 'menu_order ID',
+    'id'         => $post->ID,
+    'icontag'    => 'li',
+    'captiontag' => 'p',
+    'columns'    => 3,
+    'size'       => 'thumbnail',
+    'include'    => '',
+    'exclude'    => ''
   ), $attr));
 
   $id = intval($id);
-  if ('RAND' == $order)
+  if ('RAND' == $order) {
     $orderby = 'none';
+  }
 
   if (!empty($include)) {
-    $include      = preg_replace('/[^0-9,]+/', '', $include);
-    $_attachments = get_posts(array(
-      'include' => $include,
-      'post_status' => 'inherit',
-      'post_type' => 'attachment',
-      'post_mime_type' => 'image',
-      'order' => $order,
-      'orderby' => $orderby
-    ));
+    $include = preg_replace( '/[^0-9,]+/', '', $include );
+    $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
 
     $attachments = array();
     foreach ($_attachments as $key => $val) {
       $attachments[$val->ID] = $_attachments[$key];
     }
   } elseif (!empty($exclude)) {
-    $exclude     = preg_replace('/[^0-9,]+/', '', $exclude);
-    $attachments = get_children(array(
-      'post_parent' => $id,
-      'exclude' => $exclude,
-      'post_status' => 'inherit',
-      'post_type' => 'attachment',
-      'post_mime_type' => 'image',
-      'order' => $order,
-      'orderby' => $orderby
-    ));
+    $exclude = preg_replace('/[^0-9,]+/', '', $exclude);
+    $attachments = get_children(array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
   } else {
-    $attachments = get_children(array(
-      'post_parent' => $id,
-      'post_status' => 'inherit',
-      'post_type' => 'attachment',
-      'post_mime_type' => 'image',
-      'order' => $order,
-      'orderby' => $orderby
-    ));
+    $attachments = get_children(array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
   }
 
-  if (empty($attachments))
+  if (empty($attachments)) {
     return '';
+  }
 
   if (is_feed()) {
     $output = "\n";
@@ -288,76 +251,114 @@ function custom_gallery_shortcode($attr) {
   }
 
   $captiontag = tag_escape($captiontag);
-  $columns    = intval($columns);
-  $itemwidth  = $columns > 0 ? floor(100 / $columns) : 100;
-  $float      = is_rtl() ? 'right' : 'left';
+  $columns = intval($columns);
+  $itemwidth = $columns > 0 ? floor(100/$columns) : 100;
+  $float = is_rtl() ? 'right' : 'left';
 
   $selector = "gallery-{$instance}";
 
   $gallery_style = $gallery_div = '';
-  if (apply_filters('use_default_gallery_style', true))
+  if (apply_filters('use_default_gallery_style', true)) {
     $gallery_style = "";
-  $size_class  = sanitize_html_class($size);
-  $gallery_div = "<section id='$selector' class='clearfix gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-  $output      = apply_filters('gallery_style', $gallery_style . "\n\t\t" . $gallery_div);
+  }
+  $size_class = sanitize_html_class($size);
+  $gallery_div = "<ul id='$selector' class='thumbnails gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
+  $output = apply_filters('gallery_style', $gallery_style . "\n\t\t" . $gallery_div);
 
   $i = 0;
   foreach ($attachments as $id => $attachment) {
-    // Make the gallery link to the file by default instead of the attachment
-    $link = isset($attr['link']) && $attr['link'] === 'attachment' ? wp_get_attachment_link($id, $size, true, false) : wp_get_attachment_link($id, $size, false, false);
+    $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+
     $output .= "
       <{$icontag} class=\"gallery-item\">
         $link
       ";
     if ($captiontag && trim($attachment->post_excerpt)) {
       $output .= "
-        <{$captiontag} class=\"gallery-caption\">
+        <{$captiontag} class=\"gallery-caption hidden\">
         " . wptexturize($attachment->post_excerpt) . "
         </{$captiontag}>";
     }
     $output .= "</{$icontag}>";
-    if ($columns > 0 && ++$i % $columns == 0)
+    if ($columns > 0 && ++$i % $columns == 0) {
       $output .= '';
+    }
   }
 
-  $output .= "</section>\n";
+  $output .= "</ul>\n";
 
   return $output;
 }
+
 remove_shortcode('gallery');
 add_shortcode('gallery', 'custom_gallery_shortcode');
 
-/**
- * Sets the post excerpt length to 40.
- */
-function custom_excerpt_length($length) {
-  return 40;
+function custom_attachment_link_class($html) {
+  $postid = get_the_ID();
+  $html = str_replace('<a', '<a class="thumbnail"', $html);
+  return $html;
 }
-add_filter('excerpt_length', 'custom_excerpt_length');
+add_filter('wp_get_attachment_link', 'custom_attachment_link_class', 10, 1);
 
-/**
- * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and custom_continue_reading_link().
- *
- * To override this in a child theme, remove the filter and add your own
- * function tied to the excerpt_more filter hook.
- */
-function custom_excerpt_more($more) {
-  return ' &hellip;' . custom_continue_reading_link();
+// http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
+function custom_caption($output, $attr, $content) {
+  /* We're not worried abut captions in feeds, so just return the output here. */
+  if ( is_feed()) {
+    return $output;
+  }
+
+  /* Set up the default arguments. */
+  $defaults = array(
+    'id' => '',
+    'align' => 'alignnone',
+    'width' => '',
+    'caption' => ''
+  );
+
+  /* Merge the defaults with user input. */
+  $attr = shortcode_atts($defaults, $attr);
+
+  /* If the width is less than 1 or there is no caption, return the content wrapped between the [caption]< tags. */
+  if (1 > $attr['width'] || empty($attr['caption'])) {
+    return $content;
+  }
+
+  /* Set up the attributes for the caption <div>. */
+  $attributes = (!empty($attr['id']) ? ' id="' . esc_attr($attr['id']) . '"' : '' );
+  $attributes .= ' class="thumbnail wp-caption ' . esc_attr($attr['align']) . '"';
+  $attributes .= ' style="width: ' . esc_attr($attr['width']) . 'px"';
+
+  /* Open the caption <div>. */
+  $output = '<div' . $attributes .'>';
+
+  /* Allow shortcodes for the content the caption was created for. */
+  $output .= do_shortcode($content);
+
+  /* Append the caption text. */
+  $output .= '<div class="caption"><p class="wp-caption-text">' . $attr['caption'] . '</p></div>';
+
+  /* Close the caption </div>. */
+  $output .= '</div>';
+
+  /* Return the formatted, clean caption. */
+  return $output;
 }
+
+add_filter('img_caption_shortcode', 'custom_caption', 10, 3);
+
+// excerpt cleanup
+function custom_excerpt_length($length) {
+  return POST_EXCERPT_LENGTH;
+}
+
+function custom_excerpt_more($more) {
+  return ' &hellip; <a href="' . get_permalink() . '">' . __( 'Continued', 'suprcore' ) . '</a>';
+}
+
+add_filter('excerpt_length', 'custom_excerpt_length');
 add_filter('excerpt_more', 'custom_excerpt_more');
 
-/**
- * Remove container from menus.
- */
-function custom_nav_menu_args($args = '') {
-  $args['container'] = false;
-  return $args;
-}
-add_filter('wp_nav_menu_args', 'custom_nav_menu_args');
-
-/**
- * Get our wp_nav_menu() fallback, wp_page_menu()
- */
+// set wp_nav_menu() fallback, wp_page_menu()
 function custom_page_menu_args() {
 	echo '<ul>';
 		wp_list_pages('title_li=');
@@ -365,102 +366,172 @@ function custom_page_menu_args() {
 }
 add_filter('wp_page_menu_args', 'custom_page_menu_args');
 
-/**
- * Custom Walker for cleaner menu output
- */
-class custom_nav_walker extends Walker_Nav_Menu {
+// menu output
+class Custom_Nav_Walker extends Walker_Nav_Menu {
+  function check_current($val) {
+    return preg_match('/(current-)/', $val);
+  }
+
   function start_el(&$output, $item, $depth, $args) {
     global $wp_query;
-      $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+    $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
-      $slug = sanitize_title($item->title);
+    $slug = sanitize_title($item->title);
+    $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
+    $id = strlen($id) ? '' . esc_attr( $id ) . '' : '';
 
-      $class_names = $value = '';
-      $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+    $class_names = $value = '';
+    $classes = empty($item->classes) ? array() : (array) $item->classes;
 
-      $classes = array_filter($classes, 'custom_check_current');
+    $classes = array_filter($classes, array(&$this, 'check_current'));
 
-      $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
-      $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+    $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
+    $class_names = $class_names ? ' class="' . $id . ' ' . esc_attr($class_names) . '"' : ' class="' . $id . '"';
 
-      $id = apply_filters( 'nav_menu_item_id', 'menu-' . $slug, $item, $args );
-      $id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
+    $output .= $indent . '<li' . $class_names . '>';
 
-      $output .= $indent . '<li' . $id . $class_names . '>';
+    $attributes  = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"' : '';
+    $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"' : '';
+    $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"' : '';
+    $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"' : '';
 
-      $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-      $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-      $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-      $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+    $item_output = $args->before;
+    $item_output .= '<a'. $attributes .'>';
+    $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+    $item_output .= '</a>';
+    $item_output .= $args->after;
 
-      $item_output = $args->before;
-      $item_output .= '<a'. $attributes .'>';
-      $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-      $item_output .= '</a>';
-      $item_output .= $args->after;
-
-      $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+    $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
   }
 }
 
-/**
- * Checks active page and adds active class to the menu item
- */
-function custom_check_current($val) {
-  return preg_match('/current-menu/', $val);
+class Custom_Navbar_Nav_Walker extends Walker_Nav_Menu {
+  function check_current($val) {
+    return preg_match('/(current-)|active|dropdown/', $val);
+  }
+
+  function start_lvl(&$output, $depth) {
+    $output .= "\n<ul class=\"dropdown-menu\">\n";
+  }
+
+  function start_el(&$output, $item, $depth, $args) {
+    global $wp_query;
+    $indent = ($depth) ? str_repeat("\t", $depth) : '';
+
+    $slug = sanitize_title($item->title);
+    $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
+    $id = strlen($id) ? '' . esc_attr( $id ) . '' : '';
+
+    $li_attributes = '';
+    $class_names = $value = '';
+
+    $classes = empty($item->classes) ? array() : (array) $item->classes;
+    if ($args->has_children) {
+      $classes[]      = 'dropdown';
+      $li_attributes .= ' data-dropdown="dropdown"';
+    }
+    $classes[] = ($item->current) ? 'active' : '';
+    $classes = array_filter($classes, array(&$this, 'check_current'));
+
+    $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
+    $class_names = $class_names ? ' class="' . $id . ' ' . esc_attr($class_names) . '"' : ' class="' . $id . '"';
+
+    $output .= $indent . '<li' . $class_names . $li_attributes . '>';
+
+    $attributes  = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"'    : '';
+    $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"'    : '';
+    $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"'    : '';
+    $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"'    : '';
+    $attributes .= ($args->has_children)      ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
+
+    $item_output = $args->before;
+    $item_output .= '<a'. $attributes .'>';
+    $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+    $item_output .= ($args->has_children) ? ' <b class="caret"></b>' : '';
+    $item_output .= '</a>';
+    $item_output .= $args->after;
+
+    $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+  }
+  function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
+    if (!$element) { return; }
+
+    $id_field = $this->db_fields['id'];
+
+    // display this element
+    if (is_array($args[0])) {
+      $args[0]['has_children'] = !empty($children_elements[$element->$id_field]);
+    } elseif (is_object($args[0])) {
+      $args[0]->has_children = !empty($children_elements[$element->$id_field]);
+    }
+    $cb_args = array_merge(array(&$output, $element, $depth), $args);
+    call_user_func_array(array(&$this, 'start_el'), $cb_args);
+
+    $id = $element->$id_field;
+
+    // descend only when the depth is right and there are childrens for this element
+    if (($max_depth == 0 || $max_depth > $depth+1) && isset($children_elements[$id])) {
+      foreach ($children_elements[$id] as $child) {
+        if (!isset($newlevel)) {
+          $newlevel = true;
+          // start the child delimiter
+          $cb_args = array_merge(array(&$output, $depth), $args);
+          call_user_func_array(array(&$this, 'start_lvl'), $cb_args);
+        }
+        $this->display_element($child, $children_elements, $max_depth, $depth + 1, $args, $output);
+      }
+      unset($children_elements[$id]);
+    }
+
+    if (isset($newlevel) && $newlevel) {
+      // end the child delimiter
+      $cb_args = array_merge(array(&$output, $depth), $args);
+      call_user_func_array(array(&$this, 'end_lvl'), $cb_args);
+    }
+
+    // end this element
+    $cb_args = array_merge(array(&$output, $element, $depth), $args);
+    call_user_func_array(array(&$this, 'end_el'), $cb_args);
+  }
 }
 
-/**
- * Add to robots.txt
- * http://codex.wordpress.org/Search_Engine_Optimization_for_WordPress#Robots.txt_Optimization
- */
-function custom_robots() {
-  echo "Disallow: /cgi-bin\n";
-  echo "Disallow: /wp-admin\n";
-  echo "Disallow: /wp-includes\n";
-  echo "Disallow: /wp-content/plugins\n";
-  echo "Disallow: /plugins\n";
-  echo "Disallow: /wp-content/cache\n";
-  echo "Disallow: /wp-content/themes\n";
-  echo "Disallow: /trackback\n";
-  echo "Disallow: /feed\n";
-  echo "Disallow: /comments\n";
-  echo "Disallow: /category/*/*\n";
-  echo "Disallow: */trackback\n";
-  echo "Disallow: */feed\n";
-  echo "Disallow: */comments\n";
-  echo "Disallow: /*?*\n";
-  echo "Disallow: /*?\n";
-  echo "Allow: /wp-content/uploads\n";
-  echo "Allow: /assets";
+function custom_nav_menu_args($args = '') {
+  $args['container']  = false;
+  $args['depth']      = 2;
+  $args['items_wrap'] = '<ul class="nav">%3$s</ul>';
+  if (!$args['walker']) {
+    $args['walker'] = new custom_Nav_Walker();
+  }
+  return $args;
 }
-add_action('do_robots', 'custom_robots');
 
-/**
- * We don't need to self-close these tags in html5:
- * <img>, <input>
- */
+add_filter('wp_nav_menu_args', 'custom_nav_menu_args');
+
+// we don't need to self-close these tags in html5:
+// <img>, <input>
 function custom_remove_self_closing_tags($input) {
   return str_replace(' />', '>', $input);
 }
+
 add_filter('get_avatar', 'custom_remove_self_closing_tags');
 add_filter('comment_id_fields', 'custom_remove_self_closing_tags');
+add_filter('post_thumbnail_html', 'custom_remove_self_closing_tags');
 
-/**
- * Check to see if the tagline is set to default
- * Show an admin notice to update if it hasn't been changed
- * You want to change this or remove it because it's used as the description in the RSS feed
- */
+// check to see if the tagline is set to default
+// show an admin notice to update if it hasn't been changed
+// you want to change this or remove it because it's used as the description in the RSS feed
 function custom_notice_tagline() {
     global $current_user;
-  $user_id = $current_user->ID;
+    $user_id = $current_user->ID;
+
     if (!get_user_meta($user_id, 'ignore_tagline_notice')) {
-    echo '<div class="error">';
-    echo '<p>', sprintf(__('Please update your <a href="%s">site tagline</a> <a href="%s" style="float: right;">Hide Notice</a>', 'suprcore'), admin_url('options-general.php'), '?tagline_notice_ignore=0'), '</p>';
-    echo '</div>';
+      echo '<div class="error">';
+      echo '<p>', sprintf(__('Please update your <a href="%s">site tagline</a> <a href="%s" style="float: right;">Hide Notice</a>', 'custom'), admin_url('options-general.php'), '?tagline_notice_ignore=0'), '</p>';
+      echo '</div>';
     }
 }
-if (get_option('blogdescription') === 'Just another WordPress site') {
+
+if ((get_option('blogdescription') === 'Just another WordPress site') && isset($_GET['page']) != 'theme_activation_options') {
   add_action('admin_notices', 'custom_notice_tagline');
 }
 
@@ -469,21 +540,18 @@ function custom_notice_tagline_ignore() {
   $user_id = $current_user->ID;
   if (isset($_GET['tagline_notice_ignore']) && '0' == $_GET['tagline_notice_ignore']) {
     add_user_meta($user_id, 'ignore_tagline_notice', 'true', true);
-    }
+  }
 }
+
 add_action('admin_init', 'custom_notice_tagline_ignore');
 
-/**
- * Set the post revisions to 5 unless the constant was set in wp-config.php to avoid DB bloat
- */
-if (!defined('WP_POST_REVISIONS'))
-  define('WP_POST_REVISIONS', 5);
+// set the post revisions to 5 unless the constant
+// was set in wp-config.php to avoid DB bloat
+if (!defined('WP_POST_REVISIONS')) { define('WP_POST_REVISIONS', 5); }
 
-/**
- * Allow more tags in TinyMCE including iframes
- */
+// allow more tags in TinyMCE including <iframe> and <script>
 function custom_change_mce_options($options) {
-  $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src]';
+  $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src],script[charset|defer|language|src|type]';
   if (isset($initArray['extended_valid_elements'])) {
     $options['extended_valid_elements'] .= ',' . $ext;
   } else {
@@ -491,203 +559,71 @@ function custom_change_mce_options($options) {
   }
   return $options;
 }
+
 add_filter('tiny_mce_before_init', 'custom_change_mce_options');
 
-/**
- * Clean up the default WordPress style tags
- */
+//clean up the default WordPress style tags
+add_filter('style_loader_tag', 'custom_clean_style_tag');
+
 function custom_clean_style_tag($input) {
   preg_match_all("!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches);
   //only display media if it's print
   $media = $matches[3][0] === 'print' ? ' media="print"' : '';
   return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
-add_filter('style_loader_tag', 'custom_clean_style_tag');
 
-/**
- * Removes URL hash to avoid the jump link
- */
-function custom_remove_more_jump_link($link) {
-   $offset = strpos($link, '#more-');
-   if ($offset) {
-      $end = strpos($link, '"',$offset);
-   }
-   if ($end) {
-      $link = substr_replace($link, '', $offset, $end-$offset);
-   }
-   return $link;
-}
-add_filter('the_content_more_link', 'custom_remove_more_jump_link');
+function custom_body_class() {
+  $term = get_queried_object();
 
-/**
- * A clean theme
- * http://nicolasgallagher.com/anatomy-of-an-html5-wordpress-theme/
- */
-add_filter('the_content', 'remove_empty_read_more_span');
-function remove_empty_read_more_span($content) {
-	return eregi_replace("(<p><span id=\"more-[0-9]{1,}\"></span></p>)", "", $content);
-} // removes empty span
-
-add_filter('the_content_more_link', 'remove_more_jump_link');
-function remove_more_jump_link($link) {
-	$offset = strpos($link, '#more-');
-	if ($offset) {
-		$end = strpos($link, '"',$offset);
-	}
-	if ($end) {
-		$link = substr_replace($link, '', $offset, $end-$offset);
-	}
-	return '<a href="'.get_permalink($post->ID).'" class="read-more-link">'.'Read more'.'</a>';
-} // removes url hash to avoid the jump link
-
-// Display images in the excerpt
-function improved_trim_excerpt($text) {
-	if ( '' == $text ) {
-		$text = get_the_content('');
-		$text = strip_shortcodes( $text );
-		$text = apply_filters('the_content', $text);
-		$text = str_replace(']]>', ']]&gt;', $text);
-		$text = strip_tags($text, '<p><img><a>');
-		$excerpt_length = apply_filters('excerpt_length', 55);
-		$words = explode(' ', $text, $excerpt_length + 1);
-		if (count($words) > $excerpt_length) {
-			array_pop($words);
-			array_push($words, '[...]');
-			$text = implode(' ', $words);
-			$text = force_balance_tags($text);
-		}
-	}
-	return $text;
-}
-remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'improved_trim_excerpt');
-
-/**
- * Remove languages dir and set lang="en" as default (rather than en-US)
- */
-function custom_language_attributes() {
-  $attributes = array();
-  $output = '';
-  $lang = get_bloginfo('language');
-  if ($lang && $lang !== 'en-US') {
-    $attributes[] = "lang=\"$lang\"";
-  } else {
-    $attributes[] = 'lang="en"';
+  if (is_single()) {
+    $cat = get_the_category();
   }
 
-  $output = implode(' ', $attributes);
-  $output = apply_filters('custom_language_attributes', $output);
-  return $output;
+  if(!empty($cat)) {
+    return $cat[0]->slug;
+  } elseif (isset($term->slug)) {
+    return $term->slug;
+  } elseif (isset($term->page_name)) {
+    return $term->page_name;
+  } elseif (isset($term->post_name)) {
+    return $term->post_name;
+  } else {
+    return;
+  }
 }
 
-/**
- * Remove default widgets 
- * http://www.everparent.com/lunaticfred/2011/05/05/how-to-remove-default-sidebar-widgets-in-wordpress/
- */
-add_action( 'widgets_init', 'remove_default_widgets' );
-function remove_default_widgets() {
-	//unregister_widget('WP_Widget_Pages');
-	unregister_widget('WP_Widget_Calendar');
-	unregister_widget('WP_Widget_Archives');
-	unregister_widget('WP_Widget_Links');
-	unregister_widget('WP_Widget_Meta');
-	unregister_widget('WP_Widget_Search');
-	//unregister_widget('WP_Widget_Text');
-	//unregister_widget('WP_Widget_Categories');
-	//unregister_widget('WP_Widget_Recent_Posts');
-	unregister_widget('WP_Widget_Recent_Comments');
-	unregister_widget('WP_Widget_RSS');
-	unregister_widget('WP_Widget_Tag_Cloud');
-	unregister_widget('WP_Nav_Menu_Widget');
+// first and last classes for widgets
+// http://wordpress.org/support/topic/how-to-first-and-last-css-classes-for-sidebar-widgets
+function custom_widget_first_last_classes($params) {
+  global $my_widget_num;
+  $this_id = $params[0]['id'];
+  $arr_registered_widgets = wp_get_sidebars_widgets();
+
+  if (!$my_widget_num) {
+    $my_widget_num = array();
+  }
+
+  if (!isset($arr_registered_widgets[$this_id]) || !is_array($arr_registered_widgets[$this_id])) {
+    return $params;
+  }
+
+  if (isset($my_widget_num[$this_id])) {
+    $my_widget_num[$this_id] ++;
+  } else {
+    $my_widget_num[$this_id] = 1;
+  }
+
+  $class = 'class="widget-' . $my_widget_num[$this_id] . ' ';
+
+  if ($my_widget_num[$this_id] == 1) {
+    $class .= 'widget-first ';
+  } elseif ($my_widget_num[$this_id] == count($arr_registered_widgets[$this_id])) {
+    $class .= 'widget-last ';
+  }
+
+  $params[0]['before_widget'] = str_replace('class="', $class, $params[0]['before_widget']);
+
+  return $params;
+
 }
-
-/**
- * Customize admin dashboard
- * http://www.smashingmagazine.com/2011/05/10/new-wordpress-power-tips-for-template-developers-and-consultants/
- */
-// Remove admin menu items
-add_action( 'admin_menu', 'custom_admin_menu' );
-function custom_admin_menu() {
-	remove_menu_page('link-manager.php');
-}
-
-// Dashboard news feeds
-add_action('wp_dashboard_setup', 'custom_dashboard_widgets');
-function custom_dashboard_widgets() {
-	global $wp_meta_boxes;
-	// remove unnecessary widgets: http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
-	// var_dump( $wp_meta_boxes['dashboard'] ); // use to get all the widget IDs
-	unset(
-		$wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links'],
-		$wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins'],
-		$wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'],
-		$wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']
-	);
-	// add a custom dashboard widget
-	wp_add_dashboard_widget( 'dashboard_custom_feed', 'From the News Desk at 8/7 Central', 'dashboard_custom_feed_output' ); //add new RSS feed output
-}
-function dashboard_custom_feed_output() {
-	echo '<div class="rss-widget">';
-	wp_widget_rss_output(array(
-		'url' => 'http://www.eightsevencentral.com/feed',
-		'title' => 'What\'s up at 8/7',
-		'items' => 3,
-		'show_summary' => 1,
-		'show_author' => 0,
-		'show_date' => 1,
-	));
-	echo "</div>";
-}
-
-// Add footer credits
-add_filter( 'admin_footer_text', 'custom_admin_footer_text' );
-function custom_admin_footer_text( $default_text ) {
-	return '<span id="footer-thankyou">Design + Development by <a href="http://eightsevencentral.com">8/7 Central</a><span> | Powered by <a href="http://www.wordpress.org">WordPress</a>';
-}
-
-/**
- * Admin login 
- * http://digwp.com/2010/03/wordpress-functions-php-template-custom-functions/
- */
-function custom_login_logo() {
-	echo '<style type="text/css">
-	h1 a { background-image: url('.get_bloginfo('template_directory').'/inc/img/login.png) !important; height: 220px !important; }
-	input.button-primary { background: #99CF52 !important; border-color: #99CF52; }
-	input.button-primary:hover { color: #F9F9F9; border-color: #669900; }
-	.login #nav a { color: #ccc !important; }
-	</style>';
-}
-add_action('login_head', 'custom_login_logo');
-
-/**
- * Custom Login URL and title
- * http://primegap.net/2011/01/26/wordpress-quick-tip-custom-wp-login-php-logo-url-without-hacks/
- */
-function custom_login_url() {
-  return ('http://eightsevencentral.com');
-}
-add_filter( 'login_headerurl', 'custom_login_url', 10, 4 );
-
-function custom_login_title() {
-  return ('Eight Seven Central');
-}
-add_filter( 'login_headertitle', 'custom_login_title', 10, 4 );
-
-/** 
- * Disable 3.1 admin bar for all users
- * http://www.snilesh.com/resources/wordpress/wordpress-3-1-enable-disable-remove-admin-bar/
- */
-add_filter( 'show_admin_bar' , 'custom_admin_bar');
-function custom_admin_bar(){
-	return false;
-}
-
-/**
- * Remove the dashboard update link
- * http://www.vooshthemes.com/blog/wordpress-tip/wordpress-quick-tip-remove-the-dashboard-update-message/
- */
-add_action( 'admin_init', create_function('', 'remove_action( \'admin_notices\', \'update_nag\', 3 );') );
-
-
-
-?>
+add_filter('dynamic_sidebar_params', 'custom_widget_first_last_classes');

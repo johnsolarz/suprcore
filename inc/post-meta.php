@@ -1,12 +1,11 @@
 <?php 
-
 /**
  * Custom meta boxes
  * http://wp.tutsplus.com/tutorials/reusable-custom-meta-boxes-part-1-intro-and-basic-fields/
  */
 
-/* 
-Add meta box:
+/*
+    Add meta box:
 
     The $id will be added to the box as an id to make it easy to reference in style sheets and other functions
     The $title will be displayed in the handle of the box
@@ -78,7 +77,7 @@ $custom_meta_fields = array(
 );
 
 /*
-The Callback:
+    The Callback:
 
     Echo a hidden nonce field to verify the fields when we save them later
     Start a table and begin a loop through each field from the $custom_meta_fields array.
@@ -144,7 +143,7 @@ echo '<input type="hidden" name="custom_meta_box_nonce" value="'.wp_create_nonce
 }
 
 /*
-Save the Data:
+    Save the Data:
 
     Get the field’s value if it has been saved before and store it as $old
     Get the current value that has been entered and store it as $new
@@ -191,7 +190,7 @@ add_action('save_post', 'save_custom_meta');
 function my_admin_scripts() {
 	wp_enqueue_script('media-upload');
 	wp_enqueue_script('thickbox');
-	wp_register_script('my-upload', get_bloginfo('template_url') . '/inc/js/custom-post-meta.js', array('jquery','media-upload','thickbox'));
+	wp_register_script('my-upload', get_bloginfo('template_url') . '/inc/post-meta.js', array('jquery','media-upload','thickbox'));
 	wp_enqueue_script('my-upload');
 }
 
@@ -201,5 +200,3 @@ function my_admin_styles() {
 
 add_action('admin_print_scripts', 'my_admin_scripts');
 add_action('admin_print_styles', 'my_admin_styles');
-
-?>

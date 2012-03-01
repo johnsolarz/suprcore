@@ -1,5 +1,4 @@
-<?php
- 
+<?php 
 /** 
  * Custom post type template: "Book"
  * http://codex.wordpress.org/Function_Reference/register_post_type
@@ -203,5 +202,3 @@ function manage_custom_post_columns($name) {
 			break;
     }
 }
-
-?>
