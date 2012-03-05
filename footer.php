@@ -43,6 +43,7 @@
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 
-	<?php wp_footer(); ?>
+  <?php wp_footer(); ?>
+  <?php custom_footer(); ?>
 </body>
 </html>

@@ -14,6 +14,8 @@ define('THEME_PATH', RELATIVE_CONTENT_PATH . '/themes/' . THEME_NAME);
 
 require_once locate_template('/inc/cleanup.php');     // cleanup
 require_once locate_template('/inc/htaccess.php');    // rewrites for assets, h5bp htaccess
+require_once locate_template('/inc/hooks.php');       // hooks
+require_once locate_template('/inc/actions.php');     // actions
 require_once locate_template('/inc/dashboard.php');   // admin dashboard
 require_once locate_template('/inc/discussion.php');  // comments and pingbacks
 require_once locate_template('/inc/sharing.php');     // social media
@@ -120,4 +122,20 @@ function custom_page_navigation() {
   if ($total == 1 && $max > 1) $pages = '<span class="page-current">Page ' . $current . ' of ' . $max . '</span>'."\r\n";
   echo $pages . paginate_links($a);
   if ($max > 1) echo '</nav>';
+}
+
+// retreive first image from post
+// http://wordpress.org/support/topic/retreive-first-image-from-post
+function custom_first_image() {
+  global $post, $posts;
+  $first_img = '';
+  ob_start();
+  ob_end_clean();
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+  $first_img = $matches [1] [0];
+
+  if(empty($first_img)){ //Defines a default image
+    $first_img = "/img/login.png";
+  }
+  return $first_img;
 }

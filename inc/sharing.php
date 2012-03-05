@@ -12,6 +12,10 @@ function use_facebook_like() {
   return FACEBOOK_LIKE_POSTS;
 }
 
+function use_pinterest_pin() {
+  return PINTEREST_PIN_POSTS;
+}
+
 function use_google_plus() {
   return GOOGLE_PLUS_POSTS;
 }
@@ -70,17 +74,21 @@ function custom_social_sharing() {
   $username = twitter_username();
   $title = get_the_title();
   $permalink = get_permalink();
+  $firstimg = custom_first_image();
 
-  if (use_twitter_share() || use_google_plus() || use_facebook_like()) {
+  if (use_twitter_share() || use_google_plus() || use_pinterest_pin() || use_facebook_like()) {
     echo '<ul class="share">';
     if (use_twitter_share()) {
-      echo '<li><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="'.$username.'" data-text="'.$title.'">Tweet</a></li><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
-    }
-    if (use_google_plus()) { 
-      echo '<li><div class="g-plusone" data-size="medium" data-href="'.$permalink.'"></div></li><script>(function() {var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;po.src = \'https://apis.google.com/js/plusone.js\';var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);})();</script>';
+      echo '<li class="one column"><a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="'.$username.'" data-text="'.$title.'">Tweet</a></li>';
     }
     if (use_facebook_like()) {
-      echo '<li><div class="fb-like" data-href="'.$permalink.'" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false" data-colorscheme="light" data-font="arial"></div></li><div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";fjs.parentNode.insertBefore(js, fjs);}(document, \'script\', \'facebook-jssdk\'));</script>';
+      echo '<li class="one column"><div class="fb-like" data-href="'.$permalink.'" data-send="false" data-layout="button_count" data-show-faces="false" data-colorscheme="light" data-font="arial"></div></li>';
+    }
+    if (use_pinterest_pin()) {
+    	echo '<li class="one column"><a href="http://pinterest.com/pin/create/button/?url='.$permalink.'&media='.$firstimg.'&description='.$title.'" class="pin-it-button" count-layout="none">Pin It</a></li>';
+    }
+    if (use_google_plus()) { 
+      echo '<li class="one column"><div class="g-plusone" data-size="medium" data-href="'.$permalink.'" data-annotation="none"></div></li>';
     }
   echo '</ul>';
   }
