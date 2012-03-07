@@ -77,7 +77,7 @@ function custom_social_sharing() {
   $firstimg = custom_first_image();
 
   if (use_twitter_share() || use_google_plus() || use_pinterest_pin() || use_facebook_like()) {
-    echo '<ul class="share">';
+    echo '<ul class="sharing">';
     if (use_twitter_share()) {
       echo '<li class="one column"><a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="'.$username.'" data-text="'.$title.'">Tweet</a></li>';
     }

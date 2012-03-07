@@ -96,8 +96,8 @@ article .author { }
 article footer { color: #aaa; }
 article footer a { color: #aaa; }
 article footer a:hover { color: #222; }
-article footer .share { border-top: 1px solid #ccc; list-style: none; height: 3em; margin: 0; padding: 1.4166666666666666666666666666667em 0 0; }  /* 17px 0 0 */
-article footer .share li:nth-child(1) { margin-left: 0; }
+article footer .sharing { border-top: 1px solid #ccc; list-style: none; height: 3em; margin: 0; padding: 1.4166666666666666666666666666667em 0 0; }  /* 17px 0 0 */
+article footer .sharing li:nth-child(1) { margin-left: 0; }
 
 
 /* Comments */
