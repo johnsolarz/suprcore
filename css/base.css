@@ -31,16 +31,13 @@ audio:not([controls]) { display: none; }
  */
 
 html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-
-/* 
- * 16px base font size with 150% (24px) friendly, unitless line height and margin for vertical rhythm
- * Font-size percentage is based on 16px browser default size 
- * IE7 and older can't resize px based text
- */
  
-html, button, input, select, textarea { font: 100%/1.5 "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; color: #222; } /* 16px, 24px */
+html, button, input, select, textarea { font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; color: #222; }
 
-/* Improve default text rendering, handling of kerning pairs and ligatures */
+/*
+ * 1. 16px base font size with 150% (24px) friendly, unitless line height and margin for vertical rhythm 
+ * 2. Improve default text rendering, handling of kerning pairs and ligatures 
+ */
 body { margin: 0; font-size: 1em; line-height: 1.5; -webkit-font-smoothing: antialiased; font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
 /*
