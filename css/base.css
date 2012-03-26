@@ -31,7 +31,7 @@ audio:not([controls]) { display: none; }
  */
 
 html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
- 
+
 html, button, input, select, textarea { font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; color: #222; }
 
 /*
@@ -151,9 +151,6 @@ img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
  */
 
 svg:not(:root) { overflow: hidden; }
-
-/* Fluid media */
-img, object, embed, video { height: auto; max-width: 100%;	_width: 100%; }
 
 
 /* =============================================================================
@@ -345,8 +342,7 @@ td { vertical-align: top; }
    ========================================================================== */
 
 /* For image replacement */
-.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
-.ir br { display: none; }
+.ir { border:0; font: 0/0 a; text-shadow: none; color: transparent; background-color: transparent; }
 
 /* Hide from both screenreaders and browsers: h5bp.com/u */
 .hidden { display: none !important; visibility: hidden; }
