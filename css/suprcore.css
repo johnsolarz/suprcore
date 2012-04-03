@@ -9,7 +9,7 @@
  *  https://github.com/johnsolarz/suprcore
  */
 
-body { font-size: 75%; /* background:url('../img/18px-baseline.gif') 0 1.25em; */ } /* 12px, 18px */
+body { font-size: 75%; /* background:url(../img/18px-baseline.gif) 0 1.25em; */ } /* 12px, 18px */
 
 
 /* =============================================================================
@@ -24,7 +24,7 @@ header #logo a:hover { border-bottom: none; }
 	
 /* Logo img
 header #logo a {
-    background: url("../img/logo.png") no-repeat scroll 0 0 transparent;
+    background: url(../img/logo.png) no-repeat scroll 0 0 transparent;
     display: block;
     height: 60px;
     overflow: hidden;
@@ -96,7 +96,7 @@ article .author { }
 article footer { color: #aaa; }
 article footer a { color: #aaa; }
 article footer a:hover { color: #222; }
-article footer .sharing { border-top: 1px solid #ccc; list-style: none; height: 3em; margin: 0; padding: 1.4166666666666666666666666666667em 0 0; }  /* 17px 0 0 */
+article footer .sharing { border-top: 1px solid #ccc; line-height: 1em; list-style: none; height: 3em; margin: 0; padding: 1.4166666666666666666666666666667em 0 0; }  /* 17px 0 0 */
 article footer .sharing li:nth-child(1) { margin-left: 0; }
 
 
@@ -117,7 +117,7 @@ article footer .sharing li:nth-child(1) { margin-left: 0; }
 .comment-list li.comment article .comment-author a { color: #111; }
 
 .comment-list li article.comment footer { border-top: none; }
-.comment-list li article.comment footer.comment-meta { font-size: .916666667em; line-height: 1.63636363em; margin: -1.63636363em 0 0; padding: 0; }
+.comment-list li article.comment footer.comment-meta { font-size: .916666667em; line-height: 1.63636363em; margin: 0; padding: 0; } /* 11px, 18px */
 .comment-list li article.comment footer.comment-meta div.vcard { }
 .comment-list li article.comment:hover footer.comment-meta div.vcard a { color: #666; }
 .comment-list li article.comment:hover footer.comment-meta div.vcard a:hover { color: #111; }

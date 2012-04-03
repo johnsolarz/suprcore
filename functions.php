@@ -20,8 +20,8 @@ require_once locate_template('/inc/dashboard.php');   // admin dashboard
 require_once locate_template('/inc/discussion.php');  // comments and pingbacks
 require_once locate_template('/inc/sharing.php');     // social media
 require_once locate_template('/inc/custom.php');      // custom functions
-//require_once locate_template('/inc/post-type.php');   // post type template
-//require_once locate_template('/inc/post-meta.php');   // meta box template
+// require_once locate_template('/inc/post-type.php');   // post type template
+// require_once locate_template('/inc/post-meta.php');   // meta box template
 
 // set the maximum 'Large' image width to the maximum grid width
 // http://wordpress.stackexchange.com/q/11766
