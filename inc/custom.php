@@ -1,6 +1,8 @@
-<?php 
- 
-// Custom post type template: "Book"
+<?php
+
+// Custom functions
+
+/* Custom post type template: "Book"
 // http://codex.wordpress.org/Function_Reference/register_post_type
 add_action('init', 'custom_post_type_book');
 function custom_post_type_book() 
@@ -47,7 +49,7 @@ function custom_updated_messages_book( $messages ) {
     2 => __('Custom field updated.'),
     3 => __('Custom field deleted.'),
     4 => __('Book updated.'),
-    /* translators: %s: date and time of the revision */
+    //translators: %s: date and time of the revision
     5 => isset($_GET['revision']) ? sprintf( __('Book restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
     6 => sprintf( __('Book published. <a href="%s">View book</a>'), esc_url( get_permalink($post_ID) ) ),
     7 => __('Book saved.'),
@@ -86,10 +88,10 @@ function custom_help_text_book($contextual_help, $screen_id, $screen) {
       '<p>' . __('This is the help screen displaying the table of books blah blah blah.') . '</p>' ;
   }
   return $contextual_help;
-}
+} 
+end post types */
 
-
-// Custom taxonomies
+/* Custom taxonomies
 // http://codex.wordpress.org/Function_Reference/register_taxonomy 
 // hook into the init action and call create_book_taxonomies when it fires
 add_action( 'init', 'custom_book_taxonomies', 0 );
@@ -153,10 +155,7 @@ function custom_book_taxonomies()
 // http://www.wptavern.com/forum/troubleshooting/1758-custom-taxonomy-css-class.html#post17171
 add_filter( 'post_class', 'custom_post_class', 10, 3 );
 if( !function_exists( 'custom_post_class' ) ) {
-    /**
-     * Append taxonomy terms to post class.
-     * @since 2011-02-01
-     */
+    // Append taxonomy terms to post class.
     function custom_post_class( $classes, $class, $ID ) {
         $taxonomy = array('genre', 'writer');
         $terms = get_the_terms( (int) $ID, $taxonomy );
@@ -170,9 +169,10 @@ if( !function_exists( 'custom_post_class' ) ) {
         return $classes;
     }
 }
+end taxonomies */
 
-
-// Manage custom post admin columns
+ 
+/* Manage custom post admin columns
 // http://shibashake.com/wordpress-theme/add-custom-post-type-columns 
 add_filter('manage_edit-book_columns', 'custom_post_columns');
 function custom_post_columns($book_columns) {
@@ -194,3 +194,4 @@ function manage_custom_post_columns($name) {
 			break;
     }
 }
+end manage admin column */ 
