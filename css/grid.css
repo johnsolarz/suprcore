@@ -1,6 +1,6 @@
 /* 
- * Fluogrid™ Twelve
- * Fixed-width layout with a twelve unit grid.
+ * Fluogrid™
+ * Static twelve unit grid.
  * https://github.com/johnsolarz/fluogrid
  * Copyright 2012 8/7 Central
  */
@@ -11,87 +11,121 @@
    ========================================================================== */
 
 /*
- * Grid defines the layout area. Twelve 60px units, 20px gutters = 960px layout.
- * Columns are made up of a number of units. Left/right margins define gutter widths.
- * Rows are horizontal divisions of similar content and are self-clearing.
+ * Grid defines the layout area.
+ * A column is made of a number of units.
+ * Sections are horizontal divisions of similar ontent.
  */
 
-.grid { margin: 0 auto; position: relative; width: 960px; }
-.column { display: inline; float: left; margin-left: 10px; margin-right: 10px; }
-.row { margin-bottom: 1.5em; }
+.grid                    { margin: 0 auto; position: relative; width: 960px; }
+.column                  { display: inline; float: left; margin-left: 10px; margin-right: 10px; }
+.section                 { margin-bottom: 1.5em; }
 
-/* Nested columns */
-.alpha { margin-left: 0; }
-.omega { margin-right: 0; }
+/* 
+ * Nested columns 
+ */
 
-/* Push pull repositioning */
-.push-one,    .pull-one,    .push-two,    .pull-two,
-.push-three,  .pull-three,  .push-four,   .pull-four,
-.push-five,   .pull-five,   .push-six,    .pull-six,
-.push-seven,  .pull-seven,  .push-eight,  .pull-eight,
-.push-nine,   .pull-nine,   .push-ten,    .pull-ten,
-.push-eleven, .pull-eleven, .push-twelve, .pull-twelve { position: relative; }
+.column.alpha            { margin-left: 0; }
+.column.omega            { margin-right: 0; }
 
-/* Micro clearfix hack */
-.grid:before, .grid:after, .row:before, .row:after { content: ""; display: table; }
-.grid:after, .row:after { clear: both; }
-.grid, .row { *zoom: 1; }
+/* 
+ * Column positioning 
+ */
+ 
+[class*="push"], 
+[class*="pull"]          { position: relative; }
 
-/* Non-structural helper classes */
-.center { text-align: center; }
-.inset { padding: 1.5em; }
-.full { width: 100%; }
+/*
+ * Fluid media 
+ */
 
-/* Unit widths */
-.grid .one             { width: 60px;  }
-.grid .two             { width: 140px; }
-.grid .three           { width: 220px; }
-.grid .four            { width: 300px; }
-.grid .five            { width: 380px; }
-.grid .six             { width: 460px; }
-.grid .seven           { width: 540px; }
-.grid .eight           { width: 620px; }
-.grid .nine            { width: 700px; }
-.grid .ten             { width: 780px; }
-.grid .eleven          { width: 860px; }
-.grid .twelve          { width: 940px; }
+img, 
+object, 
+embed, 
+video                    { height: auto; max-width: 100%; }
 
-/* Offset space */
-.grid. offset-one      { padding-left: 80px;  }
-.grid .offset-two      { padding-left: 160px; }
-.grid .offset-three    { padding-left: 240px; }
-.grid .offset-four     { padding-left: 320px; }
-.grid .offset-five     { padding-left: 400px; }
-.grid .offset-six      { padding-left: 480px; }
-.grid .offset-seven    { padding-left: 560px; }
-.grid .offset-eight    { padding-left: 640px; }
-.grid .offset-nine     { padding-left: 720px; }
-.grid .offset-ten      { padding-left: 800px; }
-.grid .offset-eleven   { padding-left: 880px; }
-	
-/* Push columns */
-.grid .push-one        { left: 80px;  }
-.grid .push-two        { left: 160px; }
-.grid .push-three      { left: 240px; }
-.grid .push-four       { left: 320px; }
-.grid .push-five       { left: 400px; }
-.grid .push-six        { left: 480px; }
-.grid .push-seven      { left: 560px; }
-.grid .push-eight      { left: 640px; }
-.grid .push-nine       { left: 720px; }
-.grid .push-ten        { left: 800px; }
-.grid .push-eleven     { left: 880px; }
+/* 
+ * Micro clearfix hack
+ */
 
-/* Pull columns */
-.grid .pull-one        { left: -80px;  }
-.grid .pull-two        { left: -160px; }
-.grid .pull-three      { left: -240px; }
-.grid .pull-four       { left: -320px; }
-.grid .pull-five       { left: -400px; }
-.grid .pull-six        { left: -480px; }
-.grid .pull-seven      { left: -560px; }
-.grid .pull-eight      { left: -640px; }
-.grid .pull-nine       { left: -720px; }
-.grid .pull-ten        { left: -800px; }
-.grid .pull-eleven     { left: -880px; }
+.grid:before, 
+.grid:after, 
+.section:before, 
+.section:after           { content: ""; display: table; }
+.grid:after, 
+.section:after           { clear: both; }
+.grid, 
+.section                 { *zoom: 1; }
 
+/* 
+ * Helper classes 
+ */
+
+.center                  { text-align: center; }
+.inset                   { padding: 1.5em; }
+.full                    { width: 100%; }
+
+
+/*
+ * 60px units, 20px gutters
+ */
+
+.one                     { width: 60px;  }
+.two                     { width: 140px; }
+.three                   { width: 220px; }
+.four                    { width: 300px; }
+.five                    { width: 380px; }
+.six                     { width: 460px; }
+.seven                   { width: 540px; }
+.eight                   { width: 620px; }
+.nine                    { width: 700px; }
+.ten                     { width: 780px; }
+.eleven                  { width: 860px; }
+.twelve                  { width: 940px; }
+
+/* 
+ * Offset layout 
+ */
+
+.pad-one                 { padding-left: 80px;  }
+.pad-two                 { padding-left: 160px; }
+.pad-three               { padding-left: 240px; }
+.pad-four                { padding-left: 320px; }
+.pad-five                { padding-left: 400px; }
+.pad-six                 { padding-left: 480px; }
+.pad-seven               { padding-left: 560px; }
+.pad-eight               { padding-left: 640px; }
+.pad-nine                { padding-left: 720px; }
+.pad-ten                 { padding-left: 800px; }
+.pad-eleven              { padding-left: 880px; }
+
+/* 
+ * Push layout 
+ */
+
+.push-one                { left: 80px;  }
+.push-two                { left: 160px; }
+.push-three              { left: 240px; }
+.push-four               { left: 320px; }
+.push-five               { left: 400px; }
+.push-six                { left: 480px; }
+.push-seven              { left: 560px; }
+.push-eight              { left: 640px; }
+.push-nine               { left: 720px; }
+.push-ten                { left: 800px; }
+.push-eleven             { left: 880px; }
+
+/* 
+ * Pull layout 
+ */
+
+.pull-one                { left: -80px;  }
+.pull-two                { left: -160px; }
+.pull-three              { left: -240px; }
+.pull-four               { left: -320px; }
+.pull-five               { left: -400px; }
+.pull-six                { left: -480px; }
+.pull-seven              { left: -560px; }
+.pull-eight              { left: -640px; }
+.pull-nine               { left: -720px; }
+.pull-ten                { left: -800px; }
+.pull-eleven             { left: -880px; }

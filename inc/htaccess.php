@@ -1,6 +1,9 @@
 <?php
 
-// Apache server
+// Using a server other than Apache? See:
+// https://github.com/retlehs/roots/wiki/Nginx
+// https://github.com/retlehs/roots/wiki/Lighttpd
+
 if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
   function custom_htaccess_writable() {
     if (!is_writable(get_home_path() . '.htaccess')) {
@@ -12,22 +15,12 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
 
   add_action('admin_init', 'custom_htaccess_writable');
 
-  // Flush rewrite rules
-  function custom_flush_rewrites() {
-    global $wp_rewrite;
-    $wp_rewrite->flush_rules();
-  }
-
-  // Set the permalink structure to /postname/
-  if (get_option('permalink_structure') != '/%postname%/') {
-    update_option('permalink_structure', '/%postname%/');
-  }
-
-  // Set upload folder to /assets.
-  update_option('uploads_use_yearmonth_folders', 1);
-  update_option('upload_path', 'assets');
-
   // Rewrites DO NOT happen for child themes
+  // rewrite /wp-content/themes/suprcore/css/ to /css/
+  // rewrite /wp-content/themes/suprcore/js/  to /js/
+  // rewrite /wp-content/themes/suprcore/img/ to /js/
+  // rewrite /wp-content/plugins/ to /plugins/
+
   function custom_add_rewrites($content) {
     global $wp_rewrite;
     $custom_new_non_wp_rules = array(
@@ -36,7 +29,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
       'img/(.*)'      => THEME_PATH . '/img/$1',
       'plugins/(.*)'  => RELATIVE_PLUGIN_PATH . '/$1'
     );
-    $wp_rewrite->non_wp_rules = $custom_new_non_wp_rules;
+    $wp_rewrite->non_wp_rules = array_merge($wp_rewrite->non_wp_rules, $custom_new_non_wp_rules);
     return $content;
   }
 
@@ -77,7 +70,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
       if ($mod_rewrite_enabled) {
         $h5bp_rules = extract_from_markers($htaccess_file, 'HTML5 Boilerplate');
           if ($h5bp_rules === array()) {
-            $filename = __DIR__ . '/h5bp-htaccess';
+            $filename = dirname(__FILE__) . '/h5bp-htaccess';
             return insert_with_markers($htaccess_file, 'HTML5 Boilerplate', extract_from_markers($filename, 'HTML5 Boilerplate'));
           }
       }

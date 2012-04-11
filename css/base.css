@@ -1,8 +1,8 @@
 /* =============================================================================
  * Build:
  * =============================================================================
- * 
- * Handcrafted code from Des Moines 
+ *
+ * Handcrafted code from Des Moines
  * Copyright 2012 8/7 Central. All rights reserved.
  * The design and code of this web site is not licensed for public use.
  * http://eightsevencentral.com
@@ -82,13 +82,13 @@ h5 { margin: 0; font-size: 1.3125em; line-height: 1.1428571428571428571428571428
 
 h6 { margin: 0; font-size: 1.125em; line-height: 1.3333333333333333333333333333333em; margin-bottom: 1.3333333333333333333333333333333em; } /* 18px, 24px, 24px */
 
-p, dl, td, th, table, address { margin: 0; font-size: 1em; line-height: 1.5em; margin-bottom: 1.5em; padding: 0; } /* 16px, 24px, 24px */
+p, dl, td, th, table, address { margin: 0; font-size: 1em; line-height: 1.5em; margin-bottom: 1.5em; margin-top: 1.5em; padding: 0; } /* 16px, 24px, 24px */
 
 abbr[title] { border-bottom: 1px dotted; }
 
 b, strong { font-weight: bold; }
 
-blockquote { border-left: 1px solid #ccc; margin: 0 0 1.5em; padding-left: 40px; }
+blockquote { border-left: 5px solid #ccc; margin: 1.5em 0; padding-left: 35px; }
 
 dfn { font-style: italic; }
 
@@ -130,7 +130,7 @@ sub { bottom: -0.25em; }
    Lists
    ========================================================================== */
 
-ul, ol { margin: 0 0 1.5em; padding: 0 0 0 40px; }
+ul, ol { margin: 1.5em 0; padding: 0 0 0 40px; }
 dd { margin: 0 0 0 40px; }
 nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
 
@@ -369,7 +369,7 @@ td { vertical-align: top; }
    ========================================================================== */
 
 @media print {
-  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; } /* Black prints faster: h5bp.com/s */
   a, a:visited { text-decoration: underline; }
   a[href]:after { content: " (" attr(href) ")"; }
   abbr[title]:after { content: " (" attr(title) ")"; }

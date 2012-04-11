@@ -137,11 +137,11 @@ article footer .sharing li:nth-child(1) { margin-left: 0; }
    ========================================================================== */
 
 aside { }
-aside article { } 
-aside article h3 { margin: 0; font-size: 1em; line-height: 1.5em; margin-bottom: 0; padding: 0; } /* 12px, 18px, 0px */
-aside article ul, aside ul li, aside li ul { list-style:none; margin: 0; padding: 0; }
-aside article li ul li:before { content: "\2015"; color: #ccc; }
-aside article li ul li { list-style: none; padding-left: 1em; }
+aside section { border-top: 1px solid #ccc; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */ 
+aside section h3 { margin: 0; font-size: 1em; line-height: 1.5em; margin-bottom: 0; padding: 0; } /* 12px, 18px, 0px */
+aside section ul, aside ul li, aside li ul { list-style:none; margin: 0; padding: 0; }
+aside section li ul li:before { content: "\2015"; color: #ccc; }
+aside section li ul li { list-style: none; padding-left: 1em; }
 
 
 .twitter-link { background: url(../img/socials.png) no-repeat scroll 0 -725px; padding-left: 20px; margin-top: 1.5em; display: block; }
@@ -153,7 +153,7 @@ aside article li ul li { list-style: none; padding-left: 1em; }
    Footer
    ========================================================================== */
 
-footer[role="contentinfo"] { clear: both; color: #aaa; padding: 1.5em 0; }
+footer[role="contentinfo"] { clear: both; color: #aaa; }
 footer .utility { border-top: 1px solid #ccc; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */
 footer nav, footer nav ul li, footer .copy { float: left; margin-right: 2em; }
 footer .eightsevencentral { float: right; } 

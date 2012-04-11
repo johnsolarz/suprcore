@@ -2,7 +2,7 @@
 
 	<?php if ( ! dynamic_sidebar('custom-sidebar') ) : ?>
 
-	<article class="clearfix"> 
+	<section class="clearfix"> 
 		<div class="three column alpha">
 			<h3><?php bloginfo('title');?></h3>
 			<?php bloginfo('description');?>
@@ -15,7 +15,7 @@
 				<img src="<?php echo twitter_icon(); ?>" alt="">
 			</div>
 		<?php } ?>
-	</article>
+	</section>
 
 	<form class="clearfix" role="search" method="get" action="<?php echo home_url('/'); ?>">
 		<label class="visuallyhidden" for="s">Search for:</label>
@@ -23,33 +23,33 @@
 		<input type="submit" value="Search">
 	</form>
 
-	<article> 
+	<section> 
 		<h3>Navigation</h3>
 		<ul>
 			<?php wp_list_pages('orderby=name&title_li='); ?> 
 		</ul>
-	</article>  	       
+	</section>  	       
 
-	<article> 
+	<section> 
 		<h3>Categories</h3>
 		<ul>
 			<?php wp_list_categories('orderby=name&hide_empty=0&title_li='); ?> 
 		</ul>
-	</article> 
+	</section> 
 
-	<article> 	
+	<section> 	
 		<h3>Archives</h3>
 		<ul>
 			<?php wp_get_archives('type=monthly'); ?>
 		</ul>
-	</article> 
+	</section> 
 	
-	<article> 	
+	<section> 	
 		<h3>Contact</h3>
 		<ul>
 			<li><a href="mailto:<?php echo get_settings('admin_email');?>">E-mail</a></li>
 		</ul>	
-	</article>
+	</section>
 
 	<?php endif; ?>	
 

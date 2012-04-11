@@ -496,13 +496,11 @@ class Custom_Navbar_Nav_Walker extends Walker_Nav_Menu {
 }
 
 function custom_nav_menu_args($args = '') {
-  $args['container']  = false;
-  $args['depth']      = 2;
-  $args['items_wrap'] = '<ul class="nav">%3$s</ul>';
-  if (!$args['walker']) {
-    $args['walker'] = new custom_Nav_Walker();
-  }
-  return $args;
+  $custom_nav_menu_args['container']  = false;
+  $custom_nav_menu_args['depth']      = 2;
+  $custom_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+  $custom_nav_menu_args['walker'] = new Custom_Nav_Walker();
+  return array_merge($custom_nav_menu_args, $args);
 }
 
 add_filter('wp_nav_menu_args', 'custom_nav_menu_args');
