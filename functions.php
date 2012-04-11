@@ -19,7 +19,7 @@ require_once locate_template('/inc/actions.php');     // actions
 require_once locate_template('/inc/dashboard.php');   // admin dashboard
 require_once locate_template('/inc/discussion.php');  // comments and pingbacks
 require_once locate_template('/inc/sharing.php');     // social media
-require_once locate_template('/inc/custom.php');      // custom functions
+require_once locate_template('/inc/custom.php');      // custom functions, post types and taxonomies
 
 // set the maximum 'Large' image width to the maximum grid width
 // http://wordpress.stackexchange.com/q/11766
