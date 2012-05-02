@@ -1,8 +1,4 @@
-/* 
- * WP Login
- * Customizes the user login page as required
- */
-
+/* Custom login styles, called in inc/dashboard.php */
 
 body.login { 
 	background: #fbfbfb; 

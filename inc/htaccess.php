@@ -18,7 +18,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
   // Rewrites DO NOT happen for child themes
   // rewrite /wp-content/themes/suprcore/css/ to /css/
   // rewrite /wp-content/themes/suprcore/js/  to /js/
-  // rewrite /wp-content/themes/suprcore/img/ to /js/
+  // rewrite /wp-content/themes/suprcore/img/ to /img/
   // rewrite /wp-content/plugins/ to /plugins/
 
   function custom_add_rewrites($content) {
