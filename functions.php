@@ -30,7 +30,7 @@ function custom_setup() {
   // tell the TinyMCE editor to use editor-style.css
   // if you have issues with getting the editor to show your changes then
   // use this instead: add_editor_style('editor-style.css?' . time());
-  add_editor_style('wp-editor.css');
+  add_editor_style('/css/wp-editor.css');
 
   // http://codex.wordpress.org/Post_Thumbnails
   add_theme_support('post-thumbnails');
