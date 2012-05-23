@@ -67,7 +67,11 @@ a:hover, a:active { outline: 0; }
    Typography
    ========================================================================== */
 
-/* Composed to a scale of 12px, 14px, 16px, 18px, 21px, 24px, 36px, 48px, 60px and 72px */
+/* 
+ * Composed to a scale of 12px, 14px, 16px, 18px, 21px, 24px, 36px, 48px, 60px and 72px 
+ * http://modularscale.com/
+ */
+
 h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; color: #222; }
 
 h1 { margin: 0; font-size: 3.75em; line-height: 1.2em; margin-bottom: 0.4em; } /* 60px, 72px, 24px */
@@ -88,11 +92,11 @@ abbr[title] { border-bottom: 1px dotted; }
 
 b, strong { font-weight: bold; }
 
-blockquote { border-left: 5px solid #ccc; margin: 1.5em 0; padding-left: 35px; }
+blockquote { margin: 1.5em 40px; }
 
 dfn { font-style: italic; }
 
-hr { display: block; border: 0; border-bottom: 1px solid #fff; border-top: 1px solid #ccc; margin: 1.4375em 0; padding: 0; } /* 23px 0 */
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1.5em 0; padding: 0; }
 
 ins { background: #ff9; color: #000; text-decoration: none; }
 
@@ -281,10 +285,9 @@ button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 /*
  * 1. Remove default vertical scrollbar in IE6/7/8/9
  * 2. Allow only vertical resizing
- * 3. Set a default height 
  */
 
-textarea { overflow: auto; vertical-align: top; resize: vertical; min-height: 10em; }
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
 
 /* Colors for form validity */
 input:valid, textarea:valid {  }
