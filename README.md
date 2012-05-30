@@ -1,9 +1,9 @@
 [Suprcore™](http://eightsevencentral.com)
 ===========
 
-Core html5 WordPress
+Core html5 WordPress development
 
-Version: 3.0 (03.01.2012)
+Version: 3.2 (05.30.2012)
 
 
 License
@@ -24,7 +24,7 @@ Copyright 2012 8/7 Central. All rights reserved. The design and code of this web
 Changelog
 ---------
 
-* 2012.05.02	SUPRCORE 3.2 - Modernizr 2.5.3, renamed libs/ and scripts.js, various style updates
+* 2012.05.02	Suprcore 3.2 - Modernizr 2.5.3, renamed libs/ and scripts.js to match boilerplate, various style updates
 * 2012.04.11	Suprcore 3.1 - htaccess fix for older PHP installs
 * 2012.03.01	Suprcore 3.0 - h5bp update, simplified file structure, improved functions
 * 2012.01.16	Suprcore 2.3 - Responsive layout-ready, standardized typography defaults
