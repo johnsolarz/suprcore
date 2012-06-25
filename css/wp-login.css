@@ -8,13 +8,16 @@ body.login {
 	background: #fbfbfb; 
 }
 .login h1 a {
-    background: url("../img/login.png") no-repeat scroll center top transparent;
-    display: block;
+    background-image: url("../img/login.png");
+    background-size: 310px 220px;
+    background-position: top center;
+    background-repeat: no-repeat;
+    width: 330px;
     height: 220px;
+    text-indent: -9999px;
     overflow: hidden;
     padding-bottom: 15px;
-    text-indent: -9999px;
-    width: 330px;
+    display: block;
 }
 .login .button-primary {
     float: right;
