@@ -11,6 +11,7 @@
 *.sass-cache
 *.sublime-project
 *.sublime-workspace
+*.json
 
 # OS or Editor folders
 .DS_Store
