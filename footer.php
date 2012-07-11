@@ -9,7 +9,7 @@
 		<?php endif; ?>
 
 		<div class="twelve column utility">
-			<span class="copy">&copy; <?php echo date('Y');?> <?php bloginfo('name'); ?> &mdash; All rights reserved</span>
+			<span class="copy">&copy; <?php echo date('Y');?> <?php bloginfo('name'); ?></span>
 			<nav role="navigation">
 				<?php wp_nav_menu(array(
 					'theme_location' => 'utility_navigation',
