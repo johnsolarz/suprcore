@@ -1,10 +1,10 @@
 /*
- * eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee 
- * 8   " 8   8 8   8 8   8  8  8 8  88 8   8  8    
- * 8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee 
- *    88 88  8 88    88   8 88   8   8 88   8 88   
+ * eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee
+ * 8   " 8   8 8   8 8   8  8  8 8  88 8   8  8
+ * 8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee
+ *    88 88  8 88    88   8 88   8   8 88   8 88
  * 8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
- * 
+ *
  *  Suprcore™
  *  https://github.com/johnsolarz/suprcore
  */
@@ -21,7 +21,7 @@ header[role="banner"] { padding: 3em 0; position: relative; }
 header #logo { float: left; font-size: 1em; line-height: 1.5em; margin: 0; } /* 12px, 18px */
 header #logo a { color: #111; }
 header #logo a:hover { border-bottom: none; }
-	
+
 /* Logo img
 header #logo a {
     background: url(../img/logo.png) no-repeat scroll 0 0 transparent;
@@ -41,7 +41,7 @@ header nav { float: right; }
 header nav ul li { float: left; margin-left: 2em; position: relative; }
 header nav ul li a { padding: .5em 0; }
 header nav ul li:hover a { color: #111; }
-header nav ul li:hover ul { display: block; } 
+header nav ul li:hover ul { display: block; }
 header nav ul li:hover ul a { color: #ccc; }
 
 header nav ul li ul { background: #fff; display: none; opacity: .9; position: absolute; top: 1.5em; left: 0; }
@@ -52,7 +52,7 @@ header nav ul li.current_page_item > a,
 header nav ul li.current-menu-ancestor > a,
 header nav ul li.current-menu-item > a,
 header nav ul li.current-menu-parent > a { color: #111; }
-			
+
 * html header nav ul li.current_page_item a,
 * html header nav ul li.current-menu-ancestor a,
 * html header nav ul li.current-menu-item a,
@@ -66,9 +66,9 @@ header nav ul li.current-menu-parent > a { color: #111; }
 .toolbar .current { border-left: 1px solid #ccc; border-right: 1px solid #ccc; }
 .toolbar a.prev, .toolbar a.next { background: transparent url(../img/angles.png) no-repeat scroll 0 0; display: block; padding: 9px; text-indent: -9999em; }
 .toolbar a.prev { background-position: 0 -566px; position: absolute; right: 24px; top: 0; }
-.toolbar a.prev:hover { background-position: 0 -432px; }		
+.toolbar a.prev:hover { background-position: 0 -432px; }
 .toolbar a.next { background-position: 0 -633px; position: absolute; right: 0; top: 0; }
-.toolbar a.next:hover { background-position: 0 -499px; }	
+.toolbar a.next:hover { background-position: 0 -499px; }
 
 /* =============================================================================
    Feature content
@@ -137,7 +137,7 @@ article footer .sharing li:nth-child(1) { margin-left: 0; }
    ========================================================================== */
 
 aside { }
-aside section { border-top: 1px solid #ccc; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */ 
+aside section { border-top: 1px solid #ccc; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */
 aside section h3 { margin: 0; font-size: 1em; line-height: 1.5em; margin-bottom: 0; padding: 0; } /* 12px, 18px, 0px */
 aside section ul, aside ul li, aside li ul { list-style:none; margin: 0; padding: 0; }
 aside section li ul li:before { content: "\2015"; color: #ccc; }
@@ -155,7 +155,7 @@ aside section li ul li { list-style: none; padding-left: 1em; }
 footer[role="contentinfo"] { clear: both; color: #aaa; }
 footer .utility { border-top: 1px solid #ccc; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */
 footer nav, footer nav ul li, footer .copy { float: left; margin-right: 2em; }
-footer .eightsevencentral { float: right; } 
+footer .eightsevencentral { float: right; }
 
 
 /* =============================================================================

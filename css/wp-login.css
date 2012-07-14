@@ -1,11 +1,11 @@
-/* 
+/*
  * wp-login.css
  * Used to style the user login page.
  */
 
 
-body.login { 
-	background: #fbfbfb; 
+body.login {
+	background: #fbfbfb;
 }
 .login h1 a {
     background-image: url("../img/login.png");
@@ -26,12 +26,12 @@ body.login {
     padding: 3px 10px;
 }
 input.button-primary, button.button-primary, a.button-primary { cursor: pointer; -webkit-appearance: button; *overflow: visible;
-	border-color: #ccc #aaa #aaa #ccc; 
-	border-style: solid; 
-	border-width: 1px; 
-	color: #333; 
-	display: inline-block; 
-	font-weight: bold; 
+	border-color: #ccc #aaa #aaa #ccc;
+	border-style: solid;
+	border-width: 1px;
+	color: #333;
+	display: inline-block;
+	font-weight: bold;
 	padding: 8px;
 
 	background: #eee; /* Old browsers */
@@ -43,9 +43,9 @@ input.button-primary, button.button-primary, a.button-primary { cursor: pointer;
 	background: #eee linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* W3C */
 
 	text-shadow: 0 1px rgba(255, 255, 255, .75);
-	-webkit-border-radius: 2px; 
-	   -moz-border-radius: 2px; 
-        	border-radius: 2px; 
+	-webkit-border-radius: 2px;
+	   -moz-border-radius: 2px;
+        	border-radius: 2px;
 
   -webkit-transition: all 0.3s ease-out;  /* Saf3.2+, Chrome */
      -moz-transition: all 0.3s ease-out;  /* FF4+ */
@@ -53,7 +53,7 @@ input.button-primary, button.button-primary, a.button-primary { cursor: pointer;
        -o-transition: all 0.3s ease-out;  /* Opera 10.5+ */
           transition: all 0.3s ease-out;
 }
-input.button-primary:hover { 
+input.button-primary:hover {
 	border-color: #bbb #999 #999 #bbb;
 	color: #222;
 
@@ -68,6 +68,6 @@ input.button-primary:hover {
 .login #nav a, .login #backtoblog a {
     color: #ccc !important;
 }
-.login #nav a:hover, .login #backtoblog a:hover { 
-	color: #555 !important; 
+.login #nav a:hover, .login #backtoblog a:hover {
+	color: #555 !important;
 }
