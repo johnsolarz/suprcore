@@ -121,19 +121,3 @@ function custom_page_navigation() {
   echo $pages . paginate_links($a);
   if ($max > 1) echo '</nav>';
 }
-
-// retreive first image from post
-// http://wordpress.org/support/topic/retreive-first-image-from-post
-function custom_first_image() {
-  global $post, $posts;
-  $first_img = '';
-  ob_start();
-  ob_end_clean();
-  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-  $first_img = $matches [1] [0];
-
-  if(empty($first_img)){ //Defines a default image
-    $first_img = "/img/login.png";
-  }
-  return $first_img;
-}

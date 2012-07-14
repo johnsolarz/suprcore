@@ -1,5 +1,6 @@
 <?php
 
+add_action('custom_footer', 'twitter_share_script');
 
 function twitter_share_script() {
   if (use_twitter_share()) {
@@ -7,7 +8,7 @@ function twitter_share_script() {
   }
 }
 
-add_action('custom_footer', 'twitter_share_script');
+add_action('custom_footer', 'facebook_like_script');
 
 function facebook_like_script() {
   if (use_facebook_like()) {
@@ -22,36 +23,16 @@ function facebook_like_script() {
 	}
 }
 
-add_action('custom_footer', 'facebook_like_script');
+add_action('custom_footer', 'pinterest_pin_script');
 
 function pinterest_pin_script() {
   if (use_pinterest_pin()) {
-    echo "\n\t<script type=\"text/javascript\">\n";
-    echo "\t\t(function() {\n";
-    echo "\t\twindow.PinIt = window.PinIt || { loaded:false };\n";
-    echo "\t\tif (window.PinIt.loaded) return;\n";
-    echo "\t\twindow.PinIt.loaded = true;\n";
-    echo "\t\tfunction async_load(){\n";
-    echo "\t\tvar s = document.createElement(\"script\");\n";
-    echo "\t\ts.type = \"text/javascript\";\n";
-    echo "\t\ts.async = true;\n";
-    echo "\t\tif (window.location.protocol == \"https:\")\n";
-    echo "\t\ts.src = \"https://assets.pinterest.com/js/pinit.js\";\n";
-    echo "\t\telse\n";
-    echo "\t\ts.src = \"http://assets.pinterest.com/js/pinit.js\";\n";
-    echo "\t\tvar x = document.getElementsByTagName(\"script\")[0];\n";
-    echo "\t\tx.parentNode.insertBefore(s, x);\n";
-    echo "\t\t}\n";
-    echo "\t\tif (window.attachEvent)\n";
-    echo "\t\twindow.attachEvent(\"onload\", async_load)\n";
-    echo "\t\telse\n";
-    echo "\t\twindow.addEventListener(\"load\", async_load, false);\n";
-    echo "\t\t})();\n";
+    echo "\n\t<script type=\"text/javascript\" src=\"//assets.pinterest.com/js/pinit.js\">\n";
     echo "\t</script>\n";
   }
 }
 
-add_action('custom_footer', 'pinterest_pin_script');
+add_action('custom_footer', 'google_plus_script');
 
 function google_plus_script() {
   if (use_google_plus()) {
@@ -64,5 +45,3 @@ function google_plus_script() {
     echo "\t</script>\n";
   }
 }
-
-add_action('custom_footer', 'google_plus_script');

@@ -13,7 +13,7 @@
 			<nav role="navigation">
 				<?php wp_nav_menu(array(
 					'theme_location' => 'utility_navigation',
-					'walker' => new Custom_Navbar_Nav_Walker() 
+					'walker' => new Custom_Navbar_Nav_Walker()
       	));
       	?>
 			</nav>
@@ -46,18 +46,18 @@
 
   <?php wp_footer(); ?>
   <?php custom_footer(); ?>
-  
+
 <!--
 
-  Handcrafted code from Des Moines.
+          8
+   eeeee  8 eeeee    8""""8
+   8   8  8 8   8    8    " eeee eeeee eeeee eeeee  eeeee e
+   8eee8  8    e'    8e     8    8   8   8   8   8  8   8 8
+  88   88 8   e'     88     8eee 8e  8   8e  8eee8e 8eee8 8e
+  88   88 8   8      88   e 88   88  8   88  88   8 88  8 88
+  88eee88 8   8      88eee8 88ee 88  8   88  88   8 88  8 88eee
 
-    _____   |  _______    _______  _______  __    _  _______  ______   _______  ___     
-   |  _  |  | |       |  |       ||       ||  |  | ||       ||    _ | |   _   ||   |    
-   | |_| |  | |___    |  |       ||    ___||   |_| ||_     _||   | || |  |_|  ||   |    
-  |   _   | |     |   |  |       ||   |___ |       |  |   |  |   |_|| |       ||   |    
-  |  | |  | |     |   |  |      _||    ___||  _    |  |   |  |    __ ||       ||   |___ 
-  |  |_|  | |     |   |  |     |_ |   |___ | | |   |  |   |  |   |  |||   _   ||       |
-  |_______| |     |___|  |_______||_______||_|  |__|  |___|  |___|  |||__| |__||_______|
+  Handcrafted code from Des Moines, Iowa.
 
  -->
 

@@ -68,6 +68,22 @@ function twitter_followers_counter() {
   }
 }
 
+// retreive first image from post
+// http://wordpress.org/support/topic/retreive-first-image-from-post
+function custom_first_image() {
+  global $post, $posts;
+  $first_img = '';
+  ob_start();
+  ob_end_clean();
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+  $first_img = $matches [1] [0];
+
+  if(empty($first_img)){ //Defines a default image
+    $first_img = "/img/login.png";
+  }
+  return $first_img;
+}
+
 // sharing buttons
 function custom_social_sharing() {
 
@@ -87,7 +103,7 @@ function custom_social_sharing() {
     if (use_pinterest_pin()) {
     	echo '<li class="one column"><a href="http://pinterest.com/pin/create/button/?url='.$permalink.'&media='.$firstimg.'&description='.$title.'" class="pin-it-button" count-layout="none">Pin It</a></li>';
     }
-    if (use_google_plus()) { 
+    if (use_google_plus()) {
       echo '<li class="one column"><div class="g-plusone" data-size="medium" data-href="'.$permalink.'" data-annotation="none"></div></li>';
     }
   echo '</ul>';
