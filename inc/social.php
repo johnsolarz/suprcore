@@ -20,7 +20,7 @@ function use_google_plus() {
   return GOOGLE_PLUS_POSTS;
 }
 
-// returns twitter icon
+// Returns twitter icon
 function twitter_icon() {
 
   // bigger - 73px by 73px
@@ -28,11 +28,11 @@ function twitter_icon() {
   // mini - 24px by 24px
 
   $username = twitter_username();
-  $profile_img = 'https://api.twitter.com/1/users/profile_image/' . $username . '?size=bigger';
+  $profile_img = 'https://api.twitter.com/1/users/profile_image/' . $username . '?size=normal';
   return ( $profile_img );
 }
 
-// returns follow count
+// Returns follow count
 function twitter_followers_counter() {
 
   $username = twitter_username();
@@ -68,7 +68,7 @@ function twitter_followers_counter() {
   }
 }
 
-// retreive first image from post
+// Retreive first image from post, used for Pin button
 // http://wordpress.org/support/topic/retreive-first-image-from-post
 function custom_first_image() {
   global $post, $posts;
@@ -78,13 +78,13 @@ function custom_first_image() {
   $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
   $first_img = $matches [1] [0];
 
-  if(empty($first_img)){ //Defines a default image
+  if(empty($first_img)){ // Be sure to define a default image here per project
     $first_img = "/img/login.png";
   }
   return $first_img;
 }
 
-// sharing buttons
+// Sharing buttons
 function custom_social_sharing() {
 
   $username = twitter_username();
@@ -93,19 +93,19 @@ function custom_social_sharing() {
   $firstimg = custom_first_image();
 
   if (use_twitter_share() || use_google_plus() || use_pinterest_pin() || use_facebook_like()) {
-    echo '<ul class="sharing">';
+    echo '<div class="social">';
     if (use_twitter_share()) {
-      echo '<li class="one column"><a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="'.$username.'" data-text="'.$title.'">Tweet</a></li>';
-    }
-    if (use_facebook_like()) {
-      echo '<li class="one column"><div class="fb-like" data-href="'.$permalink.'" data-send="false" data-layout="button_count" data-show-faces="false" data-colorscheme="light" data-font="arial"></div></li>';
+      echo '<div class="tweet-this"><a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="'.$username.'" data-text="'.$title.'">Tweet</a></div>';
     }
     if (use_pinterest_pin()) {
-    	echo '<li class="one column"><a href="http://pinterest.com/pin/create/button/?url='.$permalink.'&media='.$firstimg.'&description='.$title.'" class="pin-it-button" count-layout="none">Pin It</a></li>';
+      echo '<div class="pinterest-pin"><a href="http://pinterest.com/pin/create/button/?url='.$permalink.'&media='.$firstimg.'&description='.$title.'" class="pin-it-button" count-layout="none"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a></div>';
     }
     if (use_google_plus()) {
-      echo '<li class="one column"><div class="g-plusone" data-size="medium" data-href="'.$permalink.'" data-annotation="none"></div></li>';
+      echo '<div class="google-plus"><div class="g-plusone" data-size="medium" data-href="'.$permalink.'" data-annotation="none"></div></div>';
     }
-  echo '</ul>';
+    if (use_facebook_like()) {
+      echo '<div class="facebook-like"><div class="fb-like" data-href="'.$permalink.'" data-send="false" data-layout="button_count" data-show-faces="false" data-colorscheme="light" data-font="arial"></div></div>';
+    }
+  echo '</div>';
   }
 }

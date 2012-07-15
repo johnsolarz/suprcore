@@ -1,65 +1,295 @@
-/*
- * eeeee e   e eeeee eeeee  eeee eeeee eeeee  eeee
- * 8   " 8   8 8   8 8   8  8  8 8  88 8   8  8
- * 8eeee 8e  8 8eee8 8eee8e 8e   8   8 8eee8e 8eee
- *    88 88  8 88    88   8 88   8   8 88   8 88
- * 8ee88 88ee8 88    88   8 88e8 8eee8 88   8 88ee
- *
- *  Suprcore™
- *  https://github.com/johnsolarz/suprcore
- */
+/* =============================================================================
+   Base
+   ========================================================================== */
 
-body { font-size: 75%; } /* 12px, 18px */
+body {
+  font-size: 75%; /* 12px, 18px */
+}
 
 
 /* =============================================================================
    Header
    ========================================================================== */
 
-header[role="banner"] { padding: 3em 0; position: relative; }
+header[role="banner"] {
+  padding: 3em 0;
+  position: relative;
+}
 
-header #logo { float: left; font-size: 1em; line-height: 1.5em; margin: 0; } /* 12px, 18px */
-header #logo a { color: #111; }
-header #logo a:hover { border-bottom: none; }
+header[role="banner"] .logo {
+  display: block;
+  float: left;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.5em;
+  margin: 0;
+  text-decoration: none;
 
-/* Logo img
-header #logo a {
-    background: url(../img/logo.png) no-repeat scroll 0 0 transparent;
-    display: block;
-    height: 60px;
-    overflow: hidden;
-    text-indent: -9999px;
-    width: 60px;
-} */
+/*
+  background: url('../img/logo,png') no-repeat 0 0;
+  height: 100px;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 100px;
+*/
+
+}
+
+/*
+ * Global Navigation
+ */
+
+header nav {
+  float: right;
+}
+header nav ul li {
+  float: left;
+  margin-left: 2em;
+  position: relative;
+}
+header nav ul li a {
+  padding: .5em 0;
+}
+header nav ul li:hover a {
+  color: #111;
+}
+header nav ul li:hover ul {
+  display: block;
+}
+header nav ul li:hover ul a {
+  color: #ccc;
+}
+
+header nav ul li ul {
+  background: #fff;
+  display: none;
+  opacity: .9;
+  position: absolute;
+  top: 1.5em;
+  left: 0;
+}
+header nav ul li ul li {
+  margin: 0;
+}
+header nav ul li ul a:hover {
+  color: #111;
+}
+
+header nav ul .current_page_item > a,
+header nav ul .current-menu-ancestor > a,
+header nav ul .current-menu-item > a,
+header nav ul .current-menu-parent > a {
+  color: #111;
+}
+
 
 /* =============================================================================
-   Navigation
+   Feature area
    ========================================================================== */
 
-/* Global navigation */
-header nav { float: right; }
-header nav ul li { float: left; margin-left: 2em; position: relative; }
-header nav ul li a { padding: .5em 0; }
-header nav ul li:hover a { color: #111; }
-header nav ul li:hover ul { display: block; }
-header nav ul li:hover ul a { color: #ccc; }
+#feature { }
 
-header nav ul li ul { background: #fff; display: none; opacity: .9; position: absolute; top: 1.5em; left: 0; }
-header nav ul li ul li { margin: 0; }
-header nav ul li ul a:hover { color: #111; }
 
-header nav ul li.current_page_item > a,
-header nav ul li.current-menu-ancestor > a,
-header nav ul li.current-menu-item > a,
-header nav ul li.current-menu-parent > a { color: #111; }
+/* =============================================================================
+   Content
+   ========================================================================== */
 
-* html header nav ul li.current_page_item a,
-* html header nav ul li.current-menu-ancestor a,
-* html header nav ul li.current-menu-item a,
-* html header nav ul li.current-menu-parent a,
-* html header nav ul li a:hover { color: #111; }
+#content { }
 
-/* Pages navigation */
+
+/* =============================================================================
+   Primary Content
+   ========================================================================== */
+
+#main { }
+
+
+/* =============================================================================
+   Sidebar
+   ========================================================================== */
+
+#sidebar { }
+
+aside section {
+  border-top: 1px solid #ccc;
+  padding: 1.4166666666666666666666666666667em 0 1.5em;
+}
+aside section h3 {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-bottom: 0;
+  padding: 0;
+}
+aside section ul,
+aside ul li,
+aside li ul {
+  list-style:none;
+  margin: 0;
+  padding: 0;
+}
+aside section li ul li:before {
+  content: "\2015";
+  color: #ccc;
+}
+aside section li ul li {
+  list-style: none;
+  padding-left: 1em;
+}
+.twitter-link {
+  background: url(../img/socials.png) no-repeat scroll 0 -725px;
+  padding-left: 20px;
+  margin-top: 1.5em;
+  display: block;
+}
+.twitter-link:hover {
+  background-position: 0 -791px;
+}
+.twitter-icon {
+  overflow: hidden;
+}
+
+
+/*
+ * Search
+ */
+
+form[role="search"] {
+  border-top: 1px solid #ccc;
+  display: block;
+  margin: 0;
+  padding: 1.4166666666666666666666666666667em 0 1.5em;
+}
+form[role="search"] input[type="search"]{
+  background-color: transparent;
+  border: none;
+  float: left;
+  height: 1.5em;
+  margin-bottom: 0;
+  outline: 0;
+  padding: 0;
+  width: 88%;
+}
+form[role="search"] input[type="submit"] {
+  background: transparent url(../img/arrows.png) no-repeat scroll 0 -357px;
+  border-style: none;
+  float: right;
+  height: 1.5em;
+  margin-bottom: 0;
+  text-indent: -9999em;
+}
+form[role="search"] input[type="submit"]:hover {
+  background-position: 0 -117px;
+}
+
+/* =============================================================================
+   Posts
+   ========================================================================== */
+
+.hentry {
+  border-top: 1px solid #ccc;
+  padding: 1.4166666666666666666666666666667em 0 1.5em; /* 17px 0 18px */
+}
+.hentry header {
+
+}
+.hentry .post-title {
+
+}
+.hentry .post-title a {
+  text-decoration: none;
+}
+.hentry .post-category {
+  display: block;
+}
+.hentry time {
+
+}
+.hentry .byline {
+
+}
+.hentry footer {
+  clear: both;
+}
+.hentry .post-comment {
+  float: right;
+}
+.hentry .social {
+
+}
+.hentry .social > div {
+  float: left;
+  margin-right: 1em;
+}
+
+
+/* =============================================================================
+   Post Comments
+   ========================================================================== */
+
+#comments,
+#respond {
+  border-top: 1px solid #ccc;
+  clear: both;
+  display: block;
+}
+#comments h3,
+#respond h3 {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 0;
+  padding: 1.4166666666666666666666666666667em 0 1.5em;
+}
+.commentlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.commentlist li {
+  border-top: 1px solid #ccc;
+  margin: 0;
+  padding: 1.4166666666666666666666666666667em 0 0 40px;
+  position: relative;
+}
+.commentlist article {
+  padding-bottom: 1.5em;
+}
+.commentlist .avatar {
+  left: 0;
+  position: absolute;
+  top: 1.5em;
+}
+.comment > p {
+  margin-top: 0;
+}
+.comment-reply-link {
+  background: url(../img/icon-reply.png) no-repeat scroll 0 2px transparent;
+  padding: 0 0 1.5em 1.5em;
+}
+.commentlist li .children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#respond input[type="text"],
+#respond input[type="email"],
+#respond input[type="url"] {
+  width: 33%;
+}
+#respond textarea {
+  width: 66%;
+  min-height: 10em;
+}
+#respond input[type="submit"] {
+  margin: 1.5em 0;
+}
+
+
+/* =============================================================================
+   Pagination
+   ========================================================================== */
+
 .toolbar { border-bottom: 1px solid #ccc; border-top: 1px solid #ccc; font-size: 1em; line-height: 3em; height: 4.5em; margin-bottom:  1.5em; position: relative; }
 .toolbar .page-current { float: left; padding: 9px 18px 9px 0; }
 .toolbar .page-numbers { display: block; float: left; padding: 9px 18px; }
@@ -70,114 +300,38 @@ header nav ul li.current-menu-parent > a { color: #111; }
 .toolbar a.next { background-position: 0 -633px; position: absolute; right: 0; top: 0; }
 .toolbar a.next:hover { background-position: 0 -499px; }
 
-/* =============================================================================
-   Feature content
-   ========================================================================== */
-
-#hero { }
-
-
-/* =============================================================================
-   Main content
-   ========================================================================== */
-
-#main { }
-
-article { border-top: 1px solid #ccc; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */
-
-article header { }
-article header a, article header a:visited { color: #222; }
-article .post-title { font-weight: 400; margin: 0; font-size: 3em; line-height: 1.5em; margin-bottom: 0; } /* 36px, 54px, 0 */
-article .post-category { display: block; font-weight: 700; }
-article .post-meta { margin-bottom: 1.5em; }
-article .updated { }
-article .author { }
-
-article footer { color: #aaa; }
-article footer a { color: #aaa; }
-article footer a:hover { color: #222; }
-article footer .sharing { border-top: 1px solid #ccc; line-height: 1em; list-style: none; height: 3em; margin: 0; padding: 1.4166666666666666666666666666667em 0 0; }  /* 17px 0 0 */
-article footer .sharing li:nth-child(1) { margin-left: 0; }
-
-
-/* Comments */
-#comments, #respond { border-top: 1px solid #ccc; }
-#comments #respond #reply-title, #comments #comments-title { font-size: 1em; line-height: 1.5em; margin: 0; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */
-#comments #respond #reply-title small { font-size: 1em; margin-left: .5em; }
-
-.comment-list { list-style: none; margin: 0; padding: 0; }
-.comment-list li.comment, .comment-list li.pingback { border-top: 1px solid #ccc; margin: 0; padding: 0 0 0 40px; position:relative; }
-.comment-list li article li { padding: 0; }
-.comment-list li.pingback p { padding-top: 1.4166666666666666666666666666667em; } /* 17px */
-.comment-list li.pingback .pingback-title { font-style: normal; font-weight: bold; margin-right: 5px; }
-.comment-list li.pingback:hover a { color: #666; }
-.comment-list li.pingback:hover a:hover { color: #111; }
-.comment-list li.comment article { border-top: none; }
-.comment-list li.comment article .comment-author { font-style: normal; font-weight: bold; margin-right: 5px; }
-.comment-list li.comment article .comment-author a { color: #111; }
-
-.comment-list li article.comment footer { border-top: none; }
-.comment-list li article.comment footer.comment-meta { font-size: .916666667em; line-height: 1.63636363em; margin: 0; padding: 0; } /* 11px, 18px */
-.comment-list li article.comment footer.comment-meta div.vcard { }
-.comment-list li article.comment:hover footer.comment-meta div.vcard a { color: #666; }
-.comment-list li article.comment:hover footer.comment-meta div.vcard a:hover { color: #111; }
-.comment-list li article.comment footer.comment-meta div.vcard img.avatar { left: 0; position: absolute; top: 21px; }
-.comment-list li article.comment footer.comment-meta .comment-reply-link { background: url(../img/icon-reply.png) no-repeat scroll 0 2px transparent; margin-left: 2px; padding: 0 0 0 15px; }
-.comment-list li ul.children { list-style: none; margin: 0; padding: 0; text-indent: 0; }
-
-.form-submit { clear: left; }
-
-.no-comments { padding-top: 1.4166666666666666666666666666667em; } /* 17px */
-.no-password { padding-top: 1.4166666666666666666666666666667em; } /* 17px */
-.edit-link { margin-left: .5em; }
-
-
-/* =============================================================================
-   Aside content
-   ========================================================================== */
-
-aside { }
-aside section { border-top: 1px solid #ccc; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */
-aside section h3 { margin: 0; font-size: 1em; line-height: 1.5em; margin-bottom: 0; padding: 0; } /* 12px, 18px, 0px */
-aside section ul, aside ul li, aside li ul { list-style:none; margin: 0; padding: 0; }
-aside section li ul li:before { content: "\2015"; color: #ccc; }
-aside section li ul li { list-style: none; padding-left: 1em; }
-
-.twitter-link { background: url(../img/socials.png) no-repeat scroll 0 -725px; padding-left: 20px; margin-top: 1.5em; display: block; }
-.twitter-link:hover { background-position: 0 -791px; }
-.twitter-icon { overflow: hidden; }
-
 
 /* =============================================================================
    Footer
    ========================================================================== */
 
-footer[role="contentinfo"] { clear: both; color: #aaa; }
-footer .utility { border-top: 1px solid #ccc; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */
-footer nav, footer nav ul li, footer .copy { float: left; margin-right: 2em; }
-footer .eightsevencentral { float: right; }
+footer[role="contentinfo"] {
+  clear: both;
+}
+footer .utility {
+  border-top: 1px solid #ccc;
+  padding: 1.4166666666666666666666666666667em 0 1.5em;
+}
+footer nav,
+footer nav ul li,
+footer .copy {
+  float: left;
+  margin-right: 2em;
+}
+footer .eightsevencentral {
+  float: right;
+}
 
 
 /* =============================================================================
-   WordPress classes
+   WordPress Generated Classes
+   See: http://codex.wordpress.org/CSS#WordPress_Generated_Classes
    ========================================================================== */
 
 .aligncenter { display: block; margin: 0 auto; }
-.alignleft { margin: 0 1.5em 1.5em 0; float: left; }
-.alignright { margin: 0 0 1.5em 1.5em; float: right; }
-
-img.size-auto, img.size-full, img.size-large, img.size-medium, .attachment img, .widget-area img { max-width: 100%; height: auto; }
-
+.alignleft { margin: 0 20px 20px 0; float: left; }
+.alignright { margin: 0 0 20px 20px; float: right; }
+.alignnone { margin-left: 0; margin-right: 0; }
 .wp-caption { text-align: left; }
 .wp-caption img { border: 0 none; }
 .wp-caption-text { color: #aaa; margin: 0; }
-
-
-/* =============================================================================
-   Search
-   ========================================================================== */
-
-form[role="search"] { border-top: 1px solid #ccc; display: block; margin: 0; padding: 1.4166666666666666666666666666667em 0 1.5em; } /* 17px 0 18px */
-form[role="search"] input[type="search"] { background-color: transparent; border: none; float: left; height: 1.5em; margin-bottom: 0; outline: 0; padding: 0; width: 88%; }
-form[role="search"] input[type="submit"] { background: transparent url(../img/arrows.png) no-repeat scroll 0 -357px; border-style: none; float: right; height: 1.5em; margin-bottom: 0; text-indent: -9999em;}
-form[role="search"] input[type="submit"]:hover { background-position: 0 -117px; }

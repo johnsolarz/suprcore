@@ -17,8 +17,7 @@ require_once locate_template('/inc/htaccess.php');    // rewrites for assets, h5
 require_once locate_template('/inc/hooks.php');       // hooks
 require_once locate_template('/inc/actions.php');     // actions
 require_once locate_template('/inc/dashboard.php');   // admin dashboard
-require_once locate_template('/inc/discussion.php');  // comments and pingbacks
-require_once locate_template('/inc/sharing.php');     // social media
+require_once locate_template('/inc/social.php');      // social media sharing
 require_once locate_template('/inc/custom.php');      // custom functions, post types and taxonomies
 
 // set the maximum 'Large' image width to the maximum grid width
@@ -37,7 +36,7 @@ function custom_setup() {
   // set_post_thumbnail_size(150, 150, false);
 
   // Create custom sizes
-  // This is then pulled through to your theme using the_post_thumbnail('custombig'); 
+  // This is then pulled through to your theme using the_post_thumbnail('custombig');
   // add_image_size('customsmall', 300, 200, true); // narrow column
   // add_image_size('custombig', 620, 400, true); // wide column
 
@@ -55,7 +54,7 @@ function custom_setup() {
 
 	// http://codex.wordpress.org/Function_Reference/add_custom_image_header
 	// if (!defined('HEADER_TEXTCOLOR')) { define('HEADER_TEXTCOLOR', '');	}
-	// if (!defined('NO_HEADER_TEXT')) { define('NO_HEADER_TEXT', true); }	
+	// if (!defined('NO_HEADER_TEXT')) { define('NO_HEADER_TEXT', true); }
 	// if (!defined('HEADER_IMAGE_WIDTH')) { define('HEADER_IMAGE_WIDTH', 940); }
 	// if (!defined('HEADER_IMAGE_HEIGHT')) { define('HEADER_IMAGE_HEIGHT', 324); }
 
@@ -66,7 +65,7 @@ function custom_setup() {
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus(array(
     'primary_navigation' => __('Primary Navigation', 'suprcore'),
-    'utility_navigation' => __('Utility Navigation', 'suprcore')
+    'footer' => __('Footer Navigation', 'suprcore')
   ));
 }
 
@@ -95,8 +94,8 @@ add_action('widgets_init', 'custom_register_sidebars');
 
 // return post entry meta information
 function custom_entry_meta() {
-  echo '<div class="post-meta"><time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('%s at %s ', 'suprcore'), get_the_date(), get_the_time()) .'</time>';
-  echo '<span class="author">'. __('| By', 'suprcore') .' <a href="'. get_author_posts_url(get_the_author_meta('id')) .'" rel="author" class="fn">'. get_the_author() .'</a></span></div>';
+  echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('%s', 'suprcore'), get_the_date()) .'</time>';
+  echo '<span class="byline author vcard">'. __(' by', 'suprcore') .' <a href="'. get_author_posts_url(get_the_author_meta('id')) .'" rel="author" class="fn">'. get_the_author() .'</a></span>';
 }
 
 // display navigation to next/previous pages when applicable
@@ -109,13 +108,13 @@ function custom_page_navigation() {
   $a['base'] = str_replace(999999999, '%#%', get_pagenum_link(999999999));
   $a['total'] = $max;
   $a['current'] = $current;
- 
+
   $total = 1; //1 - display the text "Page N of N", 0 - not display
   $a['mid_size'] = 2; //how many links to show on the left and right of the current
   $a['end_size'] = 1; //how many links to show in the beginning and end
   $a['prev_text'] = '&laquo; Previous'; //text of the "Previous page" link
   $a['next_text'] = 'Next &raquo;'; //text of the "Next page" link
- 
+
   if ($max > 1) echo '<nav class="toolbar" role="navigation">';
   if ($total == 1 && $max > 1) $pages = '<span class="page-current">Page ' . $current . ' of ' . $max . '</span>'."\r\n";
   echo $pages . paginate_links($a);

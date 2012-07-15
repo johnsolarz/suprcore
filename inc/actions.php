@@ -1,14 +1,12 @@
 <?php
 
-add_action('custom_footer', 'twitter_share_script');
-
 function twitter_share_script() {
   if (use_twitter_share()) {
     echo "\n\t<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>";
   }
 }
 
-add_action('custom_footer', 'facebook_like_script');
+add_action('custom_footer', 'twitter_share_script');
 
 function facebook_like_script() {
   if (use_facebook_like()) {
@@ -23,7 +21,7 @@ function facebook_like_script() {
 	}
 }
 
-add_action('custom_footer', 'pinterest_pin_script');
+add_action('custom_footer', 'facebook_like_script');
 
 function pinterest_pin_script() {
   if (use_pinterest_pin()) {
@@ -32,7 +30,7 @@ function pinterest_pin_script() {
   }
 }
 
-add_action('custom_footer', 'google_plus_script');
+add_action('custom_footer', 'pinterest_pin_script');
 
 function google_plus_script() {
   if (use_google_plus()) {
@@ -45,3 +43,19 @@ function google_plus_script() {
     echo "\t</script>\n";
   }
 }
+
+add_action('custom_footer', 'google_plus_script');
+
+function google_analytics() {
+  $custom_google_analytics_id = GOOGLE_ANALYTICS_ID;
+  if ($custom_google_analytics_id !== '') {
+    echo "\n\t<script>\n";
+    echo "\t\tvar _gaq=[['_setAccount','$roots_google_analytics_id'],['_trackPageview']];\n";
+    echo "\t\t(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];\n";
+    echo "\t\tg.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';\n";
+    echo "\t\ts.parentNode.insertBefore(g,s)}(document,'script'));\n";
+    echo "\t</script>\n";
+  }
+}
+
+add_action('custom_footer', 'google_analytics');

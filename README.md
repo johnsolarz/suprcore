@@ -3,7 +3,7 @@
 
 Core html5 WordPress development
 
-Version: 3.2 (05.30.2012)
+Version: 3.3 (07.14.2012)
 
 
 License
@@ -24,6 +24,7 @@ Copyright 2012 8/7 Central. All rights reserved. The design and code of this web
 Changelog
 ---------
 
+* 2012.07.14	Suprcore 3.3 - Core update, moved scripts to header.php and socials and analytics to actions.php
 * 2012.05.02	Suprcore 3.2 - Modernizr 2.5.3, renamed libs/ and scripts.js to match boilerplate, various style updates
 * 2012.04.11	Suprcore 3.1 - htaccess fix for older PHP installs
 * 2012.03.01	Suprcore 3.0 - h5bp update, simplified file structure, improved functions
@@ -31,8 +32,8 @@ Changelog
 * 2011.11.22	Suprcore 2.2 - threaded comment support
 		Improved commenting functionality and defaults
 * 2011.10.22	Build script works!
-		Replaced 
-		['&quot;] with &quot; in build.xml line 615 and 623 
+		Replaced
+		['&quot;] with &quot; in build.xml line 615 and 623
 		Removed
 		--remove-quotes from htmlclean target in build.xml line 722
 		--remove-quotes from htmlcompress target in build.xml line 767
