@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Custom CSS for the login page
 function custom_login_css() {
@@ -57,7 +57,7 @@ function dashboard_custom_feed_output() {
 	echo "</div>";
 }
 
-// Remove default sidebar widgets 
+// Remove default sidebar widgets
 // http://www.everparent.com/lunaticfred/2011/05/05/how-to-remove-default-sidebar-widgets-in-wordpress/
 add_action( 'widgets_init', 'remove_default_widgets' );
 function remove_default_widgets() {

@@ -27,15 +27,15 @@
 
 <!--
 
-          8
-   eeeee  8 eeeee    8""""8
-   8   8  8 8   8    8    " eeee eeeee eeeee eeeee  eeeee e
-   8eee8  8    e'    8e     8    8   8   8   8   8  8   8 8
-  88   88 8   e'     88     8eee 8e  8   8e  8eee8e 8eee8 8e
-  88   88 8   8      88   e 88   88  8   88  88   8 88  8 88
-  88eee88 8   8      88eee8 88ee 88  8   88  88   8 88  8 88eee
+          |
+   eeeee  | eeeee    8""""8
+   8   8  | 8   8    8    " eeee eeeee eeeee eeeee  eeeee e
+   8eee8  |    e'    8e     8    8   8   8   8   8  8   8 8
+  88   88 |   e'     88     8eee 8e  8   8e  8eee8e 8eee8 8e
+  88   88 |   8      88   e 88   88  8   88  88   8 88  8 88
+  88eee88 |   8      88eee8 88ee 88  8   88  88   8 88  8 88eee
 
-  Handcrafted code from Des Moines, Iowa.
+  Handcrafted code from Des Moines.
 
  -->
 
