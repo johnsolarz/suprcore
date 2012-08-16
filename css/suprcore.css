@@ -1,3 +1,5 @@
+/*! suprcore.css | https://github.com/johnsolarz/suprcore
+
 /* =============================================================================
    Base
    ========================================================================== */
@@ -5,7 +7,6 @@
 body {
   font-size: 75%; /* 12px, 18px */
 }
-
 
 /* =============================================================================
    Header
@@ -82,13 +83,11 @@ header nav ul .current-menu-parent > a {
   color: #111;
 }
 
-
 /* =============================================================================
    Feature area
    ========================================================================== */
 
 #feature { }
-
 
 /* =============================================================================
    Content
@@ -96,13 +95,11 @@ header nav ul .current-menu-parent > a {
 
 #content { }
 
-
 /* =============================================================================
    Primary Content
    ========================================================================== */
 
 #main { }
-
 
 /* =============================================================================
    Sidebar
@@ -148,7 +145,6 @@ aside section li ul li {
 .twitter-icon {
   overflow: hidden;
 }
-
 
 /*
  * Search
@@ -222,7 +218,6 @@ form[role="search"] input[type="submit"]:hover {
   margin-right: 1em;
 }
 
-
 /* =============================================================================
    Post Comments
    ========================================================================== */
@@ -285,7 +280,6 @@ form[role="search"] input[type="submit"]:hover {
   margin: 1.5em 0;
 }
 
-
 /* =============================================================================
    Pagination
    ========================================================================== */
@@ -299,7 +293,6 @@ form[role="search"] input[type="submit"]:hover {
 .toolbar a.prev:hover { background-position: 0 -432px; }
 .toolbar a.next { background-position: 0 -633px; position: absolute; right: 0; top: 0; }
 .toolbar a.next:hover { background-position: 0 -499px; }
-
 
 /* =============================================================================
    Footer
@@ -322,16 +315,15 @@ footer .eightsevencentral {
   float: right;
 }
 
-
 /* =============================================================================
    WordPress Generated Classes
    See: http://codex.wordpress.org/CSS#WordPress_Generated_Classes
    ========================================================================== */
 
 .aligncenter { display: block; margin: 0 auto; }
-.alignleft { margin: 0 20px 20px 0; float: left; }
-.alignright { margin: 0 0 20px 20px; float: right; }
-.alignnone { margin-left: 0; margin-right: 0; }
+.alignleft { float: left; }
+.alignright { float: right; }
+figure.alignnone { margin-left: 0; margin-right: 0; }
 .wp-caption { text-align: left; }
 .wp-caption img { border: 0 none; }
 .wp-caption-text { color: #aaa; margin: 0; }

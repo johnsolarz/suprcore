@@ -1,44 +1,39 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
+    <meta name="description" content="<?php echo bloginfo('description'); ?>">
+    <meta name="viewport" content="width=device-width">
 
-  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
-  More info: h5bp.com/i/378 -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-  <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
-  <meta name="description" content="<?php echo bloginfo('description'); ?>">
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico">
+    <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/img/apple-touch-icon.png">
 
-  <!-- Mobile viewport optimized: h5bp.com/viewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/layout.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/suprcore.css">
 
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
-  <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico">
-  <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/img/apple-touch-icon.png">
+    <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/modernizr-2.6.1.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/plugins.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
 
-  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
-
-  <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/modernizr-2.5.3.min.js"></script>
-
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
-
-  <script src="<?php echo get_template_directory_uri(); ?>/js/plugins.js"></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
-
-  <?php if (is_singular() && comments_open() && get_option('thread_comments'))
-    wp_enqueue_script('comment-reply');
-    wp_head();
-  ?>
-</head>
-<body <?php body_class(custom_body_class()); ?>>
-
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+    <?php if (is_singular() && comments_open() && get_option('thread_comments'))
+      wp_enqueue_script('comment-reply');
+      wp_head();
+    ?>
+  </head>
+  <body <?php body_class(custom_body_class()); ?>>
+    <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
 
 	<header class="grid" role="banner">
 

@@ -47,10 +47,10 @@ function google_plus_script() {
 add_action('custom_footer', 'google_plus_script');
 
 function google_analytics() {
-  $custom_google_analytics_id = GOOGLE_ANALYTICS_ID;
+  $google_analytics_id = GOOGLE_ANALYTICS_ID;
   if ($custom_google_analytics_id !== '') {
     echo "\n\t<script>\n";
-    echo "\t\tvar _gaq=[['_setAccount','$roots_google_analytics_id'],['_trackPageview']];\n";
+    echo "\t\tvar _gaq=[['_setAccount','$google_analytics_id'],['_trackPageview']];\n";
     echo "\t\t(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];\n";
     echo "\t\tg.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';\n";
     echo "\t\ts.parentNode.insertBefore(g,s)}(document,'script'));\n";
