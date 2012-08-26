@@ -6,7 +6,7 @@ function twitter_share_script() {
   }
 }
 
-add_action('custom_footer', 'twitter_share_script');
+add_action('wp_footer', 'twitter_share_script');
 
 function facebook_like_script() {
   if (use_facebook_like()) {
@@ -21,7 +21,7 @@ function facebook_like_script() {
 	}
 }
 
-add_action('custom_footer', 'facebook_like_script');
+add_action('wp_footer', 'facebook_like_script');
 
 function pinterest_pin_script() {
   if (use_pinterest_pin()) {
@@ -30,7 +30,7 @@ function pinterest_pin_script() {
   }
 }
 
-add_action('custom_footer', 'pinterest_pin_script');
+add_action('wp_footer', 'pinterest_pin_script');
 
 function google_plus_script() {
   if (use_google_plus()) {
@@ -44,13 +44,18 @@ function google_plus_script() {
   }
 }
 
-add_action('custom_footer', 'google_plus_script');
+add_action('wp_footer', 'google_plus_script');
 
+/**
+ * Add the asynchronous Google Analytics snippet from HTML5 Boilerplate
+ * if an ID is defined in config.php
+ *
+ * @link mathiasbynens.be/notes/async-analytics-snippet
+ */
 function google_analytics() {
-  $google_analytics_id = GOOGLE_ANALYTICS_ID;
-  if ($custom_google_analytics_id !== '') {
+  if (GOOGLE_ANALYTICS_ID) {
     echo "\n\t<script>\n";
-    echo "\t\tvar _gaq=[['_setAccount','$google_analytics_id'],['_trackPageview']];\n";
+    echo "\t\tvar _gaq=[['_setAccount','" . GOOGLE_ANALYTICS_ID . "'],['_trackPageview']];\n";
     echo "\t\t(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];\n";
     echo "\t\tg.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';\n";
     echo "\t\ts.parentNode.insertBefore(g,s)}(document,'script'));\n";
@@ -58,4 +63,4 @@ function google_analytics() {
   }
 }
 
-add_action('custom_footer', 'google_analytics');
+add_action('wp_footer', 'google_analytics');

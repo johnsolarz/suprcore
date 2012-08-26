@@ -70,7 +70,7 @@ function twitter_followers_counter() {
 
 // Retreive first image from post, used for Pin button
 // http://wordpress.org/support/topic/retreive-first-image-from-post
-function custom_first_image() {
+function get_first_image() {
   global $post, $posts;
   $first_img = '';
   ob_start();
@@ -85,12 +85,12 @@ function custom_first_image() {
 }
 
 // Sharing buttons
-function custom_social_sharing() {
+function core_social_sharing() {
 
   $username = twitter_username();
   $title = get_the_title();
   $permalink = get_permalink();
-  $firstimg = custom_first_image();
+  $firstimg = get_first_image();
 
   if (use_twitter_share() || use_google_plus() || use_pinterest_pin() || use_facebook_like()) {
     echo '<div class="social">';

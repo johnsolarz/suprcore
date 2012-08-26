@@ -1,6 +1,6 @@
 <aside id="sidebar" class="four column" role="complementary">
 
-	<?php if ( ! dynamic_sidebar('custom-sidebar') ) : ?>
+	<?php if ( ! dynamic_sidebar('sidebar-primary') ) : ?>
 
 	<section class="clearfix">
 		<div class="three column alpha">

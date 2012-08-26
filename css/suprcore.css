@@ -1,11 +1,11 @@
-/*! suprcore.css | https://github.com/johnsolarz/suprcore
+/*! suprcore.css | https://github.com/johnsolarz/suprcore */
 
 /* =============================================================================
    Base
    ========================================================================== */
 
 body {
-  font-size: 75%; /* 12px, 18px */
+  font-size: 75%; /* 12px / 18px */
 }
 
 /* =============================================================================
@@ -76,10 +76,7 @@ header nav ul li ul a:hover {
   color: #111;
 }
 
-header nav ul .current_page_item > a,
-header nav ul .current-menu-ancestor > a,
-header nav ul .current-menu-item > a,
-header nav ul .current-menu-parent > a {
+header nav ul .active > a {
   color: #111;
 }
 
@@ -165,6 +162,13 @@ form[role="search"] input[type="search"]{
   outline: 0;
   padding: 0;
   width: 88%;
+
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
 }
 form[role="search"] input[type="submit"] {
   background: transparent url(../img/arrows.png) no-repeat scroll 0 -357px;
@@ -173,9 +177,21 @@ form[role="search"] input[type="submit"] {
   height: 1.5em;
   margin-bottom: 0;
   text-indent: -9999em;
+
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
 }
 form[role="search"] input[type="submit"]:hover {
   background-position: 0 -117px;
+
+    -webkit-transition: none;
+       -moz-transition: none;
+         -o-transition: none;
+            transition: none;
 }
 
 /* =============================================================================
@@ -277,7 +293,7 @@ form[role="search"] input[type="submit"]:hover {
   min-height: 10em;
 }
 #respond input[type="submit"] {
-  margin: 1.5em 0;
+  display: block;
 }
 
 /* =============================================================================
