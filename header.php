@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/img/apple-touch-icon.png">
 
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/layout.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/grid.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/suprcore.css">
 
     <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/modernizr-2.6.1.min.js"></script>
@@ -47,7 +47,7 @@
 				</ul>
 			</nav>
 			<nav role="navigation">
-        <?php wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav')); ?>
+                <?php wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav')); ?>
 			</nav>
 		</div>
 
