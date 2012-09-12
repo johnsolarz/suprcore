@@ -5,21 +5,18 @@
 
 if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
 
-require_once locate_template('/inc/utils.php');           // Utility functions
-require_once locate_template('/inc/config.php');          // Configuration and constants
-require_once locate_template('/inc/cleanup.php');         // Cleanup
-require_once locate_template('/inc/htaccess.php');        // Rewrites for assets, H5BP .htaccess
-require_once locate_template('/inc/widgets.php');         // Sidebars and widgets
-require_once locate_template('/inc/template-tags.php');   // Template tags
-require_once locate_template('/inc/actions.php');         // Actions
-require_once locate_template('/inc/custom.php');          // Custom functions
-require_once locate_template('/inc/admin.php');           // Admin dashboard
-require_once locate_template('/inc/social.php');          // Social media sharing
+require_once locate_template('/lib/utils.php');           // Utility functions
+require_once locate_template('/lib/config.php');          // Configuration and constants
+require_once locate_template('/lib/cleanup.php');         // Cleanup
+require_once locate_template('/lib/htaccess.php');        // Rewrites for assets, H5BP .htaccess
+require_once locate_template('/lib/widgets.php');         // Sidebars and widgets
+require_once locate_template('/lib/template-tags.php');   // Template tags
+require_once locate_template('/lib/actions.php');         // Actions
+require_once locate_template('/lib/custom.php');          // Custom functions
+require_once locate_template('/lib/admin.php');           // Admin dashboard
+require_once locate_template('/lib/social.php');          // Social media sharing
 
 function core_setup() {
-
-  // Make theme available for translation
-  load_theme_textdomain('roots', get_template_directory() . '/lang');
 
   // Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
   register_nav_menus(array(
@@ -56,7 +53,7 @@ function core_setup() {
   // add_custom_image_header('custom_image_header_site', 'custom_image_header_admin');
 
   // Tell the TinyMCE editor to use a custom stylesheet
-  add_editor_style('/css/wp-editor.css');
+  add_editor_style('/css/wp/editor.css');
 
 }
 

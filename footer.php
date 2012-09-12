@@ -1,6 +1,6 @@
 	</div><!-- #content -->
 
-	<footer class="grid" role="contentinfo">
+	<footer id="footer" class="grid" role="contentinfo">
 
 		<?php if (is_active_sidebar('sidebar-footer')) : ?>
 			<aside class="twelve column" role="complementary">
@@ -13,7 +13,7 @@
 			<nav role="navigation">
 				<?php wp_nav_menu(array('theme_location' => 'footer_navigation', 'menu_class' => 'nav')); ?>
 			</nav>
-			<a class="eightsevencentral" href="http://eightsevencentral.com" target="_blank" title="8/7 Central">Site by 8/7 Central</a>
+			<a class="credit" href="http://eightsevencentral.com" target="_blank" title="8/7 Central">Site by 8/7 Central</a>
 		</div>
 
 	</footer>

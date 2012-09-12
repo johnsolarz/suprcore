@@ -15,7 +15,8 @@
 		<?php the_content(); ?>
 
 		<footer class="clearfix">
-			<a class="post-comment" href="<?php the_permalink(); ?>#comments" title="<?php the_permalink(); ?>"><?php comments_number('No comments', 'One comment', '% comments'); ?></a> <?php the_tags(__('| ', '') . 'Tags: ', ', ', ''); ?>
+			<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'suprcore'), 'after' => '</p></nav>')); ?>
+			<?php $tags = get_the_tags(); if ($tags) { ?><p><?php the_tags(__('', '') . 'Tags: ', ', ', ''); ?></p><?php } ?>
 			<?php if (function_exists('core_social_sharing')) core_social_sharing(); ?>
 		</footer>
 

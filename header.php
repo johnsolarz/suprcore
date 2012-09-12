@@ -14,9 +14,9 @@
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico">
     <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/img/apple-touch-icon.png">
 
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/base.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/grid.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/suprcore.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
 
     <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/modernizr-2.6.2.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
@@ -34,7 +34,7 @@
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
 
-	<header class="grid" role="banner">
+	<header id="header" class="grid" role="banner">
 
 		<div class="twelve column">
 			<a class="logo" href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?>" rel="index"><?php bloginfo('name'); ?></a>
@@ -54,7 +54,7 @@
 	</header>
 
 	<?php if ( is_singular() && has_post_thumbnail( $post->ID ) && ( $image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'post-thumbnail' ) ) && $image[1] >= HEADER_IMAGE_WIDTH ) : ?>
-		<section id="feature" class="grid">
+		<section id="hero" class="grid">
 			<div class="twelve column">
 				<?php echo get_the_post_thumbnail( $post->ID ); ?>
 			</div>
