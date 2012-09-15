@@ -233,7 +233,8 @@ form[role="search"] input[type="submit"]:hover {
 
 .hentry {
   border-top: 1px solid #ccc;
-  padding: 1.4166666666666666666666666666667em 0 1.5em; /* 17px 0 18px */
+  padding-top: 1.4166666666666666666666666666667em; /* 17px */
+  padding-bottom: 1.5em; /* 18px */
 }
 .hentry header {
 
