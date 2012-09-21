@@ -17,7 +17,7 @@ define('FULL_RELATIVE_PLUGIN_PATH', WP_BASE . '/' . RELATIVE_PLUGIN_PATH);
 define('RELATIVE_CONTENT_PATH',     str_replace(site_url() . '/', '', content_url()));
 define('THEME_PATH',                RELATIVE_CONTENT_PATH . '/themes/' . THEME_NAME);
 
-// social.php
+// Call actions in social.php
 define('TWITTER_USERNAME',          '');
 define('TWITTER_SHARE_POSTS',       0);
 define('FACEBOOK_LIKE_POSTS',       0);

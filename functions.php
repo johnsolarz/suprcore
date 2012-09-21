@@ -10,11 +10,11 @@ require_once locate_template('/lib/config.php');          // Configuration and c
 require_once locate_template('/lib/cleanup.php');         // Cleanup
 require_once locate_template('/lib/htaccess.php');        // Rewrites for assets, H5BP .htaccess
 require_once locate_template('/lib/widgets.php');         // Sidebars and widgets
-require_once locate_template('/lib/template-tags.php');   // Template tags
-require_once locate_template('/lib/actions.php');         // Actions
-require_once locate_template('/lib/custom.php');          // Custom functions
 require_once locate_template('/lib/admin.php');           // Admin dashboard
 require_once locate_template('/lib/social.php');          // Social media sharing
+require_once locate_template('/lib/post-types.php');      // Custom post types
+require_once locate_template('/lib/meta-boxes.php');      // Custom metaboxes
+require_once locate_template('/lib/custom.php');          // Custom functions
 
 function core_setup() {
 

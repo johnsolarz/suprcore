@@ -45,6 +45,7 @@ hr {
 #header {
   padding: 3em 0;
   position: relative;
+  z-index: 1;
 }
 
 #header .logo {
@@ -57,6 +58,7 @@ hr {
   text-decoration: none;
 /*
   background: url('../img/logo.png') no-repeat 0 0;
+  background-size: 100%;
   height: 100px;
   overflow: hidden;
   text-indent: -9999px;
@@ -164,13 +166,13 @@ aside section li ul li {
  */
 
 .twitter-link {
-  background: url(../img/socials.png) no-repeat scroll 0 -725px;
+  background: url(http://si0.twimg.com/images/dev/cms/intents/bird/bird_gray/bird_16_gray.png) no-repeat 0 0;
   padding-left: 20px;
   margin-top: 1.5em;
   display: block;
 }
 .twitter-link:hover {
-  background-position: 0 -791px;
+  background: url(http://si0.twimg.com/images/dev/cms/intents/bird/bird_black/bird_16_black.png) no-repeat 0 0;
 }
 .twitter-icon {
   overflow: hidden;
@@ -290,7 +292,8 @@ form[role="search"] input[type="submit"]:hover {
   margin: 0;
   padding: 0;
 }
-.commentlist > li {
+.commentlist > li,
+.commentlist .children li {
   border-top: 1px solid #ccc;
   margin: 0;
   padding: 1.4166666666666666666666666666667em 0 0 40px;
