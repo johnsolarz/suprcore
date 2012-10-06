@@ -1,53 +1,32 @@
 <?php
 
-function core_widgets_init() {
+function roots_widgets_init() {
   // Register widgetized areas
   register_sidebar(array(
-    'name' => __('Primary Sidebar', 'suprcore'),
-    'id' => 'sidebar-primary',
+    'name'          => __('Primary Sidebar', 'roots'),
+    'id'            => 'sidebar-primary',
     'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-    'after_widget' => '</div></section>',
-    'before_title' => '<h3>',
-    'after_title' => '</h3>',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
   ));
+
   register_sidebar(array(
-    'name' => __('Footer', 'suprcore'),
-    'id' => 'sidebar-footer',
+    'name'          => __('Footer', 'roots'),
+    'id'            => 'sidebar-footer',
     'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-    'after_widget' => '</div></section>',
-    'before_title' => '<h3>',
-    'after_title' => '</h3>',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
   ));
 
   // Register widgets
-  register_widget('core_Vcard_Widget');
+  register_widget('Roots_Vcard_Widget');
 }
-add_action('widgets_init', 'core_widgets_init');
-
-/**
- * Custom - Remove default sidebar widgets
- *
- * @link http://www.everparent.com/lunaticfred/2011/05/05/how-to-remove-default-sidebar-widgets-in-wordpress/
- */
-function core_default_widgets() {
-  //unregister_widget('WP_Widget_Pages');
-  unregister_widget('WP_Widget_Calendar');
-  unregister_widget('WP_Widget_Archives');
-  unregister_widget('WP_Widget_Links');
-  unregister_widget('WP_Widget_Meta');
-  unregister_widget('WP_Widget_Search');
-  //unregister_widget('WP_Widget_Text');
-  //unregister_widget('WP_Widget_Categories');
-  //unregister_widget('WP_Widget_Recent_Posts');
-  unregister_widget('WP_Widget_Recent_Comments');
-  unregister_widget('WP_Widget_RSS');
-  unregister_widget('WP_Widget_Tag_Cloud');
-  //unregister_widget('WP_Nav_Menu_Widget');
-}
-add_action( 'widgets_init', 'core_default_widgets' );
+add_action('widgets_init', 'roots_widgets_init');
 
 // Example vCard widget
-class core_Vcard_Widget extends WP_Widget {
+class Roots_Vcard_Widget extends WP_Widget {
   private $fields = array(
     'title'          => 'Title (optional)',
     'street_address' => 'Street Address',
@@ -59,10 +38,10 @@ class core_Vcard_Widget extends WP_Widget {
   );
 
   function __construct() {
-    $widget_ops = array('classname' => 'widget_core_vcard', 'description' => __('Use this widget to add a vCard', 'core'));
+    $widget_ops = array('classname' => 'widget_roots_vcard', 'description' => __('Use this widget to add a vCard', 'roots'));
 
-    $this->WP_Widget('widget_core_vcard', __('Suprcore: vCard', 'core'), $widget_ops);
-    $this->alt_option_name = 'widget_core_vcard';
+    $this->WP_Widget('widget_roots_vcard', __('Roots: vCard', 'roots'), $widget_ops);
+    $this->alt_option_name = 'widget_roots_vcard';
 
     add_action('save_post', array(&$this, 'flush_widget_cache'));
     add_action('deleted_post', array(&$this, 'flush_widget_cache'));
@@ -70,7 +49,7 @@ class core_Vcard_Widget extends WP_Widget {
   }
 
   function widget($args, $instance) {
-    $cache = wp_cache_get('widget_core_vcard', 'widget');
+    $cache = wp_cache_get('widget_roots_vcard', 'widget');
 
     if (!is_array($cache)) {
       $cache = array();
@@ -88,7 +67,7 @@ class core_Vcard_Widget extends WP_Widget {
     ob_start();
     extract($args, EXTR_SKIP);
 
-    $title = apply_filters('widget_title', empty($instance['title']) ? __('vCard', 'core') : $instance['title'], $instance, $this->id_base);
+    $title = apply_filters('widget_title', empty($instance['title']) ? __('vCard', 'roots') : $instance['title'], $instance, $this->id_base);
 
     foreach($this->fields as $name => $label) {
       if (!isset($instance[$name])) { $instance[$name] = ''; }
@@ -115,7 +94,7 @@ class core_Vcard_Widget extends WP_Widget {
     echo $after_widget;
 
     $cache[$args['widget_id']] = ob_get_flush();
-    wp_cache_set('widget_core_vcard', $cache, 'widget');
+    wp_cache_set('widget_roots_vcard', $cache, 'widget');
   }
 
   function update($new_instance, $old_instance) {
@@ -125,15 +104,15 @@ class core_Vcard_Widget extends WP_Widget {
 
     $alloptions = wp_cache_get('alloptions', 'options');
 
-    if (isset($alloptions['widget_core_vcard'])) {
-      delete_option('widget_core_vcard');
+    if (isset($alloptions['widget_roots_vcard'])) {
+      delete_option('widget_roots_vcard');
     }
 
     return $instance;
   }
 
   function flush_widget_cache() {
-    wp_cache_delete('widget_core_vcard', 'widget');
+    wp_cache_delete('widget_roots_vcard', 'widget');
   }
 
   function form($instance) {
@@ -141,7 +120,7 @@ class core_Vcard_Widget extends WP_Widget {
       ${$name} = isset($instance[$name]) ? esc_attr($instance[$name]) : '';
     ?>
     <p>
-      <label for="<?php echo esc_attr($this->get_field_id($name)); ?>"><?php _e("{$label}:", 'core'); ?></label>
+      <label for="<?php echo esc_attr($this->get_field_id($name)); ?>"><?php _e("{$label}:", 'roots'); ?></label>
       <input class="widefat" id="<?php echo esc_attr($this->get_field_id($name)); ?>" name="<?php echo esc_attr($this->get_field_name($name)); ?>" type="text" value="<?php echo ${$name}; ?>">
     </p>
     <?php

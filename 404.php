@@ -1,16 +1,24 @@
-<?php // 404 template
-get_header(); ?>
- 
-<div class="twelve column">
-    
-	<p><strong><?php _e('Just when it was going so well &hellip;', 'suprcore'); ?></strong><br>
-	<?php _e('Sorry, but the page you requested could not be found.', 'suprcore'); ?></p>
-	<?php get_search_form(); ?>
+<?php get_header(); ?>
 
-</div> 
-<script type="text/javascript">
-	// focus on search field after it has loaded
-	document.getElementById('s') && document.getElementById('s').focus();
-</script>
-	 
-<?php get_footer(); ?> 
+<div class="twelve column">
+
+  <div class="alert alert-block fade in">
+    <a class="close" data-dismiss="alert">&times;</a>
+    <p><strong><?php _e('Just when it was going so well &hellip;', 'roots'); ?></strong><br>
+    <?php _e('The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'roots'); ?></p>
+  </div>
+
+  <p><?php _e('Please try the following:', 'roots'); ?></p>
+  <ul>
+    <li><?php _e('Check your spelling', 'roots'); ?></li>
+    <li><?php printf(__('Return to the <a href="%s">home page</a>', 'roots'), home_url()); ?></li>
+    <li><?php _e('Click the <a href="javascript:history.back()">Back</a> button', 'roots'); ?></li>
+  </ul>
+
+  <?php get_search_form(); ?>
+
+</div>
+
+<?php get_footer(); ?>
+
+

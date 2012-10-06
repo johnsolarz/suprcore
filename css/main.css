@@ -395,17 +395,11 @@ form[role="search"] input[type="submit"]:hover {
 }
 #footer .utility {
   border-top: 1px solid #ccc;
+  color: #aaa;
   padding: 1.4166666666666666666666666666667em 0 1.5em;
 }
-.utility nav,
-.utility nav ul li,
-.utility .copy {
-  float: left;
-  margin-right: 2em;
-}
-.utility .credit {
-  float: right;
-}
+.utility .copy { }
+.utility .credit { }
 
 /* ==========================================================================
    WordPress Generated Classes

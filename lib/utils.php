@@ -31,18 +31,6 @@ function is_element_empty($element) {
 }
 
 /**
- * Return post entry meta information
- *
- * HTML tags should be in the templates when possible:
- * @todo https://github.com/retlehs/roots/pull/554
- */
-
-function core_entry_meta() {
-  echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('%s', 'suprcore'), get_the_date()) .'</time>';
-  echo '<span class="byline author vcard">'. __(' by', 'suprcore') .' <a href="'. get_author_posts_url(get_the_author_meta('id')) .'" rel="author" class="fn">'. get_the_author() .'</a></span>';
-}
-
-/**
  * Display navigation to next/previous pages when applicable
  * @link http://dimox.net/wordpress-pagination-without-a-plugin-wp-pagenavi-alternative/
  */

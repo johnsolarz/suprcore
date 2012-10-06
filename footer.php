@@ -9,10 +9,7 @@
 		<?php endif; ?>
 
 		<div class="twelve column utility">
-			<span class="copy">&copy; <?php echo date('Y');?> <?php bloginfo('name'); ?></span>
-			<nav role="navigation">
-				<?php wp_nav_menu(array('theme_location' => 'footer_navigation', 'menu_class' => 'nav')); ?>
-			</nav>
+			<span class="copy">&copy; <?php echo date('Y');?> <?php bloginfo('name'); ?></span> &mdash;
 			<a class="credit" href="http://eightsevencentral.com" target="_blank" title="8/7 Central">Site by 8/7 Central</a>
 		</div>
 

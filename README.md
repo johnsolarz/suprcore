@@ -1,6 +1,6 @@
 # [Suprcore™](http://eightsevencentral.com)
 
-Core html5 WordPress development | v3.5 (September 11, 2012)
+Core html5 WordPress development | v3.6 (October 6, 2012)
 
 
 ## License
@@ -18,6 +18,11 @@ Copyright (c) 8/7 Central. All rights reserved. The design and code of this web 
 
 
 ## Changelog
+
+== 3.6 (October 6, 2012)
+
+* Added directory for theme templates
+* Roots 6.1 updates
 
 == 3.5 (September 11, 2012)
 
