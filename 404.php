@@ -2,10 +2,13 @@
 
 <div class="twelve column">
 
+  <div class="page-header">
+    <h1>Oops,</h1>
+  </div>
+
   <div class="alert alert-block fade in">
     <a class="close" data-dismiss="alert">&times;</a>
-    <p><strong><?php _e('Just when it was going so well &hellip;', 'roots'); ?></strong><br>
-    <?php _e('The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'roots'); ?></p>
+    <p><?php _e('The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'roots'); ?></p>
   </div>
 
   <p><?php _e('Please try the following:', 'roots'); ?></p>
