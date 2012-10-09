@@ -2,9 +2,7 @@
 
 <div class="twelve column">
 
-  <div class="page-header">
-    <h1>Oops,</h1>
-  </div>
+  <?php get_template_part('templates/page', 'header'); ?>
 
   <div class="alert alert-block fade in">
     <a class="close" data-dismiss="alert">&times;</a>

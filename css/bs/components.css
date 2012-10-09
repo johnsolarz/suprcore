@@ -1511,7 +1511,7 @@ a.thumbnail:hover {
 }
 
 /*
- * miscellaneous.css
+ * Miscellaneous.css
  */
 
 .well {
@@ -1607,4 +1607,3 @@ button.close {
 .collapse.in {
   height: auto;
 }
-

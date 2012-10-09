@@ -27,7 +27,7 @@
           single_cat_title();
         }
       } elseif (is_search()) {
-        printf(__('Search Results for %s', 'roots'), get_search_query());
+        printf(__('Search Results for "%s"', 'roots'), get_search_query());
       } elseif (is_404()) {
         _e('File Not Found', 'roots');
       } else {

@@ -17,10 +17,10 @@
 		<?php } ?>
 	</section>
 
-	<form class="clearfix" role="search" method="get" action="<?php echo home_url('/'); ?>">
+	<form role="search" method="get" id="searchform" class="form-search clearfix" action="<?php echo home_url('/'); ?>">
 		<label class="visuallyhidden" for="s">Search for:</label>
-		<input type="search" class="search" onmouseout="if (this.value == '') {this.value = 'Search + Enter';} this.blur();" onmouseover="if (this.value == 'Search + Enter') {this.value = '';} this.focus();" value="Search + Enter" name="s" id="s">
-		<input type="submit" value="Search">
+		<input type="text" value="Search + Enter" name="s" id="s" class="search-query" onmouseout="if (this.value == '') {this.value = 'Search + Enter';}" onmouseover="if (this.value == 'Search + Enter') {this.value = '';} this.focus();">
+		<input type="submit" id="searchsubmit" value="<?php _e('Search', 'roots'); ?>" class="btn">
 	</form>
 
 	<section>
