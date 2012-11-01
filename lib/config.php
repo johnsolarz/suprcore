@@ -14,11 +14,11 @@ define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y
 define('POST_EXCERPT_LENGTH', 40);
 
 // social.php
-define('TWITTER_USERNAME',          '');
-define('TWITTER_SHARE_POSTS',       0);
-define('FACEBOOK_LIKE_POSTS',       0);
-define('PINTEREST_PIN_POSTS',       0);
-define('GOOGLE_PLUS_POSTS',         0);
+define('TWITTER_USERNAME',    '');
+define('TWITTER_SHARE_POSTS',  0);
+define('FACEBOOK_LIKE_POSTS',  0);
+define('PINTEREST_PIN_POSTS',  0);
+define('GOOGLE_PLUS_POSTS',    0);
 
 // Set the post revisions to 5 unless the constant was set in wp-config.php to avoid DB bloat
 if (!defined('WP_POST_REVISIONS')) { define('WP_POST_REVISIONS', 5); }
