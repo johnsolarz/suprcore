@@ -24,7 +24,7 @@
   </div>
   <div class="alert alert-block fade in">
     <a class="close" data-dismiss="alert">&times;</a>
-    <p><?php _e('Please try again with some different keywords or <a href=/contact">contact us</a> for more help.', 'roots'); ?></p>
+    <p><?php _e('Please try again with some different keywords or <a href="/contact">contact us</a> for more help.', 'roots'); ?></p>
   </div>
 		<?php get_search_form(); ?>
 	<?php endif; ?>
