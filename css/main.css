@@ -48,7 +48,7 @@ hr {
   z-index: 1;
 }
 
-#header .logo {
+#header .brand {
   display: block;
   float: left;
   font-size: 1em;
@@ -508,6 +508,30 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    ========================================================================== */
 
 /*
+ * Center-align text
+ */
+
+.center {
+    text-align: center;
+}
+
+/*
+ * Inset elements inside columns
+ */
+
+.inset {
+    margin: 1.5em;
+}
+
+/*
+ * Full-width elements
+ */
+
+.full {
+    width: 100%;
+}
+
+/*
  * Image replacement
  */
 
@@ -609,6 +633,10 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    Theses examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
+
+@media screen and (max-width: 767px) {
+    /* Style adjustments for all mobile devices */
+}
 
 @media screen and (min-width: 320px) {
     /* Style adjustments for mobile portrait to landscape */

@@ -19,7 +19,7 @@ function roots_setup() {
   // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 
   // Tell the TinyMCE editor to use a custom stylesheet
-  add_editor_style('css/wp/editor.css');
+  add_editor_style('css/wp/editor-style.css');
 
   // Add excerpts to pages
   // add_post_type_support( 'page', 'excerpt' );

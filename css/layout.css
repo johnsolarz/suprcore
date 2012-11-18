@@ -1,4 +1,4 @@
-/*! grid.css | Twelve unit grid | https://github.com/johnsolarz/suprcore */
+/*! layout.css | Twelve unit container | https://github.com/johnsolarz/layout */
 
 /* =============================================================================
    Base
@@ -8,7 +8,7 @@
  * Base container class
  */
 
-.grid {
+.container {
     margin: 0 auto;
     position: relative;
     width: 960px;
@@ -35,67 +35,29 @@
 }
 
 /*
- * Column positioning
- */
-
-[class*="push"],
-[class*="pull"] {
-    position: relative;
-}
-
-/*
  * Contain floats
  */
 
-.grid:before,
-.grid:after,
+.container:before,
+.container:after,
 .row:before,
 .row:after {
-    content: "";
+    content: " ";
     display: table;
 }
 
-.grid:after,
+.container:after,
 .row:after {
     clear: both;
 }
 
-.grid,
+.container,
 .row {
     *zoom: 1;
 }
 
-
 /* =============================================================================
-   Non-semantic helper classes
-   ========================================================================== */
-/*
- * Center-align text
- */
-
-.center {
-    text-align: center;
-}
-
-/*
- * Inset elements inside columns
- */
-
-.inset {
-    margin: 1.5em;
-}
-
-/*
- * Full-width elements
- */
-
-.full {
-    width: 100%;
-}
-
-
-/* =============================================================================
-   960px layout
+   960px / Default layout and IE 6-8 fallback
    ========================================================================== */
 
 .column {
@@ -107,23 +69,11 @@
 .offset-one {
     padding-left: 80px;
 }
-.push-one {
-    left: 80px;
-}
-.pull-one {
-    left: -80px;
-}
 .two {
     width: 140px;
 }
 .offset-two {
     padding-left: 160px;
-}
-.push-two {
-    left: 160px;
-}
-.pull-two {
-    left: -160px;
 }
 .three {
     width: 220px;
@@ -131,23 +81,11 @@
 .offset-three {
     padding-left: 240px;
 }
-.push-three {
-    left: 240px;
-}
-.pull-three {
-    left: -240px;
-}
 .four {
     width: 300px;
 }
 .offset-four {
-    padding-left: 320px
-}
-.push-four {
-    left: 320px;
-}
-.pull-four {
-    left: -320px;
+    padding-left: 320px;
 }
 .five {
     width: 380px;
@@ -155,23 +93,11 @@
 .offset-five {
     padding-left: 400px;
 }
-.push-five {
-    left: 400px;
-}
-.pull-five {
-    left: -400px;
-}
 .six {
     width: 460px;
 }
 .offset-six {
     padding-left: 480px;
-}
-.push-six {
-    left: 480px;
-}
-.pull-six {
-    left: -480px;
 }
 .seven {
     width: 540px;
@@ -179,23 +105,11 @@
 .offset-seven {
     padding-left: 560px;
 }
-.push-seven {
-    left: 560px;
-}
-.pull-seven {
-    left: -560px;
-}
 .eight {
     width: 620px;
 }
 .offset-eight {
     padding-left: 640px;
-}
-.push-eight {
-    left: 640px;
-}
-.pull-eight {
-    left: -640px;
 }
 .nine {
     width: 700px;
@@ -203,23 +117,11 @@
 .offset-nine {
     padding-left: 720px;
 }
-.push-nine {
-    left: 720px;
-}
-.pull-nine {
-    left: -720px;
-}
 .ten {
     width: 780px;
 }
 .offset-ten {
     padding-left: 800px;
-}
-.push-ten {
-    left: 800px;
-}
-.pull-ten {
-    left: -800px;
 }
 .eleven {
     width: 860px;
@@ -227,12 +129,33 @@
 .offset-eleven {
     padding-left: 880px;
 }
-.push-eleven {
-    left: 880px;
-}
-.pull-eleven {
-    left: -880px;
-}
 .twelve {
+    width: 940px;
+}
+.one-fifth {
+    width: 172px;
+}
+.offset-one-fifth {
+    padding-left: 192px;
+}
+.two-fifths {
+    width: 364px;
+}
+.offset-two-fifths {
+    padding-left: 384px;
+}
+.three-fifths {
+    width: 556px;
+}
+.offset-three-fifths {
+    padding-left: 576px;
+}
+.four-fifths {
+    width: 748px;
+}
+.offset-four-fifths {
+    padding-left: 768px;
+}
+.five-fifths {
     width: 940px;
 }

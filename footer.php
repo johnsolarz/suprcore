@@ -1,6 +1,6 @@
 	</div><!-- #content -->
 
-	<footer id="footer" class="grid" role="contentinfo">
+	<footer id="footer" class="container" role="contentinfo">
 
 		<?php if (is_active_sidebar('sidebar-footer')) : ?>
 			<aside class="twelve column" role="complementary">
