@@ -16,7 +16,6 @@
 
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/base.css">
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/layout.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/layout-responsive.css">
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
 
   <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/modernizr-2.6.2.min.js"></script>
