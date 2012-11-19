@@ -662,30 +662,6 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
     /* Style adjustments for all mobile devices */
 }
 
-@media screen and (min-width: 320px) {
-    /* Style adjustments for mobile portrait to landscape */
-}
-
-@media screen and (min-width: 480px) {
-    /* Style adjustments for mobile landscape to tablet portrait */
-}
-
-@media screen and (min-width: 768px) {
-    /* Style adjustments for tablet portrait to landscape and desktop */
-}
-
-@media screen and (min-width: 980px) {
-    /* Style adjustments for tablet landscape and desktop */
-}
-
-@media screen and (min-width: 1200px) {
-    /* Style adjustments for large desktop to widescreen */
-}
-
-@media screen and (min-width: 1920px) {
-    /* Style adjustments for widescreen HD and up */
-}
-
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
        only screen and (min-resolution: 144dpi) {
     /* Style adjustments for high resolution devices */
