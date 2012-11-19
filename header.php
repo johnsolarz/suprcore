@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/img/apple-touch-icon.png">
 
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/base.css">
-  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/layout.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/grid.css">
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
 
   <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/modernizr-2.6.2.min.js"></script>

@@ -1,4 +1,4 @@
-/*! layout-responsive.css | https://github.com/johnsolarz/layout */
+/*! grid-responsive.css | https://github.com/johnsolarz/layout */
 
 /*
  * Breakpoints:
@@ -21,51 +21,6 @@ embed,
 video {
     height: auto;
     max-width: 100%;
-}
-
-/* ==========================================================================
-   Responsive utility classes
-   ========================================================================== */
-
-.visible-phone {
-    display: none !important;
-}
-.visible-tablet {
-    display: none !important;
-}
-.hidden-desktop {
-    display: none !important;
-}
-.visible-desktop {
-    display: inherit !important;
-}
-@media (min-width: 768px) and (max-width: 979px) {
-    .hidden-desktop {
-        display: inherit !important;
-      }
-    .visible-desktop {
-        display: none !important ;
-    }
-    .visible-tablet {
-        display: inherit !important;
-    }
-    .hidden-tablet {
-        display: none !important;
-    }
-}
-@media (max-width: 767px) {
-    .hidden-desktop {
-        display: inherit !important;
-    }
-    .visible-desktop {
-        display: none !important;
-    }
-    .visible-phone {
-        display: inherit !important;
-    }
-    .hidden-phone {
-        display: none !important;
-    }
 }
 
 /* ==========================================================================
@@ -218,8 +173,8 @@ video {
    ========================================================================== */
 
 @media screen and (min-width: 1200px) {
-    .container.hd,
-    .container.dt {
+    .hd,
+    .dt {
         width: 1200px;
     }
     .hd .column,
@@ -357,7 +312,7 @@ video {
    ========================================================================== */
 
 @media screen and (min-width: 1920px) {
-    .container.hd {
+    .hd {
         width: 1920px;
     }
     .hd .column {
