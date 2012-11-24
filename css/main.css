@@ -1,5 +1,3 @@
-/*! main.css */
-
 /* ==========================================================================
    Base
    ========================================================================== */
@@ -44,13 +42,13 @@ hr {
    Header
    ========================================================================== */
 
-#header {
+#banner { }
+
+.navbar {
   padding: 3em 0;
-  position: relative;
   z-index: 1;
 }
-
-#header .brand {
+.navbar .brand {
   display: block;
   float: left;
   font-size: 1em;
@@ -67,33 +65,28 @@ hr {
   width: 100px;
 */
 }
-
-/*
- * Global Navigation
- */
-
-#header nav {
+.navbar nav {
   float: right;
 }
-#header nav ul li {
+.navbar nav ul li {
   float: left;
   margin-left: 2em;
   position: relative;
 }
-#header nav ul li a {
+.navbar nav ul li a {
   padding: .5em 0;
 }
-#header nav ul li:hover a {
+.navbar nav ul li:hover a {
   color: #111;
 }
-#header nav ul li:hover ul {
+.navbar nav ul li:hover ul {
   display: block;
 }
-#header nav ul li:hover ul a {
+.navbar nav ul li:hover ul a {
   color: #ccc;
 }
 
-#header nav ul li ul {
+.navbar nav ul li ul {
   background: #fff;
   display: none;
   opacity: .9;
@@ -101,14 +94,13 @@ hr {
   top: 1.5em;
   left: 0;
 }
-#header nav ul li ul li {
+.navbar nav ul li ul li {
   margin: 0;
 }
-#header nav ul li ul a:hover {
+.navbar nav ul li ul a:hover {
   color: #111;
 }
-
-#header nav ul .active > a {
+.navbar nav ul .active > a {
   color: #111;
 }
 
@@ -471,10 +463,9 @@ form[role="search"] input[type="submit"]:hover {
    Footer
    ========================================================================== */
 
-#footer {
-  clear: both;
-}
-#footer .utility {
+#content-info { }
+
+.utility {
   border-top: 1px solid #ccc;
   color: #aaa;
   padding: 1.4166666666666666666666666666667em 0 1.5em;

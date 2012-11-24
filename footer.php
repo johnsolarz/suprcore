@@ -1,6 +1,6 @@
 	</div><!-- #content -->
 
-	<footer id="footer" class="container" role="contentinfo">
+	<footer id="content-info" class="container" role="contentinfo">
 
 		<?php if (is_active_sidebar('sidebar-footer')) : ?>
 			<aside class="twelve column" role="complementary">
@@ -26,7 +26,7 @@
 
   <?php wp_footer(); ?>
 
-<!--
+  <!--
 
           |
    eeeee  | eeeee    8""""8

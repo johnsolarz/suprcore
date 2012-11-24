@@ -36,7 +36,7 @@
     <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
   <![endif]-->
 
-  <header id="header" class="container" role="banner">
+  <header id="banner" class="navbar container" role="banner">
     <div class="twelve column">
       <a class="brand" href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?>" rel="index"><?php bloginfo('name'); ?></a>
       <p class="visuallyhidden"><?php bloginfo('description'); ?></p>
