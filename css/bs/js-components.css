@@ -2,6 +2,10 @@
  * Bootstrap v2.1.1
  */
 
+/**
+ * Tooltips
+ */
+
 .tooltip {
   position: absolute;
   z-index: 1030;
@@ -75,6 +79,9 @@
   border-bottom-color: #000000;
 }
 
+/**
+ * Popovers
+ */
 
 .popover {
   position: absolute;
@@ -195,6 +202,9 @@
   right: -1px;
 }
 
+/**
+ * Modals
+ */
 
 .modal-open .modal .dropdown-menu {
   z-index: 2050;
@@ -309,6 +319,9 @@
   margin-left: -1px;
 }
 
+/**
+ * Dropdowns
+ */
 
 .dropup,
 .dropdown {
@@ -479,8 +492,6 @@
   padding-left: 20px;
   padding-right: 20px;
 }
-
-
 .typeahead {
   margin-top: 2px;
   -webkit-border-radius: 4px;
@@ -488,6 +499,9 @@
   border-radius: 4px;
 }
 
+/**
+ * Collapse
+ */
 
 .accordion {
   margin-bottom: 20px;
@@ -514,6 +528,9 @@
   border-top: 1px solid #e5e5e5;
 }
 
+/**
+ * Carousel
+ */
 
 .carousel {
   position: relative;

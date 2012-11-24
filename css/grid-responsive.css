@@ -1,4 +1,4 @@
-/*! grid-responsive.css | https://github.com/johnsolarz/layout */
+/*! grid-responsive.css | Inherits default grid | https://github.com/johnsolarz/grid-system */
 
 /*
  * Breakpoints:
@@ -6,7 +6,7 @@
  *    320px  / Mobile portrait to landscape               - Single column @ 300
  *    480px  / Mobile landscape to tablet portrait        - Single column @ 460
  *    768px  / Tablet portrait to landscape and desktop   - Twelve columns @ 44
- *    980px  / Default tablet and desktop in layout.css   - Twelve columns @ 60
+ *    980px  / Default tablet and desktop in grid.css     - Twelve columns @ 60
  *    1200px / Large desktop to widescreen                - Twelve columns @ 80
  *    1920px / Widescreen HD and up                       - Twelve columns @ 140
  */
@@ -21,6 +21,51 @@ embed,
 video {
     height: auto;
     max-width: 100%;
+}
+
+/* ==========================================================================
+   Visibile/hidden classes
+   ========================================================================== */
+
+.visible-phone {
+  display: none !important;
+}
+.visible-tablet {
+  display: none !important;
+}
+.hidden-desktop {
+  display: none !important;
+}
+.visible-desktop {
+  display: inherit !important;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important ;
+  }
+  .visible-tablet {
+    display: inherit !important;
+  }
+  .hidden-tablet {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important;
+  }
+  .visible-phone {
+    display: inherit !important;
+  }
+  .hidden-phone {
+    display: none !important;
+  }
 }
 
 /* ==========================================================================
@@ -40,7 +85,7 @@ video {
 }
 
 /* ==========================================================================
-   320px / Mobile portrait to landscape
+   320px/Mobile portrait to landscape
    ========================================================================== */
 
 @media screen and (max-width: 479px) {
@@ -50,7 +95,7 @@ video {
 }
 
 /* ==========================================================================
-   480px / Mobile landscape to tablet portrait
+   480px/Mobile landscape to tablet portrait
    ========================================================================== */
 
 @media screen and (min-width: 480px) and (max-width: 767px) {
@@ -60,7 +105,7 @@ video {
 }
 
 /* ==========================================================================
-   768px / Tablet portrait to landscape and desktop
+   768px/Tablet portrait to landscape and desktop
    ========================================================================== */
 
 @media screen and (min-width: 768px) and (max-width: 979px) {
@@ -169,7 +214,7 @@ video {
 }
 
 /* ==========================================================================
-   1200px / Large desktop to widescreen
+   1200px/Large desktop to widescreen
    ========================================================================== */
 
 @media screen and (min-width: 1200px) {
@@ -308,7 +353,7 @@ video {
 }
 
 /* ==========================================================================
-   1920px / Widescreen HD and up
+   1920px/Widescreen HD and up
    ========================================================================== */
 
 @media screen and (min-width: 1920px) {
