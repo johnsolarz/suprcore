@@ -535,7 +535,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
  */
 
 .inset {
-    margin: 1.5em;
+    padding: 1.5em;
 }
 
 /*
