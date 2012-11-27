@@ -162,6 +162,7 @@ aside li ul {
 aside section li ul li:before {
   content: "\2015";
   color: #ccc;
+  padding-right: .25em;
 }
 aside section li ul li {
   list-style: none;
