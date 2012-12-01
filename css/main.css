@@ -2,10 +2,7 @@
    Base
    ========================================================================== */
 
-body {
-    font-size: .75em;
-    line-height: 1.5;
-}
+body { }
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -38,7 +35,7 @@ hr {
 
 
 
-/* ==========================================================================
+/* =============================================================================
    Header
    ========================================================================== */
 
@@ -107,14 +104,6 @@ hr {
 
 
 /* ==========================================================================
-   Feature area
-   ========================================================================== */
-
-#hero { }
-
-
-
-/* ==========================================================================
    Content
    ========================================================================== */
 
@@ -169,10 +158,7 @@ aside section li ul li {
   padding-left: 1em;
 }
 
-/*
- * Twitter user
- */
-
+/* Twitter user */
 .twitter-link {
   background: url(http://si0.twimg.com/images/dev/cms/intents/bird/bird_gray/bird_16_gray.png) no-repeat 0 0;
   padding-left: 20px;
@@ -645,13 +631,17 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 }
 
 /* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   Theses examples override the primary ('mobile first') styles.
-   Modify as content requires.
+   Media Queries
    ========================================================================== */
 
-@media screen and (max-width: 767px) {
-    /* Style adjustments for all mobile devices */
+@media (max-width: 767px) {
+  /* Style adjustments for all mobile */
+}
+@media (max-width: 979px) {
+  /* Style adjustments up to tablet portrait */
+}
+@media (min-width: 1200px) {
+  /* Style adjustments for desktop and up */
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
