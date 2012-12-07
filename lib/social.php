@@ -37,7 +37,7 @@ function twitter_followers_counter() {
 
   $username = twitter_username();
 
-  $cache_file = CACHEDIR . 'twitter_followers_counter_' . md5 ( $username );
+  $cache_file = CACHEDIR . 'followers_count_' . md5 ( $username );
 
   if (is_file ( $cache_file ) == false) {
     $cache_file_time = strtotime ( '1984-01-11 07:15' );

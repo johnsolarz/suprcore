@@ -14,7 +14,7 @@ define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y
 define('POST_EXCERPT_LENGTH', 40);
 
 // social.php
-define('TWITTER_USERNAME',    '');
+define('TWITTER_USERNAME',    'johnsolarz');
 define('TWITTER_SHARE_POSTS',  0);
 define('FACEBOOK_LIKE_POSTS',  0);
 define('PINTEREST_PIN_POSTS',  0);

@@ -7,7 +7,7 @@
 			<h3><?php bloginfo('title');?></h3>
 			<?php bloginfo('description');?>
 			<?php if (twitter_username()) { ?>
-				<a class="twitter-link" href="http://twitter.com/<?php echo twitter_username();?>">Follow <?php echo twitter_username();?> on Twitter (<?php echo twitter_followers_counter();?>)</a>
+				<a class="twitter-link" href="http://twitter.com/<?php echo twitter_username();?>">Follow <?php echo twitter_username();?> on Twitter <?php // update to api // echo '(' . twitter_followers_counter() . ')' ?></a>
 			<?php } ?>
 		</div>
 		<?php if (twitter_username()) { ?>
@@ -55,3 +55,4 @@
 
 </aside>
 
+<?php
