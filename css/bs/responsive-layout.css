@@ -1,7 +1,39 @@
 /*!
- * Bootstrap v2.1.1
+ * Bootstrap v2.2.2
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
-
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 @media (max-width: 767px) {
   body {
     padding-left: 20px;
@@ -40,6 +72,7 @@
     margin-left: 0;
   }
   [class*="span"],
+  .uneditable-input[class*="span"],
   .row-fluid [class*="span"] {
     float: none;
     display: block;
@@ -55,6 +88,9 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+  }
+  .row-fluid [class*="offset"]:first-child {
+    margin-left: 0;
   }
   .input-large,
   .input-xlarge,
@@ -88,12 +124,13 @@
     width: auto;
     margin: 0;
   }
+  .modal.fade {
+    top: -100px;
+  }
   .modal.fade.in {
-    top: auto;
+    top: 20px;
   }
 }
-
-
 @media (max-width: 480px) {
   .nav-collapse {
     -webkit-transform: translate3d(0, 0, 0);
@@ -122,6 +159,16 @@
     padding-left: 10px;
     padding-right: 10px;
   }
+  .media .pull-left,
+  .media .pull-right {
+    float: none;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .media-object {
+    margin-right: 0;
+    margin-left: 0;
+  }
   .modal {
     top: 10px;
     left: 10px;
@@ -135,8 +182,6 @@
     position: static;
   }
 }
-
-
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
     margin-left: -20px;
@@ -260,6 +305,9 @@
   }
   .row-fluid [class*="span"]:first-child {
     margin-left: 0;
+  }
+  .row-fluid .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 2.7624309392265194%;
   }
   .row-fluid .span12 {
     width: 100%;
@@ -450,8 +498,6 @@
     width: 28px;
   }
 }
-
-
 @media (min-width: 1200px) {
   .row {
     margin-left: -30px;
@@ -575,6 +621,9 @@
   }
   .row-fluid [class*="span"]:first-child {
     margin-left: 0;
+  }
+  .row-fluid .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 2.564102564102564%;
   }
   .row-fluid .span12 {
     width: 100%;
