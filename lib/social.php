@@ -1,5 +1,11 @@
 <?php
 
+define('TWITTER_USERNAME',    'johnsolarz');
+define('TWITTER_SHARE_POSTS',  0);
+define('FACEBOOK_LIKE_POSTS',  0);
+define('PINTEREST_PIN_POSTS',  0);
+define('GOOGLE_PLUS_POSTS',    0);
+
 function twitter_username() {
 	return TWITTER_USERNAME;
 }
@@ -20,7 +26,10 @@ function use_google_plus() {
   return GOOGLE_PLUS_POSTS;
 }
 
-// Returns twitter icon
+
+/**
+ * Return twitter icon
+ */
 function twitter_icon() {
 
   // bigger - 73px by 73px
@@ -30,42 +39,6 @@ function twitter_icon() {
   $username = twitter_username();
   $profile_img = 'https://api.twitter.com/1/users/profile_image/' . $username . '?size=normal';
   return ( $profile_img );
-}
-
-// Returns follow count
-function twitter_followers_counter() {
-
-  $username = twitter_username();
-
-  $cache_file = CACHEDIR . 'followers_count_' . md5 ( $username );
-
-  if (is_file ( $cache_file ) == false) {
-    $cache_file_time = strtotime ( '1984-01-11 07:15' );
-  } else {
-    $cache_file_time = filemtime ( $cache_file );
-  }
-
-  $now = strtotime ( date ( 'Y-m-d H:i:s' ) );
-  $api_call = $cache_file_time;
-  $difference = $now - $api_call;
-  $api_time_seconds = 1800;
-
-  if ($difference >= $api_time_seconds) {
-
-      $api_call = 'http://twitter.com/users/show/'.$username.'.json';
-      $results = json_decode(file_get_contents($api_call));
-      $count = $results->followers_count;
-
-    if (is_file ( $cache_file ) == true) {
-      unlink ( $cache_file );
-    }
-    touch ( $cache_file );
-    file_put_contents ( $cache_file, strval ( $count ) );
-    return strval ( $count );
-  } else {
-    $count = file_get_contents ( $cache_file );
-    return strval ( $count );
-  }
 }
 
 /**
@@ -88,7 +61,9 @@ function get_first_image() {
   return $first_img;
 }
 
-// Sharing buttons
+/**
+ * Show sharing buttons
+ */
 function core_social_sharing() {
 
   $username = twitter_username();

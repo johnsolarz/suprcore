@@ -2,9 +2,11 @@
 
 <div id="main" class="eight column">
 <?php while (have_posts()) : the_post(); ?>
-  <?php get_template_part('templates/page', 'header'); ?>
-	<?php the_content(); ?>
-	<?php wp_link_pages(array('before' => '<nav class="pagination">', 'after' => '</nav>')); ?>
+  <div class="page-header">
+    <h1 class="post-title"><?php the_title(); ?></h1>
+  </div>
+  <?php the_content(); ?>
+  <?php wp_link_pages(array('before' => '<nav class="pagination">', 'after' => '</nav>')); ?>
 <?php endwhile; ?>
 </div>
 

@@ -1,27 +1,26 @@
 <aside id="sidebar" class="four column" role="complementary">
 
-	<?php if ( ! dynamic_sidebar('sidebar-primary') ) : ?>
+	<?php if (!dynamic_sidebar('sidebar-primary')) : ?>
 
-	<section class="clearfix">
-		<div class="three column alpha">
+	<section class="row">
+		<div class="three column">
 			<h3><?php bloginfo('title');?></h3>
 			<?php bloginfo('description');?>
-			<?php if (twitter_username()) { ?>
-				<a class="twitter-link" href="http://twitter.com/<?php echo twitter_username();?>">Follow <?php echo twitter_username();?> on Twitter <?php // update to api // echo '(' . twitter_followers_counter() . ')' ?></a>
-			<?php } ?>
 		</div>
 		<?php if (twitter_username()) { ?>
-			<div class="one column omega twitter-icon">
+			<div class="one column twitter-icon">
 				<img src="<?php echo twitter_icon(); ?>" alt="">
 			</div>
 		<?php } ?>
 	</section>
 
-	<form role="search" method="get" id="searchform" class="form-search clearfix" action="<?php echo home_url('/'); ?>">
-		<label class="visuallyhidden" for="s">Search for:</label>
-		<input type="text" value="Search + Enter" name="s" id="s" class="search-query" onmouseout="if (this.value == '') {this.value = 'Search + Enter';}" onmouseover="if (this.value == 'Search + Enter') {this.value = '';} this.focus();">
-		<input type="submit" id="searchsubmit" value="<?php _e('Search', 'roots'); ?>" class="btn">
-	</form>
+	<section>
+		<form role="search" method="get" id="searchform" class="form-search clearfix" action="<?php echo home_url('/'); ?>">
+			<label class="visuallyhidden" for="s">Search for:</label>
+			<input type="text" value="Search + Enter" name="s" id="s" class="search-query" onmouseout="if (this.value == '') {this.value = 'Search + Enter';}" onmouseover="if (this.value == 'Search + Enter') {this.value = '';} this.focus();">
+			<input type="submit" id="searchsubmit" value="<?php _e('Search', 'roots'); ?>" class="btn">
+		</form>
+	</section>
 
 	<section>
 		<h3>Navigation</h3>
@@ -52,6 +51,8 @@
 	</section>
 
 	<?php endif; ?>
+
+	<p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
 
 </aside>
 

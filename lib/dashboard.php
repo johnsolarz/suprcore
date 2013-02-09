@@ -2,7 +2,18 @@
 
 // Custom CSS for the login page
 function custom_login_css() {
-	echo '<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory').'/css/wp/login.css"/>';
+	echo '<style type="text/css">';
+  echo '.login h1 a {';
+  echo 'background-image: url("'.get_template_directory_uri().'/assets/img/login.png");';
+  echo 'background-size: 310px 220px;';
+  echo 'width: 330px;';
+  echo 'height: 220px;';
+  echo '}';
+  echo '.login #nav a,';
+  echo '.login #backtoblog a {';
+  echo 'color: #ccc!important;';
+  echo '}';
+  echo '</style>';
 }
 add_action('login_head', 'custom_login_css');
 

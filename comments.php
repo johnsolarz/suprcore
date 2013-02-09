@@ -1,7 +1,13 @@
+<?php
+  if (post_password_required()) {
+    return;
+  }
+?>
+
 <?php function roots_comment($comment, $args, $depth) {
   $GLOBALS['comment'] = $comment; ?>
   <li <?php comment_class(); ?>>
-    <article id="comment-<?php comment_ID(); ?>">
+    <article class="comment-<?php comment_ID(); ?>">
       <header class="comment-author vcard">
         <?php echo get_avatar($comment, $size = '32'); ?>
         <?php printf(__('<cite class="fn">%s</cite>', 'roots'), get_comment_author_link()); ?>
@@ -25,15 +31,6 @@
     </article>
 <?php } ?>
 
-<?php if (post_password_required()) : ?>
-  <section id="comments">
-    <div class="alert alert-block fade in">
-      <a class="close" data-dismiss="alert">&times;</a>
-      <p><?php _e('This post is password protected. Enter the password to view comments.', 'roots'); ?></p>
-    </div>
-  </section><!-- /#comments -->
-<?php endif; ?>
-
 <?php if (have_comments()) : ?>
   <section id="comments">
     <h3><?php printf(_n('One Response to &ldquo;%2$s&rdquo;', '%1$s Responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'roots'), number_format_i18n(get_comments_number()), get_the_title()); ?></h3>
@@ -43,7 +40,7 @@
     </ol>
 
     <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : // are there comments to navigate through ?>
-      <nav id="comments-nav" class="pager">
+      <nav>
         <ul class="pager">
           <?php if (get_previous_comments_link()) : ?>
             <li class="previous"><?php previous_comments_link(__('&larr; Older comments', 'roots')); ?></li>

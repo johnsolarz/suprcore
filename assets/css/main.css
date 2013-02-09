@@ -1,22 +1,20 @@
-/*! main.css | Suprcore | eightsevencentral.com */
-
 /* ==========================================================================
    Base
    ========================================================================== */
 
 body { }
 
+
+
 /* =============================================================================
    Header
    ========================================================================== */
 
-#banner { }
-
-.navbar {
+.banner {
   padding: 3em 0;
   z-index: 1;
 }
-.navbar .brand {
+.banner .brand {
   display: block;
   float: left;
   font-size: 1em;
@@ -33,28 +31,28 @@ body { }
   width: 100px;
 */
 }
-.navbar nav {
+.banner nav {
   float: right;
 }
-.navbar nav ul li {
+.banner nav ul li {
   float: left;
   margin-left: 2em;
   position: relative;
 }
-.navbar nav ul li a {
+.banner nav ul li a {
   padding: .5em 0;
 }
-.navbar nav ul li:hover a {
+.banner nav ul li:hover a {
   color: #111;
 }
-.navbar nav ul li:hover ul {
+.banner nav ul li:hover ul {
   display: block;
 }
-.navbar nav ul li:hover ul a {
+.banner nav ul li:hover ul a {
   color: #ccc;
 }
 
-.navbar nav ul li ul {
+.banner nav ul li ul {
   background: #fff;
   display: none;
   opacity: .9;
@@ -62,13 +60,13 @@ body { }
   top: 1.5em;
   left: 0;
 }
-.navbar nav ul li ul li {
+.banner nav ul li ul li {
   margin: 0;
 }
-.navbar nav ul li ul a:hover {
+.banner nav ul li ul a:hover {
   color: #111;
 }
-.navbar nav ul .active > a {
+.banner nav ul .active > a {
   color: #111;
 }
 
@@ -76,27 +74,25 @@ body { }
    Content
    ========================================================================== */
 
-#content { }
+.content { }
+
+
 
 /* ==========================================================================
    Primary Content
    ========================================================================== */
 
-#main { }
-.page-header {
-  border-top: 1px solid #ccc;
-  padding: 1.4166666666666666666666666666667em 0 0;
-}
+.main { }
+
+
 
 /* ==========================================================================
    Sidebar
    ========================================================================== */
 
-#sidebar { }
-
+.sidebar { }
 aside section {
-  border-top: 1px solid #ccc;
-  padding: 1.4166666666666666666666666666667em 0 1.5em;
+  padding-bottom: 1.5em;
 }
 aside section h3 {
   font-size: 1em;
@@ -115,37 +111,19 @@ aside li li:before {
   padding-right: .25em;
 }
 
-/* Twitter user */
-.twitter-link {
-  background: url(http://si0.twimg.com/images/dev/cms/intents/bird/bird_gray/bird_16_gray.png) no-repeat 0 0;
-  padding-left: 20px;
-  margin-top: 1.5em;
-  display: block;
-}
-.twitter-link:hover {
-  background: url(http://si0.twimg.com/images/dev/cms/intents/bird/bird_black/bird_16_black.png) no-repeat 0 0;
-}
 .twitter-icon {
   overflow: hidden;
 }
+
+
 
 /* ==========================================================================
    Posts
    ========================================================================== */
 
-.hentry {
-  border-top: 1px solid #ccc;
-  padding-top: 1.4166666666666666666666666666667em; /* 17px */
-  padding-bottom: 1.5em; /* 18px */
-}
 .hentry header { }
-.hentry .post-title { }
-.hentry .post-category {
-  display: block;
-}
 .hentry time { }
 .hentry .byline { }
-.hentry .post-comment { }
 .hentry .entry-content { }
 .hentry footer { }
 
@@ -154,6 +132,8 @@ aside li li:before {
   float: left;
   margin-right: 1em;
 }
+
+
 
 /* ==========================================================================
    Post Comments
@@ -215,19 +195,15 @@ aside li li:before {
   display: block;
 }
 
+
+
 /* ==========================================================================
    Footer
    ========================================================================== */
 
-#content-info { }
+.content-info { }
 
-.utility {
-  border-top: 1px solid #ccc;
-  color: #aaa;
-  padding: 1.4166666666666666666666666666667em 0 1.5em;
-}
-.utility .copy { }
-.utility .credit { }
+
 
 /* ==========================================================================
    Search form
@@ -274,58 +250,7 @@ form[role="search"] input[type="submit"]:hover {
             transition: none;
 }
 
-/* ==========================================================================
-   Pagination
-   ========================================================================== */
 
-.pagination {
-  border-bottom: 1px solid #ccc;
-  border-top: 1px solid #ccc;
-  font-size: 1em;
-  line-height: 3em;
-  height: 4.5em;
-  margin-bottom: 1.5em;
-  position: relative;
-}
-.pagination .page-current {
-  float: left;
-  padding: 9px 18px 9px 0;
-}
-.pagination .page-numbers {
-  display: block;
-  float: left;
-  padding: 9px 18px;
-}
-.pagination .current {
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-}
-.pagination a.prev,
-.pagination a.next {
-  background: transparent url(../img/angles.png) no-repeat scroll 0 0;
-  display: block;
-  padding: 9px 0;
-  text-indent: -9999em;
-  width: 10px;
-}
-.pagination a.prev {
-  background-position: 0 -566px;
-  position: absolute;
-  right: 24px;
-  top: 0;
-}
-.pagination a.prev:hover {
-  background-position: 0 -432px;
-}
-.pagination a.next {
-  background-position: 0 -633px;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-.pagination a.next:hover {
-  background-position: 0 -499px;
-}
 
 /* ==========================================================================
    Alerts
@@ -383,6 +308,8 @@ form[role="search"] input[type="submit"]:hover {
   opacity: 1;
 }
 
+
+
 /* ==========================================================================
    WordPress Generated Classes
    See: http://codex.wordpress.org/CSS#WordPress_Generated_Classes
@@ -392,6 +319,8 @@ form[role="search"] input[type="submit"]:hover {
 .alignleft { float: left; }
 .alignright { float: right; }
 figure.alignnone { margin-left: 0; margin-right: 0; }
+
+
 
 /* ==========================================================================
    Helper classes
@@ -500,14 +429,8 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    Modify as content requires.
    ========================================================================== */
 
-@media (max-width: 767px) {
-  /* Style adjustments for all mobile */
-}
-@media (max-width: 979px) {
-  /* Style adjustments up to tablet portrait */
-}
-@media (min-width: 980px) {
-  /* Style adjustments for default layout and up */
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
 }
 
 @media print,
