@@ -74,17 +74,6 @@ function custom_admin_bar(){
 add_action( 'admin_init', create_function('', 'remove_action( \'admin_notices\', \'update_nag\', 3 );') );
 
 /**
- * Remove unnecessary menu items
- *
- * @link http://www.smashingmagazine.com/2011/05/10/new-wordpress-power-tips-for-template-developers-and-consultants/
- */
-// function custom_admin_menu() {
-//   remove_menu_page('link-manager.php'); // Links screen
-// }
-//
-// add_action( 'admin_menu', 'custom_admin_menu' );
-
-/**
  * Remove default sidebar widgets
  *
  * @link http://www.everparent.com/lunaticfred/2011/05/05/how-to-remove-default-sidebar-widgets-in-wordpress/
@@ -93,7 +82,6 @@ function core_default_widgets() {
   //unregister_widget('WP_Widget_Pages');
   unregister_widget('WP_Widget_Calendar');
   unregister_widget('WP_Widget_Archives');
-  unregister_widget('WP_Widget_Links');
   unregister_widget('WP_Widget_Meta');
   unregister_widget('WP_Widget_Search');
   //unregister_widget('WP_Widget_Text');

@@ -5,6 +5,22 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
   <meta charset="utf-8">
+  <!--
+
+  .....................................................................
+
+  Built by Eight Seven Central in Des Moines, Iowa
+
+  .....................................................................
+
+  Hi.
+  http://eightsevencentral.com
+  design@eightsevencentral.com
+  @87central
+
+  .....................................................................
+
+  -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
   <meta name="description" content="<?php echo bloginfo('description'); ?>">
