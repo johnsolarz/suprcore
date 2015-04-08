@@ -17,5 +17,5 @@
 require_once locate_template('/lib/widgets.php');         // Sidebars and widgets
 require_once locate_template('/lib/scripts.php');         // Scripts and stylesheets
 require_once locate_template('/lib/custom.php');          // Custom functions
-require_once locate_template('/lib/dashboard.php');       // Custom login, dashboard and widgets
+//require_once locate_template('/lib/dashboard.php');       // Custom login, dashboard and widgets
 require_once locate_template('/lib/social.php');          // Custom social media sharing

@@ -9,14 +9,14 @@
 
   .....................................................................
 
-  Built by Eight Seven Central in Des Moines, Iowa
+  Built by:
 
   .....................................................................
 
-  Hi.
-  http://eightsevencentral.com
-  design@eightsevencentral.com
-  @87central
+  • Now Now
+  • http://www.nownow.io/
+  • hello@nownow.io
+  • @johnsolarz
 
   .....................................................................
 
